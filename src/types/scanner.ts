@@ -14,7 +14,9 @@ export interface ScanResult {
   imageUrl: string;
   imageName: string;
   cropDetected: string;
+  banglaCropDetected?: string;
   diagnosis: DiseaseInfo;
+  isLowConfidence?: boolean;
   leafMetrics: {
     affectedAreaPercentage: number;
     chlorophyllIndex: string;
@@ -28,9 +30,13 @@ export interface HistoryItem {
   id: string;
   date: string;
   crop: string;
+  banglaCrop?: string;
   disease: string;
+  banglaName?: string;
   confidence: number;
   severity: "Healthy" | "Mild" | "Moderate" | "Severe";
   imageUrl: string;
   status: "Active" | "Treated" | "Monitoring";
+  isLowConfidence?: boolean;
+  feedbackRating?: "accurate" | "inaccurate" | "unsure";
 }

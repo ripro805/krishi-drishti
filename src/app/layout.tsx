@@ -38,6 +38,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { ClientProviders } from "@/components/common/ClientProviders";
+
 export default function RootLayout({
   children,
 }: {
@@ -46,22 +48,21 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Crop Disease Detection",
+    name: "KrishiDrishti - AI Crop Disease Detection & Bangla Farming Assistant",
     description:
-      "Professional plant disease identification with 98% accuracy. Specialized AI platform for identifying 200+ plant diseases instantly.",
-    url: "https://cropdiseasedetection.com",
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web, iOS, Android",
+      "কৃষি দৃষ্টি (KrishiDrishti) — কৃত্রিম বুদ্ধিমত্তাভিত্তিক ফসলের রোগ শনাক্তকরণ ও বাংলা কৃষি পরামর্শ সহকারী।",
+    url: "https://krishidrishti.gov.bd",
+    applicationCategory: "AgriculturalApplication",
+    operatingSystem: "Web, Mobile",
     author: {
       "@type": "Organization",
-      name: "Crop Disease Detection",
-      url: "https://cropdiseasedetection.com",
+      name: "KrishiDrishti Team",
     },
-    areaServed: "Worldwide",
+    areaServed: "Bangladesh",
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="bn" className="scroll-smooth">
       <head>
         <script
           type="application/ld+json"
@@ -69,9 +70,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-[#fafbf9] text-slate-900 antialiased">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ClientProviders>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ClientProviders>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { TreatmentPlan } from "@/types/disease";
+import { TreatmentPlan, BanglaTreatmentGuide } from "@/types/disease";
 import { Badge } from "@/components/common/Badge";
 import {
   AlertTriangle,
@@ -12,14 +12,26 @@ import {
   Percent,
   CheckSquare,
   Square,
+  HelpCircle,
+  Stethoscope,
+  Info,
+  ShieldAlert,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface TreatmentPlanTabsProps {
   treatmentPlan: TreatmentPlan;
+  banglaTreatment?: BanglaTreatmentGuide;
 }
 
-export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({ treatmentPlan }) => {
-  const [activeTab, setActiveTab] = useState<"immediate" | "organic" | "chemical" | "preventive">("immediate");
+export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({
+  treatmentPlan,
+  banglaTreatment,
+}) => {
+  const { isBangla } = useLanguage();
+  const [activeTab, setActiveTab] = useState<"banglaGuide" | "immediate" | "organic" | "chemical" | "preventive">(
+    banglaTreatment ? "banglaGuide" : "immediate"
+  );
   const [completedActions, setCompletedActions] = useState<Record<string, boolean>>({});
 
   const toggleAction = (title: string) => {
@@ -31,8 +43,46 @@ export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({ treatmentP
 
   return (
     <div className="w-full">
+      {/* Prominent Mandatory Agricultural Safety Disclaimer */}
+      <div className="mb-5 rounded-2xl border border-rose-300 bg-rose-50/90 p-4 dark:border-rose-900/60 dark:bg-rose-950/40 text-xs">
+        <div className="flex items-start gap-3">
+          <ShieldAlert className="h-5 w-5 text-rose-600 dark:text-rose-400 flex-shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <p className="font-extrabold text-rose-900 dark:text-rose-200">
+              {isBangla
+                ? "সংবিধিবদ্ধ সতর্কতা ও কীটনাশক ব্যবহারের আইনি নির্দেশিকা"
+                : "Mandatory Agricultural Safety & Pesticide Dosage Notice"}
+            </p>
+            <p className="text-rose-800/90 dark:text-rose-300 leading-relaxed">
+              {banglaTreatment?.safetyNote ||
+                "রাসায়নিক বা কীটনাশকের নির্দিষ্ট বাণিজ্যিক ডোজ অনুমান করে প্রয়োগ করা আইনত দণ্ডনীয় ও ফসলের জন্য ক্ষতিকর। সর্বদা প্রস্তুতকারকের অনুমোদিত লেবেলে উল্লেখিত সঠিক মাত্রা মেনে চলুন এবং উপজেলা কৃষি কর্মকর্তা বা কৃষি সম্প্রসারণ অধিদপ্তরের (DAE) প্রেসক্রিপশন অনুযায়ী প্রয়োগ করুন।"}
+            </p>
+            {banglaTreatment?.verifiedSource && (
+              <p className="text-[11px] font-semibold text-rose-700 dark:text-rose-400 pt-1">
+                তথ্যভান্ডার: {banglaTreatment.verifiedSource}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+
       {/* Tab Navigation */}
       <div className="flex border-b border-slate-200 dark:border-slate-800 overflow-x-auto scrollbar-none gap-2">
+        {banglaTreatment && (
+          <button
+            type="button"
+            onClick={() => setActiveTab("banglaGuide")}
+            className={`flex items-center gap-2 whitespace-nowrap border-b-2 px-4 py-3 text-sm font-bold transition-colors ${
+              activeTab === "banglaGuide"
+                ? "border-emerald-600 text-emerald-700 dark:text-emerald-400"
+                : "border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
+            }`}
+          >
+            <Stethoscope className="h-4 w-4" />
+            বাংলা নির্দেশিকা (Bangla Guide)
+          </button>
+        )}
+
         <button
           type="button"
           onClick={() => setActiveTab("immediate")}
@@ -43,7 +93,7 @@ export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({ treatmentP
           }`}
         >
           <AlertTriangle className="h-4 w-4" />
-          Immediate Actions ({treatmentPlan.immediateActions.length})
+          {isBangla ? "জরুরি পদক্ষেপ" : "Immediate Actions"} ({treatmentPlan.immediateActions.length})
         </button>
 
         <button
@@ -56,7 +106,7 @@ export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({ treatmentP
           }`}
         >
           <Leaf className="h-4 w-4" />
-          Organic & Bio-Control ({treatmentPlan.organicTreatments.length})
+          {isBangla ? "জৈব বালাই ব্যবস্থাপনা" : "Organic & Bio"} ({treatmentPlan.organicTreatments.length})
         </button>
 
         <button
@@ -69,7 +119,7 @@ export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({ treatmentP
           }`}
         >
           <FlaskConical className="h-4 w-4" />
-          Chemical Fungicides ({treatmentPlan.chemicalTreatments.length})
+          {isBangla ? "ছত্রাকনাশক তথ্য" : "Chemical Agchem"} ({treatmentPlan.chemicalTreatments.length})
         </button>
 
         <button
@@ -82,12 +132,81 @@ export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({ treatmentP
           }`}
         >
           <ShieldCheck className="h-4 w-4" />
-          Long-Term Prevention
+          {isBangla ? "দীর্ঘমেয়াদী প্রতিরোধ" : "Prevention"}
         </button>
       </div>
 
       {/* Tab Panels */}
       <div className="pt-5">
+        {/* Full Dedicated Bangla Guidance Tab */}
+        {activeTab === "banglaGuide" && banglaTreatment && (
+          <div className="space-y-6 animate-fadeIn">
+            {/* 1. রোগ ব্যবস্থাপনার পরামর্শ */}
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-800/50">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-600 text-white text-xs font-bold">১</span>
+                রোগ ব্যবস্থাপনার পরামর্শ (Disease Management Advice)
+              </h4>
+              <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
+                {banglaTreatment.managementAdvice.map((advice, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="text-emerald-600 font-bold">&bull;</span>
+                    <span className="leading-relaxed">{advice}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 2. রোগ প্রতিরোধের উপায় */}
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-800/50">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-600 text-white text-xs font-bold">২</span>
+                রোগ প্রতিরোধের উপায় (Prevention Methods)
+              </h4>
+              <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
+                {banglaTreatment.preventionMethods.map((prev, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="text-blue-600 font-bold">&bull;</span>
+                    <span className="leading-relaxed">{prev}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 3. জমি ও ফসলের যত্নের নির্দেশনা */}
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-800/50">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-amber-600 text-white text-xs font-bold">৩</span>
+                জমি ও ফসলের যত্নের নির্দেশনা (Field & Crop Care)
+              </h4>
+              <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
+                {banglaTreatment.fieldCareGuidance.map((care, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="text-amber-600 font-bold">&bull;</span>
+                    <span className="leading-relaxed">{care}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 4. কখন কৃষি কর্মকর্তা বা বিশেষজ্ঞের সাহায্য নিতে হবে */}
+            <div className="rounded-2xl border border-slate-200 bg-rose-50/40 p-4 sm:p-5 dark:border-rose-950/20 dark:bg-rose-950/10">
+              <h4 className="text-sm font-bold text-rose-950 dark:text-rose-200 flex items-center gap-2 mb-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-rose-600 text-white text-xs font-bold">৪</span>
+                কখন কৃষি কর্মকর্তা বা বিশেষজ্ঞের সাহায্য নিতে হবে
+              </h4>
+              <ul className="space-y-2 text-xs text-rose-900/90 dark:text-rose-300">
+                {banglaTreatment.whenToConsultExpert.map((consult, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <HelpCircle className="h-4 w-4 text-rose-600 flex-shrink-0 mt-0.5" />
+                    <span className="leading-relaxed">{consult}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+
         {/* Immediate Actions */}
         {activeTab === "immediate" && (
           <div className="space-y-3">
@@ -207,7 +326,7 @@ export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({ treatmentP
             <div className="rounded-xl bg-blue-50/80 p-3 text-xs text-blue-800 dark:bg-blue-950/40 dark:text-blue-200 border border-blue-200 dark:border-blue-900 flex items-start gap-2">
               <FlaskConical className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
               <span>
-                Always wear PPE (gloves, mask, goggles). Never exceed labeled pre-harvest intervals (PHI) to prevent consumer residue contamination.
+                Always wear PPE (gloves, mask, goggles). Strictly consult authorized agricultural officers before applying any chemical spray.
               </span>
             </div>
 
@@ -238,7 +357,7 @@ export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({ treatmentP
 
                     <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                       <div>
-                        <span className="font-semibold text-slate-700 dark:text-slate-300">Prescribed Dosage: </span>
+                        <span className="font-semibold text-slate-700 dark:text-slate-300">Registered Guidelines: </span>
                         <p className="text-slate-600 dark:text-slate-400 mt-0.5">{chem.dosage}</p>
                       </div>
                       <div>
