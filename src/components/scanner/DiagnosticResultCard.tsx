@@ -22,6 +22,9 @@ import {
   Eye,
   Info,
   ShieldCheck,
+  Sprout,
+  Bug,
+  Wind,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { saveScanToHistory } from "@/lib/storage";
@@ -41,7 +44,7 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
   const [showPdfModal, setShowPdfModal] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
-  const { diagnosis, leafMetrics } = scanResult;
+  const { diagnosis } = scanResult;
   const isHealthy = diagnosis.severity === "Healthy";
   const isLowConfidence = scanResult.isLowConfidence || diagnosis.confidence < 75;
 
@@ -173,50 +176,72 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
           )}
         </div>
 
-        {/* Leaf Metrics Bar */}
+        {/* Authentic Clinical & Crop Parameters Grid */}
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {/* 1. Identified Crop */}
+          <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+            <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
+              <Sprout className="h-4 w-4 text-emerald-600" />
+              <span>{isBangla ? "শনাক্তকৃত ফসল" : "Identified Crop"}</span>
+            </div>
+            <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white truncate">
+              {isBangla ? scanResult.banglaCropDetected : scanResult.cropDetected}
+            </p>
+            <p className="text-[11px] text-slate-400">{isBangla ? "স্বয়ংক্রিয় এআই" : "AI Auto-detected"}</p>
+          </div>
+
+          {/* 2. Pathogen Type */}
+          <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+            <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
+              <Bug className="h-4 w-4 text-amber-500" />
+              <span>{isBangla ? "জীবাণুর ধরন" : "Pathogen Type"}</span>
+            </div>
+            <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white truncate">
+              {diagnosis.pathogenType === "Fungal"
+                ? (isBangla ? "ছত্রাকজনিত" : "Fungal")
+                : diagnosis.pathogenType === "Bacterial"
+                ? (isBangla ? "ব্যাকটেরিয়াজনিত" : "Bacterial")
+                : diagnosis.pathogenType === "Viral"
+                ? (isBangla ? "ভাইরাসজনিত" : "Viral")
+                : diagnosis.pathogenType === "None"
+                ? (isBangla ? "জীবাণুমুক্ত" : "None")
+                : diagnosis.pathogenType}
+            </p>
+            <p className="text-[11px] text-slate-400">{isBangla ? "প্যাথলজি বিভাগ" : "Etiology group"}</p>
+          </div>
+
+          {/* 3. Severity Level */}
           <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
               <Activity className="h-4 w-4 text-rose-500" />
-              <span>{isBangla ? "আক্রান্ত এলাকা" : "Affected Area"}</span>
+              <span>{isBangla ? "আক্রমণের তীব্রতা" : "Clinical Severity"}</span>
             </div>
-            <p className="text-lg font-bold text-slate-900 dark:text-white">
-              {leafMetrics.affectedAreaPercentage}%
+            <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white truncate">
+              {diagnosis.severity === "Healthy"
+                ? (isBangla ? "সুস্থ ফসল" : "Healthy")
+                : diagnosis.severity === "Severe"
+                ? (isBangla ? "তীব্র আক্রমণ" : "Severe")
+                : diagnosis.severity === "Moderate"
+                ? (isBangla ? "মাঝারি আক্রমণ" : "Moderate")
+                : (isBangla ? "হালকা আক্রমণ" : "Mild")}
             </p>
-            <p className="text-[11px] text-slate-400">{isBangla ? "পাতার ক্ষত অনুপাত" : "Necrosis ratio"}</p>
+            <p className="text-[11px] text-slate-400">{isBangla ? "স্ক্রিনিং পর্যায়" : "Assessment"}</p>
           </div>
 
+          {/* 4. Transmission Risk */}
           <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
-              <Eye className="h-4 w-4 text-amber-500" />
-              <span>{isBangla ? "ক্ষতচিহ্নের সংখ্যা" : "Lesion Count"}</span>
-            </div>
-            <p className="text-lg font-bold text-slate-900 dark:text-white">
-              {leafMetrics.lesionCount} {isBangla ? "টি দাগ" : "foci"}
-            </p>
-            <p className="text-[11px] text-slate-400">{isBangla ? "দাগের কলোনি" : "Spot colonies"}</p>
-          </div>
-
-          <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
-            <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
-              <Droplets className="h-4 w-4 text-emerald-500" />
-              <span>{isBangla ? "ক্লোরোফিল সূচক" : "Chlorophyll Index"}</span>
-            </div>
-            <p className="text-lg font-bold text-slate-900 dark:text-white">
-              {leafMetrics.chlorophyllIndex.split(" ")[0]}
-            </p>
-            <p className="text-[11px] text-slate-400">SPAD sensor</p>
-          </div>
-
-          <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
-            <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
-              <Thermometer className="h-4 w-4 text-blue-500" />
+              <Wind className="h-4 w-4 text-blue-500" />
               <span>{isBangla ? "সংক্রমণ ঝুঁকি" : "Transmission Risk"}</span>
             </div>
-            <p className="text-lg font-bold text-slate-900 dark:text-white">
-              {diagnosis.transmissionRisk}
+            <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white truncate">
+              {diagnosis.transmissionRisk === "High"
+                ? (isBangla ? "উচ্চ ঝুঁকি" : "High")
+                : diagnosis.transmissionRisk === "Moderate"
+                ? (isBangla ? "মাঝারি ঝুঁকি" : "Moderate")
+                : (isBangla ? "কম ঝুঁকি" : "Low")}
             </p>
-            <p className="text-[11px] text-slate-400">{isBangla ? "বাতাস / পানি" : "Airborne / Splash"}</p>
+            <p className="text-[11px] text-slate-400">{isBangla ? "বাতাস / সেচের পানি" : "Airborne / Splash"}</p>
           </div>
         </div>
 

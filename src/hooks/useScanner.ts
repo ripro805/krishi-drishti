@@ -74,8 +74,7 @@ export function useScanner() {
     selectedImage,
     imageName,
     selectedSample,
-    cropHint,
-    setCropHint,
+
     scanResult,
     isCameraOpen,
     setIsCameraOpen,

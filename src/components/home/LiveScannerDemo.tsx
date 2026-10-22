@@ -18,8 +18,6 @@ export const LiveScannerDemo: React.FC = () => {
     selectedSample,
     scanResult,
     isCameraOpen,
-    cropHint,
-    setCropHint,
     setIsCameraOpen,
     selectImage,
     selectSample,
@@ -47,27 +45,10 @@ export const LiveScannerDemo: React.FC = () => {
               </p>
             </div>
 
-            {/* Crop Category Selector */}
-            <div className="flex items-center gap-2 self-start sm:self-auto">
-              <label htmlFor="cropSelect" className="text-xs font-semibold text-slate-500 whitespace-nowrap">
-                Crop Focus:
-              </label>
-              <select
-                id="cropSelect"
-                value={cropHint}
-                onChange={(e) => setCropHint(e.target.value)}
-                disabled={isScanning}
-                className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-agri-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
-              >
-                <option value="Tomato">Tomato</option>
-                <option value="Potato">Potato</option>
-                <option value="Corn (Maize)">Corn (Maize)</option>
-                <option value="Bell Pepper">Bell Pepper</option>
-                <option value="Rice">Rice</option>
-                <option value="Wheat">Wheat</option>
-                <option value="Apple">Apple</option>
-                <option value="Grape">Grape</option>
-              </select>
+            {/* Auto-Detect Badge */}
+            <div className="flex items-center gap-2 self-start sm:self-auto rounded-xl bg-agri-50 dark:bg-agri-950/40 px-3 py-1.5 border border-agri-200 dark:border-agri-800">
+              <Sparkles className="h-3.5 w-3.5 text-agri-600" />
+              <span className="text-xs font-semibold text-agri-800 dark:text-agri-300">Auto-Detect Crop & Disease</span>
             </div>
           </div>
 

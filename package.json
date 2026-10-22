@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
+    "model": "python scripts/model_server.py",
     "build": "next build",
     "start": "next start"
   },

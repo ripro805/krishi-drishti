@@ -18,7 +18,7 @@ export const PDFReportModal: React.FC<PDFReportModalProps> = ({
   onClose,
   scanResult,
 }) => {
-  const { diagnosis, leafMetrics } = scanResult;
+  const { diagnosis } = scanResult;
 
   const handlePrint = () => {
     window.print();
@@ -69,25 +69,25 @@ export const PDFReportModal: React.FC<PDFReportModalProps> = ({
         {/* Leaf Microscopic Metrics */}
         <div>
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-            Leaf Pathology & Tissue Metrics
+            Clinical Pathology & Diagnostic Summary
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
             <div className="rounded-xl border border-slate-200 p-2.5 dark:border-slate-800">
-              <span className="text-slate-500">Affected Area:</span>
+              <span className="text-slate-500">Identified Crop:</span>
               <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
-                {leafMetrics.affectedAreaPercentage}%
+                {scanResult.cropDetected}
               </p>
             </div>
             <div className="rounded-xl border border-slate-200 p-2.5 dark:border-slate-800">
-              <span className="text-slate-500">Lesion Count:</span>
+              <span className="text-slate-500">Pathogen Group:</span>
               <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
-                {leafMetrics.lesionCount} foci
+                {diagnosis.pathogenType}
               </p>
             </div>
             <div className="rounded-xl border border-slate-200 p-2.5 dark:border-slate-800">
-              <span className="text-slate-500">Chlorophyll Index:</span>
+              <span className="text-slate-500">Clinical Severity:</span>
               <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
-                {leafMetrics.chlorophyllIndex}
+                {diagnosis.severity}
               </p>
             </div>
             <div className="rounded-xl border border-slate-200 p-2.5 dark:border-slate-800">

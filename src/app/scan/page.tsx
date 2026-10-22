@@ -1,7 +1,6 @@
 "use client";
 
 import React, { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
 import { useScanner } from "@/hooks/useScanner";
 import { Dropzone } from "@/components/scanner/Dropzone";
 import { CameraModal } from "@/components/scanner/CameraModal";
@@ -14,8 +13,6 @@ import { Scan, Sparkles, RotateCcw, ShieldCheck, Info, AlertTriangle } from "luc
 import { useLanguage } from "@/context/LanguageContext";
 
 function ScannerStudioContent() {
-  const searchParams = useSearchParams();
-  const initialCrop = searchParams.get("crop") || "Tomato";
   const { isBangla } = useLanguage();
 
   const {
@@ -25,8 +22,6 @@ function ScannerStudioContent() {
     selectedSample,
     scanResult,
     isCameraOpen,
-    cropHint,
-    setCropHint,
     setIsCameraOpen,
     selectImage,
     selectSample,
@@ -34,11 +29,6 @@ function ScannerStudioContent() {
     runScan,
   } = useScanner();
 
-  React.useEffect(() => {
-    if (initialCrop) {
-      setCropHint(initialCrop);
-    }
-  }, [initialCrop, setCropHint]);
 
   return (
     <div className="py-10 sm:py-14">
@@ -71,36 +61,20 @@ function ScannerStudioContent() {
 
         {/* Main Scanner Container */}
         <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-10 shadow-xl dark:border-slate-800 dark:bg-slate-900">
-          {/* Controls Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100 dark:border-slate-800">
-            <div className="flex items-center gap-2">
-              <label htmlFor="cropFocus" className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                {isBangla ? "নির্বাচিত ফসল:" : "Selected Crop:"}
-              </label>
-              <select
-                id="cropFocus"
-                value={cropHint}
-                onChange={(e) => setCropHint(e.target.value)}
-                disabled={isScanning}
-                className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-agri-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-              >
-                <option value="Tomato">{isBangla ? "টমেটো (Tomato)" : "Tomato (Solanum lycopersicum)"}</option>
-                <option value="Potato">{isBangla ? "আলু (Potato)" : "Potato (Solanum tuberosum)"}</option>
-                <option value="Rice">{isBangla ? "ধান (Rice)" : "Rice (Oryza sativa)"}</option>
-                <option value="Corn (Maize)">{isBangla ? "ভুট্টা (Corn / Maize)" : "Corn / Maize (Zea mays)"}</option>
-                <option value="Bell Pepper">{isBangla ? "মরিচ (Bell Pepper)" : "Bell Pepper (Capsicum annuum)"}</option>
-                <option value="Wheat">{isBangla ? "গম (Wheat)" : "Wheat (Triticum)"}</option>
-                <option value="Apple">{isBangla ? "আপেল (Apple)" : "Apple (Malus domestica)"}</option>
-                <option value="Grape">{isBangla ? "আঙ্গুর (Grape)" : "Grape (Vitis vinifera)"}</option>
-              </select>
+          {/* Auto-detect Info Bar */}
+          <div className="flex items-center gap-2.5 mb-8 pb-6 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex items-center gap-2 rounded-xl bg-agri-50 dark:bg-agri-950/40 px-3 py-1.5 border border-agri-200 dark:border-agri-800">
+              <Sparkles className="h-3.5 w-3.5 text-agri-600" />
+              <span className="text-xs font-semibold text-agri-800 dark:text-agri-300">
+                {isBangla ? "ফসল ও রোগ স্বয়ংক্রিয় শনাক্তকরণ" : "Auto-Detect Crop & Disease"}
+              </span>
             </div>
-
-            <div className="flex items-center gap-2 text-xs text-slate-500">
-              <Info className="h-4 w-4 text-agri-600 flex-shrink-0" />
+            <div className="flex items-center gap-1.5 text-xs text-slate-500">
+              <Info className="h-3.5 w-3.5 text-agri-600 flex-shrink-0" />
               <span>
                 {isBangla
-                  ? "দিনের ভালো আলো ও পাতার ওপর স্পষ্ট ফোকাস সঠিক ফলাফলের জন্য আবশ্যক"
-                  : "Ensure adequate daylight and leaf focus for maximum confidence"}
+                  ? "পাতার ছবি আপলোড করুন — এআই স্বয়ংক্রিয়ভাবে ফসল ও রোগ শনাক্ত করবে"
+                  : "Upload a leaf image — AI auto-detects crop type and disease"}
               </span>
             </div>
           </div>
