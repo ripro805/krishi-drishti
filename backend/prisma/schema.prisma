@@ -1,0 +1,156 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  FARMER
+  EXPERT
+  ADMIN
+}
+
+model User {
+  id           String     @id @default(uuid())
+  name         String
+  email        String     @unique
+  passwordHash String
+  phone        String?
+  role         Role       @default(FARMER)
+  district     String?
+  upazila      String?
+  avatar       String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  scans        Scan[]
+  feedbacks    Feedback[]
+
+  @@map("users")
+}
+
+model Disease {
+  id                     String   @id // e.g. "tomato-early-blight"
+  crop                   String
+  banglaCrop             String?
+  commonName             String
+  banglaName             String?
+  scientificName         String
+  pathogenType           String   // Fungal, Bacterial, Viral, Nutrient Deficiency, Pest Infestation, None
+  severity               String   // Healthy, Mild, Moderate, Severe
+  confidence             Float    @default(95.0)
+  summary                String   @db.Text
+  banglaSummary          String?  @db.Text
+  symptoms               String[]
+  banglaSymptoms         String[]
+  favorableConditions    String[]
+  banglaCauses           String[]
+  affectedParts          String[]
+  banglaAffectedParts    String[]
+  banglaCropInfo         String?  @db.Text
+  transmissionRisk       String   @default("Moderate")
+  treatmentPlan          Json     // Immediate, Organic, Chemical, Preventive
+  banglaTreatment        Json?    // Bangla guidance & advisory
+  sampleImageUrl         String?
+  isLowConfidenceWarning Boolean  @default(false)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  scans                  Scan[]
+
+  @@map("diseases")
+}
+
+model Scan {
+  id                     String    @id @default(uuid())
+  scanCode               String    @unique // e.g. "SCAN-HIST-001"
+  userId                 String?
+  user                   User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  cropDetected           String
+  banglaCropDetected     String?
+  diseaseId              String?
+  disease                Disease?  @relation(fields: [diseaseId], references: [id], onDelete: SetNull)
+  diseaseName            String
+  banglaDiseaseName      String?
+  confidence             Float
+  severity               String    @default("Moderate")
+  imageUrl               String    @db.Text
+  imageName              String?
+  isLowConfidence        Boolean   @default(false)
+  affectedAreaPercentage Float     @default(0.0)
+  chlorophyllIndex       String?
+  lesionCount            Int       @default(0)
+  tissueNecrosis         Boolean   @default(false)
+  recommendationsCount   Int       @default(0)
+  status                 String    @default("Active") // Active, Treated, Monitoring
+  feedbackRating         String?   // accurate, inaccurate, unsure
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+
+  feedback               Feedback?
+
+  @@index([userId])
+  @@index([cropDetected])
+  @@map("scans")
+}
+
+model Feedback {
+  id            String   @id @default(uuid())
+  feedbackCode  String?  @unique
+  scanId        String   @unique
+  scan          Scan     @relation(fields: [scanId], references: [id], onDelete: Cascade)
+  userId        String?
+  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  crop          String
+  disease       String
+  banglaDisease String?
+  confidence    Float
+  rating        String   // accurate, inaccurate, unsure
+  comment       String?  @db.Text
+  userName      String?
+  status        String   @default("new") // new, reviewed, flagged
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([status])
+  @@map("feedbacks")
+}
+
+model Notice {
+  id            String   @id @default(uuid())
+  noticeCode    String?  @unique
+  title         String
+  banglaTitle   String
+  content       String   @db.Text
+  banglaContent String   @db.Text
+  category      String   @default("alert") // alert, guideline, news
+  date          String
+  active        Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("notices")
+}
+
+model FertilizerCalculation {
+  id             String   @id @default(uuid())
+  userId         String?
+  crop           String
+  fieldArea      Float
+  areaUnit       String
+  soilNitrogen   String
+  soilPhosphorus String
+  soilPotassium  String
+  ureaKg         Float
+  dapKg          Float
+  mopKg          Float
+  gypsumKg       Float
+  zincSulphateKg Float
+  schedule       Json
+  createdAt      DateTime @default(now())
+
+  @@map("fertilizer_calculations")
+}
