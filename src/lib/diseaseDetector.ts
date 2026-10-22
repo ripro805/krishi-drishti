@@ -10,11 +10,13 @@ export interface DetectionOptions {
   cropHint?: string;
 }
 
+export const LOW_CONFIDENCE_THRESHOLD = 75; // below 75% triggers low-confidence warning
+
 export async function detectCropDisease(options: DetectionOptions): Promise<ScanResult> {
   const { imageUrl, imageName = "leaf_scan.jpg", matchedDiseaseId, cropHint } = options;
 
-  // Simulate network & GPU inference latency (1.8s)
-  await new Promise((resolve) => setTimeout(resolve, 1800));
+  // Simulate network & GPU inference latency (1.4s)
+  await new Promise((resolve) => setTimeout(resolve, 1400));
 
   // Determine matched disease
   let diagnosis: DiseaseInfo | undefined;
@@ -25,11 +27,12 @@ export async function detectCropDisease(options: DetectionOptions): Promise<Scan
 
   if (!diagnosis && cropHint) {
     diagnosis = DISEASES_DATABASE.find(
-      (d) => d.crop.toLowerCase().includes(cropHint.toLowerCase())
+      (d) => d.crop.toLowerCase().includes(cropHint.toLowerCase()) ||
+             (d.banglaCrop && d.banglaCrop.toLowerCase().includes(cropHint.toLowerCase()))
     );
   }
 
-  // Fallback to Tomato Early Blight or random entry if not matched
+  // Check sample leaves matching
   if (!diagnosis) {
     const sample = SAMPLE_LEAVES.find((s) => s.imageUrl === imageUrl);
     if (sample) {
@@ -52,6 +55,7 @@ export async function detectCropDisease(options: DetectionOptions): Promise<Scan
   const lesions = isHealthy ? 0 : diagnosis.severity === "Severe" ? 14 + Math.floor(Math.random() * 8) : 5 + Math.floor(Math.random() * 4);
   const chlorophyll = isHealthy ? "Optimal (48.2 SPAD)" : diagnosis.severity === "Severe" ? "Critical (14.6 SPAD)" : "Moderate (27.9 SPAD)";
 
+  const isLowConfidence = diagnosis.confidence < LOW_CONFIDENCE_THRESHOLD || !!diagnosis.isLowConfidenceWarning;
   const scanId = `SCAN-${Date.now().toString(36).toUpperCase()}-${Math.floor(Math.random() * 1000)}`;
 
   return {
@@ -60,7 +64,9 @@ export async function detectCropDisease(options: DetectionOptions): Promise<Scan
     imageUrl,
     imageName,
     cropDetected: diagnosis.crop,
+    banglaCropDetected: diagnosis.banglaCrop || diagnosis.crop,
     diagnosis,
+    isLowConfidence,
     leafMetrics: {
       affectedAreaPercentage: parseFloat(affectedArea.toFixed(1)),
       chlorophyllIndex: chlorophyll,

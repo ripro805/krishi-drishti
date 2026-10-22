@@ -10,11 +10,13 @@ import { ScanningAnimation } from "@/components/scanner/ScanningAnimation";
 import { DiagnosticResultCard } from "@/components/scanner/DiagnosticResultCard";
 import { Button } from "@/components/common/Button";
 import { Badge } from "@/components/common/Badge";
-import { Scan, Sparkles, RotateCcw, ShieldCheck, Info } from "lucide-react";
+import { Scan, Sparkles, RotateCcw, ShieldCheck, Info, AlertTriangle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 function ScannerStudioContent() {
   const searchParams = useSearchParams();
   const initialCrop = searchParams.get("crop") || "Tomato";
+  const { isBangla } = useLanguage();
 
   const {
     isScanning,
@@ -39,20 +41,32 @@ function ScannerStudioContent() {
   }, [initialCrop, setCropHint]);
 
   return (
-    <div className="py-12 sm:py-16">
+    <div className="py-10 sm:py-14">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         {/* Studio Title */}
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+        <div className="text-center max-w-2xl mx-auto mb-8 space-y-3">
           <Badge variant="success" size="md">
             <ShieldCheck className="h-3.5 w-3.5" />
-            Active Clinical Pathology Model
+            {isBangla ? "৯৮% ল্যাবরেটরি নির্ভুল এআই মডেল" : "Active Clinical Pathology Model"}
           </Badge>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            AI Crop Leaf Disease Scanner
+            {isBangla ? "ফসলের পাতার রোগ নির্ণয় স্ক্যানার" : "AI Crop Leaf Disease Scanner"}
           </h1>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
-            Upload an image of an infected leaf or choose a pre-loaded sample to run deep neural vision diagnostic analysis with 98% accuracy.
+          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            {isBangla
+              ? "আক্রান্ত গাছের পাতার ছবি আপলোড করুন অথবা ক্যামেরা দিয়ে সরাসরি ছবি তুলুন। এআই স্বয়ংক্রিয়ভাবে রোগ শনাক্ত করবে এবং বাংলায় তাৎক্ষণিক পরামর্শ প্রদান করবে।"
+              : "Upload an image of an infected leaf or choose a pre-loaded sample to run deep neural vision diagnostic analysis with 98% accuracy."}
           </p>
+
+          {/* Important Product Disclaimer Banner */}
+          <div className="inline-flex items-center gap-2 rounded-xl bg-amber-50 px-3.5 py-1.5 text-xs text-amber-900 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-200 dark:border-amber-900">
+            <AlertTriangle className="h-4 w-4 text-amber-600 flex-shrink-0" />
+            <span>
+              {isBangla
+                ? "বিজ্ঞপ্তি: এআই ফলাফলটি কেবল প্রাথমিক স্ক্রিনিং। নিশ্চিত ডায়াগনোসিসের জন্য বিশেষজ্ঞের পরামর্শ নিন।"
+                : "Product Note: AI output is for preliminary screening only, not a final laboratory diagnosis."}
+            </span>
+          </div>
         </div>
 
         {/* Main Scanner Container */}
@@ -61,7 +75,7 @@ function ScannerStudioContent() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2">
               <label htmlFor="cropFocus" className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                Selected Crop:
+                {isBangla ? "নির্বাচিত ফসল:" : "Selected Crop:"}
               </label>
               <select
                 id="cropFocus"
@@ -70,20 +84,24 @@ function ScannerStudioContent() {
                 disabled={isScanning}
                 className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-agri-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               >
-                <option value="Tomato">Tomato (Solanum lycopersicum)</option>
-                <option value="Potato">Potato (Solanum tuberosum)</option>
-                <option value="Corn (Maize)">Corn / Maize (Zea mays)</option>
-                <option value="Bell Pepper">Bell Pepper (Capsicum annuum)</option>
-                <option value="Rice">Rice (Oryza sativa)</option>
-                <option value="Wheat">Wheat (Triticum)</option>
-                <option value="Apple">Apple (Malus domestica)</option>
-                <option value="Grape">Grape (Vitis vinifera)</option>
+                <option value="Tomato">{isBangla ? "টমেটো (Tomato)" : "Tomato (Solanum lycopersicum)"}</option>
+                <option value="Potato">{isBangla ? "আলু (Potato)" : "Potato (Solanum tuberosum)"}</option>
+                <option value="Rice">{isBangla ? "ধান (Rice)" : "Rice (Oryza sativa)"}</option>
+                <option value="Corn (Maize)">{isBangla ? "ভুট্টা (Corn / Maize)" : "Corn / Maize (Zea mays)"}</option>
+                <option value="Bell Pepper">{isBangla ? "মরিচ (Bell Pepper)" : "Bell Pepper (Capsicum annuum)"}</option>
+                <option value="Wheat">{isBangla ? "গম (Wheat)" : "Wheat (Triticum)"}</option>
+                <option value="Apple">{isBangla ? "আপেল (Apple)" : "Apple (Malus domestica)"}</option>
+                <option value="Grape">{isBangla ? "আঙ্গুর (Grape)" : "Grape (Vitis vinifera)"}</option>
               </select>
             </div>
 
             <div className="flex items-center gap-2 text-xs text-slate-500">
               <Info className="h-4 w-4 text-agri-600 flex-shrink-0" />
-              <span>Ensure adequate daylight and leaf focus for maximum confidence</span>
+              <span>
+                {isBangla
+                  ? "দিনের ভালো আলো ও পাতার ওপর স্পষ্ট ফোকাস সঠিক ফলাফলের জন্য আবশ্যক"
+                  : "Ensure adequate daylight and leaf focus for maximum confidence"}
+              </span>
             </div>
           </div>
 
@@ -108,18 +126,22 @@ function ScannerStudioContent() {
                   <Sparkles className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-white">Specimen Ready for Neural Processing</p>
-                  <p className="text-[11px] text-slate-400">Estimated processing time &lt; 2.0s</p>
+                  <p className="text-xs font-bold text-white">
+                    {isBangla ? "পাতাটি এআই বিশ্লেষণের জন্য প্রস্তুত" : "Specimen Ready for Neural Processing"}
+                  </p>
+                  <p className="text-[11px] text-slate-400">
+                    {isBangla ? "আনুমানিক সময় < ২.০ সেকেন্ড" : "Estimated processing time < 2.0s"}
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
                 <Button variant="ghost" size="sm" onClick={clearImage} className="text-slate-300 hover:text-white">
-                  Clear
+                  {isBangla ? "বাতিল" : "Clear"}
                 </Button>
                 <Button variant="primary" size="md" onClick={runScan} className="shadow-lg">
                   <Scan className="h-4 w-4 mr-1.5" />
-                  Run AI Disease Analysis
+                  {isBangla ? "এআই দিয়ে রোগ নির্ণয় করুন" : "Run AI Disease Analysis"}
                 </Button>
               </div>
             </div>
@@ -143,16 +165,19 @@ function ScannerStudioContent() {
                 <div className="flex items-center gap-2">
                   <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-ping" />
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                    Pathology Analysis Complete
+                    {isBangla ? "রোগ নির্ণয় ও প্রাথমিক স্ক্রিনিং ফলাফল" : "Pathology Analysis Complete"}
                   </h3>
                 </div>
                 <Button variant="outline" size="sm" onClick={clearImage}>
                   <RotateCcw className="h-3.5 w-3.5 mr-1" />
-                  Scan New Specimen
+                  {isBangla ? "নতুন পাতা স্ক্যান করুন" : "Scan New Specimen"}
                 </Button>
               </div>
 
-              <DiagnosticResultCard scanResult={scanResult} />
+              <DiagnosticResultCard
+                scanResult={scanResult}
+                onRetake={clearImage}
+              />
             </div>
           )}
         </div>

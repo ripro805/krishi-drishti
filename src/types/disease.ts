@@ -32,6 +32,15 @@ export interface TreatmentPlan {
   culturalPractices: string[];
 }
 
+export interface BanglaTreatmentGuide {
+  managementAdvice: string[]; // রোগ ব্যবস্থাপনার পরামর্শ
+  preventionMethods: string[]; // রোগ প্রতিরোধের উপায়
+  fieldCareGuidance: string[]; // জমি ও ফসলের যত্নের নির্দেশনা
+  whenToConsultExpert: string[]; // কখন কৃষি কর্মকর্তা বা বিশেষজ্ঞের সাহায্য নিতে হবে
+  safetyNote: string; // রাসায়নিক সতর্কবার্তা ও ডোজ অনুমান না করার নির্দেশ
+  verifiedSource?: string; // তথ্যসূত্র
+}
+
 export interface DiseaseInfo {
   id: string;
   crop: string;
@@ -47,4 +56,15 @@ export interface DiseaseInfo {
   transmissionRisk: "High" | "Moderate" | "Low" | "None";
   treatmentPlan: TreatmentPlan;
   sampleImageUrl?: string;
+
+  // Bangla Localization & Dedicated Farming Guidance
+  banglaName?: string;
+  banglaCrop?: string;
+  banglaSummary?: string;
+  banglaSymptoms?: string[];
+  banglaCauses?: string[];
+  banglaAffectedParts?: string[];
+  banglaCropInfo?: string;
+  banglaTreatment?: BanglaTreatmentGuide;
+  isLowConfidenceWarning?: boolean;
 }
