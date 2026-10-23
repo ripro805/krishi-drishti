@@ -72,39 +72,45 @@ export const Navbar: React.FC = () => {
   }
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/90 transition-all">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full bg-white/85 backdrop-blur-xl border-b border-emerald-900/10 dark:bg-slate-950/85 dark:border-slate-800 shadow-[0_2px_15px_-4px_rgba(0,0,0,0.04)] transition-all">
+      {/* Top subtle emerald gradient highlight bar */}
+      <div className="h-[2px] w-full bg-gradient-to-r from-emerald-500 via-teal-400 to-green-500 opacity-90" />
+
+      <div className="w-full flex h-16 sm:h-[76px] items-center justify-between px-4 sm:px-8 lg:px-10 xl:px-14 2xl:px-20 gap-6">
         {/* Brand Logo */}
-        <Link href="/" className="group flex items-center gap-3">
-          <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-agri-500 to-agri-700 text-white shadow-md shadow-agri-600/30 group-hover:scale-105 transition-transform">
-            <Scan className="h-6 w-6 transition-transform group-hover:rotate-12" />
+        <Link href="/" className="group flex items-center gap-3.5 flex-shrink-0">
+          <div className="relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-700 text-white shadow-md shadow-emerald-600/30 group-hover:scale-105 group-hover:shadow-emerald-600/50 transition-all duration-300">
+            <Scan className="h-6 w-6 transition-transform group-hover:rotate-12 duration-300" />
             <span className="absolute -top-1 -right-1 flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-agri-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-agri-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 ring-2 ring-white dark:ring-slate-900"></span>
             </span>
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-lg font-black tracking-tight text-slate-900 dark:text-white">
+              <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white">
                 {isBangla ? (
                   <>
-                    কৃষি <span className="text-agri-600 dark:text-agri-400">দৃষ্টি</span>
+                    কৃষি <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 bg-clip-text text-transparent">দৃষ্টি</span>
                   </>
                 ) : (
                   <>
-                    Krishi<span className="text-agri-600 dark:text-agri-400">Drishti</span>
+                    Krishi<span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 bg-clip-text text-transparent">Drishti</span>
                   </>
                 )}
               </span>
+              <span className="hidden sm:inline-flex rounded-full bg-emerald-100/90 px-2 py-0.5 text-[11px] font-bold text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-300/60">
+                AI 2.4
+              </span>
             </div>
-            <p className="text-[11px] font-medium tracking-wide text-slate-500 dark:text-slate-400">
+            <p className="text-xs font-medium tracking-wide text-slate-500 dark:text-slate-400 -mt-0.5">
               {isBangla ? "এআই ফসল সুরক্ষা ও বাংলা কৃষি সহকারী" : "98% AI Precision Screening"}
             </p>
           </div>
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+        <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2.5">
           {navLinks.map((link) => {
             const Icon = link.icon;
             const isActive =
@@ -115,29 +121,29 @@ export const Navbar: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "flex items-center gap-2 rounded-xl px-3 py-2 text-xs xl:text-sm font-semibold transition-colors",
+                  "flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition-all duration-200",
                   isActive
-                    ? "bg-agri-50 text-agri-700 dark:bg-agri-950/50 dark:text-agri-300"
-                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    ? "bg-emerald-50 text-emerald-800 font-bold dark:bg-emerald-950/60 dark:text-emerald-300 shadow-xs border border-emerald-200/70 dark:border-emerald-800"
+                    : "text-slate-600 hover:bg-slate-100/90 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                 )}
               >
-                <Icon className={cn("h-4 w-4", isActive ? "text-agri-600" : "text-slate-400")} />
-                {link.name}
+                <Icon className={cn("h-4 w-4", isActive ? "text-emerald-600 dark:text-emerald-400" : "text-slate-400 group-hover:text-slate-600")} />
+                <span>{link.name}</span>
               </Link>
             );
           })}
         </nav>
 
         {/* Right Action Toolbar: Language Toggle + User Auth + Scan CTA */}
-        <div className="hidden sm:flex items-center gap-2.5">
+        <div className="hidden sm:flex items-center gap-3 xl:gap-4 flex-shrink-0">
           {/* Language Switcher */}
           <button
             type="button"
             onClick={toggleLanguage}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 transition-all"
+            className="flex items-center gap-1.5 rounded-full border border-slate-200/90 bg-white/90 px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 hover:border-emerald-300 shadow-xs dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 transition-all"
             title="ভাষা পরিবর্তন করুন / Change Language"
           >
-            <Globe className="h-3.5 w-3.5 text-agri-600" />
+            <Globe className="h-3.5 w-3.5 text-emerald-600" />
             <span>{isBangla ? "English" : "বাংলা"}</span>
           </button>
 
@@ -233,10 +239,11 @@ export const Navbar: React.FC = () => {
 
           {/* Instant Scan CTA */}
           <Link href="/scan">
-            <Button size="md" className="shadow-agri-600/30 text-xs sm:text-sm">
-              <Sparkles className="h-4 w-4" />
-              {isBangla ? "পাতা স্ক্যান" : "Scan Leaf"}
-            </Button>
+            <button className="group relative inline-flex items-center gap-1.5 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-md shadow-emerald-600/30 hover:shadow-lg hover:shadow-emerald-600/40 hover:-translate-y-0.5 active:scale-95 transition-all duration-200">
+              <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none" />
+              <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform group-hover:rotate-12 duration-300" />
+              <span>{isBangla ? "পাতা স্ক্যান" : "Scan Leaf"}</span>
+            </button>
           </Link>
         </div>
 

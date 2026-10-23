@@ -35,8 +35,8 @@ export const Testimonials: React.FC = () => {
 
   return (
     <section className="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+      <div className="mx-auto w-full max-w-[1720px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="text-center max-w-4xl mx-auto mb-16 space-y-3">
           <Badge variant="success" size="md">
             Verified Field Impact
           </Badge>

@@ -31,8 +31,8 @@ export const HowItWorks: React.FC = () => {
 
   return (
     <section className="py-20 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+      <div className="mx-auto w-full max-w-[1720px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="text-center max-w-4xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold uppercase tracking-wider text-agri-600 dark:text-agri-400">
             Simple 3-Step Workflow
           </span>

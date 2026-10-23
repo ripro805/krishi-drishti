@@ -39,6 +39,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
+          '"Hind Siliguri"',
+          '"Outfit"',
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
@@ -47,6 +49,7 @@ const config: Config = {
           "Arial",
           "sans-serif",
         ],
+        display: ['"Outfit"', '"Hind Siliguri"', "sans-serif"],
       },
       keyframes: {
         scan: {

@@ -7,7 +7,7 @@ import { Scan, ShieldCheck, Mail, ArrowUpRight, Heart, Leaf } from "lucide-react
 export const Footer: React.FC = () => {
   return (
     <footer className="border-t border-slate-200 bg-slate-900 text-slate-300 dark:border-slate-800">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1720px] px-4 py-16 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
