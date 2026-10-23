@@ -55,14 +55,19 @@ export const AgriChatbotConsole: React.FC<AgriChatbotConsoleProps> = ({
     lastFailedMessage,
   } = useAgriChatbot({ initialPrompt, crop, disease, confidence });
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatScrollContainerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
 
-  // Auto-scroll to bottom on message change or generation state
+  // Auto-scroll ONLY the chat messages container to the bottom (without scrolling the page window or jumping to footer)
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (chatScrollContainerRef.current) {
+      chatScrollContainerRef.current.scrollTo({
+        top: chatScrollContainerRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   }, [messages, isGenerating]);
 
   // Handle textarea keydown (Enter to send, Shift+Enter for newline)
@@ -181,7 +186,10 @@ export const AgriChatbotConsole: React.FC<AgriChatbotConsoleProps> = ({
       )}
 
       {/* ── Message Stream ────────────────────────────────────────── */}
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-5">
+      <div
+        ref={chatScrollContainerRef}
+        className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-5 scroll-smooth"
+      >
         {messages.map((msg) => {
           const isUser = msg.role === "user";
           return (
@@ -291,8 +299,7 @@ export const AgriChatbotConsole: React.FC<AgriChatbotConsoleProps> = ({
           </div>
         )}
 
-        <div ref={messagesEndRef} />
-      </div>
+        </div>
 
       {/* ── Suggested Question Chips Bar ──────────────────────────── */}
       <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 p-2.5 dark:bg-slate-900/70 overflow-x-auto scrollbar-none">
