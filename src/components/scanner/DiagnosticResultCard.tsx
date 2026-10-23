@@ -366,9 +366,13 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
         </div>
 
         <Link
-          href={`/crop-doctor?prompt=${encodeURIComponent(
+          href={`/chat?prompt=${encodeURIComponent(
             `আমার ফসলে ${diagnosis.banglaName || diagnosis.commonName} শনাক্ত হয়েছে। এই রোগের প্রতিকারে সহজ বাংলায় আরও কিছু পরামর্শ দিন।`
-          )}`}
+          )}&crop=${encodeURIComponent(
+            scanResult.banglaCropDetected || scanResult.cropDetected
+          )}&disease=${encodeURIComponent(
+            diagnosis.banglaName || diagnosis.commonName
+          )}&confidence=${diagnosis.confidence.toFixed(0)}`}
         >
           <Button
             type="button"
@@ -377,7 +381,7 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
             className="bg-agri-950/80 text-agri-300 border-agri-800 hover:bg-agri-900"
           >
             <Bot className="h-4 w-4 mr-1.5" />
-            {isBangla ? "বাংলা ক্রপ ডক্টরের সাথে কথা বলুন" : "Ask Crop Doctor AI About This"}
+            {isBangla ? "কৃষি সহকারীর সাথে কথা বলুন" : "Ask AI About This Disease"}
           </Button>
         </Link>
       </div>

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "model": "python scripts/model_server.py",
+    "test:chat": "node scripts/test_chatbot_suite.mjs",
     "build": "next build",
     "start": "next start"
   },

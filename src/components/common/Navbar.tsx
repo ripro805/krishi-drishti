@@ -42,14 +42,14 @@ export const Navbar: React.FC = () => {
       icon: Scan,
     },
     {
+      name: isBangla ? "AI কৃষি সহকারী" : "AI Agri Assistant",
+      href: "/chat",
+      icon: Bot,
+    },
+    {
       name: isBangla ? "সমর্থিত ফসল" : "Supported Crops",
       href: "/supported-crops",
       icon: Layers,
-    },
-    {
-      name: isBangla ? "ক্রপ ডক্টর এআই" : "Crop Doctor AI",
-      href: "/crop-doctor",
-      icon: Bot,
     },
     {
       name: isBangla ? "রোগ কোষাগার" : "Disease Library",
@@ -107,7 +107,9 @@ export const Navbar: React.FC = () => {
         <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
           {navLinks.map((link) => {
             const Icon = link.icon;
-            const isActive = pathname === link.href;
+            const isActive =
+              pathname === link.href ||
+              (link.href === "/chat" && (pathname === "/chat" || pathname === "/crop-doctor"));
             return (
               <Link
                 key={link.href}
@@ -321,7 +323,9 @@ export const Navbar: React.FC = () => {
           <div className="space-y-1">
             {navLinks.map((link) => {
               const Icon = link.icon;
-              const isActive = pathname === link.href;
+              const isActive =
+                pathname === link.href ||
+                (link.href === "/chat" && (pathname === "/chat" || pathname === "/crop-doctor"));
               return (
                 <Link
                   key={link.href}

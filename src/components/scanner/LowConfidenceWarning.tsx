@@ -67,7 +67,7 @@ export const LowConfidenceWarning: React.FC<LowConfidenceWarningProps> = ({
               </Button>
             )}
 
-            <Link href="/crop-doctor?prompt=আমার পাতার ছবিতে রোগ স্পষ্ট ধরা পড়ছে না, কম কনফিডেন্স এসেছে। এখন আমার কী করণীয়?">
+            <Link href="/chat?prompt=আমার পাতার ছবিতে রোগ স্পষ্ট ধরা পড়ছে না, কম কনফিডেন্স এসেছে। এখন আমার কী করণীয়?">
               <Button
                 type="button"
                 variant="outline"
