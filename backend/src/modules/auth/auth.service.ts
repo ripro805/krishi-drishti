@@ -52,7 +52,7 @@ export class AuthService {
     const token = jwt.sign(
       { id: user.id, email: user.email, role: user.role, name: user.name },
       env.JWT_SECRET,
-      { expiresIn: env.JWT_EXPIRES_IN as any }
+      { expiresIn: (env.JWT_EXPIRES_IN || "7d") as any }
     );
 
     return { user, token };
@@ -75,7 +75,7 @@ export class AuthService {
     const token = jwt.sign(
       { id: user.id, email: user.email, role: user.role, name: user.name },
       env.JWT_SECRET,
-      { expiresIn: env.JWT_EXPIRES_IN as any }
+      { expiresIn: (env.JWT_EXPIRES_IN || "7d") as any }
     );
 
     const safeUser = {

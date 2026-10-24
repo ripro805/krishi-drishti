@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "KrishiDrishti Modular Backend: Node.js, Express, Prisma ORM, and PostgreSQL API suite for AI crop disease detection, agronomist consultation, and agricultural intelligence.",
   "main": "dist/server.js",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
