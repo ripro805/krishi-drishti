@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { DiseaseInfo } from "@/types/disease";
-import { Volume2, VolumeX, Play, Pause, Square, Sparkles } from "lucide-react";
+import { Volume2, Play, Pause, Square, Sparkles, Cloud, Monitor } from "lucide-react";
 import { Button } from "@/components/common/Button";
 
 interface BanglaVoiceAssistantProps {
@@ -18,9 +18,12 @@ export const BanglaVoiceAssistant: React.FC<BanglaVoiceAssistantProps> = ({
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [isSupported, setIsSupported] = useState(true);
   const [playbackRate, setPlaybackRate] = useState<number>(0.95);
+  const [engineType, setEngineType] = useState<"browser" | "server">("browser");
+  const [hasCheckedVoices, setHasCheckedVoices] = useState(false);
+
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const audioElementRef = useRef<HTMLAudioElement | null>(null);
 
   // Construct clear, respectful Bangla spoken script for farmers
   const generateSpokenScript = (): string => {
@@ -52,38 +55,100 @@ export const BanglaVoiceAssistant: React.FC<BanglaVoiceAssistantProps> = ({
     return script;
   };
 
+  // Check voice availability on mount
   useEffect(() => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      setIsSupported(false);
+    if (typeof window === "undefined") return;
+
+    const checkAvailableVoices = () => {
+      if (!("speechSynthesis" in window)) {
+        setEngineType("server");
+        setHasCheckedVoices(true);
+        return;
+      }
+
+      const voices = window.speechSynthesis.getVoices();
+      const bnVoice = voices.find((v) => v.lang.toLowerCase().includes("bn"));
+      if (bnVoice) {
+        setEngineType("browser");
+      } else {
+        // Fall back to server-side Google TTS audio streaming if no Bengali voice is found
+        setEngineType("server");
+      }
+      setHasCheckedVoices(true);
+    };
+
+    checkAvailableVoices();
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.onvoiceschanged = checkAvailableVoices;
     }
 
     return () => {
-      if (typeof window !== "undefined" && "speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-      }
+      stopAllAudio();
     };
   }, []);
 
-  const handlePlay = () => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      setIsSupported(false);
+  const stopAllAudio = () => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+    if (audioElementRef.current) {
+      audioElementRef.current.pause();
+      audioElementRef.current.currentTime = 0;
+      audioElementRef.current = null;
+    }
+    setIsPlaying(false);
+    setIsPaused(false);
+  };
+
+  const handlePlayServerAudio = (script: string) => {
+    if (audioElementRef.current && isPaused) {
+      audioElementRef.current.play();
+      setIsPaused(false);
+      setIsPlaying(true);
       return;
     }
 
-    // If currently paused, resume
-    if (isPaused) {
+    stopAllAudio();
+
+    const audioUrl = `/api/tts?text=${encodeURIComponent(script)}`;
+    const audio = new Audio(audioUrl);
+    audio.playbackRate = playbackRate;
+
+    audio.onplay = () => {
+      setIsPlaying(true);
+      setIsPaused(false);
+    };
+
+    audio.onended = () => {
+      setIsPlaying(false);
+      setIsPaused(false);
+    };
+
+    audio.onerror = (e) => {
+      console.warn("[VoiceAssistant] Server audio stream error:", e);
+      setIsPlaying(false);
+      setIsPaused(false);
+    };
+
+    audioElementRef.current = audio;
+    audio.play().catch((err) => {
+      console.warn("[VoiceAssistant] Auto-play prevented or error:", err);
+      setIsPlaying(false);
+      setIsPaused(false);
+    });
+  };
+
+  const handlePlayBrowserSpeech = (script: string) => {
+    if (isPaused && typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.resume();
       setIsPaused(false);
       setIsPlaying(true);
       return;
     }
 
-    window.speechSynthesis.cancel();
+    stopAllAudio();
 
-    const script = generateSpokenScript();
     const utterance = new SpeechSynthesisUtterance(script);
-
-    // Look for Bangla voice (bn-BD or bn-IN) if available in browser
     const voices = window.speechSynthesis.getVoices();
     const bnVoice = voices.find((v) => v.lang.toLowerCase().includes("bn"));
     if (bnVoice) {
@@ -104,39 +169,53 @@ export const BanglaVoiceAssistant: React.FC<BanglaVoiceAssistantProps> = ({
     };
 
     utterance.onerror = (e) => {
-      // Chrome sometimes cancels when interrupted
       if (e.error !== "canceled" && e.error !== "interrupted") {
-        console.warn("Speech synthesis notice:", e);
+        console.warn("[VoiceAssistant] Browser speech error, switching to server audio fallback:", e);
+        setEngineType("server");
+        handlePlayServerAudio(script);
+      } else {
+        setIsPlaying(false);
+        setIsPaused(false);
       }
-      setIsPlaying(false);
-      setIsPaused(false);
     };
 
     utteranceRef.current = utterance;
     window.speechSynthesis.speak(utterance);
   };
 
+  const handlePlay = () => {
+    const script = generateSpokenScript();
+    if (engineType === "browser" && typeof window !== "undefined" && "speechSynthesis" in window) {
+      handlePlayBrowserSpeech(script);
+    } else {
+      handlePlayServerAudio(script);
+    }
+  };
+
   const handlePause = () => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+    if (engineType === "browser" && typeof window !== "undefined" && "speechSynthesis" in window) {
       if (window.speechSynthesis.speaking) {
         window.speechSynthesis.pause();
         setIsPaused(true);
         setIsPlaying(false);
       }
+    } else if (audioElementRef.current) {
+      audioElementRef.current.pause();
+      setIsPaused(true);
+      setIsPlaying(false);
     }
   };
 
   const handleStop = () => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      setIsPlaying(false);
-      setIsPaused(false);
-    }
+    stopAllAudio();
   };
 
   const handleSpeedToggle = () => {
     const nextRate = playbackRate === 0.95 ? 1.15 : playbackRate === 1.15 ? 0.8 : 0.95;
     setPlaybackRate(nextRate);
+    if (audioElementRef.current) {
+      audioElementRef.current.playbackRate = nextRate;
+    }
     if (isPlaying) {
       handleStop();
     }
@@ -148,11 +227,7 @@ export const BanglaVoiceAssistant: React.FC<BanglaVoiceAssistantProps> = ({
         {/* Left: Info & Indicator */}
         <div className="flex items-start sm:items-center gap-3">
           <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-600/30">
-            {isPlaying ? (
-              <Volume2 className="h-6 w-6 animate-pulse" />
-            ) : (
-              <Volume2 className="h-6 w-6" />
-            )}
+            <Volume2 className={`h-6 w-6 ${isPlaying ? "animate-pulse" : ""}`} />
             {isPlaying && (
               <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -162,14 +237,31 @@ export const BanglaVoiceAssistant: React.FC<BanglaVoiceAssistantProps> = ({
           </div>
 
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center flex-wrap gap-2">
               <span className="text-sm font-extrabold text-slate-900 dark:text-white">
                 বাংলা ভয়েস অ্যাসিস্ট্যান্ট (অডিও পরামর্শ)
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300">
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300 border border-emerald-500/30">
                 <Sparkles className="h-3 w-3" />
                 Bangla Voice
               </span>
+
+              {/* Engine Source Badge */}
+              {hasCheckedVoices && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-white/80 dark:bg-slate-800 px-2 py-0.5 text-[9px] font-bold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  {engineType === "browser" ? (
+                    <>
+                      <Monitor className="h-2.5 w-2.5 text-emerald-600" />
+                      <span>ডিভাইস স্পিচ (Browser TTS)</span>
+                    </>
+                  ) : (
+                    <>
+                      <Cloud className="h-2.5 w-2.5 text-teal-600" />
+                      <span>ক্লাউড বাংলা অডিও (Server Fallback)</span>
+                    </>
+                  )}
+                </span>
+              )}
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
               {isPlaying
@@ -243,12 +335,6 @@ export const BanglaVoiceAssistant: React.FC<BanglaVoiceAssistantProps> = ({
           )}
         </div>
       </div>
-
-      {!isSupported && (
-        <p className="mt-2 text-[11px] text-amber-700 dark:text-amber-300">
-          * আপনার ব্রাউজার স্পিচ সিন্থেসিস সমর্থন করে না। ক্রোম বা এজ ব্রাউজার ব্যবহার করুন।
-        </p>
-      )}
     </div>
   );
 };
