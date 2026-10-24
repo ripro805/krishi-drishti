@@ -23,6 +23,7 @@ import {
   Cpu,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface AgriChatbotConsoleProps {
   initialPrompt?: string | null;
@@ -38,6 +39,7 @@ export const AgriChatbotConsole: React.FC<AgriChatbotConsoleProps> = ({
   confidence,
 }) => {
   const { isBangla } = useLanguage();
+  const { currentUser } = useAuth();
   const {
     messages,
     input,
@@ -105,18 +107,34 @@ export const AgriChatbotConsole: React.FC<AgriChatbotConsoleProps> = ({
                 {isBangla ? "লাইভ এআই" : "Live AI"}
               </Badge>
             </div>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>
-                {providerStatus.groq || providerStatus.gemini || providerStatus.openai
-                  ? isBangla
-                    ? "সক্রিয় • মাল্টি-মডেল অটো-ফলব্যাক ইঞ্জিন"
-                    : "Active • Multi-Model Auto-Fallback Engine"
-                  : isBangla
-                  ? "অফলাইন মোড"
-                  : "Offline Mode"}
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-2 mt-0.5">
+              <span className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>
+                  {providerStatus.groq || providerStatus.gemini || providerStatus.openai
+                    ? isBangla
+                      ? "সক্রিয় এআই"
+                      : "Live AI"
+                    : isBangla
+                    ? "অফলাইন"
+                    : "Offline"}
+                </span>
               </span>
-            </p>
+              <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">&bull;</span>
+              {currentUser ? (
+                <span className="inline-flex items-center gap-1 font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-md border border-emerald-200/80 dark:border-emerald-800/80 text-[10px]">
+                  <User className="h-2.5 w-2.5 text-emerald-600" />
+                  <span>{currentUser.name}</span>
+                  <span className="opacity-70 capitalize">({currentUser.role})</span>
+                  <span className="font-normal opacity-90">&bull; {isBangla ? "ইতিহাস সংরক্ষিত" : "History Saved"}</span>
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md text-[10px]">
+                  <User className="h-2.5 w-2.5 text-slate-400" />
+                  <span>{isBangla ? "অতিথি মোড (লগইন করলে স্থায়ী হবে)" : "Guest Mode (Log in to save history)"}</span>
+                </span>
+              )}
+            </div>
           </div>
         </div>
 

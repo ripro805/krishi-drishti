@@ -119,6 +119,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       apiClient.setToken(null);
       setCurrentUser(null);
       localStorage.removeItem(CURRENT_USER_SESSION_KEY);
+      if (typeof window !== "undefined") {
+        window.location.href = "/login";
+      }
     }
   };
 
