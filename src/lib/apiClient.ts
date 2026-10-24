@@ -141,8 +141,27 @@ class ApiClient {
   };
 
   public feedback = {
-    submit: (feedbackData: any) => this.post<{ feedback: any }>("/feedback", feedbackData),
-    getAll: (page = 1, limit = 20) => this.get<{ feedbacks: any[]; total: number }>(`/feedback?page=${page}&limit=${limit}`),
+    submit: (data: {
+      scanId: string;
+      crop: string;
+      disease: string;
+      banglaDisease?: string;
+      confidence: number;
+      rating: "accurate" | "inaccurate" | "unsure";
+      comment?: string;
+      userName?: string;
+    }) => this.post<{ feedback: any; message: string }>("/feedback", data),
+
+    getList: (params?: { status?: string; rating?: string }) => {
+      const query = new URLSearchParams();
+      if (params?.status && params.status !== "all") query.set("status", params.status);
+      if (params?.rating && params.rating !== "all") query.set("rating", params.rating);
+      const qs = query.toString();
+      return this.get<{ feedbackList: any[]; stats: any }>(`/feedback${qs ? `?${qs}` : ""}`);
+    },
+
+    updateStatus: (id: string, status: "new" | "reviewed" | "flagged") =>
+      this.patch<{ feedback: any; message: string }>(`/feedback/${id}`, { status }),
   };
 
   public diseases = {

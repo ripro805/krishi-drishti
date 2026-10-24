@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { PredictionFeedback } from "@/types/feedback";
 import { getFeedbackList, updateFeedbackStatus, getFeedbackStats } from "@/lib/storage";
+import { apiClient } from "@/lib/apiClient";
 import {
   MessageSquare,
   ThumbsUp,
@@ -22,6 +23,7 @@ export default function FeedbackManagementPage() {
   const [feedbackList, setFeedbackList] = useState<PredictionFeedback[]>([]);
   const [filterRating, setFilterRating] = useState<string>("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [stats, setStats] = useState({
     total: 0,
     accurateCount: 0,
@@ -30,18 +32,38 @@ export default function FeedbackManagementPage() {
     accuracyRate: 95,
   });
 
-  const loadFeedback = () => {
-    setFeedbackList(getFeedbackList());
-    setStats(getFeedbackStats());
+  const loadFeedback = async () => {
+    setIsLoading(true);
+    try {
+      const res = await apiClient.feedback.getList({ rating: filterRating });
+      if (res?.feedbackList) {
+        setFeedbackList(res.feedbackList);
+        if (res.stats) setStats(res.stats);
+      } else {
+        setFeedbackList(getFeedbackList());
+        setStats(getFeedbackStats());
+      }
+    } catch (err: any) {
+      console.warn("[admin/feedback] API retrieval error, using local data:", err);
+      setFeedbackList(getFeedbackList());
+      setStats(getFeedbackStats());
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
     loadFeedback();
-  }, []);
+  }, [filterRating]);
 
-  const handleStatusUpdate = (id: string, status: "new" | "reviewed" | "flagged") => {
+  const handleStatusUpdate = async (id: string, status: "new" | "reviewed" | "flagged") => {
+    setFeedbackList((prev) => prev.map((f) => (f.id === id ? { ...f, status } : f)));
     updateFeedbackStatus(id, status);
-    loadFeedback();
+    try {
+      await apiClient.feedback.updateStatus(id, status);
+    } catch (err) {
+      console.error("[admin/feedback] Status update failed on server:", err);
+    }
   };
 
   const filtered = feedbackList.filter((item) => {
