@@ -3,6 +3,7 @@ import { PredictionFeedback, FeedbackStats } from "@/types/feedback";
 import { User } from "@/types/auth";
 import { DiseaseInfo } from "@/types/disease";
 import { DISEASES_DATABASE } from "@/data/diseasesDatabase";
+import { apiClient } from "@/lib/apiClient";
 
 const SCAN_HISTORY_KEY = "KRISHI_DRISHTI_SCAN_HISTORY";
 const FEEDBACK_KEY = "KRISHI_DRISHTI_FEEDBACK";
@@ -188,6 +189,11 @@ export function saveFeedback(
       const existing = getFeedbackList();
       const updated = [newFeedback, ...existing.filter((f) => f.scanId !== feedback.scanId)].slice(0, 200);
       localStorage.setItem(FEEDBACK_KEY, JSON.stringify(updated));
+
+      // Asynchronously sync to backend server
+      apiClient.feedback.submit(feedback as any).catch((err) => {
+        console.warn("[storage] Background feedback sync to server failed:", err);
+      });
     } catch (e) {
       console.warn("Failed to persist feedback:", e);
     }
@@ -205,6 +211,11 @@ export function updateFeedbackStatus(id: string, status: "new" | "reviewed" | "f
     const existing = getFeedbackList();
     const updated = existing.map((f) => (f.id === id ? { ...f, status } : f));
     localStorage.setItem(FEEDBACK_KEY, JSON.stringify(updated));
+
+    // Asynchronously sync status update to backend server
+    apiClient.feedback.updateStatus(id, status).catch((err) => {
+      console.warn("[storage] Background feedback status sync failed:", err);
+    });
   } catch (e) {
     console.warn("Failed to update feedback status:", e);
   }
