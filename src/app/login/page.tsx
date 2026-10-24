@@ -45,8 +45,10 @@ export default function LoginPage() {
     }
   };
 
-  const handleDemo = (role: "farmer" | "expert" | "admin") => {
-    demoLogin(role);
+  const handleDemo = async (role: "farmer" | "expert" | "admin") => {
+    setIsLoading(true);
+    await demoLogin(role);
+    setIsLoading(false);
     router.push(role === "admin" ? "/admin" : "/scan");
   };
 

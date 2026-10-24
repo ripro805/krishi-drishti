@@ -1,10 +1,10 @@
 /**
  * KrishiDrishti Unified API Client
- * Connects the Next.js frontend with the Express + PostgreSQL backend.
+ * Connects the Next.js frontend with backend authentication, data endpoints, and Express/PostgreSQL.
  */
 
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
+  process.env.NEXT_PUBLIC_API_URL || "/api";
 
 export interface ApiResponse<T = any> {
   success: boolean;
@@ -20,7 +20,7 @@ class ApiClient {
     this.baseUrl = baseUrl.replace(/\/$/, "");
   }
 
-  private getToken(): string | null {
+  public getToken(): string | null {
     if (typeof window === "undefined") return null;
     try {
       return localStorage.getItem("KRISHI_DRISHTI_AUTH_TOKEN");
@@ -95,6 +95,14 @@ class ApiClient {
     });
   }
 
+  public patch<T = any>(endpoint: string, body?: any, headers?: Record<string, string>) {
+    return this.request<T>(endpoint, {
+      method: "PATCH",
+      body: body ? JSON.stringify(body) : undefined,
+      headers,
+    });
+  }
+
   public delete<T = any>(endpoint: string, headers?: Record<string, string>) {
     return this.request<T>(endpoint, { method: "DELETE", headers });
   }
@@ -108,6 +116,8 @@ class ApiClient {
       this.post<{ user: any; token: string }>("/auth/register", data),
 
     me: () => this.get<{ user: any }>("/auth/me"),
+
+    logout: () => this.post<{ success: boolean }>("/auth/logout"),
   };
 
   public scans = {
@@ -133,3 +143,4 @@ class ApiClient {
 }
 
 export const apiClient = new ApiClient(API_BASE_URL);
+export default apiClient;
