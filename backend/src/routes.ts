@@ -10,6 +10,15 @@ import { chatbotRoutes } from "./modules/chatbot/chatbot.routes.js";
 
 const apiV1Router = Router();
 
+apiV1Router.get("/health", (req, res) => {
+  res.json({
+    status: "healthy",
+    service: "krishi-drishti-express-api",
+    version: "1.0.0",
+    timestamp: new Date().toISOString(),
+  });
+});
+
 apiV1Router.use("/auth", authRoutes);
 apiV1Router.use("/users", usersRoutes);
 apiV1Router.use("/diseases", diseaseRoutes);
