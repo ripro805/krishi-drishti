@@ -80,4 +80,26 @@ export class ScanController {
       return next(error);
     }
   }
+
+  static async addConsultation(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.params;
+      const { notes, prescription, verifiedDisease, status } = req.body;
+      const expertName = (req as any).user?.name || "ড. নাজমুল হুদা";
+      const updated = await ScanService.addConsultation(id, {
+        expertName,
+        notes,
+        prescription,
+        verifiedDisease,
+        status,
+      });
+      return sendResponse(res, {
+        statusCode: 200,
+        message: "Expert consultation advisory saved",
+        data: updated,
+      });
+    } catch (error) {
+      return next(error);
+    }
+  }
 }

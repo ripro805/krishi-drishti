@@ -149,6 +149,7 @@ export interface ScanQueryOptions {
   userRole?: string;
   crop?: string;
   status?: string;
+  escalatedOnly?: boolean;
   page?: number;
   limit?: number;
 }
@@ -165,9 +166,20 @@ export async function getScansList(options: ScanQueryOptions = {}): Promise<{
   // Filter by user ownership if not admin/expert
   if (options.userId && options.userRole !== "admin" && options.userRole !== "expert") {
     list = list.filter((s) => s.userId === options.userId || s.userId === null);
-  } else if (!options.userId && options.userRole !== "admin") {
+  } else if (!options.userId && options.userRole !== "admin" && options.userRole !== "expert") {
     // Guest view: return public/demo scans
     list = list.filter((s) => s.userId === null || s.userId === "usr-farmer-002");
+  }
+
+  // Filter escalated cases for agronomist consultations
+  if (options.escalatedOnly) {
+    list = list.filter(
+      (s) =>
+        s.severity === "Severe" ||
+        s.isLowConfidence ||
+        s.confidence < 75 ||
+        (s.metadata && (s.metadata.expertConsultationRequested || s.metadata.expertConsultation))
+    );
   }
 
   // Filter by Crop
@@ -308,4 +320,45 @@ export async function deleteScanRecord(
   db.delete(id);
   saveToFile(db);
   return true;
+}
+
+export async function updateScanConsultation(
+  id: string,
+  consultation: {
+    expertId?: string;
+    expertName?: string;
+    notes: string;
+    prescription?: string;
+    verifiedDisease?: string;
+    status?: "Active" | "Treated" | "Monitoring";
+  },
+  user?: { id?: string; role?: string } | null
+): Promise<StoredScan | null> {
+  const db = getScansDB();
+  const scan = db.get(id);
+  if (!scan) return null;
+
+  if (user && user.role !== "admin" && user.role !== "expert") {
+    throw new Error("Forbidden: Only agricultural experts or admins can provide consultations");
+  }
+
+  scan.metadata = {
+    ...(scan.metadata || {}),
+    expertConsultation: {
+      expertId: consultation.expertId || user?.id || "usr-expert-003",
+      expertName: consultation.expertName || "Nasrin Akhter (কৃষি কর্মকর্তা)",
+      notes: consultation.notes,
+      prescription: consultation.prescription || "",
+      verifiedDisease: consultation.verifiedDisease || scan.banglaName || scan.disease,
+      reviewedAt: new Date().toISOString(),
+    },
+  };
+
+  if (consultation.status) {
+    scan.status = consultation.status;
+  }
+  scan.updatedAt = new Date().toISOString();
+  db.set(id, scan);
+  saveToFile(db);
+  return scan;
 }

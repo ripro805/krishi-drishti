@@ -35,6 +35,7 @@ export async function GET(request: NextRequest) {
 
     const crop = searchParams.get("crop") || undefined;
     const status = searchParams.get("status") || undefined;
+    const escalated = searchParams.get("escalated") === "true";
     const page = searchParams.get("page") ? parseInt(searchParams.get("page")!, 10) : 1;
     const limit = searchParams.get("limit") ? parseInt(searchParams.get("limit")!, 10) : 50;
 
@@ -43,6 +44,7 @@ export async function GET(request: NextRequest) {
       userRole: user?.role,
       crop,
       status,
+      escalatedOnly: escalated,
       page,
       limit,
     });

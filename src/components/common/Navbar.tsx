@@ -20,6 +20,7 @@ import {
   LogOut,
   Globe,
   LayoutDashboard,
+  Stethoscope,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./Button";
@@ -32,7 +33,7 @@ export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
-  const { currentUser, isAuthenticated, logout, isAdmin } = useAuth();
+  const { currentUser, isAuthenticated, logout, isAdmin, isExpert } = useAuth();
   const { isBangla, toggleLanguage } = useLanguage();
 
   const navLinks = [
@@ -62,6 +63,14 @@ export const Navbar: React.FC = () => {
       icon: History,
     },
   ];
+
+  if (isExpert || currentUser?.role === "expert") {
+    navLinks.push({
+      name: isBangla ? "বিশেষজ্ঞ পোর্টাল" : "Expert Portal",
+      href: "/expert",
+      icon: Stethoscope,
+    });
+  }
 
   if (isAdmin) {
     navLinks.push({
@@ -199,6 +208,17 @@ export const Navbar: React.FC = () => {
                       <History className="h-4 w-4 text-slate-400" />
                       {isBangla ? "আমার স্ক্যান ইতিহাস" : "Scan History"}
                     </Link>
+
+                    {(isExpert || currentUser?.role === "expert" || isAdmin) && (
+                      <Link
+                        href="/expert"
+                        onClick={() => setUserDropdownOpen(false)}
+                        className="flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-medium text-emerald-700 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-950"
+                      >
+                        <Stethoscope className="h-4 w-4 text-emerald-600" />
+                        {isBangla ? "বিশেষজ্ঞ পোর্টাল (Expert)" : "Expert Portal"}
+                      </Link>
+                    )}
 
                     {isAdmin && (
                       <Link

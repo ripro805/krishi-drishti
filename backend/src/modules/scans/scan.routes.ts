@@ -1,8 +1,10 @@
 import { Router } from "express";
 import { ScanController } from "./scan.controller.js";
-import { optionalAuthenticate } from "../../middlewares/auth.middleware.js";
+import { authenticate, optionalAuthenticate } from "../../middlewares/auth.middleware.js";
+import { authorize } from "../../middlewares/role.middleware.js";
 import { validate } from "../../middlewares/validate.middleware.js";
 import { createScanSchema, updateScanStatusSchema } from "./scan.validation.js";
+import { Role } from "@prisma/client";
 
 const router = Router();
 
@@ -25,6 +27,14 @@ router.patch(
   "/:id/status",
   validate({ body: updateScanStatusSchema }),
   ScanController.updateScanStatus
+);
+
+// Expert consultation advisory
+router.post(
+  "/:id/consultation",
+  authenticate,
+  authorize([Role.ADMIN, Role.EXPERT]),
+  ScanController.addConsultation
 );
 
 // Delete scan record

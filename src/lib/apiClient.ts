@@ -140,6 +140,28 @@ class ApiClient {
     deleteScan: (id: string) => this.delete<{ success: boolean }>(`/scans/${id}`),
   };
 
+  public expert = {
+    getEscalatedScans: (params?: { crop?: string; page?: number; limit?: number }) => {
+      const query = new URLSearchParams({ escalated: "true" });
+      if (params?.crop && params.crop !== "All") query.set("crop", params.crop);
+      if (params?.page) query.set("page", String(params.page));
+      if (params?.limit) query.set("limit", String(params.limit));
+      const qs = query.toString();
+      return this.get<{ scans: any[]; total: number; page: number; limit: number }>(`/scans?${qs}`);
+    },
+
+    submitConsultation: (
+      id: string,
+      data: {
+        expertName?: string;
+        notes: string;
+        prescription?: string;
+        verifiedDisease?: string;
+        status?: "Active" | "Treated" | "Monitoring";
+      }
+    ) => this.patch<{ scan: any; message: string }>(`/scans/${id}`, { consultation: data }),
+  };
+
   public feedback = {
     submit: (data: {
       scanId: string;

@@ -202,4 +202,36 @@ export class ScanService {
 
     return { id, message: "Scan record deleted successfully" };
   }
+
+  static async addConsultation(
+    id: string,
+    consultation: {
+      expertName: string;
+      notes: string;
+      prescription?: string;
+      verifiedDisease?: string;
+      status?: "Active" | "Treated" | "Monitoring";
+    }
+  ) {
+    const existing = await prisma.scan.findFirst({
+      where: { OR: [{ id }, { scanCode: id }] },
+    });
+
+    if (!existing) {
+      throw ApiError.notFound("Scan record not found");
+    }
+
+    const updateData: any = {};
+    if (consultation.status) {
+      updateData.status = consultation.status;
+    }
+    if (consultation.verifiedDisease) {
+      updateData.banglaDiseaseName = consultation.verifiedDisease;
+    }
+
+    return prisma.scan.update({
+      where: { id: existing.id },
+      data: updateData,
+    });
+  }
 }

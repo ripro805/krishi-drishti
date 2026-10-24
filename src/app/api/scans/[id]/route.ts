@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getScanById, updateScanStatus, deleteScanRecord } from "@/lib/scans/serverScans";
+import { getScanById, updateScanStatus, deleteScanRecord, updateScanConsultation } from "@/lib/scans/serverScans";
 
 export const dynamic = "force-dynamic";
 
@@ -53,6 +53,15 @@ export async function PATCH(
   try {
     const user = getAuthenticatedUser(request);
     const body = await request.json();
+
+    // Check if updating consultation advisory
+    if (body.consultation) {
+      const updated = await updateScanConsultation(params.id, body.consultation, user);
+      if (!updated) {
+        return NextResponse.json({ error: "Scan not found" }, { status: 404 });
+      }
+      return NextResponse.json({ scan: updated, message: "Expert consultation advisory saved successfully" });
+    }
 
     if (!body.status || !["Active", "Treated", "Monitoring"].includes(body.status)) {
       return NextResponse.json(
