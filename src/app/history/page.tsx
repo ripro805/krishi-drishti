@@ -26,11 +26,14 @@ export default function HistoryPage() {
   const {
     history,
     totalCount,
+    isLoading,
+    error,
     filterCrop,
     setFilterCrop,
     filterStatus,
     setFilterStatus,
     toggleStatus,
+    deleteScan,
     clearAll,
   } = useScanHistory();
 
@@ -146,8 +149,28 @@ export default function HistoryPage() {
         </div>
       </div>
 
-      {/* Grid or Empty */}
-      {history.length === 0 ? (
+      {/* Error Banner */}
+      {error && (
+        <div className="mb-6 rounded-2xl bg-rose-50 p-4 text-xs text-rose-800 border border-rose-200 dark:bg-rose-950/40 dark:text-rose-200 dark:border-rose-900">
+          <span>{error}</span>
+        </div>
+      )}
+
+      {/* Grid, Loading, or Empty */}
+      {isLoading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[1, 2, 3].map((i) => (
+            <div
+              key={i}
+              className="animate-pulse rounded-3xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+            >
+              <div className="aspect-video w-full rounded-2xl bg-slate-200 dark:bg-slate-800 mb-4" />
+              <div className="h-4 w-3/4 rounded bg-slate-200 dark:bg-slate-800 mb-2" />
+              <div className="h-3 w-1/2 rounded bg-slate-200 dark:bg-slate-800" />
+            </div>
+          ))}
+        </div>
+      ) : history.length === 0 ? (
         <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center dark:border-slate-800 dark:bg-slate-900">
           <History className="h-10 w-10 text-slate-400 mx-auto mb-3" />
           <h3 className="text-base font-bold text-slate-800 dark:text-white">
@@ -180,6 +203,10 @@ export default function HistoryPage() {
                       src={item.imageUrl}
                       alt={item.disease}
                       className="h-full w-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=300&auto=format&fit=crop&q=80";
+                      }}
                     />
                     <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5">
                       <Badge
@@ -203,10 +230,22 @@ export default function HistoryPage() {
                       </Badge>
                     </div>
 
-                    <div className="absolute top-2.5 right-2.5">
+                    <div className="absolute top-2.5 right-2.5 flex items-center gap-1.5">
                       <span className="rounded-lg bg-black/60 backdrop-blur-md px-2 py-0.5 text-[10px] font-mono text-white">
                         {item.id}
                       </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (confirm(isBangla ? "এই স্ক্যানটি ইতিহাস থেকে মুছে ফেলতে চান?" : "Delete this scan from history?")) {
+                            deleteScan(item.id);
+                          }
+                        }}
+                        title={isBangla ? "মুছে ফেলুন" : "Delete Scan"}
+                        className="rounded-lg bg-black/60 backdrop-blur-md p-1 text-white hover:bg-rose-600 transition-colors"
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </button>
                     </div>
                   </div>
 

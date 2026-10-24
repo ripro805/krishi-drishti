@@ -3,6 +3,7 @@ import { PredictionFeedback, FeedbackStats } from "@/types/feedback";
 import { User } from "@/types/auth";
 import { DiseaseInfo } from "@/types/disease";
 import { DISEASES_DATABASE } from "@/data/diseasesDatabase";
+import { apiClient } from "@/lib/apiClient";
 
 const SCAN_HISTORY_KEY = "KRISHI_DRISHTI_SCAN_HISTORY";
 const FEEDBACK_KEY = "KRISHI_DRISHTI_FEEDBACK";
@@ -45,6 +46,11 @@ export function saveScanToHistory(result: ScanResult): HistoryItem {
       const existing = getScanHistory();
       const updated = [item, ...existing.filter((h) => h.id !== item.id)].slice(0, 100);
       localStorage.setItem(SCAN_HISTORY_KEY, JSON.stringify(updated));
+
+      // Asynchronously persist to server backend
+      apiClient.scans.saveScan(item).catch((err) => {
+        console.warn("[storage] Background scan sync to server failed:", err);
+      });
     } catch (e) {
       console.warn("Failed to persist scan history:", e);
     }
@@ -59,6 +65,11 @@ export function updateHistoryStatus(id: string, status: "Active" | "Treated" | "
     const existing = getScanHistory();
     const updated = existing.map((item) => (item.id === id ? { ...item, status } : item));
     localStorage.setItem(SCAN_HISTORY_KEY, JSON.stringify(updated));
+
+    // Asynchronously update status on server backend
+    apiClient.scans.updateStatus(id, status).catch((err) => {
+      console.warn("[storage] Background status sync to server failed:", err);
+    });
   } catch (e) {
     console.warn("Failed to update scan history:", e);
   }
