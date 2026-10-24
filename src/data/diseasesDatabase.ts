@@ -1905,4 +1905,90 @@ export const DISEASES_DATABASE: DiseaseInfo[] = [
     },
     sampleImageUrl: "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80",
   },
+  {
+    id: "uncertain-low-confidence-sample",
+    crop: "Uncertain / Out of Scope",
+    banglaCrop: "অনির্ণীত / মডেল তালিকার বাইরে",
+    commonName: "Inconclusive / Out-of-Scope Foliar Scan",
+    banglaName: "অনির্ণীত বা তালিকার বাইরের উদ্ভিদের পাতা",
+    scientificName: "Pathology Inconclusive (<75% AI Confidence)",
+    pathogenType: "None",
+    severity: "Mild",
+    confidence: 50.0,
+    isLowConfidenceWarning: true,
+    summary:
+      "The AI model could not achieve a definitive clinical classification on this image. This happens when the crop is outside the 4 supported species (Rice, Tomato, Potato, Pepper), the image is blurry, or lighting was insufficient.",
+    banglaSummary:
+      "এআই মডেল এই পাতার ছবিতে নিশ্চিত কোনো রোগ শনাক্ত করতে পারেনি। আপলোড করা ছবিটি কৃষি-দৃষ্টির সমর্থিত ৪টি ফসলের (ধান, টমেটো, আলু, মরিচ) বাইরের হতে পারে, অথবা ছবি ঝাপসা বা অপর্যাপ্ত আলোতে তোলা হয়েছে। ভুল ওষুধ প্রয়োগ এড়াতে পুনরায় পরিষ্কার ছবি তুলুন অথবা কৃষি কর্মকর্তার পরামর্শ নিন।",
+    symptoms: [
+      "Image is blurry, out of focus, or taken from too far away",
+      "Foliage belongs to a crop not currently in the v1.0 deep vision model",
+      "Multiple overlapping symptoms or non-plant background dominant",
+    ],
+    banglaSymptoms: [
+      "ছবি অস্পষ্ট, ফোকাস ছাড়া অথবা খুব দূর থেকে তোলা",
+      "পাতাটি বর্তমান v১.০ মডেলের আওতাভুক্ত ৪টি ফসলের বাইরের কোনো উদ্ভিদের",
+      "পাতায় রোগের লক্ষণ স্পষ্ট নয় অথবা ব্যাকগ্রাউন্ডের তুলনায় পাতা ছোট",
+    ],
+    favorableConditions: [
+      "Insufficient natural daylight during capture",
+      "Camera lens smudged or motion blur",
+    ],
+    banglaCauses: [
+      "ছবি তোলার সময় হাত কেঁপে যাওয়া বা ক্যামেরার লেন্সে ধুলোবালি থাকা",
+      "সরাসরি কড়া রোদের ছায়া পাতার ওপর পড়া বা অপর্যাপ্ত আলো",
+      "ফসলের পাতা ছাড়া অন্য কোনো বস্তু বা ফলের ছবি আপলোড করা",
+    ],
+    affectedParts: ["Foliage / Image Quality"],
+    banglaAffectedParts: ["সমগ্র পাতার ছবি / ছবির মান"],
+    banglaCropInfo: "কৃষি-দৃষ্টির লাইভ ভিশন মডেলটি বর্তমানে ধান, টমেটো, আলু এবং মরিচ ফসলের ২৪টি নির্দিষ্ট ক্লাসে প্রশিক্ষিত।",
+    transmissionRisk: "Low",
+    banglaTreatment: {
+      managementAdvice: [
+        "দিনের স্বাভাবিক আলোতে আক্রান্ত পাতার একদম কাছাকাছি (ক্লোজ-আপ) থেকে পুনরায় স্পষ্ট ছবি তুলুন।",
+        "পাতার ওপর নিজের বা ডিভাইসের ছায়া পড়া পরিহার করুন।",
+        "নিশ্চিত না হয়ে কোনো রাসায়নিক বা বালাইনাশক স্প্রে করবেন না।",
+      ],
+      preventionMethods: [
+        "আক্রান্ত পাতাটি একটি স্বচ্ছ পলিথিনে নিয়ে নিকটস্থ উপজেলা কৃষি অফিসে নিয়ে যান।",
+        "কৃষি তথ্য সার্ভিসের (AIS) কৃষক কল সেন্টারে ১৬১২৩ নম্বরে বিনামূল্যে কল করে বিশেষজ্ঞ পরামর্শ নিন।",
+      ],
+      fieldCareGuidance: [
+        "ফসল পর্যবেক্ষণ নিয়মিত রাখুন এবং লক্ষণের বিস্তার খেয়াল করুন।",
+      ],
+      whenToConsultExpert: [
+        "যে কোনো সময় রোগের লক্ষণ নিয়ে সংশয় থাকলে তাৎক্ষণিক উপসহকারী কৃষি কর্মকর্তার (SAAO) পরামর্শ নিন।",
+      ],
+      safetyNote: "⚠️ অনির্দিষ্ট রোগ লক্ষণে অনুমাননির্ভর বালাইনাশক ব্যবহার ফসলের অপূরণীয় ক্ষতি করতে পারে।",
+      verifiedSource: "AIS & BARI Extension Guidelines",
+    },
+    treatmentPlan: {
+      immediateActions: [
+        {
+          title: "Retake Clear Close-up Photo",
+          description: "Hold camera steady in good daylight, focus directly on the leaf lesion, and scan again.",
+          priority: "High",
+          timeframe: "Immediate",
+          effectiveness: "80%",
+        },
+        {
+          title: "Consult Local Extension Officer (SAAO)",
+          description: "Take a fresh leaf sample to your local Upazila Agriculture Office before applying any chemical treatment.",
+          priority: "High",
+          timeframe: "Within 24 hours",
+          effectiveness: "95%",
+        },
+      ],
+      organicTreatments: [],
+      chemicalTreatments: [],
+      preventiveMeasures: [
+        "Avoid indiscriminate chemical spraying on unverified symptoms",
+        "Contact Krishi Call Center at 16123 for agricultural guidance",
+      ],
+      culturalPractices: [
+        "Monitor fields routinely and keep crop records",
+      ],
+    },
+    sampleImageUrl: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=600&auto=format&fit=crop&q=80",
+  },
 ];
