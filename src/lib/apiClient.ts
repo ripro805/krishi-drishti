@@ -1,6 +1,6 @@
 /**
  * KrishiDrishti Unified API Client
- * Connects the Next.js frontend with backend authentication, data endpoints, and Express/PostgreSQL.
+ * Connects the Next.js frontend with backend authentication, scan history, feedback, and admin services.
  */
 
 export const API_BASE_URL =
@@ -61,7 +61,7 @@ class ApiClient {
     const response = await fetch(url, {
       ...options,
       headers,
-      credentials: "include", // for HttpOnly cookies where supported
+      credentials: "include",
     });
 
     const data = await response.json().catch(() => ({}));
@@ -121,9 +121,23 @@ class ApiClient {
   };
 
   public scans = {
-    create: (scanData: any) => this.post<{ scan: any }>("/scans", scanData),
-    getAll: (page = 1, limit = 20) => this.get<{ scans: any[]; total: number }>(`/scans?page=${page}&limit=${limit}`),
-    getById: (id: string) => this.get<{ scan: any }>(`/scans/${id}`),
+    getHistory: (params?: { crop?: string; status?: string; page?: number; limit?: number }) => {
+      const query = new URLSearchParams();
+      if (params?.crop && params.crop !== "All") query.set("crop", params.crop);
+      if (params?.status && params.status !== "All") query.set("status", params.status);
+      if (params?.page) query.set("page", String(params.page));
+      if (params?.limit) query.set("limit", String(params.limit));
+      const qs = query.toString();
+      return this.get<{ scans: any[]; total: number; page: number; limit: number }>(`/scans${qs ? `?${qs}` : ""}`);
+    },
+
+    getScan: (id: string) => this.get<{ scan: any }>(`/scans/${id}`),
+
+    saveScan: (data: any) => this.post<{ scan: any }>("/scans", data),
+
+    updateStatus: (id: string, status: string) => this.patch<{ scan: any }>(`/scans/${id}`, { status }),
+
+    deleteScan: (id: string) => this.delete<{ success: boolean }>(`/scans/${id}`),
   };
 
   public feedback = {
