@@ -21,34 +21,80 @@ import {
   Calendar,
   Eye,
   CheckCircle2,
+  Loader2,
 } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
 import { Button } from "@/components/common/Button";
+import { apiClient } from "@/lib/apiClient";
 
 export default function AdminDashboardPage() {
-  const [usersCount, setUsersCount] = useState(0);
-  const [scans, setScans] = useState<any[]>([]);
-  const [feedbackStats, setFeedbackStats] = useState({
-    total: 0,
-    accurateCount: 0,
-    inaccurateCount: 0,
-    unsureCount: 0,
-    accuracyRate: 95,
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [stats, setStats] = useState({
+    usersCount: 0,
+    scansCount: 0,
+    lowConfidenceCount: 0,
+    feedbackStats: {
+      total: 0,
+      accurateCount: 0,
+      inaccurateCount: 0,
+      unsureCount: 0,
+      accuracyRate: 95,
+    },
+    diseasesCount: 0,
+    recentScans: [] as any[],
   });
-  const [diseasesCount, setDiseasesCount] = useState(0);
+
+  const {
+    usersCount,
+    scansCount,
+    lowConfidenceCount,
+    feedbackStats,
+    diseasesCount,
+    recentScans,
+  } = stats;
 
   useEffect(() => {
-    setUsersCount(getStoredUsers().length);
-    setScans(getScanHistory());
-    setFeedbackStats(getFeedbackStats());
-    setDiseasesCount(getStoredDiseases().length);
-  }, []);
+    const fetchStats = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const data = await apiClient.admin.getStats();
+        if (data) {
+          setStats(data);
+        }
+      } catch (err: any) {
+        console.warn("[AdminDashboard] Failed to fetch stats from API, using fallback:", err);
+        const users = getStoredUsers().length;
+        const history = getScanHistory();
+        const fb = getFeedbackStats();
+        const ds = getStoredDiseases().length;
+        setStats({
+          usersCount: users,
+          scansCount: history.length,
+          lowConfidenceCount: history.filter((s) => s.isLowConfidence || s.confidence < 75).length,
+          feedbackStats: fb,
+          diseasesCount: ds,
+          recentScans: history.slice(0, 5),
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const lowConfidenceCount = scans.filter((s) => s.isLowConfidence || s.confidence < 75).length;
+    fetchStats();
+  }, []);
 
   return (
     <AdminLayout>
       <div className="space-y-8 animate-fadeIn">
+        {/* Error Alert */}
+        {error && (
+          <div className="rounded-2xl bg-rose-50 p-4 text-xs text-rose-800 border border-rose-200 dark:bg-rose-950/40 dark:text-rose-200 dark:border-rose-900">
+            <span>{error}</span>
+          </div>
+        )}
+
         {/* KPI Metrics Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {/* Total Users */}
@@ -63,10 +109,10 @@ export default function AdminDashboardPage() {
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-extrabold text-slate-900 dark:text-white">
-                {usersCount + 42}
+                {isLoading ? "--" : stats.usersCount}
               </span>
               <span className="flex items-center text-xs font-bold text-emerald-600">
-                <TrendingUp className="h-3.5 w-3.5 mr-0.5" /> +14% বৃদ্ধি
+                <TrendingUp className="h-3.5 w-3.5 mr-0.5" /> সক্রিয়
               </span>
             </div>
             <p className="mt-2 text-[11px] text-slate-400">নিবন্ধিত কৃষক ও কৃষি কর্মকর্তা</p>
@@ -84,9 +130,9 @@ export default function AdminDashboardPage() {
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-extrabold text-slate-900 dark:text-white">
-                {scans.length + 185}
+                {isLoading ? "--" : stats.scansCount}
               </span>
-              <span className="text-xs font-bold text-emerald-600">&bull; অনলাইন সক্রিয়</span>
+              <span className="text-xs font-bold text-emerald-600">&bull; সংরক্ষিত রেকর্ড</span>
             </div>
             <p className="mt-2 text-[11px] text-slate-400">পাতার রোগ শনাক্তকরণ পরীক্ষা</p>
           </div>
@@ -103,10 +149,10 @@ export default function AdminDashboardPage() {
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-extrabold text-slate-900 dark:text-white">
-                {feedbackStats.accuracyRate}%
+                {isLoading ? "--" : `${stats.feedbackStats.accuracyRate}%`}
               </span>
               <span className="text-xs font-bold text-purple-600">
-                ({feedbackStats.total}টি মতামত)
+                ({stats.feedbackStats.total}টি মতামত)
               </span>
             </div>
             <p className="mt-2 text-[11px] text-slate-400">মাঠে বাস্তব ফলাফলের সাথে মিল</p>
@@ -124,7 +170,7 @@ export default function AdminDashboardPage() {
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-extrabold text-amber-600 dark:text-amber-400">
-                {lowConfidenceCount}
+                {isLoading ? "--" : stats.lowConfidenceCount}
               </span>
               <span className="text-xs font-medium text-slate-500">টি সতর্কতা ফ্ল্যাগ</span>
             </div>
@@ -153,26 +199,33 @@ export default function AdminDashboardPage() {
             </div>
 
             <div className="space-y-3">
-              {scans.slice(0, 5).map((scan) => (
-                <div
-                  key={scan.id}
-                  className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800"
-                >
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={scan.imageUrl}
-                      alt={scan.crop}
-                      className="h-11 w-11 rounded-xl object-cover"
-                    />
-                    <div>
-                      <p className="text-xs font-bold text-slate-900 dark:text-white">
-                        {scan.banglaName || scan.disease}
-                      </p>
-                      <p className="text-[11px] text-slate-500">
-                        ফসল: <strong className="text-slate-700 dark:text-slate-300">{scan.banglaCrop || scan.crop}</strong> • {new Date(scan.date).toLocaleDateString("bn-BD")}
-                      </p>
+              {stats.recentScans.length === 0 ? (
+                <p className="text-xs text-slate-400 py-4 text-center">এখনও কোনো স্ক্যান সংরক্ষিত হয়নি।</p>
+              ) : (
+                stats.recentScans.map((scan) => (
+                  <div
+                    key={scan.id}
+                    className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800"
+                  >
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={scan.imageUrl}
+                        alt={scan.crop}
+                        className="h-11 w-11 rounded-xl object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src =
+                            "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=100&auto=format&fit=crop&q=80";
+                        }}
+                      />
+                      <div>
+                        <p className="text-xs font-bold text-slate-900 dark:text-white">
+                          {scan.banglaName || scan.disease}
+                        </p>
+                        <p className="text-[11px] text-slate-500">
+                          ফসল: <strong className="text-slate-700 dark:text-slate-300">{scan.banglaCrop || scan.crop}</strong> • {new Date(scan.createdAt || scan.date || Date.now()).toLocaleDateString("bn-BD")}
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
                   <div className="flex items-center gap-2">
                     <Badge
@@ -191,7 +244,7 @@ export default function AdminDashboardPage() {
                     </Badge>
                   </div>
                 </div>
-              ))}
+              )))}
             </div>
           </div>
 

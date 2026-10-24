@@ -444,6 +444,11 @@ export function saveStoredDisease(disease: DiseaseInfo): void {
       updated = [disease, ...diseases];
     }
     localStorage.setItem(DISEASES_KEY, JSON.stringify(updated));
+
+    // Asynchronously sync with backend server
+    apiClient.diseases.save(disease).catch((err) => {
+      console.warn("[storage] Background disease sync to server failed:", err);
+    });
   } catch (e) {
     console.warn("Failed to save disease:", e);
   }
@@ -455,6 +460,11 @@ export function deleteStoredDisease(id: string): void {
     const diseases = getStoredDiseases();
     const updated = diseases.filter((d) => d.id !== id);
     localStorage.setItem(DISEASES_KEY, JSON.stringify(updated));
+
+    // Asynchronously sync deletion with backend server
+    apiClient.diseases.delete(id).catch((err) => {
+      console.warn("[storage] Background disease deletion failed:", err);
+    });
   } catch (e) {
     console.warn("Failed to delete disease:", e);
   }

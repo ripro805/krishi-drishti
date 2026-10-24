@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { DiseaseInfo } from "@/types/disease";
 import { getStoredDiseases, saveStoredDisease, deleteStoredDisease } from "@/lib/storage";
+import { apiClient } from "@/lib/apiClient";
 import {
   Database,
   Plus,
@@ -14,6 +15,7 @@ import {
   X,
   Stethoscope,
   ShieldAlert,
+  Loader2,
 } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
 import { Button } from "@/components/common/Button";
@@ -23,9 +25,24 @@ export default function DiseaseKnowledgeBasePage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [editingDisease, setEditingDisease] = useState<DiseaseInfo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
 
-  const loadDiseases = () => {
-    setDiseases(getStoredDiseases());
+  const loadDiseases = async () => {
+    setIsLoading(true);
+    try {
+      const res = await apiClient.diseases.getAll();
+      if (res?.diseases && res.diseases.length > 0) {
+        setDiseases(res.diseases);
+      } else {
+        setDiseases(getStoredDiseases());
+      }
+    } catch (err) {
+      console.warn("[admin/diseases] Failed to fetch from API, using fallback:", err);
+      setDiseases(getStoredDiseases());
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -87,20 +104,33 @@ export default function DiseaseKnowledgeBasePage() {
     setIsModalOpen(true);
   };
 
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!editingDisease) return;
+    if (!editingDisease || isSaving) return;
 
-    saveStoredDisease(editingDisease);
-    loadDiseases();
-    setIsModalOpen(false);
-    setEditingDisease(null);
+    setIsSaving(true);
+    try {
+      await apiClient.diseases.save(editingDisease);
+      saveStoredDisease(editingDisease);
+      await loadDiseases();
+      setIsModalOpen(false);
+      setEditingDisease(null);
+    } catch (err: any) {
+      alert(err.message || "রোগের তথ্য সংরক্ষণ করা সম্ভব হয়নি।");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if (confirm("আপনি কি নিশ্চিত এই রোগটি তথ্যভান্ডার থেকে মুছে ফেলতে চান?")) {
-      deleteStoredDisease(id);
-      loadDiseases();
+      try {
+        await apiClient.diseases.delete(id);
+        deleteStoredDisease(id);
+        await loadDiseases();
+      } catch (err: any) {
+        alert(err.message || "রোগটি মুছে ফেলা সম্ভব হয়নি।");
+      }
     }
   };
 

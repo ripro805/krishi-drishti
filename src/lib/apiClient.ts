@@ -1,6 +1,6 @@
 /**
  * KrishiDrishti Unified API Client
- * Connects the Next.js frontend with backend authentication, scan history, feedback, and admin services.
+ * Connects the Next.js frontend with backend authentication, scan history, feedback, CMS, and admin services.
  */
 
 export const API_BASE_URL =
@@ -164,10 +164,40 @@ class ApiClient {
       this.patch<{ feedback: any; message: string }>(`/feedback/${id}`, { status }),
   };
 
+  public admin = {
+    getStats: () =>
+      this.get<{
+        usersCount: number;
+        scansCount: number;
+        lowConfidenceCount: number;
+        feedbackStats: {
+          total: number;
+          accurateCount: number;
+          inaccurateCount: number;
+          unsureCount: number;
+          accuracyRate: number;
+        };
+        diseasesCount: number;
+        recentScans: any[];
+      }>("/admin/stats"),
+  };
+
   public diseases = {
-    getAll: () => this.get<{ diseases: any[] }>("/diseases"),
+    getAll: (params?: { crop?: string; search?: string }) => {
+      const query = new URLSearchParams();
+      if (params?.crop && params.crop !== "All") query.set("crop", params.crop);
+      if (params?.search) query.set("search", params.search);
+      const qs = query.toString();
+      return this.get<{ diseases: any[]; total: number }>(`/diseases${qs ? `?${qs}` : ""}`);
+    },
+
     getById: (id: string) => this.get<{ disease: any }>(`/diseases/${id}`),
-    update: (id: string, data: any) => this.put<{ disease: any }>(`/diseases/${id}`, data),
+
+    save: (data: any) => this.post<{ disease: any; message: string }>("/diseases", data),
+
+    update: (id: string, data: any) => this.put<{ disease: any; message: string }>(`/diseases/${id}`, data),
+
+    delete: (id: string) => this.delete<{ success: boolean; message: string }>(`/diseases/${id}`),
   };
 
   public health = {
