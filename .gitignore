@@ -35,3 +35,6 @@ next-env.d.ts
 # python
 __pycache__/
 *.pyc
+
+# user uploaded files
+public/uploads/
