@@ -35,3 +35,6 @@ next-env.d.ts
 # python
 __pycache__/
 *.pyc
+
+# runtime local stores
+src/data/*_store.json
