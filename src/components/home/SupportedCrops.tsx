@@ -5,40 +5,46 @@ import { ArrowUpRight } from "lucide-react";
 export const SupportedCrops: React.FC = () => {
   const crops = [
     {
-      name: "Tomato",
-      diseasesCount: "10 Pathogens",
-      keyIssues: "Early Blight, Late Blight, TYLCV, Septoria",
+      name: "Rice / Paddy (ধান)",
+      diseasesCount: "9 AI Classes",
+      keyIssues: "Leaf Blast, Bacterial Leaf Blight, Brown Spot, Tungro, Sheath Blight",
+      imageUrl: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=400&auto=format&fit=crop&q=80",
+      status: "Active AI v1.0",
+    },
+    {
+      name: "Tomato (টমেটো)",
+      diseasesCount: "10 AI Classes",
+      keyIssues: "Early Blight, Late Blight, Leaf Mold, Bacterial Spot, Mosaic Virus",
       imageUrl: "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=400&auto=format&fit=crop&q=80",
+      status: "Active AI v1.0",
     },
     {
-      name: "Potato",
-      diseasesCount: "6 Pathogens",
-      keyIssues: "Late Blight, Early Blight, Blackleg, Scab",
+      name: "Potato (আলু)",
+      diseasesCount: "3 AI Classes",
+      keyIssues: "Late Blight, Early Blight, Healthy Foliage Control",
       imageUrl: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&auto=format&fit=crop&q=80",
+      status: "Active AI v1.0",
     },
     {
-      name: "Corn (Maize)",
-      diseasesCount: "8 Pathogens",
-      keyIssues: "Common Rust, Northern Leaf Blight, Gray Leaf",
-      imageUrl: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&auto=format&fit=crop&q=80",
-    },
-    {
-      name: "Bell Pepper",
-      diseasesCount: "7 Pathogens",
-      keyIssues: "Bacterial Spot, Anthracnose, Phytophthora",
+      name: "Chili / Bell Pepper (মরিচ)",
+      diseasesCount: "2 AI Classes",
+      keyIssues: "Bacterial Spot, Healthy Foliage Control",
       imageUrl: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=400&auto=format&fit=crop&q=80",
+      status: "Active AI v1.0",
     },
     {
-      name: "Apple",
-      diseasesCount: "5 Pathogens",
-      keyIssues: "Apple Scab, Black Rot, Cedar Apple Rust",
-      imageUrl: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&auto=format&fit=crop&q=80",
+      name: "Corn / Maize (ভুট্টা)",
+      diseasesCount: "v2.0 Roadmap",
+      keyIssues: "Common Rust, Northern Leaf Blight (Reference Library)",
+      imageUrl: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&auto=format&fit=crop&q=80",
+      status: "Research Phase",
     },
     {
-      name: "Grape",
-      diseasesCount: "5 Pathogens",
-      keyIssues: "Black Rot, Esca, Leaf Blight, Powdery Mildew",
-      imageUrl: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&auto=format&fit=crop&q=80",
+      name: "Wheat (গম)",
+      diseasesCount: "v2.0 Roadmap",
+      keyIssues: "Leaf Rust, Wheat Blast (Reference Library)",
+      imageUrl: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&auto=format&fit=crop&q=80",
+      status: "Research Phase",
     },
   ];
 
@@ -87,9 +93,18 @@ export const SupportedCrops: React.FC = () => {
                     <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-agri-600 dark:group-hover:text-agri-400 transition-colors">
                       {c.name}
                     </h3>
-                    <span className="rounded-full bg-agri-100 text-agri-800 dark:bg-agri-950 dark:text-agri-300 px-2 py-0.5 text-[10px] font-bold">
-                      {c.diseasesCount}
-                    </span>
+                    <div className="flex flex-col items-end gap-1">
+                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wider ${
+                        c.status === "Active AI v1.0"
+                          ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-500/30"
+                          : "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-500/30"
+                      }`}>
+                        {c.status}
+                      </span>
+                      <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">
+                        {c.diseasesCount}
+                      </span>
+                    </div>
                   </div>
                   <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 line-clamp-1">
                     {c.keyIssues}

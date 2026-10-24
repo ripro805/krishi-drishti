@@ -15,9 +15,9 @@ export const StatsSection: React.FC = () => {
       icon: Award,
     },
     {
-      value: "200+",
-      label: isBangla ? "ফসলের রোগ ও বালাই" : "Crop Diseases & Pests",
-      desc: isBangla ? "টমেটো, আলু, মরিচ, ধান, ভুট্টা ও সবজি পরিবার" : "Solanaceae, cereals, fruit trees, and vegetables",
+      value: "24+",
+      label: isBangla ? "ভেরিফায়েড এআই রোগ ক্লাস" : "Verified AI Disease Classes",
+      desc: isBangla ? "ধান, টমেটো, আলু ও মরিচ ফসলের ডিপ লার্নিং ভিশন মডেল" : "Targeted deep vision models for Rice, Tomato, Potato & Pepper",
       icon: ShieldCheck,
     },
     {
