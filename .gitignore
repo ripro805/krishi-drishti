@@ -38,3 +38,6 @@ __pycache__/
 
 # runtime local stores
 src/data/*_store.json
+
+# user uploaded files
+public/uploads/

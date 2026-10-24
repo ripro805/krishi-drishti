@@ -25,6 +25,24 @@ export function getScanHistory(): HistoryItem[] {
   }
 }
 
+export async function uploadLeafImage(imageData: string, filename?: string): Promise<string> {
+  if (!imageData || !imageData.startsWith("data:")) return imageData;
+  try {
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ imageData, filename }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.url) return data.url;
+    }
+  } catch (err) {
+    console.warn("[uploadLeafImage] Failed to upload to storage provider:", err);
+  }
+  return imageData;
+}
+
 export function saveScanToHistory(result: ScanResult): HistoryItem {
   const item: HistoryItem = {
     id: result.scanId,
@@ -45,6 +63,23 @@ export function saveScanToHistory(result: ScanResult): HistoryItem {
       const existing = getScanHistory();
       const updated = [item, ...existing.filter((h) => h.id !== item.id)].slice(0, 100);
       localStorage.setItem(SCAN_HISTORY_KEY, JSON.stringify(updated));
+
+      // Asynchronously upload base64 to cloud/local storage and replace huge base64 with URL
+      if (result.imageUrl && result.imageUrl.startsWith("data:")) {
+        uploadLeafImage(result.imageUrl, result.imageName).then((persistentUrl) => {
+          if (persistentUrl && persistentUrl !== result.imageUrl) {
+            try {
+              const currentHistory = getScanHistory();
+              const replaced = currentHistory.map((h) =>
+                h.id === result.scanId ? { ...h, imageUrl: persistentUrl } : h
+              );
+              localStorage.setItem(SCAN_HISTORY_KEY, JSON.stringify(replaced));
+            } catch {
+              // ignore
+            }
+          }
+        });
+      }
     } catch (e) {
       console.warn("Failed to persist scan history:", e);
     }
