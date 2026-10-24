@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { SupportedLanguage, DiseaseDetectionContext } from "@/lib/ai/types";
+import { useAuth } from "@/context/AuthContext";
 
 export interface ChatMessageDisplay {
   id: string;
@@ -30,6 +31,17 @@ export function useAgriChatbot(initialContext?: {
   disease?: string | null;
   confidence?: string | null;
 }) {
+  const { currentUser, isLoading: authLoading } = useAuth();
+
+  // Dynamic storage key scoped to current authenticated account or guest
+  const accountKey = currentUser?.id
+    ? `user_${currentUser.id}`
+    : currentUser?.email
+    ? `user_${currentUser.email.replace(/[^a-zA-Z0-9]/g, "_")}`
+    : "guest";
+  const storageKey = `${STORAGE_PREFIX}${accountKey}`;
+  const loadedAccountRef = useRef<string | null>(null);
+
   const [conversationId, setConversationId] = useState<string>(() => {
     return `conv-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
   });
@@ -75,28 +87,8 @@ export function useAgriChatbot(initialContext?: {
       .catch(() => {});
   }, []);
 
-  // 2. Load LocalStorage on initial load
-  useEffect(() => {
-    // If arriving with fresh scan context or prompt, start fresh for this scan
-    const hasIncomingContext = Boolean(initialContext?.crop || initialContext?.disease || initialContext?.initialPrompt);
-
-    if (!hasIncomingContext) {
-      try {
-        const saved = localStorage.getItem(`${STORAGE_PREFIX}default`);
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            setMessages(parsed);
-            return;
-          }
-        }
-      } catch {
-        // ignore
-      }
-    }
-
-    // Default Welcome Message
-    const welcomeMsg: ChatMessageDisplay = {
+  const createWelcomeMessage = useCallback((): ChatMessageDisplay => {
+    return {
       id: "welcome-msg",
       role: "assistant",
       content: initialContext?.disease
@@ -104,29 +96,60 @@ export function useAgriChatbot(initialContext?: {
         : `নমস্কার! আমি **KrishiDrishti AI কৃষি সহকারী** (কৃষি পরামর্শক)।\n\nধান, গম, আলু, টমেটো, শাকসবজি বা যেকোনো ফসলের রোগবালাই, পোকামাকড়, সারের সঠিক মাত্রা, সেচ বা পরিচর্যা নিয়ে প্রশ্ন করুন। বাংলা, English বা Banglish — যেকোনো ভাষায় সরাসরি লিখুন!`,
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     };
+  }, [initialContext?.disease, initialContext?.crop]);
 
-    setMessages([welcomeMsg]);
-  }, []);
-
-  // 3. Save to LocalStorage whenever messages change
+  // 2. Load Account-Specific Chat History from LocalStorage
   useEffect(() => {
+    if (authLoading) return;
+
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setMessages(parsed);
+          loadedAccountRef.current = accountKey;
+          return;
+        }
+      }
+    } catch (e) {
+      console.warn("[useAgriChatbot] Failed to load chat history:", e);
+    }
+
+    // Default Welcome Message if no previous history exists for this account
+    setMessages([createWelcomeMessage()]);
+    loadedAccountRef.current = accountKey;
+  }, [accountKey, storageKey, authLoading, createWelcomeMessage]);
+
+  // 3. Save to LocalStorage whenever messages change for the active account
+  useEffect(() => {
+    if (authLoading) return;
+    // Guard: Prevent saving to storage until this account's history is cleanly loaded
+    if (loadedAccountRef.current !== accountKey) return;
+
     if (messages.length > 0) {
       try {
-        localStorage.setItem(`${STORAGE_PREFIX}default`, JSON.stringify(messages));
-      } catch {
-        // ignore storage errors
+        localStorage.setItem(storageKey, JSON.stringify(messages));
+      } catch (e) {
+        console.warn("[useAgriChatbot] Failed to save chat history:", e);
       }
     }
-  }, [messages]);
+  }, [messages, accountKey, storageKey, authLoading]);
 
   // 4. Initial prompt trigger (if routed from scanner result card)
   const hasTriggeredInitial = useRef(false);
   useEffect(() => {
-    if (!hasTriggeredInitial.current && initialContext?.initialPrompt) {
+    // Only trigger once the account's existing chat history has been loaded
+    if (
+      !hasTriggeredInitial.current &&
+      initialContext?.initialPrompt &&
+      loadedAccountRef.current === accountKey &&
+      !authLoading
+    ) {
       hasTriggeredInitial.current = true;
       sendMessage(initialContext.initialPrompt);
     }
-  }, [initialContext]);
+  }, [initialContext?.initialPrompt, accountKey, authLoading]);
 
   // 5. Send Message Function
   const sendMessage = useCallback(
@@ -220,11 +243,11 @@ export function useAgriChatbot(initialContext?: {
 
     setMessages([welcomeMsg]);
     try {
-      localStorage.removeItem(`${STORAGE_PREFIX}default`);
+      localStorage.removeItem(storageKey);
     } catch {
       // ignore
     }
-  }, []);
+  }, [storageKey]);
 
   // 8. Clear Disease Context Banner
   const clearDiseaseContext = useCallback(() => {
