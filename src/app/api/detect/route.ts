@@ -15,7 +15,7 @@ import path from "path";
  *         Remote fallback if Python is unavailable.
  */
 
-const LOCAL_SERVER_URL = "http://127.0.0.1:5005/predict";
+const LOCAL_SERVER_URL = process.env.MODEL_SERVER_URL || "http://127.0.0.1:5005/predict";
 const HF_MODEL_ID = "ripro805/krishidrishti-plant-disease";
 const HF_ROUTER_URL = `https://router.huggingface.co/hf-inference/models/${HF_MODEL_ID}`;
 const HF_TOKEN = process.env.HF_TOKEN || "";
@@ -25,8 +25,15 @@ interface Prediction {
   score: number;
 }
 
+interface FastAPIResponse {
+  predictions: Prediction[];
+  latencyMs?: number;
+  provider?: string;
+  classesCount?: number;
+}
+
 // ── Tier 1: Local FastAPI Server ──────────────────────────────────
-async function queryLocalFastAPI(base64Data: string): Promise<Prediction[]> {
+async function queryLocalFastAPI(base64Data: string): Promise<FastAPIResponse> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 4000);
 
@@ -41,7 +48,7 @@ async function queryLocalFastAPI(base64Data: string): Promise<Prediction[]> {
     if (response.ok) {
       const data = await response.json();
       if (Array.isArray(data.predictions) && data.predictions.length > 0) {
-        return data.predictions;
+        return data as FastAPIResponse;
       }
     }
     throw new Error(`Local FastAPI error: status ${response.status}`);
@@ -142,8 +149,12 @@ export async function POST(request: NextRequest) {
 
     // 1. Try Tier 1: Local FastAPI Server (fastest)
     try {
-      const predictions = await queryLocalFastAPI(base64Data);
-      return NextResponse.json({ predictions, provider: "local-fastapi" });
+      const fastApiRes = await queryLocalFastAPI(base64Data);
+      return NextResponse.json({
+        predictions: fastApiRes.predictions,
+        latencyMs: fastApiRes.latencyMs,
+        provider: "local-fastapi",
+      });
     } catch (e: any) {
       console.warn("[detect API] Tier 1 (FastAPI) unavailable, falling back to Tier 2 (Python CLI)...");
     }
