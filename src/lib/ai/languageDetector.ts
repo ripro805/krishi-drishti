@@ -8,14 +8,16 @@ const BANGLISH_INDICATORS = new Set([
   "gach", "gaach", "gache", "pata", "patay", "patar", "poka", "pokar",
   "dhan", "dhane", "dhaner", "alu", "alute", "alut", "aluer",
   "begun", "beguner", "tomato", "tomator", "morich", "shosha",
+  "aam", "aamer", "lichu", "lichur", "garlic", "roshun", "peyaj", "pepe", "kola",
+  "shitkale", "sheetkale", "gorshe", "borshay", "robi",
   "rog", "roog", "shomossha", "problem", "somossa",
   "holud", "badami", "kalo", "shukay", "shukiye", "sukay", "sukiye",
   "curl", "kokrano", "kokre", "dag", "daag",
   "ki", "kivabe", "kemne", "kono", "kon", "konta",
-  "korbo", "krbo", "korte", "hobe", "hbe", "hocche", "hsse", "hoise",
-  "ase", "ache", "nai", "geche", "lagse", "dibo", "dite",
+  "korbo", "krbo", "korte", "krte", "hobe", "hbe", "hocche", "hsse", "hoise",
+  "ase", "ache", "nai", "geche", "lagse", "dibo", "dite", "chai", "chaichhi", "chassi",
   "sar", "shar", "oshudh", "osudh", "kitnashok", "pani", "shech",
-  "valovabe", "bhalo", "balo", "khete", "jomi", "jomite", "chash", "chashe"
+  "valovabe", "bhalo", "balo", "khete", "jomi", "jomite", "chash", "chashe", "chaash", "chassh", "chashh"
 ]);
 
 export interface LanguageAnalysisResult {

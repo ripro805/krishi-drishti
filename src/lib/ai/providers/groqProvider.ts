@@ -36,7 +36,7 @@ export async function callGroqProvider(
         model,
         messages: messagesPayload,
         temperature: options.temperature ?? 0.3,
-        max_tokens: options.maxTokens ?? 1024,
+        max_tokens: Math.min(options.maxTokens ?? 800, 800),
       }),
       signal: controller.signal,
     });

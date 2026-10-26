@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { message, conversationId, languagePreference, history, diseaseContext } = body;
+    const { message, conversationId, languagePreference, providerStrategy, history, diseaseContext } = body;
 
     if (!message || typeof message !== "string" || !message.trim()) {
       return NextResponse.json(
@@ -71,6 +71,7 @@ export async function POST(request: NextRequest) {
       message,
       conversationId,
       languagePreference,
+      providerStrategy,
       history,
       diseaseContext,
     });

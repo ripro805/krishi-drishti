@@ -25,6 +25,7 @@ export interface AgricultureChatRequest {
   message: string;
   conversationId?: string;
   languagePreference?: SupportedLanguage;
+  providerStrategy?: AIProviderStrategy;
   history?: ChatMessageItem[];
   diseaseContext?: DiseaseDetectionContext;
 }

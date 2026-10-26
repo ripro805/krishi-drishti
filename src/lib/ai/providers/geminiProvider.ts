@@ -1,6 +1,6 @@
 import { ProviderGenerationOptions, ProviderResult } from "../types";
 
-const DEFAULT_GEMINI_MODEL = "gemini-3.8-flash";
+const DEFAULT_GEMINI_MODEL = "gemini-3.5-flash-lite";
 
 export async function callGeminiProvider(
   options: ProviderGenerationOptions

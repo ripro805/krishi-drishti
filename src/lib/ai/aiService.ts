@@ -37,7 +37,7 @@ export function getAIProviderStatus(): AIProviderStatus {
 /**
  * Resolves the ordered list of eligible providers to try
  */
-function resolveProviderSequence(): AIProviderName[] {
+function resolveProviderSequence(requestStrategy?: AIProviderStrategy): AIProviderName[] {
   const status = getAIProviderStatus();
   const configured: AIProviderName[] = [];
 
@@ -49,12 +49,15 @@ function resolveProviderSequence(): AIProviderName[] {
     return [];
   }
 
+  const reqStrat = (requestStrategy || "").toLowerCase();
   const primary = (process.env.AI_PRIMARY_PROVIDER || "auto").toLowerCase();
   const strategy = (process.env.AI_PROVIDER_STRATEGY || "auto").toLowerCase();
 
-  // If user selected a specific provider as primary
+  // If user passed a specific provider strategy in the request, prioritize it
   let chosenPrimary: AIProviderName | null = null;
-  if (["groq", "gemini", "openai"].includes(primary) && configured.includes(primary as AIProviderName)) {
+  if (["groq", "gemini", "openai"].includes(reqStrat) && configured.includes(reqStrat as AIProviderName)) {
+    chosenPrimary = reqStrat as AIProviderName;
+  } else if (["groq", "gemini", "openai"].includes(primary) && configured.includes(primary as AIProviderName)) {
     chosenPrimary = primary as AIProviderName;
   } else if (["groq", "gemini", "openai"].includes(strategy) && configured.includes(strategy as AIProviderName)) {
     chosenPrimary = strategy as AIProviderName;
@@ -65,8 +68,8 @@ function resolveProviderSequence(): AIProviderName[] {
     return status.fallbackEnabled ? [chosenPrimary, ...remaining] : [chosenPrimary];
   }
 
-  // Default auto order: Groq is ultra-fast with high rate limits, then Gemini, then OpenAI
-  const priorityOrder: AIProviderName[] = ["groq", "gemini", "openai"];
+  // Default auto order: Gemini provides rich Bangla agricultural domain intelligence, then Groq, then OpenAI
+  const priorityOrder: AIProviderName[] = ["gemini", "groq", "openai"];
   const sequence = priorityOrder.filter((p) => configured.includes(p));
 
   return sequence.length > 0 ? sequence : configured;
@@ -84,15 +87,15 @@ async function invokeProvider(
     systemPrompt,
     messages,
     temperature: 0.35,
-    maxTokens: 1024,
+    maxTokens: 800,
     timeoutMs: 14000,
   };
 
   switch (provider) {
-    case "groq":
-      return await callGroqProvider(options);
     case "gemini":
       return await callGeminiProvider(options);
+    case "groq":
+      return await callGroqProvider(options);
     case "openai":
       return await callOpenAIProvider(options);
     default:
@@ -107,7 +110,7 @@ function generateLocalOfflineAnswer(
   query: string,
   targetLanguage: "bn" | "en" | "banglish"
 ): string {
-  const isBangla = targetLanguage === "bn";
+  const isBangla = targetLanguage === "bn" || targetLanguage === "banglish";
   const lower = query.toLowerCase();
 
   if (lower.includes("dhan") || lower.includes("ধান") || lower.includes("rice")) {
@@ -120,6 +123,30 @@ function generateLocalOfflineAnswer(
     return isBangla
       ? `**টমেটো ও আলু ফসলের সাধারণ রোগ ব্যবস্থাপনা:**\n\n- **সমস্যা:** পাতা কুঁকড়ানো বা ধসা রোগ সাধারণত ছত্রাক বা সাদা মাছির দ্বারা ছড়ায়।\n- **করণীয়:** নিচের রোগাক্রান্ত পাতাগুলো ছেঁটে ধ্বংস করুন। গাছে অতিরিক্ত পানি স্প্রে না করে গোড়ায় ড্রিপ সেচ দিন।\n- **পরামর্শ:** কোনো রাসায়নিক স্প্রে করার পূর্বে KrishiDrishti স্ক্যানারে পাতার স্পষ্ট ছবি তুলে রোগ নিশ্চিত হোন।`
       : `**Tomato & Potato Crop Guidance:**\n\n- **Assessment:** Foliar curling or blight symptoms often arise from fungal pathogens or sucking insect vectors.\n- **Action:** Prune bottom infected foliage and avoid overhead wetting.\n- **Next Step:** Upload a leaf image to KrishiDrishti Leaf Scanner for confirmation before chemical spray.`;
+  }
+
+  if (lower.includes("aam") || lower.includes("আম") || lower.includes("mango")) {
+    return isBangla
+      ? `**আম চাষ ও জমি প্রস্তুতি গাইডলাইন:**\n\n- **জমি নির্বাচন ও প্রস্তুতি:** উর্বর দোআঁশ বা বেলে-দোআঁশ মাটি আম চাষের জন্য উপযোগী। জমি ৩-৪ বার চাষ ও মই দিয়ে সমান করুন। বৃষ্টির পানি যাতে না জমে সেজন্য নিষ্কাশনের সুব্যবস্থা রাখুন।\n- **গর্ত তৈরি ও সার:** চারা রোপণের ১৫-২০ দিন আগে ৩×৩ ফুট আকারের গর্ত করুন। প্রতি গর্তে ১০-১৫ কেজি পচা গোবর, ২৫০ গ্রাম টিএসপি, ১৫০ গ্রাম এমওপি (পটাশ), ১০০ গ্রাম জিপসাম এবং ২০ গ্রাম বোরন সার মাটির সাথে মিশিয়ে গর্ত ভরে পানি দিন।\n- **রোপণ:** সার পচে মাটি স্বাভাবিক হলে সুস্থ গ্রাফটিং করা কলম বা চারা রোপণ করুন।`
+      : `**Mango Cultivation & Land Preparation:**\n\n- **Soil & Preparation:** Fertile, well-draining loamy soil is ideal for mango. Deep plow 3-4 times. Ensure no waterlogging.\n- **Pit Preparation:** Dig 3x3 ft pits 15-20 days before planting. Mix 10-15 kg well-rotted cowdung, 250g TSP, 150g MOP, 100g Gypsum, and 20g Boron with topsoil.\n- **Planting:** Plant vigorous grafted saplings once soil and compost settle.`;
+  }
+
+  if (lower.includes("lichu") || lower.includes("লিচু") || lower.includes("litchi")) {
+    return isBangla
+      ? `**লিচু চাষ ও পরিচর্যা নির্দেশনা:**\n\n- **উপযুক্ত মাটি:** গভীর, উর্বর এবং নিষ্কাশনযুক্ত দোআঁশ বা পলিমাটি লিচুর জন্য সর্বোত্তম।\n- **জমি ও চারা রোপণ:** বর্ষার শুরুতে বা ভাদ্র-আশ্বিন মাসে ৮-১০ মিটার দূরত্বে ৩×৩ ফুট গর্ত করে রোপণ করুন। গর্তে জৈব সার ও সুষম রাসায়নিক সার প্রয়োগ করে ১৫ দিন পর গুটি কলমের চারা লাগান।\n- **পরিচর্যা:** ফল ধরার সময় খরা থাকলে নিয়মিত সেচ দিন এবং ফল ফেটে যাওয়া রোধে বোরন স্প্রে করুন।`
+      : `**Litchi Crop Management Guidance:**\n\n- **Soil:** Deep, fertile, well-drained loamy soil is best.\n- **Planting:** Plant air-layered saplings 8-10m apart in prepared pits with well-rotted manure and balanced NPK.\n- **Care:** Provide regular irrigation during fruit development and spray boron to prevent fruit cracking.`;
+  }
+
+  if (lower.includes("garlic") || lower.includes("রসুন") || lower.includes("roshun") || lower.includes("peyaj") || lower.includes("পেঁয়াজ")) {
+    return isBangla
+      ? `**রসুন ও পেঁয়াজ চাষ পদ্ধতি:**\n\n- **বপনের সময়:** কার্তিক থেকে অগ্রহায়ণ (অক্টোবর-নভেম্বর) মাস রসুন ও পেঁয়াজ রোপণের সর্বোত্তম সময়। বিনা চাষেও রসুনের আবাদ জনপ্রিয়।\n- **জমি তৈরি ও সার:** ৪-৫ বার চাষ দিয়ে মাটি ঝুরঝুরে করুন। প্রতি বিঘায় ৫-৬ মণ গোবর, ২০-২৫ কেজি ডিএপি, ১৫ কেজি পটাশ ও ১০ কেজি জিপসাম শেষ চাষে প্রয়োগ করুন।\n- **বীজ রোপণ:** সারি থেকে সারি ১৫ সেমি এবং কোয়া থেকে কোয়ার দূরত্ব ১০ সেমি রেখে কোয়া মাটির নিচে ২-৩ সেমি গভীরে পুঁতে দিন।`
+      : `**Garlic & Onion Cultivation Guidance:**\n\n- **Sowing Period:** October to November is optimal in Bangladesh.\n- **Soil Preparation:** Plow finely with compost, balanced DAP, MOP, and Gypsum.\n- **Spacing:** Plant cloves at 15cm x 10cm spacing, 2-3cm deep in moist soil.`;
+  }
+
+  if (lower.includes("begun") || lower.includes("বেগুন") || lower.includes("morich") || lower.includes("মরিচ")) {
+    return isBangla
+      ? `**বেগুন ও মরিচ ফসলের ব্যবস্থাপনা:**\n\n- **ডগা ও ফল ছিদ্রকারী পোকা:** আক্রমণ দেখা দিলে আক্রান্ত ডগা হাত দিয়ে ভেঙে ধ্বংস করুন। ফেরোমোন ফাঁদ ব্যবহার করুন।\n- **পাতা কুঁকড়ানো রোগ:** সাধারণত সাদা মাছি বা মাকড়ের কারণে হয়। নিম তেলের দ্রবণ (৫ মিলি/লিটার) অথবা অনুমোদিত মাকড়নাশক স্প্রে করুন।`
+      : `**Eggplant & Chili Management:**\n\n- **Shoot & Fruit Borers:** Handpick and destroy infested shoots. Use pheromone traps.\n- **Leaf Curl / Mites:** Spray neem oil solution (5ml/L) or approved acaricides.`;
   }
 
   return isBangla
@@ -186,7 +213,7 @@ export async function generateAgricultureAnswer(
   ];
 
   // 5. Provider Resolution and Fallback Execution
-  const providerSequence = resolveProviderSequence();
+  const providerSequence = resolveProviderSequence(request.providerStrategy);
   let lastError: Error | null = null;
   let fallbackOccurred = false;
 
