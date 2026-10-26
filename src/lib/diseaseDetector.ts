@@ -10,11 +10,12 @@ export interface DetectionOptions {
   cropHint?: string;
 }
 
-export const LOW_CONFIDENCE_THRESHOLD = 75;
+export const LOW_CONFIDENCE_THRESHOLD = 35;
+export const INCONCLUSIVE_NOISE_THRESHOLD = 15;
 
 // ─────────────────────────────────────────────────────────────────
 // HuggingFace label  →  { diseaseId, crop, banglaCrop }
-// Model: ripro805/krishidrishti-plant-disease  (24 classes)
+// Model: ripro805/krishidrishti-plant-disease  (50 classes ConvNeXt)
 // ─────────────────────────────────────────────────────────────────
 interface LabelMeta {
   diseaseId: string;
@@ -23,7 +24,7 @@ interface LabelMeta {
 }
 
 const HF_LABEL_MAP: Record<string, LabelMeta> = {
-  // ── Pepper ──────────────────────────────────────────────────────
+  // ── Pepper (Solanaceae) ──────────────────────────────────────────
   Pepper__bell___Bacterial_spot: {
     diseaseId: "pepper-bacterial-spot",
     crop: "Bell Pepper",
@@ -35,7 +36,7 @@ const HF_LABEL_MAP: Record<string, LabelMeta> = {
     banglaCrop: "মরিচ",
   },
 
-  // ── Potato ──────────────────────────────────────────────────────
+  // ── Potato (Solanaceae) ──────────────────────────────────────────
   Potato___Early_blight: {
     diseaseId: "potato-early-blight",
     crop: "Potato",
@@ -52,7 +53,7 @@ const HF_LABEL_MAP: Record<string, LabelMeta> = {
     banglaCrop: "আলু",
   },
 
-  // ── Rice ────────────────────────────────────────────────────────
+  // ── Rice (Poaceae) ───────────────────────────────────────────────
   Rice_Bacterial_Leaf_Blight: {
     diseaseId: "rice-bacterial-leaf-blight",
     crop: "Rice",
@@ -99,7 +100,7 @@ const HF_LABEL_MAP: Record<string, LabelMeta> = {
     banglaCrop: "ধান",
   },
 
-  // ── Tomato ──────────────────────────────────────────────────────
+  // ── Tomato (Solanaceae) ──────────────────────────────────────────
   Tomato_Bacterial_spot: {
     diseaseId: "tomato-bacterial-spot",
     crop: "Tomato",
@@ -150,9 +151,163 @@ const HF_LABEL_MAP: Record<string, LabelMeta> = {
     crop: "Tomato",
     banglaCrop: "টমেটো",
   },
+
+  // ── Apple (Rosaceae) ─────────────────────────────────────────────
+  Apple_Apple_scab: {
+    diseaseId: "apple-scab",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  Apple_Black_rot: {
+    diseaseId: "apple-black-rot",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  Apple_Cedar_apple_rust: {
+    diseaseId: "apple-cedar-rust",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  Apple_healthy: {
+    diseaseId: "apple-healthy",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+
+  // ── Blueberry (Ericaceae) ────────────────────────────────────────
+  Blueberry_healthy: {
+    diseaseId: "blueberry-healthy",
+    crop: "Blueberry",
+    banglaCrop: "ব্লুবেরি",
+  },
+
+  // ── Cherry (Rosaceae) ────────────────────────────────────────────
+  Cherry_including_sour_Powdery_mildew: {
+    diseaseId: "cherry-powdery-mildew",
+    crop: "Cherry",
+    banglaCrop: "চেরি",
+  },
+  Cherry_including_sour_healthy: {
+    diseaseId: "cherry-healthy",
+    crop: "Cherry",
+    banglaCrop: "চেরি",
+  },
+
+  // ── Corn / Maize (Poaceae) ───────────────────────────────────────
+  Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot: {
+    diseaseId: "corn-gray-leaf-spot",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  Corn_maize_Common_rust: {
+    diseaseId: "corn-common-rust",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  Corn_maize_Northern_Leaf_Blight: {
+    diseaseId: "corn-northern-leaf-blight",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  Corn_maize_healthy: {
+    diseaseId: "corn-healthy",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+
+  // ── Grape (Vitaceae) ─────────────────────────────────────────────
+  Grape_Black_rot: {
+    diseaseId: "grape-black-rot",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  Grape_Esca_Black_Measles: {
+    diseaseId: "grape-esca-black-measles",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  Grape_Leaf_blight_Isariopsis_Leaf_Spot: {
+    diseaseId: "grape-leaf-blight",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  Grape_healthy: {
+    diseaseId: "grape-healthy",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+
+  // ── Orange / Citrus (Rutaceae) ───────────────────────────────────
+  Orange_Haunglongbing_Citrus_greening: {
+    diseaseId: "citrus-greening-huanglongbing",
+    crop: "Orange (Citrus)",
+    banglaCrop: "লেবু / কমলা",
+  },
+
+  // ── Peach (Rosaceae) ─────────────────────────────────────────────
+  Peach_Bacterial_spot: {
+    diseaseId: "peach-bacterial-spot",
+    crop: "Peach",
+    banglaCrop: "পিচ",
+  },
+  Peach_healthy: {
+    diseaseId: "peach-healthy",
+    crop: "Peach",
+    banglaCrop: "পিচ",
+  },
+
+  // ── Raspberry (Rosaceae) ─────────────────────────────────────────
+  Raspberry_healthy: {
+    diseaseId: "raspberry-healthy",
+    crop: "Raspberry",
+    banglaCrop: "রাস্পবেরি",
+  },
+
+  // ── Soybean (Fabaceae) ───────────────────────────────────────────
+  Soybean_healthy: {
+    diseaseId: "soybean-healthy",
+    crop: "Soybean",
+    banglaCrop: "সয়াবিন",
+  },
+
+  // ── Squash (Cucurbitaceae) ───────────────────────────────────────
+  Squash_Powdery_mildew: {
+    diseaseId: "squash-powdery-mildew",
+    crop: "Squash",
+    banglaCrop: "মিষ্টি কুমড়া / স্কোয়াশ",
+  },
+
+  // ── Strawberry (Rosaceae) ────────────────────────────────────────
+  Strawberry_Leaf_scorch: {
+    diseaseId: "strawberry-leaf-scorch",
+    crop: "Strawberry",
+    banglaCrop: "স্ট্রবেরি",
+  },
+  Strawberry_healthy: {
+    diseaseId: "strawberry-healthy",
+    crop: "Strawberry",
+    banglaCrop: "স্ট্রবেরি",
+  },
+
+  // ── Wheat (Poaceae) ──────────────────────────────────────────────
+  Wheat_Healthy: {
+    diseaseId: "wheat-healthy",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+  Wheat_Septoria: {
+    diseaseId: "wheat-septoria",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+  Wheat_Stripe_Rust: {
+    diseaseId: "wheat-stripe-rust",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
 };
 
-const HF_MODEL_ID = "ripro805/krishidrishti-plant-disease";
+const HF_MODEL_ID = process.env.NEXT_PUBLIC_HF_MODEL_ID || "ripro805/krishidrishti-plant-disease";
 const HF_API_URL = `https://api-inference.huggingface.co/models/${HF_MODEL_ID}`;
 const HF_TOKEN = process.env.NEXT_PUBLIC_HF_TOKEN || "";
 
@@ -197,30 +352,53 @@ async function callHFDirectFromBrowser(
 }
 
 // ─────────────────────────────────────────────────────────────────
+interface ModelInferencePayload {
+  predictions: Array<{ label: string; score: number }>;
+  dominantCrop?: string;
+  dominantCropScore?: number;
+  cropScores?: Record<string, number>;
+  isCrossCropAmbiguous?: boolean;
+  disambiguatedTop?: {
+    label: string;
+    score: number;
+    crop: string;
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────
 // Primary: call via Next.js API proxy (server-side, keeps token hidden)
 // Fallback: call HuggingFace directly from browser
 // ─────────────────────────────────────────────────────────────────
 async function callHuggingFaceModel(
-  imageUrl: string
-): Promise<{ label: string; score: number }[]> {
+  imageUrl: string,
+  cropHint?: string
+): Promise<ModelInferencePayload> {
   // Try server-side proxy first
   try {
     const response = await fetch("/api/detect", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ imageData: imageUrl }),
+      body: JSON.stringify({ imageData: imageUrl, cropHint }),
     });
 
     const data = await response.json();
 
     if (response.ok) {
-      return data.predictions as { label: string; score: number }[];
+      return {
+        predictions: data.predictions || [],
+        dominantCrop: data.dominantCrop,
+        dominantCropScore: data.dominantCropScore,
+        cropScores: data.cropScores,
+        isCrossCropAmbiguous: data.isCrossCropAmbiguous,
+        disambiguatedTop: data.disambiguatedTop,
+      };
     }
 
     // If server has network issue, fall through to browser-direct
     if (data.error === "SERVER_NETWORK_ERROR") {
       console.warn("[HF] Server DNS issue, retrying directly from browser...");
-      return await callHFDirectFromBrowser(imageUrl);
+      const raw = await callHFDirectFromBrowser(imageUrl);
+      return { predictions: raw };
     }
 
     throw new Error(data.error || `API error ${response.status}`);
@@ -228,12 +406,12 @@ async function callHuggingFaceModel(
     // If proxy call itself failed (network, CORS, etc.), try browser direct
     if (err.message?.includes("fetch") || err.message?.includes("network")) {
       console.warn("[HF] Proxy unreachable, trying browser-direct call...");
-      return await callHFDirectFromBrowser(imageUrl);
+      const raw = await callHFDirectFromBrowser(imageUrl);
+      return { predictions: raw };
     }
     throw err;
   }
 }
-
 
 // ─────────────────────────────────────────────────────────────────
 // Main detection function
@@ -247,36 +425,57 @@ export async function detectCropDisease(options: DetectionOptions): Promise<Scan
   let detectedCrop: string | undefined;
   let detectedBanglaCrop: string | undefined;
   let usedRealModel = false;
+  let isCrossCropAmbiguous = false;
+  let alternativeDiagnoses: Array<{ label: string; score: number; crop: string }> = [];
 
   // ── 1. Real HuggingFace model (only for user-uploaded images = data URLs) ──
   if (!matchedDiseaseId && imageUrl.startsWith("data:")) {
     try {
-      const predictions = await callHuggingFaceModel(imageUrl);
+      const payload = await callHuggingFaceModel(imageUrl, cropHint);
+      const predictions = payload.predictions;
 
       if (predictions && predictions.length > 0) {
-        const top = predictions[0];
-        // Convert score 0–1 → percentage 0–100
-        modelConfidence = parseFloat((top.score * 100).toFixed(2));
+        // Hierarchical disambiguation:
+        // If probability mass across classes strongly supports dominantCrop (>35%)
+        // or user explicitly provided cropHint, use disambiguatedTop to prevent
+        // single-class dilution bugs (e.g. strawberry scorch vs multi-class rice).
+        const topCandidate =
+          payload.disambiguatedTop && payload.dominantCropScore && payload.dominantCropScore > 0.35
+            ? payload.disambiguatedTop
+            : predictions[0];
 
-        // When confidence is below threshold (< 75%), the AI does NOT have a confident match
-        // (common when uploading fruits, non-leaves, random objects, or very blurry images)
-        if (modelConfidence < LOW_CONFIDENCE_THRESHOLD) {
+        modelConfidence = parseFloat((topCandidate.score * 100).toFixed(2));
+        const meta = HF_LABEL_MAP[topCandidate.label];
+
+        isCrossCropAmbiguous = !!payload.isCrossCropAmbiguous;
+
+        // Collect top alternatives from different crops for transparency
+        if (payload.cropScores) {
+          alternativeDiagnoses = Object.entries(payload.cropScores)
+            .filter(([crop]) => crop !== payload.dominantCrop)
+            .slice(0, 3)
+            .map(([crop, score]) => ({
+              label: `${crop} Pathology`,
+              score: Math.round(score * 100),
+              crop,
+            }));
+        }
+
+        // For a 50-class model (random = 2%), anything < 15% or unmapped is pure noise/non-leaf
+        if (modelConfidence < INCONCLUSIVE_NOISE_THRESHOLD || !meta) {
           diagnosis = DISEASES_DATABASE.find((d) => d.id === "uncertain-low-confidence-sample");
           detectedCrop = "Uncertain / Non-Leaf";
           detectedBanglaCrop = "অনির্ণীত / পাতা নয়";
         } else {
-          const meta = HF_LABEL_MAP[top.label];
-          if (meta) {
-            // Use the crop from MODEL label — not from cropHint (dropdown)
-            detectedCrop = meta.crop;
-            detectedBanglaCrop = meta.banglaCrop;
-            diagnosis = DISEASES_DATABASE.find((d) => d.id === meta.diseaseId);
-          }
+          // Valid match: Always map to detected crop and disease!
+          detectedCrop = meta.crop;
+          detectedBanglaCrop = meta.banglaCrop;
+          diagnosis = DISEASES_DATABASE.find((d) => d.id === meta.diseaseId);
         }
 
         usedRealModel = true;
         console.log(
-          `[HF Model] Label: "${top.label}" | Score: ${modelConfidence}% | Inconclusive: ${modelConfidence < LOW_CONFIDENCE_THRESHOLD}`
+          `[HF Model] Label: "${topCandidate.label}" | Crop: "${detectedCrop}" | Score: ${modelConfidence}% | DominantCrop: ${payload.dominantCrop} | Ambiguous: ${isCrossCropAmbiguous}`
         );
       }
     } catch (err: any) {
@@ -358,6 +557,8 @@ export async function detectCropDisease(options: DetectionOptions): Promise<Scan
     banglaCropDetected: finalBanglaCrop,
     diagnosis: diagnosisWithRealConfidence,
     isLowConfidence,
+    isCrossCropAmbiguous,
+    alternativeDiagnoses,
     leafMetrics: {
       affectedAreaPercentage: parseFloat(affectedArea.toFixed(1)),
       chlorophyllIndex: chlorophyll,

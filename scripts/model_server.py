@@ -17,11 +17,13 @@ from transformers import pipeline
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("KrishiDrishti.ModelServer")
 
-# Suppress verbose transformers warnings
+# Suppress verbose transformers & symlink warnings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 logging.getLogger("transformers").setLevel(logging.ERROR)
 
-MODEL_NAME = "ripro805/krishidrishti-plant-disease"
+MODEL_NAME = os.environ.get("MODEL_NAME", "ripro805/krishidrishti-plant-disease")
+MODEL_REVISION = os.environ.get("MODEL_REVISION", None)
 START_TIME = time.time()
 MAX_PAYLOAD_SIZE = 15 * 1024 * 1024  # 15 MB limit
 
@@ -34,17 +36,21 @@ async def lifespan(app: FastAPI):
     device_idx = 0 if torch.cuda.is_available() else -1
     device_name = "CUDA GPU" if device_idx == 0 else "Host CPU"
     logger.info(f"Starting KrishiDrishti Model Server on {device_name}...")
-    logger.info(f"Loading neural classifier '{MODEL_NAME}' into memory...")
+    logger.info(f"Loading neural classifier '{MODEL_NAME}' (revision: {MODEL_REVISION or 'default'})...")
     
     t0 = time.time()
     try:
-        _pipeline = pipeline(
-            "image-classification",
-            model=MODEL_NAME,
-            device=device_idx,
-        )
+        pipeline_kwargs = {
+            "task": "image-classification",
+            "model": MODEL_NAME,
+            "device": device_idx,
+        }
+        if MODEL_REVISION:
+            pipeline_kwargs["revision"] = MODEL_REVISION
+
+        _pipeline = pipeline(**pipeline_kwargs)
         load_time = time.time() - t0
-        classes_count = len(_pipeline.model.config.id2label) if hasattr(_pipeline.model, "config") else 24
+        classes_count = len(_pipeline.model.config.id2label) if hasattr(_pipeline.model, "config") else 50
         logger.info(f"Model successfully preloaded in {load_time:.2f}s with {classes_count} classes.")
     except Exception as e:
         logger.error(f"Failed to load Hugging Face model: {e}")
@@ -71,8 +77,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+try:
+    from crop_taxonomy import aggregate_crop_probabilities
+except ImportError:
+    from scripts.crop_taxonomy import aggregate_crop_probabilities
+
 class PredictRequest(BaseModel):
     imageData: str = Field(..., description="Base64 encoded leaf image or data URL")
+    cropHint: Optional[str] = Field(None, description="Optional botanical crop hint context from UI or query param")
 
 class PredictionItem(BaseModel):
     label: str = Field(..., description="Pathology classification label")
@@ -83,12 +95,17 @@ class PredictResponse(BaseModel):
     latencyMs: float
     provider: str
     classesCount: int
+    dominantCrop: Optional[str] = None
+    dominantCropScore: Optional[float] = None
+    cropScores: Optional[dict] = None
+    isCrossCropAmbiguous: Optional[bool] = False
+    disambiguatedTop: Optional[dict] = None
 
 @app.get("/health")
 def health():
     global _pipeline
     is_ready = _pipeline is not None
-    classes_count = len(_pipeline.model.config.id2label) if (is_ready and hasattr(_pipeline.model, "config")) else 24
+    classes_count = len(_pipeline.model.config.id2label) if (is_ready and hasattr(_pipeline.model, "config")) else 50
     device = "cuda" if torch.cuda.is_available() else "cpu"
     
     return {
@@ -124,20 +141,29 @@ def predict(req: PredictRequest):
 
     t0 = time.time()
     try:
-        raw_preds = _pipeline(image)
+        # Request full 50-class probability distribution
+        raw_preds = _pipeline(image, top_k=50)
         latency_ms = round((time.time() - t0) * 1000, 2)
         
-        # Sort top-5 predictions
-        formatted = [
-            {"label": p["label"], "score": float(p["score"])}
-            for p in raw_preds[:5]
-        ]
+        # Hierarchical crop mass aggregation and ambiguity detection
+        analysis = aggregate_crop_probabilities(raw_preds, crop_hint=req.cropHint)
+        
+        logger.info(
+            f"Inference result: top={analysis['predictions'][0]['label']} ({analysis['predictions'][0]['score']*100:.1f}%) | "
+            f"dominantCrop={analysis['dominantCrop']} ({analysis['dominantCropScore']*100:.1f}%) | "
+            f"ambiguous={analysis['isCrossCropAmbiguous']} | latency={latency_ms}ms"
+        )
 
         return {
-            "predictions": formatted,
+            "predictions": analysis["predictions"],
             "latencyMs": latency_ms,
             "provider": "fastapi-persistent",
-            "classesCount": len(formatted),
+            "classesCount": len(raw_preds),
+            "dominantCrop": analysis["dominantCrop"],
+            "dominantCropScore": analysis["dominantCropScore"],
+            "cropScores": analysis["cropScores"],
+            "isCrossCropAmbiguous": analysis["isCrossCropAmbiguous"],
+            "disambiguatedTop": analysis["disambiguatedTop"],
         }
     except Exception as infer_err:
         logger.error(f"Inference computation error: {infer_err}")

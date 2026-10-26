@@ -6,21 +6,34 @@ import os
 
 # Suppress noisy logs from transformers
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 import logging
 logging.getLogger("transformers").setLevel(logging.ERROR)
 
 from PIL import Image
 from transformers import pipeline
 
+sys.path.insert(0, os.path.dirname(__file__))
+try:
+    from crop_taxonomy import aggregate_crop_probabilities
+except ImportError:
+    from scripts.crop_taxonomy import aggregate_crop_probabilities
+
+MODEL_NAME = os.environ.get("MODEL_NAME", "ripro805/krishidrishti-plant-disease")
+MODEL_REVISION = os.environ.get("MODEL_REVISION", None)
+
 _pipe = None
 
 def get_pipeline():
     global _pipe
     if _pipe is None:
-        _pipe = pipeline("image-classification", model="ripro805/krishidrishti-plant-disease")
+        kwargs = {"task": "image-classification", "model": MODEL_NAME}
+        if MODEL_REVISION:
+            kwargs["revision"] = MODEL_REVISION
+        _pipe = pipeline(**kwargs)
     return _pipe
 
-def predict_image(image_input):
+def predict_image(image_input, crop_hint=None, return_meta=False):
     pipe = get_pipeline()
     
     if isinstance(image_input, str):
@@ -37,24 +50,32 @@ def predict_image(image_input):
     else:
         img = image_input
 
-    raw_preds = pipe(img)
-    preds = [{"label": p["label"], "score": float(p["score"])} for p in raw_preds]
-    return preds
+    # Request all 50 class probabilities
+    raw_preds = pipe(img, top_k=50)
+    analysis = aggregate_crop_probabilities(raw_preds, crop_hint=crop_hint)
+
+    if return_meta:
+        return analysis
+    return analysis["predictions"]
 
 if __name__ == "__main__":
     try:
-        if len(sys.argv) > 1:
-            arg = sys.argv[1]
+        crop_hint = None
+        return_meta = "--meta" in sys.argv
+        args = [a for a in sys.argv[1:] if a != "--meta"]
+
+        if args:
+            arg = args[0]
             if arg == "--stdin":
                 content = sys.stdin.read().strip()
-                preds = predict_image(content)
+                result = predict_image(content, crop_hint=crop_hint, return_meta=return_meta)
             else:
-                preds = predict_image(arg)
+                result = predict_image(arg, crop_hint=crop_hint, return_meta=return_meta)
         else:
             img = Image.new("RGB", (224, 224), color=(34, 139, 34))
-            preds = predict_image(img)
+            result = predict_image(img, crop_hint=crop_hint, return_meta=return_meta)
 
-        print(json.dumps(preds))
+        print(json.dumps(result))
     except Exception as e:
         print(json.dumps({"error": str(e)}))
         sys.exit(1)

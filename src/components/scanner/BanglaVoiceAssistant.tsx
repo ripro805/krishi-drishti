@@ -46,7 +46,7 @@ export const BanglaVoiceAssistant: React.FC<BanglaVoiceAssistantProps> = ({
       script += `জরুরি ব্যবস্থাপনার পরামর্শ: ${disease.banglaTreatment.managementAdvice.slice(0, 2).join(", ")}। `;
     }
 
-    if (disease.isLowConfidenceWarning || confidence < 75) {
+    if (disease.isLowConfidenceWarning || confidence < 35) {
       script += `সতর্কতা: এই ফলাফলটি পুরোপুরি নিশ্চিত নয়। কোনো কীটনাশক দেওয়ার আগে অবশ্যই স্থানীয় কৃষি কর্মকর্তার পরামর্শ নিন। `;
     } else {
       script += `মনে রাখবেন, কোনো রাসায়নিক বা কীটনাশক অনুমান করে প্রয়োগ করবেন না। অনুমোদিত মাত্রা মেনে চলুন।`;

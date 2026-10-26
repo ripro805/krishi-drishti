@@ -119,7 +119,7 @@ export const LiveScannerDemo: React.FC = () => {
                   </button>
                   <button
                     type="button"
-                    onClick={runScan}
+                    onClick={() => runScan()}
                     className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-0.5 active:scale-95 transition-all"
                   >
                     <Scan className="h-4 w-4" />

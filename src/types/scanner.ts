@@ -17,6 +17,8 @@ export interface ScanResult {
   banglaCropDetected?: string;
   diagnosis: DiseaseInfo;
   isLowConfidence?: boolean;
+  isCrossCropAmbiguous?: boolean;
+  alternativeDiagnoses?: Array<{ label: string; score: number; crop: string }>;
   leafMetrics: {
     affectedAreaPercentage: number;
     chlorophyllIndex: string;

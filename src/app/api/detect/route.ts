@@ -16,7 +16,7 @@ import path from "path";
  */
 
 const LOCAL_SERVER_URL = process.env.MODEL_SERVER_URL || "http://127.0.0.1:5005/predict";
-const HF_MODEL_ID = "ripro805/krishidrishti-plant-disease";
+const HF_MODEL_ID = process.env.HF_MODEL_ID || "ripro805/krishidrishti-plant-disease";
 const HF_ROUTER_URL = `https://router.huggingface.co/hf-inference/models/${HF_MODEL_ID}`;
 const HF_TOKEN = process.env.HF_TOKEN || "";
 
@@ -30,10 +30,19 @@ interface FastAPIResponse {
   latencyMs?: number;
   provider?: string;
   classesCount?: number;
+  dominantCrop?: string;
+  dominantCropScore?: number;
+  cropScores?: Record<string, number>;
+  isCrossCropAmbiguous?: boolean;
+  disambiguatedTop?: {
+    label: string;
+    score: number;
+    crop: string;
+  };
 }
 
 // ── Tier 1: Local FastAPI Server ──────────────────────────────────
-async function queryLocalFastAPI(base64Data: string): Promise<FastAPIResponse> {
+async function queryLocalFastAPI(base64Data: string, cropHint?: string): Promise<FastAPIResponse> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 4000);
 
@@ -41,7 +50,7 @@ async function queryLocalFastAPI(base64Data: string): Promise<FastAPIResponse> {
     const response = await fetch(LOCAL_SERVER_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ imageData: base64Data }),
+      body: JSON.stringify({ imageData: base64Data, cropHint }),
       signal: controller.signal,
     });
 
@@ -132,7 +141,7 @@ async function queryHuggingFaceRouter(
 // ── Main API Route Handler ───────────────────────────────────────
 export async function POST(request: NextRequest) {
   try {
-    const { imageData } = await request.json();
+    const { imageData, cropHint } = await request.json();
 
     if (!imageData) {
       return NextResponse.json({ error: "No image data provided" }, { status: 400 });
@@ -149,11 +158,16 @@ export async function POST(request: NextRequest) {
 
     // 1. Try Tier 1: Local FastAPI Server (fastest)
     try {
-      const fastApiRes = await queryLocalFastAPI(base64Data);
+      const fastApiRes = await queryLocalFastAPI(base64Data, cropHint);
       return NextResponse.json({
         predictions: fastApiRes.predictions,
         latencyMs: fastApiRes.latencyMs,
         provider: "local-fastapi",
+        dominantCrop: fastApiRes.dominantCrop,
+        dominantCropScore: fastApiRes.dominantCropScore,
+        cropScores: fastApiRes.cropScores,
+        isCrossCropAmbiguous: fastApiRes.isCrossCropAmbiguous,
+        disambiguatedTop: fastApiRes.disambiguatedTop,
       });
     } catch (e: any) {
       console.warn("[detect API] Tier 1 (FastAPI) unavailable, falling back to Tier 2 (Python CLI)...");

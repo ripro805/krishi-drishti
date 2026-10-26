@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-10-26T17:08:38.895535+00:00",
+  "hf_repo": "ripro805/krishidrishti-plant-disease",
+  "seed": 42,
+  "old_classes": 24,
+  "final_classes": 50,
+  "epochs": 4,
+  "per_device_batch": 32,
+  "grad_accum": 1,
+  "backbone_lr": 2e-05,
+  "head_lr": 0.0003,
+  "weight_decay": 0.05,
+  "warmup_steps": 230,
+  "freeze_backbone_steps": 200,
+  "label_smoothing": 0.0,
+  "class_weights": true,
+  "save_steps": 250,
+  "early_stop_patience": 4,
+  "eval_resize_mode": "squash",
+  "datasets": [
+    "abdallahalidev/plantvillage-dataset",
+    "olyadgetch/wheat-leaf-dataset",
+    "minhhuy2810/rice-diseases-image-dataset",
+    "anshulm257/rice-disease-dataset",
+    "dedeikhsandwisaputra/rice-leafs-disease-dataset",
+    "shrupyag001/philippines-rice-diseases"
+  ],
+  "failed_replay_sources": [],
+  "pv_variant": "color",
+  "max_per_old_class": 600,
+  "max_per_new_class": 1500,
+  "val_fraction": 0.15,
+  "max_side": 512,
+  "train_images": 30723,
+  "val_images": 5422,
+  "total_steps_estimate": 3844,
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.20.2",
+    "datasets": "5.1.0",
+    "accelerate": "1.15.0"
+  }
+}

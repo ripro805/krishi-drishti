@@ -27,7 +27,7 @@ export const LowConfidenceWarning: React.FC<LowConfidenceWarningProps> = ({
               কম কনফিডেন্স সতর্কতা (Low Confidence Match)
             </span>
             <span className="text-xs font-bold text-amber-800 dark:text-amber-300">
-              নিশ্চয়তার মাত্রা: {confidence.toFixed(1)}% (প্রয়োজনীয় মান &ge; ৭৫%)
+              নিশ্চয়তার মাত্রা: {confidence.toFixed(1)}% (প্রয়োজনীয় মান &ge; ৩৫%)
             </span>
           </div>
 

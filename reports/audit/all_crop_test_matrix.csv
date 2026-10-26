@@ -1,0 +1,51 @@
+class_index,raw_label,crop,bangla_crop,disease_id,is_healthy,support,tp,fn,fp,precision,recall,f1_score,within_crop_confusions,top_within_crop_confused_with,cross_crop_confusions,top_cross_crop_confused_with,status
+0,Pepper__bell___Bacterial_spot,Bell Pepper,মরিচ,pepper-bacterial-spot,False,90,90,0,1,0.989,1.0,0.9945,0,None,0,None,PASS
+1,Pepper__bell___healthy,Bell Pepper,মরিচ,pepper-healthy,True,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+2,Potato___Early_blight,Potato,আলু,potato-early-blight,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+3,Potato___Late_blight,Potato,আলু,potato-late-blight,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+4,Potato___healthy,Potato,আলু,potato-healthy,True,23,23,0,0,1.0,1.0,1.0,0,None,0,None,INSUFFICIENT_DATA
+5,Rice_Bacterial_Leaf_Blight,Rice,ধান,rice-bacterial-leaf-blight,False,90,86,4,2,0.9773,0.9556,0.9663,4,Rice_Blast (2),0,None,PASS
+6,Rice_Blast,Rice,ধান,rice-blast,False,90,81,9,5,0.9419,0.9,0.9205,9,Rice_Healthy (4),0,None,PASS
+7,Rice_Brown_Spot,Rice,ধান,rice-brown-spot,False,90,86,4,1,0.9885,0.9556,0.9718,4,Rice_Healthy (2),0,None,PASS
+8,Rice_Healthy,Rice,ধান,rice-healthy,True,90,83,7,20,0.8058,0.9222,0.8601,7,Rice_Hispa (6),0,None,FAIL
+9,Rice_Hispa,Rice,ধান,rice-hispa,False,85,73,12,12,0.8588,0.8588,0.8588,12,Rice_Healthy (10),0,None,FAIL
+10,Rice_Leaf_Scald,Rice,ধান,rice-leaf-scald,False,90,90,0,2,0.9783,1.0,0.989,0,None,0,None,PASS
+11,Rice_Narrow_Brown_Spot,Rice,ধান,rice-narrow-brown-spot,False,76,76,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+12,Rice_Sheath_Blight,Rice,ধান,rice-sheath-blight,False,90,89,1,1,0.9889,0.9889,0.9889,1,Rice_Blast (1),0,None,PASS
+13,Rice_Tungro,Rice,ধান,rice-tungro,False,15,15,0,0,1.0,1.0,1.0,0,None,0,None,INSUFFICIENT_DATA
+14,Tomato_Bacterial_spot,Tomato,টমেটো,tomato-bacterial-spot,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+15,Tomato_Early_blight,Tomato,টমেটো,tomato-early-blight,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+16,Tomato_Late_blight,Tomato,টমেটো,tomato-late-blight,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+17,Tomato_Leaf_Mold,Tomato,টমেটো,tomato-leaf-mold,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+18,Tomato_Septoria_leaf_spot,Tomato,টমেটো,tomato-septoria-leaf-spot,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+19,Tomato_Spider_mites_Two_spotted_spider_mite,Tomato,টমেটো,tomato-spider-mites,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+20,Tomato__Target_Spot,Tomato,টমেটো,tomato-target-spot,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+21,Tomato__Tomato_YellowLeaf__Curl_Virus,Tomato,টমেটো,tomato-yellow-leaf-curl-virus,False,90,90,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+22,Tomato__Tomato_mosaic_virus,Tomato,টমেটো,tomato-mosaic-virus,False,56,56,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+23,Tomato_healthy,Tomato,টমেটো,healthy-tomato-leaf,True,90,89,1,0,1.0,0.9889,0.9944,0,None,1,Wheat_Healthy [Wheat] (1),PASS
+24,Apple_Apple_scab,Apple,আপেল,apple-scab,False,95,94,1,0,1.0,0.9895,0.9947,0,None,1,Peach_Bacterial_spot [Peach] (1),PASS
+25,Apple_Black_rot,Apple,আপেল,apple-black-rot,False,93,93,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+26,Apple_Cedar_apple_rust,Apple,আপেল,apple-cedar-rust,False,41,41,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+27,Apple_healthy,Apple,আপেল,apple-healthy,True,225,224,1,0,1.0,0.9956,0.9978,0,None,1,Soybean_healthy [Soybean] (1),PASS
+28,Blueberry_healthy,Blueberry,ব্লুবেরি,blueberry-healthy,True,225,225,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+29,Cherry_including_sour_Powdery_mildew,Cherry,চেরি,cherry-powdery-mildew,False,158,158,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+30,Cherry_including_sour_healthy,Cherry,চেরি,cherry-healthy,True,128,128,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+31,Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot,Corn (Maize),ভুট্টা,corn-gray-leaf-spot,False,77,74,3,5,0.9367,0.961,0.9487,3,Corn_maize_Northern_Leaf_Blight (3),0,None,PASS
+32,Corn_maize_Common_rust,Corn (Maize),ভুট্টা,corn-common-rust,False,179,177,2,0,1.0,0.9888,0.9944,2,Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot (1),0,None,PASS
+33,Corn_maize_Northern_Leaf_Blight,Corn (Maize),ভুট্টা,corn-northern-leaf-blight,False,148,144,4,4,0.973,0.973,0.973,4,Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot (4),0,None,PASS
+34,Corn_maize_healthy,Corn (Maize),ভুট্টা,corn-healthy,True,174,173,1,0,1.0,0.9943,0.9971,0,None,1,Rice_Healthy [Rice] (1),PASS
+35,Grape_Black_rot,Grape,আঙ্গুর,grape-black-rot,False,177,177,0,1,0.9944,1.0,0.9972,0,None,0,None,PASS
+36,Grape_Esca_Black_Measles,Grape,আঙ্গুর,grape-esca-black-measles,False,208,207,1,1,0.9952,0.9952,0.9952,1,Grape_Black_rot (1),0,None,PASS
+37,Grape_Leaf_blight_Isariopsis_Leaf_Spot,Grape,আঙ্গুর,grape-leaf-blight,False,161,161,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+38,Grape_healthy,Grape,আঙ্গুর,grape-healthy,True,63,63,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+39,Orange_Haunglongbing_Citrus_greening,Orange (Citrus),লেবু / কমলা,citrus-greening-huanglongbing,False,225,224,1,0,1.0,0.9956,0.9978,0,None,1,Pepper__bell___Bacterial_spot [Bell Pepper] (1),PASS
+40,Peach_Bacterial_spot,Peach,পিচ,peach-bacterial-spot,False,225,224,1,1,0.9956,0.9956,0.9956,0,None,1,Grape_Esca_Black_Measles [Grape] (1),PASS
+41,Peach_healthy,Peach,পিচ,peach-healthy,True,54,54,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+42,Raspberry_healthy,Raspberry,রাস্পবেরি,raspberry-healthy,True,56,56,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+43,Soybean_healthy,Soybean,সয়াবিন,soybean-healthy,True,225,225,0,1,0.9956,1.0,0.9978,0,None,0,None,PASS
+44,Squash_Powdery_mildew,Squash,মিষ্টি কুমড়া / স্কোয়াশ,squash-powdery-mildew,False,225,225,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+45,Strawberry_Leaf_scorch,Strawberry,স্ট্রবেরি,strawberry-leaf-scorch,False,166,166,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+46,Strawberry_healthy,Strawberry,স্ট্রবেরি,strawberry-healthy,True,68,68,0,0,1.0,1.0,1.0,0,None,0,None,PASS
+47,Wheat_Healthy,Wheat,গম,wheat-healthy,True,15,9,6,1,0.9,0.6,0.72,1,Wheat_Stripe_Rust (1),5,Rice_Healthy [Rice] (3),INSUFFICIENT_DATA
+48,Wheat_Septoria,Wheat,গম,wheat-septoria,False,15,15,0,0,1.0,1.0,1.0,0,None,0,None,INSUFFICIENT_DATA
+49,Wheat_Stripe_Rust,Wheat,গম,wheat-stripe-rust,False,31,31,0,1,0.9688,1.0,0.9841,0,None,0,None,PASS

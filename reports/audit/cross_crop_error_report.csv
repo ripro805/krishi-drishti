@@ -1,0 +1,9 @@
+true_class,true_crop,pred_class,pred_crop,error_count
+Tomato_healthy,Tomato,Wheat_Healthy,Wheat,1
+Apple_Apple_scab,Apple,Peach_Bacterial_spot,Peach,1
+Apple_healthy,Apple,Soybean_healthy,Soybean,1
+Corn_maize_healthy,Corn (Maize),Rice_Healthy,Rice,1
+Orange_Haunglongbing_Citrus_greening,Orange (Citrus),Pepper__bell___Bacterial_spot,Bell Pepper,1
+Peach_Bacterial_spot,Peach,Grape_Esca_Black_Measles,Grape,1
+Wheat_Healthy,Wheat,Rice_Healthy,Rice,3
+Wheat_Healthy,Wheat,Rice_Hispa,Rice,2

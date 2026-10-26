@@ -33,12 +33,14 @@ export interface DiagnosticResultCardProps {
   scanResult: ScanResult;
   onSaveToHistory?: (result: ScanResult) => void;
   onRetake?: () => void;
+  onSelectCrop?: (crop: string) => void;
 }
 
 export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
   scanResult,
   onSaveToHistory,
   onRetake,
+  onSelectCrop,
 }) => {
   const { isBangla } = useLanguage();
   const [showPdfModal, setShowPdfModal] = useState(false);
@@ -46,7 +48,7 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
 
   const { diagnosis } = scanResult;
   const isHealthy = diagnosis.severity === "Healthy";
-  const isLowConfidence = scanResult.isLowConfidence || diagnosis.confidence < 75;
+  const isLowConfidence = scanResult.isLowConfidence || diagnosis.confidence < 35;
 
   const handleSave = () => {
     saveScanToHistory(scanResult);
@@ -244,6 +246,54 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
             <p className="text-[11px] text-slate-400">{isBangla ? "বাতাস / সেচের পানি" : "Airborne / Splash"}</p>
           </div>
         </div>
+
+        {/* Alternative Diagnoses / Cross-Crop Competition Notice */}
+        {scanResult.alternativeDiagnoses && scanResult.alternativeDiagnoses.length > 0 && (
+          <div className="mt-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 p-4 border border-amber-200/90 dark:border-amber-900/60 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <span className="text-xs font-bold text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
+                <Info className="h-4 w-4 text-amber-600" />
+                {isBangla ? "অন্য কোনো ফসলের পাতা? সঠিক ফসলে ১-ক্লিকে রি-স্ক্যান করুন:" : "Scanning a different plant? 1-Click re-scan under target crop:"}
+              </span>
+              <span className="text-[11px] font-semibold text-amber-800 dark:text-amber-300">
+                {isBangla ? "ক্লিক করে নির্ভুল রোগ নির্ণয় দেখুন" : "Click to view crop-specific diagnosis"}
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {scanResult.alternativeDiagnoses.map((alt, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => onSelectCrop && onSelectCrop(alt.crop)}
+                  className="group inline-flex items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3.5 py-1.5 text-xs border border-amber-300 hover:border-agri-500 hover:bg-agri-50 dark:border-amber-800 dark:hover:bg-agri-950/50 text-slate-800 dark:text-slate-200 shadow-sm transition-all cursor-pointer"
+                >
+                  <span className="font-bold text-agri-700 dark:text-agri-400 group-hover:underline">
+                    {alt.crop === "Grape" ? (isBangla ? "🍇 আঙ্গুর (Grape)" : "🍇 Grape")
+                      : alt.crop === "Strawberry" ? (isBangla ? "🍓 স্ট্রবেরি (Strawberry)" : "🍓 Strawberry")
+                      : alt.crop === "Wheat" ? (isBangla ? "🌾 গম (Wheat)" : "🌾 Wheat")
+                      : alt.crop === "Apple" ? (isBangla ? "🍎 আপেল (Apple)" : "🍎 Apple")
+                      : alt.crop === "Corn (Maize)" || alt.crop === "Corn" ? (isBangla ? "🌽 ভুট্টা (Corn)" : "🌽 Corn")
+                      : alt.crop === "Rice" ? (isBangla ? "🌾 ধান (Rice)" : "🌾 Rice")
+                      : alt.crop === "Tomato" ? (isBangla ? "🍅 টমেটো (Tomato)" : "🍅 Tomato")
+                      : alt.crop === "Potato" ? (isBangla ? "🥔 আলু (Potato)" : "🥔 Potato")
+                      : alt.crop === "Pepper" ? (isBangla ? "🫑 মরিচ (Pepper)" : "🫑 Pepper")
+                      : alt.crop === "Peach" ? (isBangla ? "🍑 পিচ (Peach)" : "🍑 Peach")
+                      : alt.crop === "Cherry" ? (isBangla ? "🍒 চেরি (Cherry)" : "🍒 Cherry")
+                      : alt.crop === "Soybean" ? (isBangla ? "🌱 সয়াবিন (Soybean)" : "🌱 Soybean")
+                      : alt.crop === "Squash" ? (isBangla ? "🎃 স্কোয়াশ (Squash)" : "🎃 Squash")
+                      : alt.crop === "Cassava" ? (isBangla ? "🌿 কাসাভা (Cassava)" : "🌿 Cassava")
+                      : alt.crop === "Mango" ? (isBangla ? "🥭 আম (Mango)" : "🥭 Mango")
+                      : alt.crop}
+                  </span>
+                  <span className="rounded-md bg-amber-100 dark:bg-amber-900/60 px-1.5 py-0.5 text-[10px] font-mono font-bold text-amber-900 dark:text-amber-200">
+                    {alt.score}%
+                  </span>
+                  <span className="text-[11px] text-agri-600 font-bold">&rarr;</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Detailed Disease Breakdown Grid (Bangla & English) */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-slate-100 dark:border-slate-800 text-xs">

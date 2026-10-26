@@ -1,0 +1,56 @@
+{
+  "split": "validation (also used for checkpoint selection and early stopping \u2014 NOT a test set)",
+  "eval_resize_mode": "squash",
+  "overall": {
+    "n": 5422,
+    "n_classes_evaluated": 50,
+    "accuracy": 0.9891184064920694,
+    "precision_macro": 0.9857517079960385,
+    "recall_macro": 0.9811671784461998,
+    "f1_macro": 0.9827500015097199,
+    "f1_weighted": 0.9891248463663982
+  },
+  "new_classes": {
+    "n": 3457,
+    "n_classes_evaluated": 26,
+    "accuracy": 0.9939253688168933,
+    "precision_macro": 0.9945821900265839,
+    "recall_macro": 0.9803240108379658,
+    "f1_macro": 0.9855110154835842,
+    "f1_weighted": 0.9947352629689086
+  },
+  "old_classes_retention_proxy": {
+    "n": 1965,
+    "n_classes_evaluated": 24,
+    "accuracy": 0.9806615776081425,
+    "precision_macro": 0.9830287753601059,
+    "recall_macro": 0.9820806100217866,
+    "f1_macro": 0.9824235781579578,
+    "f1_weighted": 0.981012565254937,
+    "fraction_predicted_as_a_NEW_class": 0.0005089058524173028
+  },
+  "old_class_retention_vs_original": {
+    "before_original_model_24way_accuracy": 0.9776081424936387,
+    "after_finetuned_50way_accuracy": 0.9806615776081425,
+    "accuracy_change": 0.003053435114503844,
+    "before_macro_f1": 0.9792255746715846,
+    "after_macro_f1": 0.9824235781579578,
+    "macro_f1_change": 0.0031980034863732243,
+    "caveat": "same old-class validation images before/after; these images probably overlap the ORIGINAL training data, so this is a forgetting check, NOT an unbiased estimate of old-class generalisation."
+  },
+  "classes_in_evaluation": 50,
+  "classes_without_validation_images": [],
+  "old_classes_without_replay": [],
+  "datasets_represented": [
+    "pv",
+    "rice1",
+    "rice2",
+    "rice3",
+    "rice4",
+    "wheat"
+  ],
+  "notes": [
+    "PlantVillage-derived classes (old and new) may be inflated by near-duplicate photos across train/validation.",
+    "Old-class generalisation relative to the ORIGINAL held-out split remains UNVERIFIED."
+  ]
+}

@@ -11,7 +11,7 @@ export function useScanner() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string>("leaf_image.jpg");
   const [selectedSample, setSelectedSample] = useState<SampleLeaf | null>(null);
-  const [cropHint, setCropHint] = useState<string>("Tomato");
+  const [cropHint, setCropHint] = useState<string>("auto");
   const [scanResult, setScanResult] = useState<ScanResult | null>(null);
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -43,29 +43,38 @@ export function useScanner() {
     setStatus("idle");
   }, []);
 
-  const runScan = useCallback(async () => {
-    if (!selectedImage) return;
+  const runScan = useCallback(
+    async (overrideCropHint?: string | unknown) => {
+      if (!selectedImage) return;
 
-    try {
-      setStatus("scanning");
-      setError(null);
+      const validCrop = typeof overrideCropHint === "string" ? overrideCropHint : undefined;
+      const effectiveCrop = validCrop !== undefined ? validCrop : cropHint;
+      if (validCrop !== undefined) {
+        setCropHint(validCrop);
+      }
 
-      const result = await detectCropDisease({
-        imageUrl: selectedImage,
-        imageName,
-        matchedDiseaseId: selectedSample?.matchedDiseaseId,
-        cropHint,
-      });
+      try {
+        setStatus("scanning");
+        setError(null);
 
-      setScanResult(result);
-      saveScanToHistory(result);
-      setStatus("completed");
-    } catch (err: any) {
-      console.error("Scan error:", err);
-      setError(err?.message || "Failed to analyze crop leaf. Please try again.");
-      setStatus("error");
-    }
-  }, [selectedImage, imageName, selectedSample, cropHint]);
+        const result = await detectCropDisease({
+          imageUrl: selectedImage,
+          imageName,
+          matchedDiseaseId: selectedSample?.matchedDiseaseId,
+          cropHint: effectiveCrop === "auto" ? undefined : effectiveCrop,
+        });
+
+        setScanResult(result);
+        saveScanToHistory(result);
+        setStatus("completed");
+      } catch (err: any) {
+        console.error("Scan error:", err);
+        setError(err?.message || "Failed to analyze crop leaf. Please try again.");
+        setStatus("error");
+      }
+    },
+    [selectedImage, imageName, selectedSample, cropHint]
+  );
 
   return {
     status,
@@ -74,7 +83,8 @@ export function useScanner() {
     selectedImage,
     imageName,
     selectedSample,
-
+    cropHint,
+    setCropHint,
     scanResult,
     isCameraOpen,
     setIsCameraOpen,

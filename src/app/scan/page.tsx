@@ -1,6 +1,7 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useScanner } from "@/hooks/useScanner";
 import { Dropzone } from "@/components/scanner/Dropzone";
 import { CameraModal } from "@/components/scanner/CameraModal";
@@ -9,17 +10,41 @@ import { ScanningAnimation } from "@/components/scanner/ScanningAnimation";
 import { DiagnosticResultCard } from "@/components/scanner/DiagnosticResultCard";
 import { Button } from "@/components/common/Button";
 import { Badge } from "@/components/common/Badge";
-import { Scan, Sparkles, RotateCcw, ShieldCheck, Info, AlertTriangle } from "lucide-react";
+import { Scan, Sparkles, RotateCcw, ShieldCheck, Info, AlertTriangle, Layers } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+
+const ALL_CROPS_LIST = [
+  { id: "auto", name: "Auto-Detect", bnName: "স্বয়ংক্রিয় (সব ফসল)", icon: "🌟" },
+  { id: "Rice", name: "Rice", bnName: "ধান", icon: "🌾" },
+  { id: "Tomato", name: "Tomato", bnName: "টমেটো", icon: "🍅" },
+  { id: "Potato", name: "Potato", bnName: "আলু", icon: "🥔" },
+  { id: "Bell Pepper", name: "Pepper", bnName: "মরিচ", icon: "🌶️" },
+  { id: "Corn (Maize)", name: "Corn", bnName: "ভুট্টা", icon: "🌽" },
+  { id: "Wheat", name: "Wheat", bnName: "গম", icon: "🌾" },
+  { id: "Apple", name: "Apple", bnName: "আপেল", icon: "🍎" },
+  { id: "Grape", name: "Grape", bnName: "আঙ্গুর", icon: "🍇" },
+  { id: "Strawberry", name: "Strawberry", bnName: "স্ট্রবেরি", icon: "🍓" },
+  { id: "Orange (Citrus)", name: "Citrus", bnName: "লেবু/কমলা", icon: "🍋" },
+  { id: "Peach", name: "Peach", bnName: "পিচ", icon: "🍑" },
+  { id: "Cherry", name: "Cherry", bnName: "চেরি", icon: "🍒" },
+  { id: "Blueberry", name: "Blueberry", bnName: "ব্লুবেরি", icon: "🫐" },
+  { id: "Raspberry", name: "Raspberry", bnName: "রাস্পবেরি", icon: "🍇" },
+  { id: "Soybean", name: "Soybean", bnName: "সয়াবিন", icon: "🌱" },
+  { id: "Squash", name: "Squash", bnName: "মিষ্টি কুমড়া", icon: "🎃" },
+];
 
 function ScannerStudioContent() {
   const { isBangla } = useLanguage();
+  const searchParams = useSearchParams();
+  const urlCrop = searchParams.get("crop");
 
   const {
     isScanning,
     isCompleted,
     selectedImage,
     selectedSample,
+    cropHint,
+    setCropHint,
     scanResult,
     isCameraOpen,
     setIsCameraOpen,
@@ -29,6 +54,20 @@ function ScannerStudioContent() {
     runScan,
   } = useScanner();
 
+  useEffect(() => {
+    if (urlCrop) {
+      const found = ALL_CROPS_LIST.find(
+        (c) =>
+          c.id !== "auto" &&
+          (urlCrop.toLowerCase().includes(c.name.toLowerCase()) ||
+            urlCrop.toLowerCase().includes(c.id.toLowerCase()) ||
+            urlCrop.toLowerCase().includes(c.bnName.toLowerCase()))
+      );
+      if (found) {
+        setCropHint(found.id);
+      }
+    }
+  }, [urlCrop, setCropHint]);
 
   return (
     <div className="py-10 sm:py-14">
@@ -61,21 +100,53 @@ function ScannerStudioContent() {
 
         {/* Main Scanner Container */}
         <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-10 shadow-xl dark:border-slate-800 dark:bg-slate-900">
-          {/* Auto-detect Info Bar */}
-          <div className="flex items-center gap-2.5 mb-8 pb-6 border-b border-slate-100 dark:border-slate-800">
-            <div className="flex items-center gap-2 rounded-xl bg-agri-50 dark:bg-agri-950/40 px-3 py-1.5 border border-agri-200 dark:border-agri-800">
-              <Sparkles className="h-3.5 w-3.5 text-agri-600" />
-              <span className="text-xs font-semibold text-agri-800 dark:text-agri-300">
-                {isBangla ? "ফসল ও রোগ স্বয়ংক্রিয় শনাক্তকরণ" : "Auto-Detect Crop & Disease"}
+          {/* Target Crop Selection Bar */}
+          <div className="mb-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 p-4 border border-slate-200/80 dark:border-slate-800">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div className="flex items-center gap-2">
+                <Layers className="h-4 w-4 text-agri-600" />
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                  {isBangla ? "কোন ফসলের পাতা স্ক্যান করছেন?" : "Which crop are you scanning?"}
+                </span>
+              </div>
+              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                {cropHint === "auto"
+                  ? isBangla
+                    ? "🌟 স্বয়ংক্রিয় সনাক্তকরণ সক্রিয় (১৬টি ফসল)"
+                    : "🌟 Auto-detect active across all 16 crops"
+                  : isBangla
+                  ? `🎯 ফোকাস ফসল: ${ALL_CROPS_LIST.find((c) => c.id === cropHint)?.bnName || cropHint}`
+                  : `🎯 Focused on: ${ALL_CROPS_LIST.find((c) => c.id === cropHint)?.name || cropHint}`}
               </span>
             </div>
-            <div className="flex items-center gap-1.5 text-xs text-slate-500">
-              <Info className="h-3.5 w-3.5 text-agri-600 flex-shrink-0" />
-              <span>
-                {isBangla
-                  ? "পাতার ছবি আপলোড করুন — এআই স্বয়ংক্রিয়ভাবে ফসল ও রোগ শনাক্ত করবে"
-                  : "Upload a leaf image — AI auto-detects crop type and disease"}
-              </span>
+
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
+              {ALL_CROPS_LIST.map((c) => {
+                const isActive =
+                  (cropHint === "auto" && c.id === "auto") ||
+                  cropHint.toLowerCase() === c.id.toLowerCase() ||
+                  cropHint.toLowerCase().includes(c.name.toLowerCase());
+                return (
+                  <button
+                    key={c.id}
+                    type="button"
+                    onClick={() => {
+                      setCropHint(c.id);
+                      if (selectedImage) {
+                        runScan(c.id);
+                      }
+                    }}
+                    className={`flex items-center gap-1.5 whitespace-nowrap px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                      isActive
+                        ? "bg-agri-600 text-white shadow-md ring-2 ring-agri-500/30 scale-105"
+                        : "bg-white text-slate-700 hover:bg-slate-100 hover:border-agri-300 border border-slate-200 dark:bg-slate-900 dark:text-slate-300 dark:border-slate-700"
+                    }`}
+                  >
+                    <span>{c.icon}</span>
+                    <span>{isBangla ? c.bnName : c.name}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -113,7 +184,7 @@ function ScannerStudioContent() {
                 <Button variant="ghost" size="sm" onClick={clearImage} className="text-slate-300 hover:text-white">
                   {isBangla ? "বাতিল" : "Clear"}
                 </Button>
-                <Button variant="primary" size="md" onClick={runScan} className="shadow-lg">
+                <Button variant="primary" size="md" onClick={() => runScan()} className="shadow-lg">
                   <Scan className="h-4 w-4 mr-1.5" />
                   {isBangla ? "এআই দিয়ে রোগ নির্ণয় করুন" : "Run AI Disease Analysis"}
                 </Button>
@@ -151,6 +222,9 @@ function ScannerStudioContent() {
               <DiagnosticResultCard
                 scanResult={scanResult}
                 onRetake={clearImage}
+                onSelectCrop={(crop) => {
+                  runScan(crop);
+                }}
               />
             </div>
           )}

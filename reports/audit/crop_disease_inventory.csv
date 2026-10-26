@@ -1,0 +1,51 @@
+output_index,raw_label,crop,bangla_crop,disease_id,is_healthy,in_database,in_frontend_map,dataset_group,train_samples,val_samples,sample_sufficiency,val_precision,val_recall,val_f1
+0,Pepper__bell___Bacterial_spot,Bell Pepper,মরিচ,pepper-bacterial-spot,False,True,True,old (replay),510,90,SUFFICIENT,0.989010989010989,1.0,0.994475138121547
+1,Pepper__bell___healthy,Bell Pepper,মরিচ,pepper-healthy,True,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+2,Potato___Early_blight,Potato,আলু,potato-early-blight,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+3,Potato___Late_blight,Potato,আলু,potato-late-blight,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+4,Potato___healthy,Potato,আলু,potato-healthy,True,True,True,old (replay),129,23,MODERATE,1.0,1.0,1.0
+5,Rice_Bacterial_Leaf_Blight,Rice,ধান,rice-bacterial-leaf-blight,False,True,True,old (replay),510,90,SUFFICIENT,0.9772727272727273,0.9555555555555556,0.9662921348314607
+6,Rice_Blast,Rice,ধান,rice-blast,False,True,True,old (replay),510,90,SUFFICIENT,0.9418604651162791,0.9,0.9204545454545454
+7,Rice_Brown_Spot,Rice,ধান,rice-brown-spot,False,True,True,old (replay),510,90,SUFFICIENT,0.9885057471264368,0.9555555555555556,0.9717514124293786
+8,Rice_Healthy,Rice,ধান,rice-healthy,True,True,True,old (replay),510,90,SUFFICIENT,0.8058252427184466,0.9222222222222223,0.8601036269430051
+9,Rice_Hispa,Rice,ধান,rice-hispa,False,True,True,old (replay),480,85,SUFFICIENT,0.8588235294117647,0.8588235294117647,0.8588235294117647
+10,Rice_Leaf_Scald,Rice,ধান,rice-leaf-scald,False,True,True,old (replay),510,90,SUFFICIENT,0.9782608695652174,1.0,0.989010989010989
+11,Rice_Narrow_Brown_Spot,Rice,ধান,rice-narrow-brown-spot,False,True,True,old (replay),431,76,SUFFICIENT,1.0,1.0,1.0
+12,Rice_Sheath_Blight,Rice,ধান,rice-sheath-blight,False,True,True,old (replay),510,90,SUFFICIENT,0.9888888888888889,0.9888888888888889,0.9888888888888889
+13,Rice_Tungro,Rice,ধান,rice-tungro,False,True,True,old (replay),85,15,MODERATE,1.0,1.0,1.0
+14,Tomato_Bacterial_spot,Tomato,টমেটো,tomato-bacterial-spot,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+15,Tomato_Early_blight,Tomato,টমেটো,tomato-early-blight,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+16,Tomato_Late_blight,Tomato,টমেটো,tomato-late-blight,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+17,Tomato_Leaf_Mold,Tomato,টমেটো,tomato-leaf-mold,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+18,Tomato_Septoria_leaf_spot,Tomato,টমেটো,tomato-septoria-leaf-spot,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+19,Tomato_Spider_mites_Two_spotted_spider_mite,Tomato,টমেটো,tomato-spider-mites,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+20,Tomato__Target_Spot,Tomato,টমেটো,tomato-target-spot,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+21,Tomato__Tomato_YellowLeaf__Curl_Virus,Tomato,টমেটো,tomato-yellow-leaf-curl-virus,False,True,True,old (replay),510,90,SUFFICIENT,1.0,1.0,1.0
+22,Tomato__Tomato_mosaic_virus,Tomato,টমেটো,tomato-mosaic-virus,False,True,True,old (replay),317,56,SUFFICIENT,1.0,1.0,1.0
+23,Tomato_healthy,Tomato,টমেটো,healthy-tomato-leaf,True,True,True,old (replay),510,90,SUFFICIENT,1.0,0.9888888888888889,0.994413407821229
+24,Apple_Apple_scab,Apple,আপেল,apple-scab,False,True,True,new,535,95,SUFFICIENT,1.0,0.9894736842105263,0.9947089947089947
+25,Apple_Black_rot,Apple,আপেল,apple-black-rot,False,True,True,new,528,93,SUFFICIENT,1.0,1.0,1.0
+26,Apple_Cedar_apple_rust,Apple,আপেল,apple-cedar-rust,False,True,True,new,234,41,MODERATE,1.0,1.0,1.0
+27,Apple_healthy,Apple,আপেল,apple-healthy,True,True,True,new,1275,225,SUFFICIENT,1.0,0.9955555555555555,0.9977728285077951
+28,Blueberry_healthy,Blueberry,ব্লুবেরি,blueberry-healthy,True,True,True,new,1275,225,SUFFICIENT,1.0,1.0,1.0
+29,Cherry_including_sour_Powdery_mildew,Cherry,চেরি,cherry-powdery-mildew,False,True,True,new,894,158,SUFFICIENT,1.0,1.0,1.0
+30,Cherry_including_sour_healthy,Cherry,চেরি,cherry-healthy,True,True,True,new,726,128,SUFFICIENT,1.0,1.0,1.0
+31,Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot,Corn (Maize),ভুট্টা,corn-gray-leaf-spot,False,True,True,new,436,77,SUFFICIENT,0.9367088607594937,0.961038961038961,0.9487179487179487
+32,Corn_maize_Common_rust,Corn (Maize),ভুট্টা,corn-common-rust,False,True,True,new,1013,179,SUFFICIENT,1.0,0.9888268156424581,0.9943820224719101
+33,Corn_maize_Northern_Leaf_Blight,Corn (Maize),ভুট্টা,corn-northern-leaf-blight,False,True,True,new,837,148,SUFFICIENT,0.972972972972973,0.972972972972973,0.972972972972973
+34,Corn_maize_healthy,Corn (Maize),ভুট্টা,corn-healthy,True,True,True,new,988,174,SUFFICIENT,1.0,0.9942528735632183,0.9971181556195965
+35,Grape_Black_rot,Grape,আঙ্গুর,grape-black-rot,False,True,True,new,1003,177,SUFFICIENT,0.9943820224719101,1.0,0.9971830985915493
+36,Grape_Esca_Black_Measles,Grape,আঙ্গুর,grape-esca-black-measles,False,True,True,new,1175,208,SUFFICIENT,0.9951923076923077,0.9951923076923077,0.9951923076923077
+37,Grape_Leaf_blight_Isariopsis_Leaf_Spot,Grape,আঙ্গুর,grape-leaf-blight,False,True,True,new,915,161,SUFFICIENT,1.0,1.0,1.0
+38,Grape_healthy,Grape,আঙ্গুর,grape-healthy,True,True,True,new,360,63,SUFFICIENT,1.0,1.0,1.0
+39,Orange_Haunglongbing_Citrus_greening,Orange (Citrus),লেবু / কমলা,citrus-greening-huanglongbing,False,True,True,new,1275,225,SUFFICIENT,1.0,0.9955555555555555,0.9977728285077951
+40,Peach_Bacterial_spot,Peach,পিচ,peach-bacterial-spot,False,True,True,new,1275,225,SUFFICIENT,0.9955555555555555,0.9955555555555555,0.9955555555555555
+41,Peach_healthy,Peach,পিচ,peach-healthy,True,True,True,new,306,54,SUFFICIENT,1.0,1.0,1.0
+42,Raspberry_healthy,Raspberry,রাস্পবেরি,raspberry-healthy,True,True,True,new,315,56,SUFFICIENT,1.0,1.0,1.0
+43,Soybean_healthy,Soybean,সয়াবিন,soybean-healthy,True,True,True,new,1275,225,SUFFICIENT,0.995575221238938,1.0,0.9977827050997783
+44,Squash_Powdery_mildew,Squash,মিষ্টি কুমড়া / স্কোয়াশ,squash-powdery-mildew,False,True,True,new,1275,225,SUFFICIENT,1.0,1.0,1.0
+45,Strawberry_Leaf_scorch,Strawberry,স্ট্রবেরি,strawberry-leaf-scorch,False,True,True,new,943,166,SUFFICIENT,1.0,1.0,1.0
+46,Strawberry_healthy,Strawberry,স্ট্রবেরি,strawberry-healthy,True,True,True,new,388,68,SUFFICIENT,1.0,1.0,1.0
+47,Wheat_Healthy,Wheat,গম,wheat-healthy,True,True,True,new,86,15,MODERATE,0.9,0.6,0.72
+48,Wheat_Septoria,Wheat,গম,wheat-septoria,False,True,True,new,82,15,MODERATE,1.0,1.0,1.0
+49,Wheat_Stripe_Rust,Wheat,গম,wheat-stripe-rust,False,True,True,new,177,31,MODERATE,0.96875,1.0,0.9841269841269841

@@ -1,0 +1,51 @@
+class_id,class,group,train_images,support
+0,Pepper__bell___Bacterial_spot,old (replay),510,90
+1,Pepper__bell___healthy,old (replay),510,90
+2,Potato___Early_blight,old (replay),510,90
+3,Potato___Late_blight,old (replay),510,90
+4,Potato___healthy,old (replay),129,23
+5,Rice_Bacterial_Leaf_Blight,old (replay),510,90
+6,Rice_Blast,old (replay),510,90
+7,Rice_Brown_Spot,old (replay),510,90
+8,Rice_Healthy,old (replay),510,90
+9,Rice_Hispa,old (replay),480,85
+10,Rice_Leaf_Scald,old (replay),510,90
+11,Rice_Narrow_Brown_Spot,old (replay),431,76
+12,Rice_Sheath_Blight,old (replay),510,90
+13,Rice_Tungro,old (replay),85,15
+14,Tomato_Bacterial_spot,old (replay),510,90
+15,Tomato_Early_blight,old (replay),510,90
+16,Tomato_Late_blight,old (replay),510,90
+17,Tomato_Leaf_Mold,old (replay),510,90
+18,Tomato_Septoria_leaf_spot,old (replay),510,90
+19,Tomato_Spider_mites_Two_spotted_spider_mite,old (replay),510,90
+20,Tomato__Target_Spot,old (replay),510,90
+21,Tomato__Tomato_YellowLeaf__Curl_Virus,old (replay),510,90
+22,Tomato__Tomato_mosaic_virus,old (replay),317,56
+23,Tomato_healthy,old (replay),510,90
+24,Apple_Apple_scab,new,535,95
+25,Apple_Black_rot,new,528,93
+26,Apple_Cedar_apple_rust,new,234,41
+27,Apple_healthy,new,1275,225
+28,Blueberry_healthy,new,1275,225
+29,Cherry_including_sour_Powdery_mildew,new,894,158
+30,Cherry_including_sour_healthy,new,726,128
+31,Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot,new,436,77
+32,Corn_maize_Common_rust,new,1013,179
+33,Corn_maize_Northern_Leaf_Blight,new,837,148
+34,Corn_maize_healthy,new,988,174
+35,Grape_Black_rot,new,1003,177
+36,Grape_Esca_Black_Measles,new,1175,208
+37,Grape_Leaf_blight_Isariopsis_Leaf_Spot,new,915,161
+38,Grape_healthy,new,360,63
+39,Orange_Haunglongbing_Citrus_greening,new,1275,225
+40,Peach_Bacterial_spot,new,1275,225
+41,Peach_healthy,new,306,54
+42,Raspberry_healthy,new,315,56
+43,Soybean_healthy,new,1275,225
+44,Squash_Powdery_mildew,new,1275,225
+45,Strawberry_Leaf_scorch,new,943,166
+46,Strawberry_healthy,new,388,68
+47,Wheat_Healthy,new,86,15
+48,Wheat_Septoria,new,82,15
+49,Wheat_Stripe_Rust,new,177,31
