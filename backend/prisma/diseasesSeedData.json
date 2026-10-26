@@ -1,0 +1,4882 @@
+[
+  {
+    "id": "tomato-early-blight",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Early Blight",
+    "banglaName": "টমেটোর আগাম ধসা রোগ",
+    "scientificName": "Alternaria solani",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 96.8,
+    "summary": "A destructive fungal disease characterized by concentric rings forming 'target board' lesions primarily on mature foliage, causing premature defoliation and fruit collar rot.",
+    "banglaSummary": "অল্টারনারিয়া সোলানি ছত্রাকজনিত একটি মারাত্মক রোগ। বয়স্ক পাতায় চক্রাকার দাগ বা টার্গেট বোর্ডের মতো রিং তৈরি হয় এবং আক্রান্ত পাতা দ্রুত শুকিয়ে ঝরে পড়ে ফলন কমে যায়।",
+    "symptoms": [
+      "Dark brown to black necrotic spots on older bottom leaves",
+      "Concentric circular rings within lesions (target-pattern appearance)",
+      "Yellow chlorotic halos surrounding leaf lesions",
+      "Stems developing dark, sunken circular cankers",
+      "Sunken, leathery dark spots on fruit near the stem calyx"
+    ],
+    "banglaSymptoms": [
+      "গাছের নিচের বয়স্ক পাতায় গাঢ় বাদামী বা কালচে গোল দাগ দেখা যায়",
+      "দাগগুলোর ভেতর একাধিক কেন্দ্রীভূত রিং বা চক্রাকার বলয় (টার্গেট বোর্ড) তৈরি হয়",
+      "দাগের চারপাশের পাতার অংশ হলুদ হয়ে যায়",
+      "কাণ্ডে গাঢ় ও কিছুটা দেবে যাওয়া ক্ষতচিহ্ন দেখা দেয়",
+      "ফলের বোঁটার অংশে কালচে ও চামড়ার মতো শক্ত ক্ষতের সৃষ্টি হয়"
+    ],
+    "favorableConditions": [
+      "Warm temperatures between 24°C - 29°C (75°F - 85°F)",
+      "Frequent rains, high relative humidity (>80%), or heavy overhead dew",
+      "Dense canopy with poor air circulation"
+    ],
+    "banglaCauses": [
+      "২৪° থেকে ২৯° সেলসিয়াস তাপমাত্রা এবং উচ্চ আর্দ্রতা (>৮০%)",
+      "ঘন কুয়াশা, গুঁড়ি গুঁড়ি বৃষ্টি বা পাতায় দীর্ঘক্ষণ শিশির জমে থাকা",
+      "জমিতে ঘন করে চারা রোপণ ও অপর্যাপ্ত বাতাস চলাচল",
+      "আগের মৌসুমে আক্রান্ত ফসলের অবশিষ্টাংশ মাটিতে থাকা"
+    ],
+    "affectedParts": [
+      "Lower leaves",
+      "Stems",
+      "Fruit"
+    ],
+    "banglaAffectedParts": [
+      "নিচের পাতা",
+      "ডালপালা ও কাণ্ড",
+      "টমেটো ফল"
+    ],
+    "banglaCropInfo": "টমেটো (Solanaceae পরিবার) - বাংলাদেশের প্রধান শীতকালীন ও গ্রীষ্মকালীন অর্থকরী সবজি ফসল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "গাছের নিচের আক্রান্ত ও হলুদ হওয়া পাতা সতর্কতার সাথে ছেঁটে পুড়িয়ে বা মাটিতে পুঁতে ফেলুন।",
+        "ছাঁটাইয়ের পর জমিতে কোনো আক্রান্ত পাতা ফেলে রাখবেন না, এতে ছত্রাকের স্পোর ছড়াতে পারে।",
+        "পাতার ওপর দিয়ে পানি না দিয়ে গাছের গোড়ায় বা ড্রিপ পদ্ধতিতে সেচ প্রদান করুন।"
+      ],
+      "preventionMethods": [
+        "একই জমিতে পর পর বেগুন, আলু বা টমেটো চাষ না করে শস্যপর্যায় (Crop Rotation) মেনে চলুন।",
+        "রোপণের সময় সুস্থ, রোগমুক্ত ও প্রত্যায়িত বীজতলার চারা ব্যবহার করুন।",
+        "গাছের গোড়ায় শুকনো খড়ের মালচিং ব্যবহার করুন যাতে সেচের পানির ছিটে পাতার গায়ে না লাগে।",
+        "গাছ যাতে নুয়ে না পড়ে সেজন্য খুঁটি বা সুতলি দিয়ে বেঁধে দিন এবং আলো-বাতাস নিশ্চিত করুন।"
+      ],
+      "fieldCareGuidance": [
+        "সকালের দিকে সেচ দিন যাতে দিনের আলোতে পাতার পানি দ্রুত শুকিয়ে যায়।",
+        "সুষম সার ব্যবহার করুন; অতিরিক্ত ইউরিয়া নাইট্রোজেন সার ব্যবহার করলে রোগ দ্রুত বৃদ্ধি পায়।",
+        "গাছ ছাঁটাইয়ের কাঁচি বা ছুরি ব্যবহারের পূর্বে জীবাণুমুক্ত বা সাবান পানি দিয়ে ধুয়ে নিন।"
+      ],
+      "whenToConsultExpert": [
+        "যদি মাঠের ২০% এর বেশি গাছে দ্রুত রোগ ছড়িয়ে পড়ে এবং কাণ্ডে ক্ষত তৈরি হয়।",
+        "প্রাথমিক ব্যবস্থা নেওয়ার ৩-৪ দিনের মধ্যেও রোগের বিস্তার না থামলে নিকটস্থ উপজেলা কৃষি অফিসে নমুনা পাতা নিয়ে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "⚠️ রাসায়নিক বা ছত্রাকনাশকের নির্দিষ্ট বাণিজ্যিক ডোজ অনুমান করে প্রয়োগ করা ঝুঁকিপূর্ণ। সর্বদা বোতলের গায়ে অনুমোদিত অনুমোদনের মাত্রা দেখুন এবং স্থানীয় উপজেলা উপসহকারী কৃষি কর্মকর্তার (SAAO) পরামর্শ অনুযায়ী অনুমোদিত ছত্রাকনাশক স্প্রে করুন।",
+      "verifiedSource": "বাংলাদেশ কৃষি গবেষণা ইনস্টিটিউট (BARI) ও কৃষি তথ্য সার্ভিস (AIS)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Prune Infected Lower Leaves",
+          "description": "Carefully snip and discard infected lower foliage at least 12 inches above soil level. Do not compost infected leaves.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "85-90%"
+        },
+        {
+          "title": "Apply Protective Barrier Spray",
+          "description": "Spray thorough leaf coverage (underside and tops) with an approved antifungal solution before rainfall.",
+          "priority": "High",
+          "timeframe": "Within 48 hours",
+          "effectiveness": "92-95%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Copper Octanoate (Liquid Copper)",
+          "preparation": "Mix 15-30 ml per gallon of clean water",
+          "application": "Foliar mist every 7-10 days, ensuring complete leaf undersides coverage",
+          "certifications": "OMRI Listed, USDA Organic Compliant"
+        },
+        {
+          "name": "Neem Oil Extract",
+          "preparation": "5 ml Neem extract + 2 ml organic biodegradable dish soap per liter of water",
+          "application": "Spray every 5 days during initial lesion breakout",
+          "certifications": "100% Bio-based"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Chlorothalonil (Bravo WeatherStik)",
+          "activeIngredient": "Chlorothalonil 54%",
+          "dosage": "Follow manufacturer registered label",
+          "safetyInterval": "0 days (PHI for tomatoes), avoid during honeybee peak flight",
+          "cautions": "Protective gear required. Strictly adhere to approved label dosage."
+        }
+      ],
+      "preventiveMeasures": [
+        "Enforce strict 3-year crop rotation with non-solanaceous crops",
+        "Apply 3-4 inches of clean straw or organic mulch around base stems",
+        "Maintain minimum 24-inch in-row plant spacing and stake/trellis plants vertically"
+      ],
+      "culturalPractices": [
+        "Stake plants vertically using string trellising",
+        "Water early in the morning so sun dries leaf surfaces quickly"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "potato-late-blight",
+    "crop": "Potato",
+    "banglaCrop": "আলু",
+    "commonName": "Late Blight",
+    "banglaName": "আলুর নাবী ধসা (লেট ব্লাইট)",
+    "scientificName": "Phytophthora infestans",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 98.4,
+    "summary": "A devastating water mold that caused the historic Irish Potato Famine. Characterized by aggressive water-soaked black lesions and white fuzzy sporulation on leaf undersides under moist conditions.",
+    "banglaSummary": "ফাইটোপথোরা ইনফেসট্যান্স দ্বারা সৃষ্ট আলুর সর্বাধিক ধ্বংসাত্মক রোগ। পাতা, কাণ্ড এবং কন্দে দ্রুত ছড়ায়; কুয়াশাচ্ছন্ন আর্দ্র আবহাওয়ায় ২-৩ দিনের মধ্যে পুরো মাঠ পুড়ে যাওয়ার মতো কালো হয়ে যায়।",
+    "symptoms": [
+      "Irregular water-soaked pale-green to dark-brown lesions on leaves and petioles",
+      "Delicate white fungal down/fuzz visible on underside of leaves in humid mornings",
+      "Stems developing brittle dark purple to black necrotized patches",
+      "Tubers displaying granular, reddish-brown dry rot below the skin",
+      "Rapid vine collapse and putrid rotting odor across the field"
+    ],
+    "banglaSymptoms": [
+      "পাতার ডগায় বা কিনারে প্রথমে ভেজা ভেজা জলছাপের মতো হালকা সবুজ থেকে কালো দাগ",
+      "সকালের কুয়াশায় বা আর্দ্র আবহাওয়ায় পাতার উল্টো পিঠে সাদা তুলোর মতো ছত্রাক দেখা যায়",
+      "গাছের কাণ্ডে কালচে দাগ পড়ে এবং কাণ্ড সহজেই ভেঙে পড়ে",
+      "মাটির নিচের আলুর খোসার নিচে লালচে-বাদামী শুকনো পচন ধরে",
+      "আক্রমণ তীব্র হলে দূর থেকে পুরো খেত আগুনে ঝলসে যাওয়ার মতো দেখায় এবং পচা গন্ধ বের হয়"
+    ],
+    "favorableConditions": [
+      "Cool to moderate temperatures (15°C - 21°C / 60°F - 70°F)",
+      "Extended wet leaf periods (>10 hours) and relative humidity >90%",
+      "Continuous overcast skies and foggy spells"
+    ],
+    "banglaCauses": [
+      "টানা মেঘলা আকাশ, ঘন কুয়াশা ও গুঁড়ি গুঁড়ি বৃষ্টি",
+      "১৫° থেকে ২০° সেলসিয়াস তাপমাত্রা এবং বাতাসে ৯০% এর বেশি আপেক্ষিক আর্দ্রতা",
+      "বাতাসের মাধ্যমে স্পোর দ্রুত এক খেত থেকে অন্য খেতে ছড়িয়ে পড়ে"
+    ],
+    "affectedParts": [
+      "Foliage",
+      "Stems",
+      "Tubers",
+      "Stolons"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "বোঁটা ও কাণ্ড",
+      "মাটির নিচে আলুর কন্দ"
+    ],
+    "banglaCropInfo": "আলু (Solanum tuberosum) - বাংলাদেশের প্রধান অর্থকরী কন্দ ফসল। মুন্সীগঞ্জ, বগুড়া, রংপুর ও জয়পুরহাটে ব্যাপক চাষ হয়।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত গাছে অবিলম্বে সেচ দেওয়া সম্পূর্ণ বন্ধ করুন। জমিতে পানি জমে থাকলে ছত্রাক দ্রুত আলুর কন্দে প্রবেশ করে।",
+        "রোগের লক্ষণ দেখা মাত্র কুয়াশা কেটে যাওয়ার পর অনুমোদিত প্রতিরোধক বা স্পর্শক ছত্রাকনাশক পাতার উপরে ও নিচে ভালোভাবে ভিজিয়ে স্প্রে করুন।",
+        "মাঠে ব্যাপকভাবে রোগ ছড়িয়ে পড়লে আলু তোলার ১০-১৫ দিন আগে গাছের ওপরের লতা কেটে অপসারণ (Haulm cutting) করুন যাতে আলু অক্ষত থাকে।"
+      ],
+      "preventionMethods": [
+        "বিএডিসি (BADC) বা প্রত্যয়িত রোগমুক্ত বীজ আলু ব্যবহার করুন।",
+        "শীতকালে টানা ৩ দিন ঘন কুয়াশা ও মেঘলা আকাশ থাকলে আগাম সতর্কতা হিসেবে বোর্দো মিক্সচার বা অনুমোদিত ম্যানকোজেব স্প্রে করুন।",
+        "গাছের গোড়ায় ভালো করে মাটি তুলে দিন যাতে বৃষ্টির পানি বা ছত্রাকের স্পোর আলুর সংস্পর্শে না যায়।",
+        "ফসল কাটার পর জমির আক্রান্ত লতাপাতা পুড়িয়ে নষ্ট করে ফেলুন।"
+      ],
+      "fieldCareGuidance": [
+        "কুয়াশাচ্ছন্ন সকালে জমিতে কাজ করা বা পাতার সংস্পর্শে হাঁটা এড়িয়ে চলুন।",
+        "মাটির অতিরিক্ত আর্দ্রতা নিষ্কাশনের জন্য নালা পরিষ্কার রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "আশেপাশের খেতে রোগ দেখা দিলে এবং আপনার খেতের পাতায় সাদা ছত্রাকের আস্তরণ দেখা দেওয়া মাত্র।",
+        "জরুরি ভিত্তিতে সঠিক অনুমোদিত ছত্রাকনাশক নির্বাচনের জন্য অবিলম্বে উপজেলা কৃষি অফিসে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "⚠️ রাসায়নিক বা কীটনাশকের নির্দিষ্ট বাণিজ্যিক ডোজ অনুমান করে প্রয়োগ করবেন না। লেট ব্লাইটের জন্য কৃষি সম্প্রসারণ অধিদপ্তর (DAE) নির্দেশিত অনুমোদিত গ্রুপের ছত্রাকনাশক বোতলের লেবেলে উল্লেখিত সঠিক মাত্রায় স্প্রে করুন।",
+      "verifiedSource": "বাংলাদেশ কৃষি সম্প্রসারণ অধিদপ্তর (DAE) ও কন্দাল ফসল গবেষণা কেন্দ্র (BARI)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Emergency Foliar Protection",
+          "description": "Immediately apply a systemic penetrant fungicide with translaminar activity across all surrounding healthy rows.",
+          "priority": "High",
+          "timeframe": "Immediate (within 12 hours)",
+          "effectiveness": "95%"
+        },
+        {
+          "title": "Halt Sprinkler Irrigation",
+          "description": "Stop all overhead watering. Tubers must stay dry to prevent zoospores washing down through soil fissures.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "90%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Bordeaux Mixture (1%)",
+          "preparation": "100g copper sulfate, 100g hydrated lime in 10 liters clean water",
+          "application": "Spray preventative coat before rain fronts; reapply every 5 days in wet weather",
+          "certifications": "Traditional Organic Standard"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Cymoxanil + Mancozeb",
+          "activeIngredient": "Cymoxanil 8% + Mancozeb 64%",
+          "dosage": "Refer to approved product package label",
+          "safetyInterval": "7-14 days pre-harvest",
+          "cautions": "Follow government approved safety precautions and wear mask."
+        }
+      ],
+      "preventiveMeasures": [
+        "Plant only certified disease-free seed tubers with blue label guarantee",
+        "Select late-blight resistant potato cultivars",
+        "Hill potato ridges deeply (min 4-6 inches) to protect tubers"
+      ],
+      "culturalPractices": [
+        "Monitor local weather warning services daily during December-January",
+        "Desiccate vines with haulm cutter 10 days prior to harvest"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "pepper-bacterial-spot",
+    "crop": "Bell Pepper",
+    "banglaCrop": "মরিচ",
+    "commonName": "Bacterial Spot",
+    "banglaName": "মরিচের ব্যাকটেরিয়াল দাগ রোগ",
+    "scientificName": "Xanthomonas euvesicatoria",
+    "pathogenType": "Bacterial",
+    "severity": "Moderate",
+    "confidence": 95.2,
+    "summary": "A widespread and destructive bacterial pathogen attacking peppers and chilies, resulting in small water-soaked lesions that turn necrotic with raised margins, causing widespread leaf drop.",
+    "banglaSummary": "জ্যান্থোমোনাস ব্যাকটেরিয়াজনিত রোগ। পাতায় ছোট ছোট জলছাপের মতো দাগ পড়ে যা পরবর্তীতে কালচে বাদামী হয়ে কেন্দ্রভাগ ফেটে যায়। প্রচুর পাতা ঝরে পড়ে এবং ফল কুঁচকে যায়।",
+    "symptoms": [
+      "Small (1-3mm), circular, water-soaked dark spots on lower leaf surface",
+      "Lesions turn purplish-brown to black with cracked, raised centers",
+      "Severe chlorosis and massive premature leaf shedding",
+      "Fruit displaying wart-like rough, scabbed, blistered spots"
+    ],
+    "banglaSymptoms": [
+      "পাতার নিচের পিঠে ১-৩ মিমি আকারের ছোট জলছাপযুক্ত বাদামী বা কালচে দাগ",
+      "দাগগুলোর কেন্দ্রভাগ খসখসে ও সামান্য উঁচু হয়ে যায়",
+      "আক্রান্ত পাতা দ্রুত হলুদ হয়ে ঝরে পড়ে এবং গাছ পাতাশূন্য হয়ে পড়ে",
+      "মরিচের গায়ে গুটি বা ফোস্কার মতো ক্ষতের দাগ দেখা যায়"
+    ],
+    "favorableConditions": [
+      "Warm temperatures between 25°C - 30°C (77°F - 86°F)",
+      "Heavy downpours, wind-driven rain, and high humidity",
+      "Overhead tractor cultivation while plants are wet"
+    ],
+    "banglaCauses": [
+      "উচ্চ তাপমাত্রা (২৫-৩০° সে.) এবং ভারী বৃষ্টিপাত",
+      "ঝড়ো বাতাসে পাতার পারস্পরিক ঘর্ষণে ক্ষত সৃষ্টি হলে ব্যাকটেরিয়া প্রবেশ করে",
+      "আক্রান্ত বীজ ও অতিরিক্ত ভেজা জমি"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Stems",
+      "Fruit"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ডগা",
+      "কাঁচা ও পাকা মরিচ"
+    ],
+    "banglaCropInfo": "মরিচ (Capsicum annuum) - বাংলাদেশের অন্যতম প্রধান অর্থকরী মসলা জাতীয় ফসল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত ডাল ও পাতা সাবধানে সংগ্রহ করে ধ্বংস করুন।",
+        "ভেজা অবস্থায় জমিতে কোনো কাজ বা মরিচ তোলা থেকে বিরত থাকুন, অন্যথায় ব্যাকটেরিয়া সব গাছে ছড়াবে।",
+        "অনুমোদিত কপার অক্সিক্লোরাইড জাতীয় ছত্রাক ও ব্যাকটেরিয়ানাশক অনুমোদিত মাত্রায় স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "গরম পানিতে (৫০° সে. তাপমাত্রায় ২৫ মিনিট) বীজ শোধন করে চারা তৈরি করুন।",
+        "রোগমুক্ত প্রত্যয়িত বীজ এবং প্রতিরোধী জাতের মরিচ চাষ করুন।",
+        "পরপর দুই বছর একই জমিতে টমেটো বা মরিচ চাষ পরিহার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "গাছের গোড়ায় পানি জমতে দেবেন না, সুষম নিষ্কাশন নিশ্চিত করুন।",
+        "ইউরিয়ার মাত্রা কমিয়ে পটাশ সারের পরিমাণ বাড়ান, যা গাছের রোগ প্রতিরোধ ক্ষমতা বাড়ায়।"
+      ],
+      "whenToConsultExpert": [
+        "পাতার বড় অংশ ঝরে পড়তে শুরু করলে ও ফল ক্ষতিগ্রস্ত হলে স্থানীয় কৃষি কর্মকর্তার পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ রাসায়নিক কীটনাশক বা ব্যাকটেরিয়ানাশকের নির্দিষ্ট বাণিজ্যিক ডোজ অনুমান করে ব্যবহার করবেন না। সবসময় সরকারি অনুমোদিত নির্দেশিকা ও কৃষি কর্মকর্তার প্রেসক্রিপশন অনুযায়ী সঠিক মাত্রায় ব্যবহার করুন।",
+      "verifiedSource": "বাংলাদেশ কৃষি গবেষণা কাউন্সিল (BARC) ও মসলা গবেষণা কেন্দ্র (Bari)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Copper Protectant Spray",
+          "description": "Apply registered copper fungicide/bactericide mixture according to official approved agricultural label.",
+          "priority": "High",
+          "timeframe": "Immediate (24 hours)",
+          "effectiveness": "88%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Bordeaux Mixture / Bio-copper",
+          "preparation": "Mix as per standard agricultural organic recommendation",
+          "application": "Spray during early morning hours ensuring underside coverage",
+          "certifications": "Bio-Safe Approved"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Copper Hydroxide formulation",
+          "activeIngredient": "Copper Hydroxide 77%",
+          "dosage": "Refer strictly to registered packaging directions",
+          "safetyInterval": "Approved pre-harvest interval",
+          "cautions": "Wear protective gloves and eye protection."
+        }
+      ],
+      "preventiveMeasures": [
+        "Purchase hot-water treated certified disease-free seeds",
+        "Never enter or work in pepper rows while foliage is wet with dew or rain"
+      ],
+      "culturalPractices": [
+        "Rotate fields out of Solanaceae family for minimum 2 years"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "corn-common-rust",
+    "crop": "Corn (Maize)",
+    "banglaCrop": "ভুট্টা",
+    "commonName": "Common Rust",
+    "banglaName": "ভুট্টার সাধারণ মরিচা রোগ",
+    "scientificName": "Puccinia sorghi",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 94.6,
+    "summary": "A common foliar fungal disease of sweet and field corn producing golden-brown to cinnamon powdery pustules (uredinia) on upper and lower leaf surfaces.",
+    "banglaSummary": "পুকসিনিয়া সরঘি ছত্রাক দ্বারা সৃষ্ট রোগ। পাতার উভয় পিঠে ইটের রঙের বা মরিচা রঙের গুঁড়ো গুঁড়ো ফোস্কা দেখা যায়। সালোকসংশ্লেষণ কমে গিয়ে দানার আকার ছোট হয়ে যায়।",
+    "symptoms": [
+      "Small, elongated cinnamon-brown to brick-red powdery pustules",
+      "Pustules erupting through the epidermal leaf surface on both sides",
+      "Leaves turning yellow and chlorotic around dense pustule clusters",
+      "Premature leaf drying during ear-fill stage causing kernel shrinkage"
+    ],
+    "banglaSymptoms": [
+      "পাতার উভয় পিঠে লম্বাটে, মরিচা বা ইটের রঙের গুঁড়োযুক্ত ফোসকা",
+      "হাত দিয়ে ঘষলে আঙুলে মরিচার মতো বাদামী গুঁড়ো লেগে যায়",
+      "দাগগুলোর চারপাশের পাতার অংশ হলুদ হয়ে শুকিয়ে যায়",
+      "ভুট্টার মোচায় দানা গঠন ব্যাহত হয় ও দানা কুঁচকে যায়"
+    ],
+    "favorableConditions": [
+      "Moderate cool temperatures (16°C - 24°C / 60°F - 75°F)",
+      "High atmospheric humidity (>95%) and night dew lasting 6+ hours",
+      "Late planted corn following windblown spore currents from southern zones"
+    ],
+    "banglaCauses": [
+      "১৬° থেকে ২৪° সে. তাপমাত্রা এবং রাতে দীর্ঘস্থায়ী শিশির",
+      "বাতাসে আর্দ্রতা ৯৫% এর বেশি থাকা",
+      "দেরিতে ভুট্টা বপন করা"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Husks",
+      "Stalks"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "মোচার খোসা",
+      "গাছের কাণ্ড"
+    ],
+    "banglaCropInfo": "ভুট্টা (Zea mays) - পোল্ট্রি ও মাছের খাদ্য এবং মানুষের পুষ্টির জন্য বাংলাদেশের দ্রুত বর্ধনশীল অন্যতম অর্থকরী দানা ফসল।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত পাতা ছিঁড়ে মাটিতে পুঁতে ফেলুন যদি আক্রমণের তীব্রতা কম থাকে।",
+        "ভুট্টায় ফুল আসার আগে বা মোচা আসার সময় রোগ বেশি দেখা দিলে অনুমোদিত ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "রোগ প্রতিরোধী হাইব্রিড ভুট্টার জাত নির্বাচন করুন।",
+        "সময়মতো সঠিক মৌসুমে আগাম ভুট্টা বপন করুন।",
+        "ফসল কাটার পর জমির আবর্জনা গভীরভাবে চাষ দিয়ে মাটির সাথে মিশিয়ে দিন।"
+      ],
+      "fieldCareGuidance": [
+        "জমিতে পরিমিত পটাশ সার ব্যবহার করুন, যা ভুট্টার পাতার শক্তি বাড়ায়।"
+      ],
+      "whenToConsultExpert": [
+        "যদি মোচার উপরের পাতায় মরিচার ফোসকা দ্রুত ছড়িয়ে পড়ে তবে ফলন বাঁচাতে দ্রুত বিশেষজ্ঞের পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ রাসায়নিক ছত্রাকনাশকের নির্দিষ্ট ডোজ অনুমান করে দেওয়া নিষিদ্ধ। অনুমোদিত লেবেলের নির্দেশনা মেনে চলুন এবং স্থানীয় কৃষি কর্মকর্তার পরামর্শ নিন।",
+      "verifiedSource": "বাংলাদেশ গম ও ভুট্টা গবেষণা ইনস্টিটিউট (BWMRI)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Economic Threshold Assessment",
+          "description": "Count pustules on leaves below the ear leaf. If threshold reached, apply recommended treatment.",
+          "priority": "High",
+          "timeframe": "Within 48 hours",
+          "effectiveness": "90%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Micronized Wettable Sulfur",
+          "preparation": "Mix according to approved organic agricultural directions",
+          "application": "Spray every 10-14 days during vegetative stage",
+          "certifications": "Organic Standard Compliant"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Registered Azoxystrobin formulation",
+          "activeIngredient": "Azoxystrobin",
+          "dosage": "Refer to approved commercial product instructions",
+          "safetyInterval": "21 days for corn harvest",
+          "cautions": "Do not exceed registered seasonal limit."
+        }
+      ],
+      "preventiveMeasures": [
+        "Plant resistant corn hybrids containing Rp genes",
+        "Plant early in the season to pass vulnerable pollination stages"
+      ],
+      "culturalPractices": [
+        "Ensure balanced potassium nutrition to strengthen foliage"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rice-blast",
+    "crop": "Rice",
+    "banglaCrop": "ধান",
+    "commonName": "Rice Blast",
+    "banglaName": "ধানের ব্লাস্ট রোগ (পাতা ও শীষ ব্লাস্ট)",
+    "scientificName": "Pyricularia oryzae",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 97.2,
+    "summary": "One of the most devastating diseases of rice. Symptoms include spindle or eye-shaped lesions with grayish centers on leaves, neck blast causing entire panicles to turn white and sterile.",
+    "banglaSummary": "ধানের প্রধান ও সবচেয়ে মারাত্মক ছত্রাকজনিত রোগ। পাতায় চোখের মতো বা মাকু আকৃতির দাগ তৈরি হয় যার কেন্দ্রভাগ ছাই রঙের। শীষের গোড়ায় আক্রমণ হলে পুরো শীষ চিটা হয়ে যায় (শীষ ব্লাস্ট)।",
+    "symptoms": [
+      "Spindle-shaped or eye-shaped lesions with grayish centers and brown borders on leaves",
+      "Lesions coalescing to kill entire leaf blades",
+      "Blackening and rotting at the neck node of the panicle (Neck Blast)",
+      "Completely white, sterile panicles standing erect without grains"
+    ],
+    "banglaSymptoms": [
+      "পাতায় দুই প্রান্ত চোখা মাকু আকৃতির দাগ যার কেন্দ্র ছাই রঙের এবং কিনারা বাদামী",
+      "অনেক দাগ একত্রে মিলে পুরো পাতা ঝলসে শুকিয়ে যায়",
+      "শীষের গোড়ায় বা গিট-এ কালচে পচন ধরে (শীষ বা নেক ব্লাস্ট)",
+      "শীষ শুকিয়ে সাদা হয়ে খাড়া দাঁড়িয়ে থাকে এবং সম্পূর্ণ দানা চিটা হয়ে যায়"
+    ],
+    "favorableConditions": [
+      "Daytime temperature 25°C-28°C and cool nights (18°C-22°C)",
+      "Continuous drizzle, cloudy weather, high humidity (>90%)",
+      "Excessive nitrogen fertilizer application"
+    ],
+    "banglaCauses": [
+      "টানা মেঘলা আবহাওয়া, গুঁড়ি গুঁড়ি বৃষ্টি এবং রাতে বেশি শিশির",
+      "জমিতে অতিরিক্ত মাত্রায় ইউরিয়া সারের ব্যবহার",
+      "বাতাসের আর্দ্রতা বেশি থাকা এবং মাটিতে পানির ঘাটতি"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Panicle neck",
+      "Nodes"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "শীষের গোড়া (নেক)",
+      "কাণ্ডের গিট"
+    ],
+    "banglaCropInfo": "ধান (Oryza sativa) - বাংলাদেশের প্রধান খাদ্য ও প্রধানতম কৃষিজ ফসল। আউশ, আমন ও বোরো মৌসুমে চাষ হয়।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "রোগের লক্ষণ দেখামাত্র জমিতে ইউরিয়া সার প্রয়োগ অবিলম্বে বন্ধ করুন।",
+        "জমিতে সবসময় পর্যাপ্ত পানি ধরে রাখুন; ব্লাস্ট আক্রান্ত জমি শুকিয়ে যেতে দিলে রোগ কয়েকগুণ বেড়ে যায়।",
+        "শীষে রোগ দেখা দেওয়ার আগেই কুঁড়ি বা শিষ বের হওয়ার মুখে বিকেলে অনুমোদিত ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "রোগ প্রতিরোধী বা সহনশীল ব্রি (BRRI) উদ্ভাবিত ধানের জাত চাষ করুন।",
+        "বীজ শোধন: বপনের আগে কার্বেনডাজিম বা অটোস্টিন দিয়ে বীজ শোধন করুন।",
+        "ইউরিয়া সার কিস্তিতে এবং পরিমিত মাত্রায় পটাশ সারের সাথে মিশিয়ে ব্যবহার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "জমির চারপাশের আগাছা পরিষ্কার রাখুন কারণ আগাছায় এই ছত্রাক বেঁচে থাকে।"
+      ],
+      "whenToConsultExpert": [
+        "শীষ বের হওয়ার মুখে যদি পাতায় মাকু আকৃতির দাগ ছড়িয়ে পড়ে, তবে দেরি না করে সাথে সাথে কৃষি কর্মকর্তার সাহায্য নিন।"
+      ],
+      "safetyNote": "⚠️ রাসায়নিক বা ছত্রাকনাশকের নির্দিষ্ট ডোজ অনুমান করে ব্যবহার করবেন না। বাংলাদেশ ধান গবেষণা ইনস্টিটিউট (BRRI) নির্দেশিত অনুমোদিত গ্রুপের ছত্রাকনাশক প্যাকেটের লেবেল নির্দেশ অনুযায়ী ব্যবহার করুন।",
+      "verifiedSource": "বাংলাদেশ ধান গবেষণা ইনস্টিটিউট (BRRI) ও কৃষি তথ্য সার্ভিস (AIS)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Halt Nitrogen Fertilization",
+          "description": "Stop urea top-dressing immediately and ensure standing water depth of 2-3 inches in paddy field.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "92%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Bio-fungicide Trichoderma harzianum",
+          "preparation": "Apply according to approved bio-agent instructions",
+          "application": "Root drenching and early foliar application",
+          "certifications": "Certified Bio-Input"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Tricyclazole / Azoxystrobin formulation",
+          "activeIngredient": "Tricyclazole 75% WP",
+          "dosage": "Refer to approved package directions",
+          "safetyInterval": "21 days PHI",
+          "cautions": "Spray in late afternoon; adhere strictly to label safety directions."
+        }
+      ],
+      "preventiveMeasures": [
+        "Treat seeds prior to sowing with recommended seed dressing agent",
+        "Use BRRI recommended blast-tolerant varieties"
+      ],
+      "culturalPractices": [
+        "Maintain continuous standing water in field during high-risk periods"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "uncertain-low-confidence-sample",
+    "crop": "Uncertain / Non-Leaf",
+    "banglaCrop": "অনির্ণীত / পাতা নয়",
+    "commonName": "Inconclusive Diagnosis (Low Confidence)",
+    "banglaName": "অনির্ণীত ফলাফল (কম কনফিডেন্স)",
+    "scientificName": "Inconclusive pathology",
+    "pathogenType": "None",
+    "severity": "Mild",
+    "confidence": 20,
+    "isLowConfidenceWarning": true,
+    "summary": "The neural vision model cannot reach a high-confidence diagnosis because the image does not match leaf pathology classes, is out of focus, or features a fruit/stem instead of a crop leaf.",
+    "banglaSummary": "এআই মডেল এই ছবি দেখে কোনো নির্দিষ্ট রোগ নিশ্চিত করতে পারেনি। মডেলটি শুধুমাত্র ফসলের পাতার (Leaves) রোগ নির্ণয়ের জন্য ট্রেইন করা—ফলের ছবি, অন্য কোনো অঙ্গ বা অস্পষ্ট ছবিতে মডেল কোনো অনুমান করতে পারে না।",
+    "symptoms": [
+      "Image does not display clear crop foliar disease symptoms",
+      "Subject may be a fruit, stem, or non-foliar tissue",
+      "Blurry or ambiguous foliar discoloration without distinct pathogen patterns"
+    ],
+    "banglaSymptoms": [
+      "ছবিতে ফসলের পাতার স্পষ্ট কোনো রোগ লক্ষণ বোঝা যাচ্ছে না",
+      "ছবিটি পাতার বদলে ফল, কাণ্ড বা অন্য কোনো অঙ্গের হতে পারে",
+      "অস্পষ্ট আলো বা ফোকাস না থাকার কারণে লক্ষণ অস্পষ্ট"
+    ],
+    "favorableConditions": [
+      "Non-leaf specimen uploaded",
+      "Poor illumination",
+      "Camera out of focus"
+    ],
+    "banglaCauses": [
+      "ছবিটি ফসলের পাতার নয় (যেমন: ফল, ফুল বা ডালের ছবি)",
+      "মডেলের ২৪টি ট্রেইন্ড ক্লাসের বাইরে কোনো সমস্যা বা পুষ্টির অভাব",
+      "ছবি তোলার সময় আলো কম থাকা বা ক্যামেরা কাঁপুনির কারণে ঘোলা হওয়া"
+    ],
+    "affectedParts": [
+      "Inconclusive"
+    ],
+    "banglaAffectedParts": [
+      "অনির্ণীত / পাতা নয়"
+    ],
+    "banglaCropInfo": "মডেলটি পাতার জন্য নির্ধারিত। নিশ্চিত ফলাফলের জন্য আক্রান্ত পাতার ছবি প্রদান করুন।",
+    "transmissionRisk": "Low",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "⚠️ সতর্কবাণী: এই ফলাফলের ওপর ভিত্তি করে কোনো রাসায়নিক বা ওষুধ প্রয়োগ করবেন না!",
+        "দিনের ভালো আলোতে পাতার একদম কাছে গিয়ে পরিষ্কার ও ফোকাসড ছবি আবার তুলুন।",
+        "পাতার সামনের ও পেছনের অংশের স্পষ্ট লক্ষণ পরীক্ষা করুন।"
+      ],
+      "preventionMethods": [
+        "গাছের স্বাভাবিক পরিচর্যা ও সেচ বজায় রাখুন।",
+        "অন্যান্য স্বাস্থ্যকর গাছের পাতার সাথে আক্রান্ত পাতার তুলনা করুন।"
+      ],
+      "fieldCareGuidance": [
+        "ছবি তোলার সময় পাতাটি স্থির রাখুন এবং ছায়া যাতে না পড়ে সেদিকে খেয়াল রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "ফলাফল অনিশ্চিত হওয়ায় অবিলম্বে আক্রান্ত পাতা সহ নিকটস্থ উপজেলা কৃষি কর্মকর্তা বা কৃষি তথ্য সার্ভিসের পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ সতর্কতা: নিশ্চিত না হয়ে ভুল ওষুধ বা কীটনাশক স্প্রে করলে ফসলের অপূরণীয় ক্ষতি হতে পারে। বিশেষজ্ঞের পরামর্শ ব্যতীত কোনো কীটনাশক ব্যবহার করবেন না।",
+      "verifiedSource": "কৃষি তথ্য সার্ভিস (AIS) ও উপজেলা কৃষি সম্প্রসারণ কার্যালয়"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Retake Leaf Image",
+          "description": "Capture a well-lit, close-up photograph of the leaf surface with clear natural lighting.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "99%"
+        },
+        {
+          "title": "Consult Local Extension Officer",
+          "description": "Show physical leaf sample to an Upazila Agricultural Extension Officer for manual lab examination.",
+          "priority": "High",
+          "timeframe": "Within 48 hours",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Do not apply chemical pesticides based on inconclusive screening"
+      ],
+      "culturalPractices": [
+        "Inspect surrounding crops for consistent symptom patterns"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "healthy-tomato-leaf",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Healthy Leaf (No Pathogen Detected)",
+    "banglaName": "সুস্থ ও সতেজ পাতা (কোনো রোগ নেই)",
+    "scientificName": "Solanum lycopersicum",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.1,
+    "summary": "Vibrant green leaf tissue with intact epidermal cells, uniform chlorophyll distribution, and no visible signs of fungal sporulation, bacterial spots, or viral mosaic deformities.",
+    "banglaSummary": "পাতাটি সম্পূর্ণ সতেজ, সবুজ ও সুস্থ। পাতায় কোনো ছত্রাক, ব্যাকটেরিয়া বা ভাইরাসের সংক্রমণ দেখা যায়নি। ক্লোরোফিলের মাত্রা চমৎকার।",
+    "symptoms": [
+      "Deep uniform green coloration across lamina",
+      "Clean margins without necrosis or chlorosis",
+      "Sturdy petiole and healthy vascular venation",
+      "Turgid leaf cells with high photosynthetic efficiency"
+    ],
+    "banglaSymptoms": [
+      "পাতাজুড়ে স্বাভাবিক ও উজ্জ্বল গাঢ় সবুজ রঙ",
+      "পাতার কিনারায় কোনো দাগ বা পোড়াভাব নেই",
+      "শিরা-উপশিরা সতেজ এবং পাতা টানটান",
+      "কোনো ক্ষত বা ফাঙ্গাসের উপস্থিতি নেই"
+    ],
+    "favorableConditions": [
+      "Optimal temperatures (20°C - 26°C)",
+      "Balanced soil nutrients (N-P-K 10-10-10)",
+      "Drip irrigation and proper staking"
+    ],
+    "banglaCauses": [
+      "উত্তম পরিচর্যা, সুষম সার ও অনুকূল পরিবেশ"
+    ],
+    "affectedParts": [
+      "None - Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো আক্রান্ত অংশ নেই - গাছ সুস্থ"
+    ],
+    "banglaCropInfo": "টমেটো - বর্তমানে গাছটি উৎকৃষ্ট স্বাস্থ্য অবস্থায় রয়েছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "বর্তমানে কোনো প্রকার বালাইনাশক স্প্রে করার প্রয়োজন নেই।",
+        "নিয়মিত জমি পর্যবেক্ষণ ও সেচ ব্যবস্থাপনা বজায় রাখুন।"
+      ],
+      "preventionMethods": [
+        "মাটির আর্দ্রতা অনুযায়ী নিয়মিত ড্রিপ বা পরিমিত সেচ দিন।",
+        "গাছের গোড়ায় জৈব কম্পোস্ট ও সুষম সার প্রয়োগ বজায় রাখুন।"
+      ],
+      "fieldCareGuidance": [
+        "সপ্তাহে একবার নিচের পাতার স্বাস্থ্য পরীক্ষা করুন যাতে প্রাথমিক অবস্থায় যে কোনো রোগ ধরা যায়।"
+      ],
+      "whenToConsultExpert": [
+        "গাছে কোনো নতুন অস্বাভাবিক হলুদ দাগ বা কুঁকড়ানো ভাব দেখা দিলে তবেই যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে অপ্রয়োজনীয় কীটনাশক স্প্রে করবেন না, এতে উপকারী বন্ধু পোকা মারা যেতে পারে।",
+      "verifiedSource": "বাংলাদেশ কৃষি গবেষণা ইনস্টিটিউট (BARI)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Maintain Routine Preventative Inspection",
+          "description": "Continue weekly scouting of lower canopy leaves for earliest signs of fungal spores.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "99%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Seaweed / Kelp Extract (Bio-nutrition)",
+          "preparation": "Dilute as per organic label",
+          "application": "Foliar nutrition every 14 days to boost immune vitality",
+          "certifications": "100% Organic"
+        }
+      ],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Keep mulch layer intact to prevent soil pathogen splash",
+        "Avoid high-nitrogen fertilizer spikes"
+      ],
+      "culturalPractices": [
+        "Regular pruning of suckers to maintain optimal airflow in crop canopy"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "potato-early-blight",
+    "crop": "Potato",
+    "banglaCrop": "আলু",
+    "commonName": "Potato Early Blight",
+    "banglaName": "আলুর আগাম ধসা রোগ (আর্লি ব্লাইট)",
+    "scientificName": "Alternaria solani",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 95,
+    "summary": "A foliar disease of potato caused by Alternaria solani. Concentric ring ('target board') lesions appear on older lower leaves, progressing upward, causing premature defoliation and reduced tuber size.",
+    "banglaSummary": "অল্টারনারিয়া সোলানি ছত্রাক দ্বারা সৃষ্ট আলুর একটি সাধারণ পাতার রোগ। গাছের নিচের দিকের পুরনো পাতায় বাদামী-কালো গোলাকৃতির দাগ (টার্গেট বোর্ড প্যাটার্ন) তৈরি হয়। আক্রান্ত পাতা শুকিয়ে ঝরে পড়ে, ফলে আলুর আকার ছোট হয়।",
+    "symptoms": [
+      "Dark brown to black concentric ring lesions on older lower leaves",
+      "Lesions expand to form characteristic 'target board' patterns",
+      "Progressive yellowing and premature defoliation from bottom up",
+      "Tuber yield reduction due to loss of photosynthetic leaf area"
+    ],
+    "banglaSymptoms": [
+      "পুরনো নিচের পাতায় বাদামী-কালো গোল দাগ, ভেতরে চক্রাকার বলয়",
+      "দাগগুলো ক্রমশ বড় হয়ে টার্গেট বোর্ডের আকৃতি তৈরি করে",
+      "আক্রান্ত পাতা হলুদ হয়ে নিচ থেকে উপরের দিকে শুকিয়ে ঝরে পড়ে",
+      "সালোকসংশ্লেষণ কমে গিয়ে আলুর কন্দের আকার ছোট হয়"
+    ],
+    "favorableConditions": [
+      "Warm temperatures between 24°C–29°C with alternating wet-dry conditions",
+      "Heavy dew, frequent light rain, or overhead irrigation",
+      "Nutrient-stressed or aging plants"
+    ],
+    "banglaCauses": [
+      "২৪°–২৯° সেলসিয়াস তাপমাত্রা এবং পর্যায়ক্রমে ভেজা-শুকনো আবহাওয়া",
+      "ভারী শিশির, হালকা বৃষ্টি বা ওপর থেকে সেচ",
+      "পুষ্টির ঘাটতিজনিত দুর্বল বা বয়স্ক গাছ"
+    ],
+    "affectedParts": [
+      "Lower leaves",
+      "Stems",
+      "Tubers (occasionally)"
+    ],
+    "banglaAffectedParts": [
+      "নিচের পাতা",
+      "কাণ্ড",
+      "কন্দ (মাঝে মাঝে)"
+    ],
+    "banglaCropInfo": "আলু (Solanum tuberosum) — বাংলাদেশের প্রধান কন্দ ফসল। শীতকালে ব্যাপকভাবে চাষ হয়।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত নিচের পাতাগুলো সতর্কতার সাথে ছেঁটে সরিয়ে পুড়িয়ে ফেলুন।",
+        "পাতায় ওপর থেকে সেচ না দিয়ে গোড়ায় বা ড্রিপ পদ্ধতিতে সেচ দিন।",
+        "অনুমোদিত ম্যানকোজেব বা ক্লোরোথ্যালনিল ছত্রাকনাশক লেবেল অনুযায়ী স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "রোগমুক্ত প্রত্যায়িত বীজ আলু ব্যবহার করুন।",
+        "শস্যপর্যায় (Crop Rotation) মেনে চলুন — পর পর আলু বা টমেটো চাষ করবেন না।",
+        "গাছের গোড়ায় মালচিং ব্যবহার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "সকালে সেচ দিন যাতে দিনের আলোতে পাতা শুকিয়ে যায়।",
+        "সুষম সার ব্যবহার করুন, অতিরিক্ত নাইট্রোজেন এড়িয়ে চলুন।"
+      ],
+      "whenToConsultExpert": [
+        "মাঠের ২০% এর বেশি গাছে রোগ ছড়িয়ে পড়লে উপজেলা কৃষি অফিসে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "⚠️ ছত্রাকনাশক ব্যবহারের আগে বোতলের লেবেলে অনুমোদিত মাত্রা দেখুন। স্থানীয় কৃষি কর্মকর্তার পরামর্শ নিন।",
+      "verifiedSource": "বাংলাদেশ কৃষি গবেষণা ইনস্টিটিউট (BARI)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Remove Infected Lower Leaves",
+          "description": "Prune and destroy infected bottom leaves to slow upward disease progression.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "85%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Copper Hydroxide (Bordeaux Mixture)",
+          "preparation": "100g copper sulfate + 100g lime in 10L water",
+          "application": "Preventive foliar spray every 7–10 days",
+          "certifications": "Traditional Organic Compliant"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Mancozeb 75% WP",
+          "activeIngredient": "Mancozeb",
+          "dosage": "Follow approved product label directions",
+          "safetyInterval": "7 days PHI",
+          "cautions": "Wear protective gear during application."
+        }
+      ],
+      "preventiveMeasures": [
+        "Use certified disease-free seed tubers",
+        "Practice 2–3 year crop rotation away from Solanaceae"
+      ],
+      "culturalPractices": [
+        "Water in the morning to allow foliage to dry during the day",
+        "Maintain balanced fertilization avoiding excess nitrogen"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "potato-healthy",
+    "crop": "Potato",
+    "banglaCrop": "আলু",
+    "commonName": "Healthy Potato Leaf (No Disease)",
+    "banglaName": "সুস্থ আলু পাতা (কোনো রোগ নেই)",
+    "scientificName": "Solanum tuberosum",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 98,
+    "summary": "Healthy potato leaf with vibrant green color, intact epidermis, and no signs of fungal, bacterial, or viral infection.",
+    "banglaSummary": "আলু গাছের পাতা সম্পূর্ণ সুস্থ ও সতেজ। কোনো রোগের লক্ষণ নেই। ক্লোরোফিলের মাত্রা স্বাভাবিক।",
+    "symptoms": [
+      "Uniform deep green coloration",
+      "No lesions or spots",
+      "Healthy leaf structure"
+    ],
+    "banglaSymptoms": [
+      "সমান গাঢ় সবুজ রঙ",
+      "কোনো দাগ বা ক্ষত নেই",
+      "পাতার গঠন স্বাভাবিক ও সতেজ"
+    ],
+    "favorableConditions": [
+      "Optimal growing conditions",
+      "Balanced nutrition",
+      "Proper irrigation"
+    ],
+    "banglaCauses": [
+      "সুষম সার ও সঠিক সেচ ব্যবস্থাপনা"
+    ],
+    "affectedParts": [
+      "None — Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো আক্রান্ত অংশ নেই — গাছ সুস্থ"
+    ],
+    "banglaCropInfo": "আলু — গাছটি বর্তমানে উৎকৃষ্ট স্বাস্থ্য অবস্থায় রয়েছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো বালাইনাশক স্প্রে করার প্রয়োজন নেই।",
+        "নিয়মিত পর্যবেক্ষণ বজায় রাখুন।"
+      ],
+      "preventionMethods": [
+        "মাটির আর্দ্রতা অনুযায়ী নিয়মিত সেচ দিন।",
+        "সুষম সার প্রয়োগ করুন।"
+      ],
+      "fieldCareGuidance": [
+        "সপ্তাহে একবার নিচের পাতা পরীক্ষা করুন।"
+      ],
+      "whenToConsultExpert": [
+        "নতুন অস্বাভাবিক দাগ দেখা দিলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে অপ্রয়োজনীয় কীটনাশক স্প্রে করবেন না।",
+      "verifiedSource": "BARI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Routine Monitoring",
+          "description": "Continue weekly inspection of lower leaves.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "99%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Seaweed Extract",
+          "preparation": "Dilute per label",
+          "application": "Foliar nutrition every 14 days",
+          "certifications": "Organic"
+        }
+      ],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Maintain mulch layer",
+        "Avoid nitrogen spikes"
+      ],
+      "culturalPractices": [
+        "Hill soil regularly around stems"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "pepper-healthy",
+    "crop": "Bell Pepper",
+    "banglaCrop": "মরিচ",
+    "commonName": "Healthy Pepper Leaf (No Disease)",
+    "banglaName": "সুস্থ মরিচ পাতা (কোনো রোগ নেই)",
+    "scientificName": "Capsicum annuum",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 98,
+    "summary": "Healthy bell pepper leaf with vibrant green tissue, no lesions, spots, or signs of pathogen infection.",
+    "banglaSummary": "মরিচ গাছের পাতা সম্পূর্ণ সুস্থ। কোনো ব্যাকটেরিয়া, ছত্রাক বা ভাইরাসের সংক্রমণ নেই।",
+    "symptoms": [
+      "Vibrant green color",
+      "Clean margins without spots",
+      "Strong leaf structure"
+    ],
+    "banglaSymptoms": [
+      "উজ্জ্বল সবুজ রঙ",
+      "কোনো দাগ বা পোড়াভাব নেই",
+      "পাতার গঠন মজবুত"
+    ],
+    "favorableConditions": [
+      "Warm climate 25°C–30°C",
+      "Well-drained soil",
+      "Balanced nutrition"
+    ],
+    "banglaCauses": [
+      "সুষম সার ও পরিমিত সেচ"
+    ],
+    "affectedParts": [
+      "None — Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো আক্রান্ত অংশ নেই"
+    ],
+    "banglaCropInfo": "মরিচ — গাছটি সুস্থ ও উৎকৃষ্ট অবস্থায় আছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো বালাইনাশক দরকার নেই।",
+        "নিয়মিত পরিচর্যা বজায় রাখুন।"
+      ],
+      "preventionMethods": [
+        "পানি জমতে দেবেন না।",
+        "পটাশ সার ব্যবহারে গাছের রোগ প্রতিরোধ ক্ষমতা বাড়ে।"
+      ],
+      "fieldCareGuidance": [
+        "পোকামাকড়ের উপস্থিতি পর্যবেক্ষণ করুন।"
+      ],
+      "whenToConsultExpert": [
+        "নতুন দাগ দেখা দিলে বিশেষজ্ঞের পরামর্শ নিন।"
+      ],
+      "safetyNote": "সুস্থ গাছে অপ্রয়োজনীয় কীটনাশক প্রয়োগ করবেন না।",
+      "verifiedSource": "BARI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Continue Monitoring",
+          "description": "Inspect leaves weekly for early detection.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "99%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Compost Tea",
+          "preparation": "Standard compost tea recipe",
+          "application": "Soil drench monthly",
+          "certifications": "Organic"
+        }
+      ],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Rotate crops every 2 years",
+        "Remove weeds around plants"
+      ],
+      "culturalPractices": [
+        "Ensure proper spacing for airflow"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rice-bacterial-leaf-blight",
+    "crop": "Rice",
+    "banglaCrop": "ধান",
+    "commonName": "Bacterial Leaf Blight (BLB)",
+    "banglaName": "ধানের পাতা পোড়া রোগ (ব্যাকটেরিয়াল লিফ ব্লাইট)",
+    "scientificName": "Xanthomonas oryzae pv. oryzae",
+    "pathogenType": "Bacterial",
+    "severity": "Severe",
+    "confidence": 95,
+    "summary": "One of the most destructive bacterial diseases of rice. Yellowish-white to gray lesions start from leaf tips or margins and advance along the veins, turning entire leaves straw-colored. Causes significant yield loss in flooded paddy fields.",
+    "banglaSummary": "ধানের সবচেয়ে ক্ষতিকর ব্যাকটেরিয়াজনিত রোগ। পাতার ডগা বা কিনারা থেকে হলুদাভ-সাদা দাগ শুরু হয়ে শিরা বরাবর ছড়িয়ে পড়ে এবং পুরো পাতা শুকনো খড়ের রঙ ধারণ করে। ব্যাপক ফলন হ্রাস ঘটায়।",
+    "symptoms": [
+      "Yellowish-white to grayish lesions starting from leaf tips or margins",
+      "Lesions advance along veins, turning leaves straw-colored",
+      "Bacterial ooze (milky droplets) visible on leaf surface in humid mornings",
+      "Kresek phase: wilting and drying of entire seedlings in severe cases"
+    ],
+    "banglaSymptoms": [
+      "পাতার ডগা বা কিনারা থেকে হলুদাভ-সাদা দাগ শুরু হয়",
+      "দাগ শিরা বরাবর বড় হয়ে পুরো পাতা শুকনো খড়ের মতো হয়ে যায়",
+      "ভোরের আর্দ্র আবহাওয়ায় পাতায় দুধের মতো ব্যাকটেরিয়া ক্ষরণ দেখা যায়",
+      "চারা অবস্থায় পুরো গাছ হঠাৎ ঢলে পড়ে শুকিয়ে মারা যায় (ক্রিসেক ফেজ)"
+    ],
+    "favorableConditions": [
+      "High temperature (25°C–34°C) with continuous rainfall",
+      "Flooded paddy fields with wind-driven rain",
+      "Excessive nitrogen fertilizer application"
+    ],
+    "banglaCauses": [
+      "উচ্চ তাপমাত্রা (২৫°–৩৪° সে.) এবং টানা বৃষ্টিপাত",
+      "বন্যা পানি বা বাতাসের সাথে ব্যাকটেরিয়া ছড়ায়",
+      "অতিরিক্ত ইউরিয়া সার প্রয়োগ"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Leaf sheaths",
+      "Entire seedlings (Kresek)"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "পাতার খোল",
+      "সম্পূর্ণ চারা (ক্রিসেক)"
+    ],
+    "banglaCropInfo": "ধান (Oryza sativa) — বাংলাদেশের প্রধান খাদ্য ফসল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "ইউরিয়া সার প্রয়োগ অবিলম্বে বন্ধ করুন।",
+        "জমিতে দাঁড়ানো পানি কমিয়ে দিন।",
+        "আক্রান্ত গাছ সরিয়ে ফেলুন এবং জমির নিষ্কাশন নিশ্চিত করুন।"
+      ],
+      "preventionMethods": [
+        "রোগ প্রতিরোধী জাত (BRRI dhan52, BRRI dhan71 ইত্যাদি) চাষ করুন।",
+        "সুষম সার ব্যবহার করুন, অতিরিক্ত নাইট্রোজেন এড়িয়ে চলুন।",
+        "রোগমুক্ত বীজতলা থেকে চারা সংগ্রহ করুন।"
+      ],
+      "fieldCareGuidance": [
+        "ঝড় বা শিলাবৃষ্টির পর পাতায় ক্ষত হলে ব্যাকটেরিয়া প্রবেশ করে — তখন সতর্ক থাকুন।"
+      ],
+      "whenToConsultExpert": [
+        "চারা অবস্থায় ক্রিসেক দেখা দিলে জরুরি ভিত্তিতে কৃষি কর্মকর্তার পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ব্যাকটেরিয়াজনিত রোগে ছত্রাকনাশক কাজ করে না। সঠিক ব্যাকটেরিয়ানাশক ব্যবহারে কৃষি কর্মকর্তার পরামর্শ নিন।",
+      "verifiedSource": "বাংলাদেশ ধান গবেষণা ইনস্টিটিউট (BRRI)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Stop Nitrogen Application",
+          "description": "Halt urea fertilization immediately to reduce bacterial multiplication.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "90%"
+        },
+        {
+          "title": "Drain Excess Water",
+          "description": "Reduce standing water level in the paddy field.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "85%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Copper-based Bactericide",
+          "preparation": "As per approved agricultural label",
+          "application": "Foliar spray at early symptom appearance",
+          "certifications": "Standard Agricultural"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Streptomycin Sulfate + Tetracycline",
+          "activeIngredient": "Antibiotics",
+          "dosage": "Follow registered label directions only",
+          "safetyInterval": "As per label",
+          "cautions": "Use only when recommended by extension officer."
+        }
+      ],
+      "preventiveMeasures": [
+        "Plant BLB-resistant rice varieties",
+        "Avoid excess nitrogen fertilization"
+      ],
+      "culturalPractices": [
+        "Maintain proper field drainage",
+        "Remove crop residues after harvest"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rice-brown-spot",
+    "crop": "Rice",
+    "banglaCrop": "ধান",
+    "commonName": "Rice Brown Spot",
+    "banglaName": "ধানের বাদামী দাগ রোগ (ব্রাউন স্পট)",
+    "scientificName": "Bipolaris oryzae (Cochliobolus miyabeanus)",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 93,
+    "summary": "A fungal disease producing oval to circular dark brown spots on leaves, sheaths, and grain hulls. Associated with nutrient-deficient soils and causes grain discoloration and yield loss.",
+    "banglaSummary": "বাইপোলারিস অরাইজি ছত্রাক দ্বারা সৃষ্ট। পাতায় ডিম্বাকার বা গোলাকৃতির বাদামী দাগ তৈরি হয়। পুষ্টি ঘাটতিযুক্ত মাটিতে বেশি হয়। দানার রঙ পরিবর্তন ও ফলন কমায়।",
+    "symptoms": [
+      "Oval to circular dark brown spots with gray or whitish centers on leaves",
+      "Spots may have yellowish halos around them",
+      "Brown discoloration on grain hulls",
+      "Seedlings may show brown spots on coleoptile"
+    ],
+    "banglaSymptoms": [
+      "পাতায় ডিম্বাকার বা গোলাকার গাঢ় বাদামী দাগ, কেন্দ্র ধূসর বা সাদাটে",
+      "দাগের চারপাশে হালকা হলুদ বলয়",
+      "ধানের খোসায় বাদামী দাগ ও বিবর্ণতা",
+      "চারা গাছেও কোলিওপটাইলে বাদামী দাগ দেখা যেতে পারে"
+    ],
+    "favorableConditions": [
+      "Nutrient-deficient soils (especially potassium and silicon deficiency)",
+      "Temperature 25°C–30°C with high humidity",
+      "Water stress or irregular irrigation"
+    ],
+    "banglaCauses": [
+      "পটাশিয়াম ও সিলিকনের ঘাটতিযুক্ত মাটি",
+      "২৫°–৩০° সে. তাপমাত্রা ও উচ্চ আর্দ্রতা",
+      "অনিয়মিত সেচ বা পানির অভাব"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Leaf sheaths",
+      "Grain hulls",
+      "Seedlings"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "পাতার খোল",
+      "ধানের খোসা",
+      "চারা"
+    ],
+    "banglaCropInfo": "ধান — পুষ্টিহীন জমিতে এই রোগ বেশি দেখা যায়।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "মাটি পরীক্ষা করিয়ে পটাশ ও জিংক সারের ঘাটতি পূরণ করুন।",
+        "অনুমোদিত ছত্রাকনাশক লেবেল অনুযায়ী স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "সুষম সার (বিশেষ করে পটাশ ও জিংক) ব্যবহার করুন।",
+        "রোগমুক্ত ও শোধিত বীজ ব্যবহার করুন।",
+        "জমিতে পর্যাপ্ত পানি ধরে রাখুন।"
+      ],
+      "fieldCareGuidance": [
+        "মাটির পুষ্টি উপাদান পরীক্ষা করিয়ে নিন।"
+      ],
+      "whenToConsultExpert": [
+        "ব্যাপকভাবে দানায় দাগ দেখা দিলে কৃষি কর্মকর্তার পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ছত্রাকনাশকের সঠিক মাত্রা লেবেল থেকে দেখে নিন।",
+      "verifiedSource": "বাংলাদেশ ধান গবেষণা ইনস্টিটিউট (BRRI)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Correct Nutrient Deficiency",
+          "description": "Apply potassium and zinc fertilizers to address the underlying soil deficiency.",
+          "priority": "High",
+          "timeframe": "Within 48 hours",
+          "effectiveness": "88%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Trichoderma Seed Treatment",
+          "preparation": "As per bio-agent label",
+          "application": "Seed treatment before sowing",
+          "certifications": "Certified Bio-Input"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Propiconazole 25% EC",
+          "activeIngredient": "Propiconazole",
+          "dosage": "Follow registered label",
+          "safetyInterval": "21 days PHI",
+          "cautions": "Use protective gear."
+        }
+      ],
+      "preventiveMeasures": [
+        "Apply balanced NPK with adequate potassium",
+        "Seed treatment before sowing"
+      ],
+      "culturalPractices": [
+        "Maintain consistent water levels in paddy"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rice-healthy",
+    "crop": "Rice",
+    "banglaCrop": "ধান",
+    "commonName": "Healthy Rice Leaf (No Disease)",
+    "banglaName": "সুস্থ ধান পাতা (কোনো রোগ নেই)",
+    "scientificName": "Oryza sativa",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 98,
+    "summary": "Healthy rice leaf with uniform green coloration and no visible signs of disease, pest damage, or nutrient deficiency.",
+    "banglaSummary": "ধান গাছের পাতা সম্পূর্ণ সুস্থ ও সতেজ সবুজ। কোনো রোগ, পোকার আক্রমণ বা পুষ্টির ঘাটতির লক্ষণ নেই।",
+    "symptoms": [
+      "Uniform deep green color",
+      "No spots or lesions",
+      "Healthy leaf blade structure"
+    ],
+    "banglaSymptoms": [
+      "সমান গাঢ় সবুজ রঙ",
+      "কোনো দাগ বা ক্ষত নেই",
+      "পাতার গঠন সতেজ"
+    ],
+    "favorableConditions": [
+      "Adequate standing water",
+      "Balanced fertilization",
+      "Proper spacing"
+    ],
+    "banglaCauses": [
+      "সুষম সার ও পর্যাপ্ত পানি ব্যবস্থাপনা"
+    ],
+    "affectedParts": [
+      "None — Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো আক্রান্ত অংশ নেই"
+    ],
+    "banglaCropInfo": "ধান — গাছ সুস্থ অবস্থায় রয়েছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো ওষুধ প্রয়োজন নেই।",
+        "নিয়মিত পর্যবেক্ষণ করুন।"
+      ],
+      "preventionMethods": [
+        "সুষম সার ও পর্যাপ্ত সেচ বজায় রাখুন।"
+      ],
+      "fieldCareGuidance": [
+        "জমির আগাছা পরিষ্কার রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "নতুন অস্বাভাবিক দাগ দেখা দিলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ ধান গাছে অপ্রয়োজনীয় কীটনাশক স্প্রে করবেন না।",
+      "verifiedSource": "BRRI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Continue Monitoring",
+          "description": "Inspect paddy weekly.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "99%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Maintain standing water depth",
+        "Balanced potash application"
+      ],
+      "culturalPractices": [
+        "Proper spacing between hills"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rice-hispa",
+    "crop": "Rice",
+    "banglaCrop": "ধান",
+    "commonName": "Rice Hispa (Leaf Mining Beetle)",
+    "banglaName": "ধানের হিস্পা পোকা (পাতা সুড়ঙ্গকারী পোকা)",
+    "scientificName": "Dicladispa armigera",
+    "pathogenType": "Pest Infestation",
+    "severity": "Moderate",
+    "confidence": 92,
+    "summary": "Rice hispa beetle larvae mine tunnels inside leaf tissue creating white streaks, while adults scrape the upper leaf surface leaving parallel white streaks. Heavy infestations cause leaves to turn whitish and dry up.",
+    "banglaSummary": "হিস্পা পোকার শূককীট পাতার ভেতরে সুড়ঙ্গ তৈরি করে এবং পূর্ণাঙ্গ পোকা পাতার উপরের দিকে চেঁছে খায়। তীব্র আক্রমণে পাতা সাদা হয়ে শুকিয়ে যায়।",
+    "symptoms": [
+      "White parallel streaks on upper leaf surface (adult feeding marks)",
+      "Blister-like mining tunnels within leaf blade (larval damage)",
+      "Leaves turn whitish and dry up in severe infestations",
+      "Small, spiny metallic-blue or black beetles visible on leaves"
+    ],
+    "banglaSymptoms": [
+      "পাতার উপরিভাগে সমান্তরাল সাদা দাগ (পূর্ণাঙ্গ পোকার খাওয়ার চিহ্ন)",
+      "পাতার ভেতরে ফোস্কার মতো সুড়ঙ্গ (শূককীটের ক্ষতি)",
+      "তীব্র আক্রমণে পাতা সম্পূর্ণ সাদা হয়ে শুকিয়ে যায়",
+      "পাতায় ছোট, কাঁটাযুক্ত নীলচে-কালো পোকা দেখা যায়"
+    ],
+    "favorableConditions": [
+      "Humid, rainy conditions with dense canopy",
+      "Excessive nitrogen fertilization promoting lush growth",
+      "Shaded or waterlogged field edges"
+    ],
+    "banglaCauses": [
+      "ঘন গাছের মধ্যে আর্দ্র ও বৃষ্টিযুক্ত আবহাওয়া",
+      "অতিরিক্ত ইউরিয়া সারে নরম সবুজ পাতা বেশি হওয়া",
+      "জমির ছায়াযুক্ত কিনারায় বেশি দেখা যায়"
+    ],
+    "affectedParts": [
+      "Leaves (primarily)"
+    ],
+    "banglaAffectedParts": [
+      "পাতা (প্রধানত)"
+    ],
+    "banglaCropInfo": "ধান — হিস্পা পোকা আমন মৌসুমে বেশি দেখা যায়।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত পাতার ডগা কেটে পোকাসহ ধ্বংস করুন।",
+        "জমিতে আলোর ফাঁদ ব্যবহার করে পূর্ণাঙ্গ পোকা ধরুন।",
+        "তীব্র আক্রমণে অনুমোদিত কীটনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "অতিরিক্ত ইউরিয়া সার ব্যবহার কমান।",
+        "জমির আগাছা ও ছায়া পরিষ্কার রাখুন।",
+        "পাখি ও প্রাকৃতিক শত্রু পোকাকে সংরক্ষণ করুন।"
+      ],
+      "fieldCareGuidance": [
+        "জমির কিনারার গাছগুলোতে বিশেষ নজর রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "জমির ২০% এর বেশি গাছে আক্রমণ দেখা দিলে কৃষি কর্মকর্তার পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ কীটনাশক ব্যবহারের আগে কৃষি কর্মকর্তার পরামর্শ ও লেবেলের নির্দেশনা মানুন।",
+      "verifiedSource": "বাংলাদেশ ধান গবেষণা ইনস্টিটিউট (BRRI)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Clip Infested Leaf Tips",
+          "description": "Cut the top 2–3 cm of infested leaves to destroy larvae inside the mines.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "80%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Neem Oil Spray",
+          "preparation": "5ml neem oil per liter of water + soap emulsifier",
+          "application": "Spray on infested leaves every 5–7 days",
+          "certifications": "Bio-based"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Chlorpyrifos 20% EC",
+          "activeIngredient": "Chlorpyrifos",
+          "dosage": "Follow registered label",
+          "safetyInterval": "14 days",
+          "cautions": "Toxic to aquatic organisms. Use with care near water."
+        }
+      ],
+      "preventiveMeasures": [
+        "Reduce excessive nitrogen",
+        "Conserve natural predators"
+      ],
+      "culturalPractices": [
+        "Use light traps to capture adult beetles",
+        "Clear shaded field margins"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rice-leaf-scald",
+    "crop": "Rice",
+    "banglaCrop": "ধান",
+    "commonName": "Rice Leaf Scald",
+    "banglaName": "ধানের পাতা ঝলসানো রোগ (লিফ স্কল্ড)",
+    "scientificName": "Microdochium oryzae",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 90,
+    "summary": "A fungal disease causing alternating light and dark brown zones (banding patterns) on leaf tips and margins. Lesions can coalesce and cause leaves to dry and curl.",
+    "banglaSummary": "মাইক্রোডোকিয়াম অরাইজি ছত্রাক দ্বারা সৃষ্ট। পাতার ডগা ও কিনারায় হালকা ও গাঢ় বাদামী পর্যায়ক্রমিক ব্যান্ড তৈরি হয়। পাতা শুকিয়ে কুঁকড়ে যায়।",
+    "symptoms": [
+      "Alternating light tan and dark brown banding on leaf tips",
+      "Lesions start from tips and advance downward along margins",
+      "Leaves may curl and dry up",
+      "Oblong brown spots on upper leaves"
+    ],
+    "banglaSymptoms": [
+      "পাতার ডগায় হালকা ও গাঢ় বাদামী রঙের পর্যায়ক্রমিক ব্যান্ড",
+      "ক্ষত ডগা থেকে কিনারা বরাবর নিচের দিকে ছড়ায়",
+      "পাতা কুঁকড়ে শুকিয়ে যায়",
+      "উপরের পাতায় লম্বাটে বাদামী দাগ"
+    ],
+    "favorableConditions": [
+      "High humidity and warm temperatures",
+      "Overcast conditions with drizzle",
+      "Dense planting"
+    ],
+    "banglaCauses": [
+      "উচ্চ আর্দ্রতা ও উষ্ণ তাপমাত্রা",
+      "মেঘলা আকাশ ও গুঁড়ি গুঁড়ি বৃষ্টি",
+      "ঘন রোপণ"
+    ],
+    "affectedParts": [
+      "Leaf tips",
+      "Leaf margins",
+      "Upper leaves"
+    ],
+    "banglaAffectedParts": [
+      "পাতার ডগা",
+      "পাতার কিনারা",
+      "উপরের পাতা"
+    ],
+    "banglaCropInfo": "ধান — আমন ও বোরো উভয় মৌসুমে দেখা যেতে পারে।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত পাতা সরিয়ে ধ্বংস করুন।",
+        "অনুমোদিত ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "ঘন রোপণ পরিহার করুন।",
+        "সুষম সার ব্যবহার করুন।",
+        "রোগমুক্ত বীজ ব্যবহার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "বাতাস চলাচল নিশ্চিত করতে সঠিক দূরত্বে রোপণ করুন।"
+      ],
+      "whenToConsultExpert": [
+        "পাতায় দ্রুত ক্ষত ছড়িয়ে পড়লে পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ লেবেল নির্দেশনা অনুযায়ী ছত্রাকনাশক ব্যবহার করুন।",
+      "verifiedSource": "BRRI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Remove Affected Leaves",
+          "description": "Remove and destroy severely affected leaves.",
+          "priority": "Medium",
+          "timeframe": "Within 48 hours",
+          "effectiveness": "75%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Trichoderma viride",
+          "preparation": "As per bio-agent label",
+          "application": "Soil and foliar application",
+          "certifications": "Certified Bio-Input"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Carbendazim 50% WP",
+          "activeIngredient": "Carbendazim",
+          "dosage": "Follow label",
+          "safetyInterval": "14 days",
+          "cautions": "Standard precautions."
+        }
+      ],
+      "preventiveMeasures": [
+        "Avoid dense planting",
+        "Use treated seeds"
+      ],
+      "culturalPractices": [
+        "Ensure proper plant spacing"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rice-narrow-brown-spot",
+    "crop": "Rice",
+    "banglaCrop": "ধান",
+    "commonName": "Rice Narrow Brown Spot",
+    "banglaName": "ধানের সরু বাদামী দাগ রোগ (ন্যারো ব্রাউন স্পট)",
+    "scientificName": "Cercospora janseana",
+    "pathogenType": "Fungal",
+    "severity": "Mild",
+    "confidence": 88,
+    "summary": "A minor fungal disease producing narrow, linear, dark brown lesions on leaf blades. Usually causes limited damage unless conditions are highly favorable.",
+    "banglaSummary": "সারকোস্পোরা ছত্রাক দ্বারা সৃষ্ট। পাতায় সরু, লম্বাটে, গাঢ় বাদামী দাগ তৈরি হয়। সাধারণত কম ক্ষতিকর তবে অনুকূল পরিবেশে বাড়তে পারে।",
+    "symptoms": [
+      "Narrow, linear, dark brown streaks on leaves parallel to veins",
+      "Lesions are typically 2–10 mm long and 1–1.5 mm wide",
+      "Minor leaf drying in severe cases"
+    ],
+    "banglaSymptoms": [
+      "পাতায় শিরা বরাবর সরু, লম্বাটে, গাঢ় বাদামী দাগ",
+      "দাগগুলো সাধারণত ২–১০ মিমি লম্বা ও ১–১.৫ মিমি চওড়া",
+      "তীব্র আক্রমণে পাতা কিছুটা শুকিয়ে যেতে পারে"
+    ],
+    "favorableConditions": [
+      "Humid conditions with moderate temperatures",
+      "Nutrient deficiency in soil"
+    ],
+    "banglaCauses": [
+      "আর্দ্র আবহাওয়া ও পরিমিত তাপমাত্রা",
+      "মাটিতে পুষ্টি ঘাটতি"
+    ],
+    "affectedParts": [
+      "Leaf blades",
+      "Leaf sheaths"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "পাতার খোল"
+    ],
+    "banglaCropInfo": "ধান — এই রোগ সাধারণত গুরুতর নয় তবে পুষ্টিহীন জমিতে বাড়তে পারে।",
+    "transmissionRisk": "Low",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "সুষম সার প্রয়োগ করলে রোগ কমে যায়।",
+        "সাধারণত আলাদা ওষুধের দরকার হয় না।"
+      ],
+      "preventionMethods": [
+        "মাটি পরীক্ষা করিয়ে পুষ্টি ঘাটতি পূরণ করুন।"
+      ],
+      "fieldCareGuidance": [
+        "জমিতে পর্যাপ্ত পানি ধরে রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "অন্যান্য রোগের সাথে মিশ্র সংক্রমণ হলে পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ সাধারণত রাসায়নিক ছত্রাকনাশক প্রয়োজন হয় না।",
+      "verifiedSource": "BRRI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Balanced Fertilizer",
+          "description": "Address underlying nutrient deficiency with potassium and micronutrients.",
+          "priority": "Medium",
+          "timeframe": "Within 48 hours",
+          "effectiveness": "80%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Correct soil nutrient deficiencies",
+        "Use balanced NPK fertilization"
+      ],
+      "culturalPractices": [
+        "Maintain adequate field water level"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rice-sheath-blight",
+    "crop": "Rice",
+    "banglaCrop": "ধান",
+    "commonName": "Rice Sheath Blight",
+    "banglaName": "ধানের খোলপচা রোগ (শিথ ব্লাইট)",
+    "scientificName": "Rhizoctonia solani",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 94,
+    "summary": "A major fungal disease of rice caused by Rhizoctonia solani. Irregular greenish-gray water-soaked lesions appear on leaf sheaths near the water line, spreading upward and causing lodging in severe cases.",
+    "banglaSummary": "রাইজোকটোনিয়া সোলানি ছত্রাক দ্বারা সৃষ্ট ধানের একটি প্রধান রোগ। পানির সীমানার কাছে পাতার খোলে সবুজাভ-ধূসর অনিয়মিত জলছাপের দাগ তৈরি হয়, ওপরের দিকে ছড়ায় এবং গাছ ঢলে পড়ে।",
+    "symptoms": [
+      "Irregular oval or elongated greenish-gray lesions on leaf sheaths",
+      "Lesions start near water line and progress upward",
+      "White mycelial growth visible on lesion surface in humid conditions",
+      "Plant lodging due to weakened stems in severe infections"
+    ],
+    "banglaSymptoms": [
+      "পাতার খোলে অনিয়মিত ডিম্বাকার সবুজাভ-ধূসর দাগ",
+      "দাগ পানির সীমানা থেকে শুরু হয়ে ওপরে ছড়ায়",
+      "আর্দ্র আবহাওয়ায় দাগের উপরিভাগে সাদা ছত্রাকের জাল দেখা যায়",
+      "তীব্র আক্রমণে কাণ্ড দুর্বল হয়ে গাছ ঢলে পড়ে"
+    ],
+    "favorableConditions": [
+      "High temperature (28°C–32°C) with high humidity",
+      "Dense planting with excessive tillering",
+      "High nitrogen fertilization"
+    ],
+    "banglaCauses": [
+      "উচ্চ তাপমাত্রা (২৮°–৩২° সে.) ও আর্দ্রতা",
+      "ঘন রোপণ ও অতিরিক্ত কুশি",
+      "বেশি ইউরিয়া সার প্রয়োগ"
+    ],
+    "affectedParts": [
+      "Leaf sheaths",
+      "Stems",
+      "Panicles",
+      "Leaves"
+    ],
+    "banglaAffectedParts": [
+      "পাতার খোল",
+      "কাণ্ড",
+      "শীষ",
+      "পাতা"
+    ],
+    "banglaCropInfo": "ধান — বোরো মৌসুমে এই রোগ বেশি দেখা যায়।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "ইউরিয়া সার কমিয়ে পটাশ সার বাড়ান।",
+        "জমিতে পানির স্তর কমিয়ে দিন।",
+        "অনুমোদিত ছত্রাকনাশক (যেমন ভ্যালিডামাইসিন বা হেক্সাকোনাজল) স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "ঘন রোপণ পরিহার করুন, সঠিক দূরত্বে রোপণ করুন।",
+        "অতিরিক্ত ইউরিয়া সার এড়িয়ে চলুন।",
+        "ফসল কাটার পর জমির আবর্জনা পরিষ্কার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "দুপুরে পানি শুকিয়ে যেতে দিন, পরে আবার দিন (AWD পদ্ধতি)।"
+      ],
+      "whenToConsultExpert": [
+        "গাছ ঢলে পড়ার আশঙ্কা দেখা দিলে জরুরি ভিত্তিতে পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ছত্রাকনাশকের লেবেলে নির্দেশিত মাত্রা মেনে চলুন।",
+      "verifiedSource": "BRRI ও কৃষি সম্প্রসারণ অধিদপ্তর (DAE)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Reduce Nitrogen & Water",
+          "description": "Cut nitrogen application and lower water level to slow fungal spread.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "85%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Trichoderma harzianum",
+          "preparation": "As per bio-agent label",
+          "application": "Soil application at tillering stage",
+          "certifications": "Certified Bio-Input"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Validamycin 3% SL",
+          "activeIngredient": "Validamycin",
+          "dosage": "Follow registered label",
+          "safetyInterval": "14 days",
+          "cautions": "Spray on lower plant parts."
+        }
+      ],
+      "preventiveMeasures": [
+        "Proper plant spacing",
+        "Balanced nitrogen application"
+      ],
+      "culturalPractices": [
+        "Alternate wetting and drying (AWD) irrigation"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "rice-tungro",
+    "crop": "Rice",
+    "banglaCrop": "ধান",
+    "commonName": "Rice Tungro Disease",
+    "banglaName": "ধানের টুংরো রোগ (ভাইরাসজনিত)",
+    "scientificName": "Rice Tungro Bacilliform Virus (RTBV) + Rice Tungro Spherical Virus (RTSV)",
+    "pathogenType": "Viral",
+    "severity": "Severe",
+    "confidence": 91,
+    "summary": "A devastating viral disease transmitted by green leafhoppers (Nephotettix virescens). Infected plants show stunted growth, yellow-orange discoloration of leaves, and drastically reduced or no grain filling.",
+    "banglaSummary": "সবুজ পাতাফড়িং (Green Leafhopper) দ্বারা ছড়ানো ধানের ভয়াবহ ভাইরাস রোগ। আক্রান্ত গাছ বামন হয়, পাতা হলুদ-কমলা হয়ে যায় এবং শীষ বের হলেও দানা চিটা হয়।",
+    "symptoms": [
+      "Stunted plant growth with reduced tillering",
+      "Yellow to orange discoloration of leaves, starting from lower leaves",
+      "Leaves may become mottled or show interveinal chlorosis",
+      "Delayed heading and sterile or partially filled panicles"
+    ],
+    "banglaSymptoms": [
+      "গাছের বৃদ্ধি মারাত্মকভাবে কমে যায় (বামন হয়)",
+      "পাতা হলুদ থেকে কমলা রঙ ধারণ করে, নিচ থেকে শুরু হয়",
+      "পাতায় ছোপ ছোপ দাগ বা শিরার মধ্যবর্তী স্থানে হলুদভাব",
+      "শীষ বের হতে দেরি হয় এবং দানা চিটা বা আংশিক পূর্ণ হয়"
+    ],
+    "favorableConditions": [
+      "Presence of green leafhopper (Nephotettix virescens) vector",
+      "Late transplanting during peak leafhopper population",
+      "Tungro-infected rice stubble or ratoon crops nearby"
+    ],
+    "banglaCauses": [
+      "সবুজ পাতাফড়িং পোকার উপস্থিতি (ভাইরাসের বাহক)",
+      "দেরিতে রোপণ করলে পাতাফড়িংয়ের সংখ্যা বেশি থাকে",
+      "আশেপাশের জমিতে আক্রান্ত ফসলের অবশিষ্টাংশ"
+    ],
+    "affectedParts": [
+      "Entire plant",
+      "Leaves",
+      "Panicles"
+    ],
+    "banglaAffectedParts": [
+      "সম্পূর্ণ গাছ",
+      "পাতা",
+      "শীষ"
+    ],
+    "banglaCropInfo": "ধান — টুংরো বাংলাদেশের ধান চাষের অন্যতম মারাত্মক ভাইরাস রোগ।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত গাছ উপড়ে ফেলে ধ্বংস করুন।",
+        "সবুজ পাতাফড়িং নিয়ন্ত্রণে অনুমোদিত কীটনাশক স্প্রে করুন।",
+        "আশেপাশের আক্রান্ত গাছ ও রেটুন ফসল সরিয়ে ফেলুন।"
+      ],
+      "preventionMethods": [
+        "টুংরো প্রতিরোধী ধানের জাত (যেমন BRRI উদ্ভাবিত) চাষ করুন।",
+        "সময়মতো আগাম রোপণ করুন।",
+        "পাতাফড়িং নিয়ন্ত্রণে আলোর ফাঁদ ব্যবহার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "সন্ধ্যায় আলোর ফাঁদ ব্যবহার করে পাতাফড়িংয়ের উপস্থিতি পর্যবেক্ষণ করুন।"
+      ],
+      "whenToConsultExpert": [
+        "জমিতে হলুদ-কমলা গাছ দেখামাত্র অবিলম্বে কৃষি কর্মকর্তার পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ভাইরাস রোগে ছত্রাকনাশক বা কীটনাশক সরাসরি ভাইরাস মারতে পারে না — বাহক পোকা নিয়ন্ত্রণই প্রধান উপায়।",
+      "verifiedSource": "BRRI ও কৃষি সম্প্রসারণ অধিদপ্তর (DAE)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Remove Infected Plants",
+          "description": "Uproot and destroy tungro-infected plants immediately to reduce virus reservoir.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "70%"
+        },
+        {
+          "title": "Control Leafhopper Vector",
+          "description": "Apply approved insecticide to control green leafhopper populations.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "85%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Neem Seed Kernel Extract",
+          "preparation": "5% NSKE solution",
+          "application": "Spray to deter leafhopper feeding",
+          "certifications": "Bio-based"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Imidacloprid 17.8% SL",
+          "activeIngredient": "Imidacloprid",
+          "dosage": "Follow registered label",
+          "safetyInterval": "14 days",
+          "cautions": "Toxic to bees. Avoid during flowering."
+        }
+      ],
+      "preventiveMeasures": [
+        "Plant tungro-resistant varieties",
+        "Timely transplanting to avoid peak leafhopper"
+      ],
+      "culturalPractices": [
+        "Synchronize planting in the area",
+        "Remove ratoon crops and volunteer rice"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tomato-bacterial-spot",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Tomato Bacterial Spot",
+    "banglaName": "টমেটোর ব্যাকটেরিয়াল দাগ রোগ",
+    "scientificName": "Xanthomonas vesicatoria",
+    "pathogenType": "Bacterial",
+    "severity": "Moderate",
+    "confidence": 94,
+    "summary": "A bacterial disease causing small, dark, water-soaked spots on leaves and fruit. Severe infections cause extensive defoliation and scabby fruit lesions.",
+    "banglaSummary": "জ্যান্থোমোনাস ব্যাকটেরিয়া দ্বারা সৃষ্ট। পাতায় ছোট, গাঢ়, জলছাপযুক্ত দাগ এবং ফলে খসখসে দাগ তৈরি হয়। তীব্র আক্রমণে পাতা ঝরে পড়ে।",
+    "symptoms": [
+      "Small (1–3mm) dark, water-soaked spots on lower leaf surfaces",
+      "Spots turn brown-black with raised, scabby texture",
+      "Severe leaf yellowing and defoliation",
+      "Raised, wart-like scabs on fruit surface"
+    ],
+    "banglaSymptoms": [
+      "পাতার নিচে ১–৩ মিমি আকারের গাঢ় জলছাপযুক্ত দাগ",
+      "দাগ বাদামী-কালো হয়ে খসখসে ও সামান্য উঁচু হয়",
+      "পাতা হলুদ হয়ে ব্যাপকভাবে ঝরে পড়ে",
+      "ফলের গায়ে উঁচু, আঁচিলের মতো খসখসে দাগ"
+    ],
+    "favorableConditions": [
+      "Warm temperatures 25°C–30°C with heavy rain",
+      "Wind-driven rain spreading bacteria",
+      "Working in wet fields"
+    ],
+    "banglaCauses": [
+      "২৫°–৩০° সে. তাপমাত্রা ও ভারী বৃষ্টি",
+      "বাতাসের সাথে বৃষ্টির ছিটায় ব্যাকটেরিয়া ছড়ায়",
+      "ভেজা অবস্থায় জমিতে কাজ করা"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Stems",
+      "Fruit"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ডগা",
+      "ফল"
+    ],
+    "banglaCropInfo": "টমেটো — বাংলাদেশের প্রধান শীতকালীন সবজি ফসল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত পাতা ও ডাল সরিয়ে ধ্বংস করুন।",
+        "ভেজা অবস্থায় গাছ স্পর্শ করবেন না।",
+        "অনুমোদিত কপার-ভিত্তিক ব্যাকটেরিয়ানাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "গরম পানিতে (৫০° সে., ২৫ মিনিট) বীজ শোধন করুন।",
+        "রোগমুক্ত চারা ব্যবহার করুন।",
+        "শস্যপর্যায় মেনে চলুন।"
+      ],
+      "fieldCareGuidance": [
+        "পানি নিষ্কাশন নিশ্চিত করুন।"
+      ],
+      "whenToConsultExpert": [
+        "পাতা ব্যাপকভাবে ঝরে পড়লে পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ব্যাকটেরিয়ার বিরুদ্ধে সাধারণ ছত্রাকনাশক কাজ করে না। কপার-ভিত্তিক ওষুধ ব্যবহার করুন।",
+      "verifiedSource": "BARI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Copper Spray",
+          "description": "Apply approved copper hydroxide bactericide immediately.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "85%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Bordeaux Mixture",
+          "preparation": "Standard 1% recipe",
+          "application": "Preventive spray before rain",
+          "certifications": "Traditional Organic"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Copper Hydroxide 77% WP",
+          "activeIngredient": "Copper Hydroxide",
+          "dosage": "Follow label",
+          "safetyInterval": "As per label",
+          "cautions": "Protective gloves required."
+        }
+      ],
+      "preventiveMeasures": [
+        "Hot-water seed treatment",
+        "Avoid overhead irrigation"
+      ],
+      "culturalPractices": [
+        "Never work in wet fields",
+        "Rotate away from Solanaceae"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tomato-late-blight",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Tomato Late Blight",
+    "banglaName": "টমেটোর নাবী ধসা রোগ (লেট ব্লাইট)",
+    "scientificName": "Phytophthora infestans",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 96,
+    "summary": "A devastating oomycete disease that rapidly destroys tomato foliage and fruit. Irregularly shaped water-soaked lesions turn dark brown to black, often with white fungal growth on the underside of leaves.",
+    "banglaSummary": "ফাইটোপথোরা ইনফেসট্যান্স দ্বারা সৃষ্ট টমেটোর ভয়াবহ রোগ। পাতায় অনিয়মিত জলছাপের দাগ দ্রুত কালো হয়ে যায়। কুয়াশাচ্ছন্ন আর্দ্র আবহাওয়ায় ২–৩ দিনে পুরো গাছ পুড়ে যাওয়ার মতো কালো হয়।",
+    "symptoms": [
+      "Irregular water-soaked dark brown to black lesions on leaves",
+      "White fuzzy fungal growth on leaf undersides in humid conditions",
+      "Firm, dark brown lesions on green fruit",
+      "Rapid vine collapse with putrid smell"
+    ],
+    "banglaSymptoms": [
+      "পাতায় অনিয়মিত জলছাপের দাগ, দ্রুত গাঢ় বাদামী-কালো হয়",
+      "আর্দ্র সকালে পাতার নিচে সাদা তুলোর মতো ছত্রাক",
+      "কাঁচা ফলে শক্ত, গাঢ় বাদামী দাগ",
+      "সম্পূর্ণ গাছ দ্রুত ঢলে পড়ে ও পচা গন্ধ বের হয়"
+    ],
+    "favorableConditions": [
+      "Cool temperatures 15°C–21°C with continuous wetness",
+      "Fog, drizzle, overcast conditions",
+      "Overhead irrigation"
+    ],
+    "banglaCauses": [
+      "১৫°–২১° সে. শীতল তাপমাত্রা ও টানা আর্দ্র আবহাওয়া",
+      "কুয়াশা ও গুঁড়ি গুঁড়ি বৃষ্টি",
+      "ওপর থেকে সেচ দেওয়া"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Stems",
+      "Fruit"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "কাণ্ড",
+      "ফল"
+    ],
+    "banglaCropInfo": "টমেটো — শীতকালে এই রোগ সবচেয়ে বেশি দেখা যায়।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "ওপর থেকে সেচ দেওয়া সম্পূর্ণ বন্ধ করুন।",
+        "আক্রান্ত গাছের অংশ কেটে পুড়িয়ে ফেলুন।",
+        "অনুমোদিত সিস্টেমিক ছত্রাকনাশক জরুরি ভিত্তিতে স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "কুয়াশা শুরু হওয়ার আগেই প্রতিরোধক ছত্রাকনাশক স্প্রে করুন।",
+        "গোড়ায় মালচিং ব্যবহার করুন।",
+        "খুঁটি দিয়ে গাছ বেঁধে দিন।"
+      ],
+      "fieldCareGuidance": [
+        "সকালে সেচ দিন, পাতা ভেজা রাখবেন না।"
+      ],
+      "whenToConsultExpert": [
+        "দ্রুত ছড়ানো শুরু হলে অবিলম্বে পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ছত্রাকনাশক লেবেল অনুযায়ী সঠিক মাত্রায় ব্যবহার করুন।",
+      "verifiedSource": "BARI ও কৃষি সম্প্রসারণ অধিদপ্তর (DAE)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Emergency Fungicide",
+          "description": "Apply systemic fungicide with translaminar activity immediately.",
+          "priority": "High",
+          "timeframe": "Within 12 hours",
+          "effectiveness": "93%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Bordeaux Mixture 1%",
+          "preparation": "100g CuSO4 + 100g lime in 10L water",
+          "application": "Preventive spray before rain",
+          "certifications": "Traditional Organic"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Metalaxyl + Mancozeb",
+          "activeIngredient": "Metalaxyl 8% + Mancozeb 64%",
+          "dosage": "Follow label",
+          "safetyInterval": "7–14 days",
+          "cautions": "Wear mask and gloves."
+        }
+      ],
+      "preventiveMeasures": [
+        "Pre-season preventive sprays during fog season",
+        "Improve air circulation"
+      ],
+      "culturalPractices": [
+        "Stake plants vertically",
+        "Avoid overhead irrigation"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tomato-leaf-mold",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Tomato Leaf Mold",
+    "banglaName": "টমেটোর পাতার ছাতা রোগ (লিফ মোল্ড)",
+    "scientificName": "Passalora fulva (syn. Cladosporium fulvum)",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 92,
+    "summary": "A fungal disease primarily affecting greenhouse and high-tunnel tomatoes. Pale green to yellowish spots on upper leaf surfaces with olive-green to brown velvety fungal growth on the underside.",
+    "banglaSummary": "ক্ল্যাডোস্পোরিয়াম ছত্রাক দ্বারা সৃষ্ট। পাতার উপরিভাগে হালকা সবুজ-হলুদ দাগ এবং নিচের পিঠে জলপাই-সবুজ থেকে বাদামী মখমলের মতো ছত্রাক দেখা যায়। আবদ্ধ পরিবেশে বেশি হয়।",
+    "symptoms": [
+      "Pale green to yellowish diffuse spots on upper leaf surface",
+      "Olive-green to brown velvety fungal growth on leaf undersides",
+      "Leaves curl upward and dry out",
+      "Progressive defoliation from lower leaves upward"
+    ],
+    "banglaSymptoms": [
+      "পাতার উপরে হালকা সবুজ-হলুদ ছড়ানো দাগ",
+      "পাতার নিচে জলপাই-সবুজ বা বাদামী মখমলের মতো ছত্রাক",
+      "পাতা উপরের দিকে কুঁকড়ে শুকিয়ে যায়",
+      "নিচ থেকে ওপরের দিকে ক্রমশ পাতা ঝরে পড়ে"
+    ],
+    "favorableConditions": [
+      "High humidity (>85%) in enclosed growing structures",
+      "Poor air circulation",
+      "Temperature 20°C–25°C"
+    ],
+    "banglaCauses": [
+      "আবদ্ধ পরিবেশে ৮৫% এর বেশি আর্দ্রতা",
+      "বাতাস চলাচলের অভাব",
+      "২০°–২৫° সে. তাপমাত্রা"
+    ],
+    "affectedParts": [
+      "Leaves (primarily lower)",
+      "Stems (rarely)"
+    ],
+    "banglaAffectedParts": [
+      "পাতা (প্রধানত নিচের)",
+      "কাণ্ড (বিরল)"
+    ],
+    "banglaCropInfo": "টমেটো — বিশেষ করে গ্রিনহাউস বা পলিটানেলে এই রোগ বেশি হয়।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "বাতাস চলাচল বাড়ান — জানালা খুলুন বা ফ্যান ব্যবহার করুন।",
+        "নিচের আক্রান্ত পাতা ছেঁটে ফেলুন।",
+        "অনুমোদিত ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "গাছের মধ্যে পর্যাপ্ত ফাঁক রাখুন।",
+        "পাতা ভিজিয়ে সেচ দেবেন না।",
+        "প্রতিরোধী জাত ব্যবহার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "আর্দ্রতা কমানোর ব্যবস্থা করুন।"
+      ],
+      "whenToConsultExpert": [
+        "দ্রুত ছড়িয়ে পড়লে পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ছত্রাকনাশক লেবেল মোতাবেক ব্যবহার করুন।",
+      "verifiedSource": "BARI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Increase Ventilation",
+          "description": "Improve air circulation to reduce humidity below 85%.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "80%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Sulfur-based Fungicide",
+          "preparation": "Micronized wettable sulfur as per label",
+          "application": "Foliar spray every 7–10 days",
+          "certifications": "Organic Approved"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Chlorothalonil",
+          "activeIngredient": "Chlorothalonil 54%",
+          "dosage": "Follow label",
+          "safetyInterval": "0 days (tomato PHI)",
+          "cautions": "Protective gear required."
+        }
+      ],
+      "preventiveMeasures": [
+        "Ensure proper greenhouse ventilation",
+        "Use resistant cultivars"
+      ],
+      "culturalPractices": [
+        "Prune lower leaves for airflow",
+        "Avoid wetting foliage"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tomato-septoria-leaf-spot",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Septoria Leaf Spot",
+    "banglaName": "টমেটোর সেপটোরিয়া পাতার দাগ রোগ",
+    "scientificName": "Septoria lycopersici",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 93,
+    "summary": "A common fungal foliar disease with numerous small circular spots with dark brown margins and grayish-white centers containing tiny black pycnidia (fruiting bodies).",
+    "banglaSummary": "সেপটোরিয়া ছত্রাক দ্বারা সৃষ্ট। পাতায় অনেক ছোট গোলাকৃতির দাগ যার কিনারা গাঢ় বাদামী এবং কেন্দ্র ধূসর-সাদা। দাগের মাঝে কালো বিন্দুর মতো ছত্রাকের ফলন্ত অংশ দেখা যায়।",
+    "symptoms": [
+      "Numerous small (2–3mm) circular spots with dark borders and gray centers",
+      "Tiny black dots (pycnidia) visible in lesion centers under magnification",
+      "Lower leaves affected first, progressing upward",
+      "Severe defoliation leaving only upper leaves"
+    ],
+    "banglaSymptoms": [
+      "২–৩ মিমি আকারের অসংখ্য ছোট গোলাকৃতির দাগ, কিনারা গাঢ়, কেন্দ্র ধূসর",
+      "দাগের মাঝে কালো বিন্দুর মতো পিকনিডিয়া দেখা যায়",
+      "প্রথমে নিচের পাতায়, তারপর ওপরের দিকে ছড়ায়",
+      "তীব্র আক্রমণে শুধু ওপরের কয়েকটি পাতা বাকি থাকে"
+    ],
+    "favorableConditions": [
+      "Warm temperatures 20°C–25°C with frequent rain",
+      "Splashing water from soil to leaves",
+      "Dense canopy"
+    ],
+    "banglaCauses": [
+      "২০°–২৫° সে. তাপমাত্রা ও ঘন ঘন বৃষ্টি",
+      "সেচের ছিটা মাটি থেকে পাতায় লাগা",
+      "ঘন গাছপালা"
+    ],
+    "affectedParts": [
+      "Lower leaves",
+      "Stems",
+      "Rarely fruit"
+    ],
+    "banglaAffectedParts": [
+      "নিচের পাতা",
+      "কাণ্ড",
+      "ফল (বিরল)"
+    ],
+    "banglaCropInfo": "টমেটো — এই রোগ বৃষ্টির মৌসুমে বেশি দেখা যায়।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত নিচের পাতা সাবধানে ছেঁটে পুড়িয়ে ফেলুন।",
+        "গোড়ায় মালচিং ব্যবহার করুন যাতে মাটির ছিটা পাতায় না লাগে।",
+        "অনুমোদিত ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "শস্যপর্যায় মেনে চলুন।",
+        "খুঁটি দিয়ে গাছ উঁচু করুন।",
+        "মালচিং ব্যবহার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "সকালে সেচ দিন।"
+      ],
+      "whenToConsultExpert": [
+        "দ্রুত পাতা ঝরে পড়লে পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ছত্রাকনাশকের সঠিক মাত্রা লেবেল থেকে দেখে নিন।",
+      "verifiedSource": "BARI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Prune Lower Foliage",
+          "description": "Remove and destroy lower infected leaves to slow splash-based spread.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "82%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Copper Fungicide",
+          "preparation": "As per organic label",
+          "application": "Foliar spray every 7 days",
+          "certifications": "OMRI Listed"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Mancozeb + Chlorothalonil",
+          "activeIngredient": "Contact fungicides",
+          "dosage": "Follow label",
+          "safetyInterval": "7 days",
+          "cautions": "Standard precautions."
+        }
+      ],
+      "preventiveMeasures": [
+        "Mulch around plant base",
+        "Stake plants for airflow"
+      ],
+      "culturalPractices": [
+        "Avoid overhead irrigation",
+        "3-year crop rotation"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tomato-spider-mites",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Two-Spotted Spider Mite Infestation",
+    "banglaName": "টমেটোর মাকড়সা মাইট (লাল মাকড়সা পোকা)",
+    "scientificName": "Tetranychus urticae",
+    "pathogenType": "Pest Infestation",
+    "severity": "Moderate",
+    "confidence": 89,
+    "summary": "Tiny spider mites feed on leaf undersides, causing stippled yellow spots that merge into bronzed, dried leaves. Fine webbing visible between leaves in heavy infestations.",
+    "banglaSummary": "ক্ষুদ্র মাকড়সা মাইট পাতার নিচের দিকে রস চুষে খায়। পাতায় হালকা হলুদ বিন্দু বিন্দু দাগ (স্টিপলিং) দেখা যায়, পরে পাতা ব্রোঞ্জ রঙ ধরে শুকিয়ে যায়। তীব্র আক্রমণে সূক্ষ্ম জাল দেখা যায়।",
+    "symptoms": [
+      "Fine yellow stippling (tiny dots) on upper leaf surface",
+      "Leaves turn bronze/rusty and dry out",
+      "Fine silken webbing visible between leaves and stems",
+      "Tiny moving dots (mites) visible on leaf undersides with magnification"
+    ],
+    "banglaSymptoms": [
+      "পাতার উপরে হালকা হলুদ বিন্দু বিন্দু দাগ",
+      "পাতা ব্রোঞ্জ বা মরিচা রঙ ধরে শুকিয়ে যায়",
+      "পাতা ও কাণ্ডের মাঝে সূক্ষ্ম রেশমি জাল",
+      "পাতার নিচে ম্যাগনিফায়িং গ্লাসে ক্ষুদ্র নড়াচড়া করা মাইট দেখা যায়"
+    ],
+    "favorableConditions": [
+      "Hot, dry weather (>30°C)",
+      "Dusty conditions",
+      "Low humidity"
+    ],
+    "banglaCauses": [
+      "গরম ও শুষ্ক আবহাওয়া (৩০° সে. এর বেশি)",
+      "ধুলোযুক্ত পরিবেশ",
+      "কম আর্দ্রতা"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Stems",
+      "Buds"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "কাণ্ড",
+      "কুঁড়ি"
+    ],
+    "banglaCropInfo": "টমেটো — গরম ও শুষ্ক সময়ে মাইটের আক্রমণ বেশি হয়।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "জোরে পানির ধারায় পাতার নিচে স্প্রে করে মাইট ধুয়ে ফেলুন।",
+        "তীব্র আক্রমণে অনুমোদিত মাইটিসাইড স্প্রে করুন।",
+        "প্রাকৃতিক শত্রু (লেডিবাগ, প্রিডেটরি মাইট) সংরক্ষণ করুন।"
+      ],
+      "preventionMethods": [
+        "জমিতে ধুলো কমাতে পানি স্প্রে করুন।",
+        "অতিরিক্ত ব্রডস্পেকট্রাম কীটনাশক এড়িয়ে চলুন।"
+      ],
+      "fieldCareGuidance": [
+        "আবহাওয়া গরম-শুষ্ক হলে পাতার নিচে নিয়মিত পর্যবেক্ষণ করুন।"
+      ],
+      "whenToConsultExpert": [
+        "পাতা ব্রোঞ্জ হয়ে ব্যাপকভাবে ঝরে পড়লে পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ মাইটিসাইড ও কীটনাশক ভিন্ন — সাধারণ কীটনাশকে মাইট মরে না। সঠিক ওষুধ নির্বাচনে কৃষি কর্মকর্তার পরামর্শ নিন।",
+      "verifiedSource": "BARI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Water Spray Knockdown",
+          "description": "Blast leaf undersides with strong water spray to dislodge mites.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "70%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Neem Oil",
+          "preparation": "5ml per liter + soap emulsifier",
+          "application": "Spray every 5 days, targeting leaf undersides",
+          "certifications": "Bio-based"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Abamectin 1.8% EC",
+          "activeIngredient": "Abamectin",
+          "dosage": "Follow label",
+          "safetyInterval": "7 days",
+          "cautions": "Highly toxic to aquatic organisms."
+        }
+      ],
+      "preventiveMeasures": [
+        "Maintain humidity by irrigation",
+        "Conserve natural predators"
+      ],
+      "culturalPractices": [
+        "Remove weeds that harbor mites",
+        "Avoid dust buildup"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tomato-target-spot",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Tomato Target Spot",
+    "banglaName": "টমেটোর টার্গেট দাগ রোগ",
+    "scientificName": "Corynespora cassiicola",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 91,
+    "summary": "A fungal disease producing brown circular spots with concentric rings on leaves, stems, and fruit. Affects all aerial plant parts and can cause significant defoliation.",
+    "banglaSummary": "করিনেস্পোরা ছত্রাক দ্বারা সৃষ্ট। পাতায় কেন্দ্রীভূত রিং সহ বাদামী গোলাকৃতির দাগ তৈরি হয়। পাতা, কাণ্ড ও ফলে আক্রমণ করে এবং পাতা ব্যাপকভাবে ঝরে পড়ে।",
+    "symptoms": [
+      "Brown circular lesions with concentric rings (target-like) on leaves",
+      "Dark, sunken spots on stems and petioles",
+      "Small, round, brown spots on fruit",
+      "Lower leaf defoliation progressing upward"
+    ],
+    "banglaSymptoms": [
+      "পাতায় কেন্দ্রীভূত রিং সহ বাদামী গোলাকৃতির দাগ (টার্গেটের মতো)",
+      "কাণ্ড ও বোঁটায় গাঢ়, দেবে যাওয়া দাগ",
+      "ফলে ছোট, গোলাকার বাদামী দাগ",
+      "নিচের পাতা থেকে ওপরের দিকে পাতা ঝরে পড়া"
+    ],
+    "favorableConditions": [
+      "Warm humid conditions (25°C–30°C)",
+      "Extended leaf wetness",
+      "Poor pruning and dense canopy"
+    ],
+    "banglaCauses": [
+      "উষ্ণ আর্দ্র আবহাওয়া (২৫°–৩০° সে.)",
+      "দীর্ঘক্ষণ পাতা ভেজা থাকা",
+      "ঘন গাছপালা ও অপর্যাপ্ত ছাঁটাই"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Stems",
+      "Fruit"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "কাণ্ড",
+      "ফল"
+    ],
+    "banglaCropInfo": "টমেটো — গরম ও আর্দ্র মৌসুমে বেশি দেখা যায়।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত পাতা ছেঁটে পুড়িয়ে ফেলুন।",
+        "গাছের নিচের দিকে ছাঁটাই করে বাতাস চলাচল বাড়ান।",
+        "অনুমোদিত ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "নিয়মিত ছাঁটাই করুন।",
+        "মালচিং ব্যবহার করুন।",
+        "শস্যপর্যায় মেনে চলুন।"
+      ],
+      "fieldCareGuidance": [
+        "পাতা ভিজিয়ে সেচ দেবেন না।"
+      ],
+      "whenToConsultExpert": [
+        "ফলেও দাগ দেখা দিলে পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ছত্রাকনাশক লেবেল মোতাবেক ব্যবহার করুন।",
+      "verifiedSource": "BARI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Prune Infected Tissue",
+          "description": "Remove infected leaves and improve canopy airflow.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "80%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Neem Oil Spray",
+          "preparation": "5ml/L + soap",
+          "application": "Every 7 days",
+          "certifications": "Bio-based"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Azoxystrobin + Difenoconazole",
+          "activeIngredient": "Strobilurin + Triazole",
+          "dosage": "Follow label",
+          "safetyInterval": "7 days",
+          "cautions": "Standard precautions."
+        }
+      ],
+      "preventiveMeasures": [
+        "Regular pruning",
+        "Mulching around base"
+      ],
+      "culturalPractices": [
+        "Maintain plant spacing",
+        "Stake plants vertically"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tomato-yellow-leaf-curl-virus",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+    "banglaName": "টমেটোর পাতা হলুদ কোঁকড়ানো ভাইরাস রোগ (TYLCV)",
+    "scientificName": "Tomato Yellow Leaf Curl Virus (Begomovirus)",
+    "pathogenType": "Viral",
+    "severity": "Severe",
+    "confidence": 90,
+    "summary": "A devastating viral disease transmitted by whiteflies (Bemisia tabaci). Plants show upward curling of leaflets, interveinal yellowing, stunted growth, and severe flower drop resulting in little to no fruit set.",
+    "banglaSummary": "সাদামাছি (Whitefly) পোকা দ্বারা ছড়ানো ভয়াবহ ভাইরাস রোগ। পাতা উপরের দিকে কুঁকড়ে যায়, শিরার মাঝে হলুদভাব, গাছ বামন হয় এবং ফুল ঝরে পড়ে — ফলে ফল খুব কম বা হয় না।",
+    "symptoms": [
+      "Upward curling and cupping of young leaflets",
+      "Interveinal yellowing (chlorosis) of leaves",
+      "Severe stunting of entire plant",
+      "Flower drop and drastically reduced fruit set"
+    ],
+    "banglaSymptoms": [
+      "কচি পাতা উপরের দিকে কুঁকড়ে কাপের মতো হয়ে যায়",
+      "পাতার শিরার মাঝের অংশ হলুদ হয়ে যায়",
+      "গাছের বৃদ্ধি মারাত্মকভাবে কমে যায় (বামন হয়)",
+      "ফুল ঝরে পড়ে, ফল খুব কম হয় বা একেবারেই হয় না"
+    ],
+    "favorableConditions": [
+      "High whitefly (Bemisia tabaci) population",
+      "Warm dry weather favoring whitefly multiplication",
+      "Proximity to infected crops or weeds"
+    ],
+    "banglaCauses": [
+      "সাদামাছি পোকার উচ্চ জনসংখ্যা (ভাইরাসের বাহক)",
+      "গরম-শুষ্ক আবহাওয়ায় সাদামাছি দ্রুত বাড়ে",
+      "আশেপাশে আক্রান্ত ফসল বা আগাছা"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Flowers",
+      "Entire plant"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ফুল",
+      "সম্পূর্ণ গাছ"
+    ],
+    "banglaCropInfo": "টমেটো — TYLCV বাংলাদেশে টমেটোর সবচেয়ে ক্ষতিকর ভাইরাস রোগের একটি।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত গাছ দ্রুত উপড়ে ফেলে ধ্বংস করুন।",
+        "সাদামাছি নিয়ন্ত্রণে হলুদ স্টিকি ট্র্যাপ ব্যবহার করুন।",
+        "অনুমোদিত কীটনাশক দিয়ে সাদামাছি নিয়ন্ত্রণ করুন।"
+      ],
+      "preventionMethods": [
+        "TYLCV প্রতিরোধী টমেটোর জাত চাষ করুন।",
+        "চারা অবস্থায় নেটহাউস বা মশারি দিয়ে ঢেকে রাখুন।",
+        "সাদামাছির আশ্রয়দাতা আগাছা পরিষ্কার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "হলুদ স্টিকি ট্র্যাপ দিয়ে সাদামাছির উপস্থিতি পর্যবেক্ষণ করুন।"
+      ],
+      "whenToConsultExpert": [
+        "পাতা কুঁকড়ানো ও গাছ বামন দেখামাত্র পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ভাইরাস রোগে কোনো ওষুধ সরাসরি কাজ করে না — বাহক পোকা নিয়ন্ত্রণই একমাত্র উপায়।",
+      "verifiedSource": "BARI ও কৃষি সম্প্রসারণ অধিদপ্তর (DAE)"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Remove Infected Plants",
+          "description": "Uproot and destroy TYLCV-infected plants immediately.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "60%"
+        },
+        {
+          "title": "Whitefly Control",
+          "description": "Deploy yellow sticky traps and apply approved insecticide.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "80%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Neem Oil + Yellow Sticky Traps",
+          "preparation": "Neem oil 5ml/L for spraying; yellow traps for monitoring",
+          "application": "Spray every 5 days; traps at canopy level",
+          "certifications": "Bio-based"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Imidacloprid 17.8% SL",
+          "activeIngredient": "Imidacloprid (Neonicotinoid)",
+          "dosage": "Follow registered label",
+          "safetyInterval": "14 days",
+          "cautions": "Toxic to bees. Avoid during flowering."
+        }
+      ],
+      "preventiveMeasures": [
+        "Plant TYLCV-resistant cultivars",
+        "Use insect-proof net during seedling stage"
+      ],
+      "culturalPractices": [
+        "Remove weed hosts around fields",
+        "Synchronize planting dates"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "tomato-mosaic-virus",
+    "crop": "Tomato",
+    "banglaCrop": "টমেটো",
+    "commonName": "Tomato Mosaic Virus (ToMV)",
+    "banglaName": "টমেটোর মোজাইক ভাইরাস রোগ (ToMV)",
+    "scientificName": "Tomato Mosaic Virus (Tobamovirus)",
+    "pathogenType": "Viral",
+    "severity": "Moderate",
+    "confidence": 88,
+    "summary": "A highly stable and mechanically transmitted virus causing mosaic patterns of light and dark green on leaves, leaf distortion, and occasionally internal fruit browning. Easily spread through contaminated hands, tools, and seeds.",
+    "banglaSummary": "অত্যন্ত স্থায়ী ও যান্ত্রিকভাবে ছড়ানো ভাইরাস। পাতায় হালকা ও গাঢ় সবুজের মোজাইক প্যাটার্ন, পাতা কুঁচকে যাওয়া এবং কখনও ফলের ভেতরে বাদামী দাগ দেখা যায়। হাত, যন্ত্রপাতি ও বীজের মাধ্যমে সহজে ছড়ায়।",
+    "symptoms": [
+      "Mosaic pattern of alternating light green and dark green areas on leaves",
+      "Leaf curling, distortion, and 'fern leaf' appearance",
+      "Stunted plant growth",
+      "Internal browning (brown wall) of fruit in some strains"
+    ],
+    "banglaSymptoms": [
+      "পাতায় হালকা ও গাঢ় সবুজ রঙের মোজাইক বা ছোপ ছোপ প্যাটার্ন",
+      "পাতা কুঁচকে যায়, বিকৃত হয় ও ফার্ন পাতার মতো দেখায়",
+      "গাছের বৃদ্ধি কমে যায়",
+      "কিছু ক্ষেত্রে ফল কাটলে ভেতরে বাদামী দাগ দেখা যায়"
+    ],
+    "favorableConditions": [
+      "Mechanical transmission through contaminated hands and tools",
+      "Infected seeds",
+      "Tobacco users handling plants"
+    ],
+    "banglaCauses": [
+      "আক্রান্ত গাছ ছোঁয়ার পর সুস্থ গাছ ধরা (যান্ত্রিক সংক্রমণ)",
+      "আক্রান্ত বীজ থেকে সংক্রমণ",
+      "তামাক ব্যবহারকারীদের হাত থেকে ছড়ানো (TMV ক্রস-ইনফেকশন)"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Fruit (internal)",
+      "Entire plant"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ফল (ভেতরে)",
+      "সম্পূর্ণ গাছ"
+    ],
+    "banglaCropInfo": "টমেটো — ToMV অত্যন্ত স্থায়ী ভাইরাস, মাটি ও সরঞ্জামে দীর্ঘদিন বেঁচে থাকতে পারে।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত গাছ দ্রুত উপড়ে ফেলে পুড়িয়ে ফেলুন।",
+        "গাছ ছোঁয়ার আগে সাবান দিয়ে হাত ধুয়ে নিন।",
+        "ছাঁটাইয়ের কাঁচি ও সরঞ্জাম জীবাণুমুক্ত করুন।"
+      ],
+      "preventionMethods": [
+        "ভাইরাসমুক্ত প্রত্যায়িত বীজ ব্যবহার করুন।",
+        "প্রতিরোধী জাতের টমেটো (Tm-2 জিন যুক্ত) চাষ করুন।",
+        "তামাক ব্যবহারের পর দুধ দিয়ে হাত ধুয়ে তবে গাছ ধরুন।"
+      ],
+      "fieldCareGuidance": [
+        "সরঞ্জাম ব্যবহারের আগে ও পরে জীবাণুমুক্ত করুন।"
+      ],
+      "whenToConsultExpert": [
+        "মোজাইক প্যাটার্ন দেখামাত্র পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ ভাইরাসের কোনো সরাসরি ওষুধ নেই। প্রতিরোধই একমাত্র উপায়।",
+      "verifiedSource": "BARI"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Remove Infected Plants",
+          "description": "Uproot and destroy infected plants. Do NOT compost.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "65%"
+        },
+        {
+          "title": "Sanitize All Tools",
+          "description": "Disinfect pruning shears, stakes, and hands with 10% bleach or milk solution.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "90%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Use certified virus-free seeds",
+        "Plant TMV/ToMV-resistant cultivars (Tm-2 gene)"
+      ],
+      "culturalPractices": [
+        "Wash hands with soap or milk before handling plants",
+        "Sterilize tools between plants"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "uncertain-low-confidence-sample",
+    "crop": "Uncertain / Out of Scope",
+    "banglaCrop": "অনির্ণীত / মডেল তালিকার বাইরে",
+    "commonName": "Inconclusive / Out-of-Scope Foliar Scan",
+    "banglaName": "অনির্ণীত বা তালিকার বাইরের উদ্ভিদের পাতা",
+    "scientificName": "Pathology Inconclusive (<75% AI Confidence)",
+    "pathogenType": "None",
+    "severity": "Mild",
+    "confidence": 50,
+    "isLowConfidenceWarning": true,
+    "summary": "The AI model could not achieve a definitive clinical classification on this image. This happens when the crop is outside the 4 supported species (Rice, Tomato, Potato, Pepper), the image is blurry, or lighting was insufficient.",
+    "banglaSummary": "এআই মডেল এই পাতার ছবিতে নিশ্চিত কোনো রোগ শনাক্ত করতে পারেনি। আপলোড করা ছবিটি কৃষি-দৃষ্টির সমর্থিত ৪টি ফসলের (ধান, টমেটো, আলু, মরিচ) বাইরের হতে পারে, অথবা ছবি ঝাপসা বা অপর্যাপ্ত আলোতে তোলা হয়েছে। ভুল ওষুধ প্রয়োগ এড়াতে পুনরায় পরিষ্কার ছবি তুলুন অথবা কৃষি কর্মকর্তার পরামর্শ নিন।",
+    "symptoms": [
+      "Image is blurry, out of focus, or taken from too far away",
+      "Foliage belongs to a crop not currently in the v1.0 deep vision model",
+      "Multiple overlapping symptoms or non-plant background dominant"
+    ],
+    "banglaSymptoms": [
+      "ছবি অস্পষ্ট, ফোকাস ছাড়া অথবা খুব দূর থেকে তোলা",
+      "পাতাটি বর্তমান v১.০ মডেলের আওতাভুক্ত ৪টি ফসলের বাইরের কোনো উদ্ভিদের",
+      "পাতায় রোগের লক্ষণ স্পষ্ট নয় অথবা ব্যাকগ্রাউন্ডের তুলনায় পাতা ছোট"
+    ],
+    "favorableConditions": [
+      "Insufficient natural daylight during capture",
+      "Camera lens smudged or motion blur"
+    ],
+    "banglaCauses": [
+      "ছবি তোলার সময় হাত কেঁপে যাওয়া বা ক্যামেরার লেন্সে ধুলোবালি থাকা",
+      "সরাসরি কড়া রোদের ছায়া পাতার ওপর পড়া বা অপর্যাপ্ত আলো",
+      "ফসলের পাতা ছাড়া অন্য কোনো বস্তু বা ফলের ছবি আপলোড করা"
+    ],
+    "affectedParts": [
+      "Foliage / Image Quality"
+    ],
+    "banglaAffectedParts": [
+      "সমগ্র পাতার ছবি / ছবির মান"
+    ],
+    "banglaCropInfo": "কৃষি-দৃষ্টির লাইভ ভিশন মডেলটি বর্তমানে ধান, টমেটো, আলু এবং মরিচ ফসলের ২৪টি নির্দিষ্ট ক্লাসে প্রশিক্ষিত।",
+    "transmissionRisk": "Low",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "দিনের স্বাভাবিক আলোতে আক্রান্ত পাতার একদম কাছাকাছি (ক্লোজ-আপ) থেকে পুনরায় স্পষ্ট ছবি তুলুন।",
+        "পাতার ওপর নিজের বা ডিভাইসের ছায়া পড়া পরিহার করুন।",
+        "নিশ্চিত না হয়ে কোনো রাসায়নিক বা বালাইনাশক স্প্রে করবেন না।"
+      ],
+      "preventionMethods": [
+        "আক্রান্ত পাতাটি একটি স্বচ্ছ পলিথিনে নিয়ে নিকটস্থ উপজেলা কৃষি অফিসে নিয়ে যান।",
+        "কৃষি তথ্য সার্ভিসের (AIS) কৃষক কল সেন্টারে ১৬১২৩ নম্বরে বিনামূল্যে কল করে বিশেষজ্ঞ পরামর্শ নিন।"
+      ],
+      "fieldCareGuidance": [
+        "ফসল পর্যবেক্ষণ নিয়মিত রাখুন এবং লক্ষণের বিস্তার খেয়াল করুন।"
+      ],
+      "whenToConsultExpert": [
+        "যে কোনো সময় রোগের লক্ষণ নিয়ে সংশয় থাকলে তাৎক্ষণিক উপসহকারী কৃষি কর্মকর্তার (SAAO) পরামর্শ নিন।"
+      ],
+      "safetyNote": "⚠️ অনির্দিষ্ট রোগ লক্ষণে অনুমাননির্ভর বালাইনাশক ব্যবহার ফসলের অপূরণীয় ক্ষতি করতে পারে।",
+      "verifiedSource": "AIS & BARI Extension Guidelines"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Retake Clear Close-up Photo",
+          "description": "Hold camera steady in good daylight, focus directly on the leaf lesion, and scan again.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "80%"
+        },
+        {
+          "title": "Consult Local Extension Officer (SAAO)",
+          "description": "Take a fresh leaf sample to your local Upazila Agriculture Office before applying any chemical treatment.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "95%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Avoid indiscriminate chemical spraying on unverified symptoms",
+        "Contact Krishi Call Center at 16123 for agricultural guidance"
+      ],
+      "culturalPractices": [
+        "Monitor fields routinely and keep crop records"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "apple-scab",
+    "crop": "Apple",
+    "banglaCrop": "আপেল",
+    "commonName": "Apple Scab",
+    "banglaName": "আপেলের স্ক্যাব রোগ",
+    "scientificName": "Venturia inaequalis",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 96.2,
+    "summary": "A major fungal disease affecting apple foliage and fruit, causing olive-green velvety lesions that become brown, corky, and distorted.",
+    "banglaSummary": "ভেনটুরিয়া ইনইকুয়ালিস ছত্রাকজনিত মারাত্মক রোগ। আপেল পাতা ও ফলের ওপর কালচে জলপাই রঙের ভেলভেটের মতো দাগ পড়ে, পরবর্তীতে ফল খসখসে ও ফেটে যায়।",
+    "symptoms": [
+      "Olive-green to dull brown velvety spots on upper leaf surfaces",
+      "Lesions turn dark brown to black and develop cracked, corky crusts",
+      "Infected leaves twist, wrinkle, and drop prematurely",
+      "Fruits develop scabby dark lesions and become deformed or stunted"
+    ],
+    "banglaSymptoms": [
+      "পাতার উপরিভাগে জলপাই-সবুজ বা কালচে মখমলের মতো দাগ দেখা যায়",
+      "দাগগুলো শক্ত খসখসে বা খোসপাঁচড়ার মতো স্তরে পরিণত হয়",
+      "আক্রান্ত পাতা কুঁকড়ে যায় এবং অসময়ে ঝরে পড়ে",
+      "ফলের ত্বক ফেটে যায় ও ফল বিকৃত আকার ধারণ করে"
+    ],
+    "favorableConditions": [
+      "Cool, wet spring weather with prolonged leaf moisture (>9 hours)",
+      "Temperatures between 15°C - 24°C (59°F - 75°F)"
+    ],
+    "banglaCauses": [
+      "টানা বৃষ্টিপাত, কুয়াশা ও ১৫° থেকে ২৪° সেলসিয়াস তাপমাত্রা",
+      "পাতার ওপর দীর্ঘ সময় শিশির বা পানি জমে থাকা"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Fruit",
+      "Twigs"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ফল",
+      "কচি ডালপালা"
+    ],
+    "banglaCropInfo": "আপেল (Rosaceae পরিবার) - শীতল আবহাওয়ার প্রধান সুস্বাদু ও পুষ্টিকর অর্থকরী ফল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "গাছের নিচে ঝরে পড়া আক্রান্ত পাতা ও মরা ডালপাতা দ্রুত পুড়িয়ে বা পুঁতে ফেলুন।",
+        "কুঁড়ি বের হওয়ার সময় থেকে প্রতিষেধক হিসেবে অনুমোদিত ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "গাছ যাতে খোলামেলা থাকে সেজন্য নিয়মিত ছাঁটাই করুন যাতে আলো-বাতাস চলাচল করে।",
+        "রোগমুক্ত প্রত্যয়িত জাতের কলম বা চারা রোপণ করুন।"
+      ],
+      "fieldCareGuidance": [
+        "সকালের দিকে বাগান পরিদর্শন করুন এবং সেচ গাছের গোড়ায় দিন, পাতার ওপর নয়।"
+      ],
+      "whenToConsultExpert": [
+        "যদি ফলের ওপর ব্যাপকভাবে খোসপাঁচড়ার মতো কালো দাগ দেখা দেয়।"
+      ],
+      "safetyNote": "ছত্রাকনাশক স্প্রে করার সময় মুখে মাস্ক ও চশমা পরিধান করুন।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Protective Captan / Mancozeb Spray",
+          "description": "Apply foliar fungicide spray before rain events to protect fresh leaf flushes.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "90-95%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Liquid Sulfur / Copper Soap",
+          "preparation": "Mix 15-25 ml per 4 liters of clean water",
+          "application": "Spray every 7-10 days early morning until dry weather",
+          "certifications": "OMRI Listed Organic"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Myclobutanil / Difenoconazole",
+          "activeIngredient": "Score (Difenoconazole 250 EC)",
+          "dosage": "0.5 ml per liter of water",
+          "safetyInterval": "14 days pre-harvest",
+          "cautions": "Rotate mode-of-action chemistries to prevent fungal resistance."
+        }
+      ],
+      "preventiveMeasures": [
+        "Rake and compost fallen leaves with high nitrogen to accelerate decomposition",
+        "Prune tree canopy for superior air flow"
+      ],
+      "culturalPractices": [
+        "Maintain clean orchard floor free from decaying plant litter"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "apple-black-rot",
+    "crop": "Apple",
+    "banglaCrop": "আপেল",
+    "commonName": "Apple Black Rot (Frogeye Leaf Spot)",
+    "banglaName": "আপেলের ব্ল্যাক রট বা ব্যাঙের চোখ দাগ",
+    "scientificName": "Botryosphaeria obtusa",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 95.8,
+    "summary": "Causes frogeye leaf spots, limb cankers, and a firm black fruit rot with concentric rings on apples.",
+    "banglaSummary": "ছত্রাকজনিত মারাত্মক ব্যাধি। পাতায় ব্যাঙের চোখের মতো গোল বাদামী দাগ পড়ে, ডালে ক্যাংকার সৃষ্টি হয় এবং ফল কালো হয়ে শক্ত চামড়ায় পরিণত হয়।",
+    "symptoms": [
+      "Small purple flecks on leaves that enlarge into circular 'frogeye' spots with tan centers and purple margins",
+      "Fruit rot begins at blossom end as firm brown rot, expanding into concentric dark bands",
+      "Fruit turns jet black, shrivels into mummified fruit that remains on tree",
+      "Rough sunken cankers on limbs and main trunk"
+    ],
+    "banglaSymptoms": [
+      "পাতায় ছোট ছোট বেগুনি ফুটকি দেখা যায় যা বড় হয়ে বৃত্তাকার ছাই রঙা ব্যাঙের চোখ দাগ তৈরি করে",
+      "ফলের গায়ে গোল বাদামী দাগ ক্রমান্বয়ে পুরো ফলকে কালচে রিং বানিয়ে ফেলে",
+      "ফল কুঁচকে শক্ত মমি হয়ে গাছে ঝুলে থাকে",
+      "গাছের ডাল ও কাণ্ডে ক্ষত বা ক্যাংকার তৈরি হয়"
+    ],
+    "favorableConditions": [
+      "Warm, humid conditions (20°C - 27°C)",
+      "Injuries to bark or fruit from hail, insects, or pruning"
+    ],
+    "banglaCauses": [
+      "উষ্ণ ও স্যাঁতসেঁতে আবহাওয়া, ডালে ছাঁটাই বা পোকামাকড়ের ক্ষত"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Fruit",
+      "Branches",
+      "Trunk"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ফল",
+      "ডাল",
+      "কাণ্ড"
+    ],
+    "banglaCropInfo": "আপেল - বিশ্বজুড়ে জনপ্রিয় নাতিশীতোষ্ণ অঞ্চলের অন্যতম পুষ্টিকর ফল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "গাছে ঝুলে থাকা শুকনা মমি ফল ও আক্রান্ত শুকনো ডালপালা অবিলম্বে ছেঁটে নষ্ট করুন।",
+        "ফল ধারণের সময় প্রতিষেধক ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "ডাল ছাঁটাই করার পর কাটা অংশে বোর্দো পেস্ট বা ছত্রাকনাশকের প্রলেপ দিন।"
+      ],
+      "fieldCareGuidance": [
+        "গাছের নিচে মরা পাতা বা ডাল জমে থাকতে দেবেন না।"
+      ],
+      "whenToConsultExpert": [
+        "যদি প্রধান কাণ্ডে বড় ধরনের ক্ষতের সৃষ্টি হয়।"
+      ],
+      "safetyNote": "কীটনাশক স্প্রে করার পর নির্দিষ্ট সময় ফল তুলবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Prune Infected Cankered Wood & Remove Mummies",
+          "description": "Cut out cankers at least 6 inches into healthy wood. Remove and burn all dried mummified fruit.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "92%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Copper Hydroxide (Bordeaux Mixture)",
+          "preparation": "1% Bordeaux mixture (100g copper sulfate + 100g lime in 10L water)",
+          "application": "Spray during dormant stage and early bud breakout",
+          "certifications": "OMRI Listed"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Thiophanate-Methyl / Captan",
+          "activeIngredient": "Topsin-M (Thiophanate-Methyl 70% WP)",
+          "dosage": "1 g per liter of water",
+          "safetyInterval": "21 days pre-harvest",
+          "cautions": "Do not apply during full bloom to safeguard pollinators."
+        }
+      ],
+      "preventiveMeasures": [
+        "Prevent mechanical or insect injury to fruit bark",
+        "Sterilize pruning shears between cuts with 70% alcohol"
+      ],
+      "culturalPractices": [
+        "Paint trunk with white diluted latex paint to prevent winter sunscald"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1568644396922-5c3bfae12521?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "apple-cedar-rust",
+    "crop": "Apple",
+    "banglaCrop": "আপেল",
+    "commonName": "Cedar Apple Rust",
+    "banglaName": "আপেলের সিডার মরিচা রোগ",
+    "scientificName": "Gymnosporangium juniperi-virginianae",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 97.4,
+    "summary": "Heteroecious fungal rust alternating between junipers/cedars and apple trees, forming bright yellow-orange foliar spots with tubular spore horns.",
+    "banglaSummary": "ছত্রাকজনিত মারাত্মক মরিচা রোগ। পাতায় উজ্জ্বল হলুদ-কমলা রঙের গোল দাগ পড়ে এবং পাতার নিচের দিকে টিউবের মতো স্পোর নির্গতকারী ক্ষতের সৃষ্টি হয়।",
+    "symptoms": [
+      "Bright orange-yellow circular lesions on upper leaf surface, often with small black dots in center",
+      "Lesions swell and develop cylindrical cup-like fungal tubes (aecia) on leaf underside",
+      "Infected leaves drop early, reducing tree vigor and apple sizing",
+      "Fruits may develop yellow-orange raised lesions near the calyx"
+    ],
+    "banglaSymptoms": [
+      "পাতার ওপর উজ্জ্বল হলুদ বা কমলারঙা গোল গোল দাগ",
+      "দাগের মাঝখানে ছোট ছোট কালচে বিন্দুর উপস্থিতি",
+      "পাতার নিচের পিঠে ফোলা নলের মতো স্পোর বের হওয়ার ছিদ্র তৈরি হয়",
+      "গাছের পাতা সময়ের আগেই ঝরে যায় এবং ফলন কমে যায়"
+    ],
+    "favorableConditions": [
+      "Proximity to Eastern red cedar or juniper trees (alternate host within 1-2 miles)",
+      "Frequent spring rains with temperatures of 10°C - 24°C"
+    ],
+    "banglaCauses": [
+      "আশপাশে জুনিপার বা সিডার গাছের উপস্থিতি ও বসন্তকালীন বৃষ্টিপাত"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Fruit"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ফল"
+    ],
+    "banglaCropInfo": "আপেল - বিশ্বজুড়ে জনপ্রিয় ফল।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আপেল বাগানের কাছাকাছি সিডার বা জুনিপার গাছের গল (Gall) অপসারণ করুন।",
+        "বসন্তের শুরুতেই নিয়মিত প্রতিষেধক স্প্রে প্রয়োগ করুন।"
+      ],
+      "preventionMethods": [
+        "মরিচা রোগ প্রতিরোধী জাতের আপেল গাছ নির্বাচন করুন।"
+      ],
+      "fieldCareGuidance": [
+        "গাছকে পরিষ্কার-পরিচ্ছন্ন ও আগাছামুক্ত রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "যদি পাতার ৫০% এর বেশি অংশে কমলারঙা দাগ ছড়িয়ে পড়ে।"
+      ],
+      "safetyNote": "অনুমোদিত মাত্রা মেনে ছত্রাকনাশক স্প্রে করুন।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Systemic Triazole Fungicide",
+          "description": "Apply Myclobutanil or Propiconazole when orange galls swell on nearby cedars in early spring.",
+          "priority": "High",
+          "timeframe": "At pink bud stage",
+          "effectiveness": "95%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Sulfur / Bacillus subtilis Bio-fungicide",
+          "preparation": "Mix 5g Serenade (Bacillus subtilis) per liter of water",
+          "application": "Spray every 7 days during wet spring bloom",
+          "certifications": "OMRI Listed Organic"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Myclobutanil (Immunox / Systhane)",
+          "activeIngredient": "Myclobutanil 20% EW",
+          "dosage": "0.5 ml per liter of water",
+          "safetyInterval": "14 days pre-harvest",
+          "cautions": "Wear protective equipment; avoid application during windy hours."
+        }
+      ],
+      "preventiveMeasures": [
+        "Remove alternate host red cedars within 500-1000 feet of orchard",
+        "Plant rust-resistant apple varieties (e.g., Liberty, Freedom, Enterprise)"
+      ],
+      "culturalPractices": [
+        "Prune cedar galls in early winter before spore horns erupt in spring rains"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1590005354167-6da97870c757?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "apple-healthy",
+    "crop": "Apple",
+    "banglaCrop": "আপেল",
+    "commonName": "Healthy Apple Leaf",
+    "banglaName": "সুস্থ আপেল পাতা",
+    "scientificName": "Malus domestica",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99,
+    "summary": "Vigorous physiological foliage exhibiting uniform green chlorophyll, crisp serrated margins, and absence of scab, rot, or rust lesions.",
+    "banglaSummary": "আপেল গাছের পাতা সম্পূর্ণ সুস্থ ও স্বাভাবিক। ক্লোরোফিলের ভারসাম্য স্বাভাবিক এবং কোনো স্ক্যাব, রট বা মরিচা রোগের উপস্থিতি নেই।",
+    "symptoms": [
+      "Uniform vibrant green laminar foliage with prominent venation",
+      "Clean margins with intact serration and no chlorosis or necrosis",
+      "Vigorous photosynthetic activity and normal leaf turgor"
+    ],
+    "banglaSymptoms": [
+      "পাতার সর্বত্র সতেজ উজ্জ্বল সবুজ বর্ণ",
+      "পাতার কিনারায় কোনো কাটাছেঁড়া বা দাগের উপস্থিতি নেই",
+      "গাছের স্বাভাবিক বৃদ্ধি ও বলিষ্ঠ গঠন"
+    ],
+    "favorableConditions": [
+      "Balanced soil fertility, well-draining soil, adequate chilling hours and sunlight"
+    ],
+    "banglaCauses": [
+      "উত্তম পরিচর্যা, সুষম সার ও রোগমুক্ত বাগান"
+    ],
+    "affectedParts": [
+      "None - Foliage is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো অংশ আক্রান্ত নয় - গাছ সম্পূর্ণ সুস্থ"
+    ],
+    "banglaCropInfo": "আপেল - বর্তমানে গাছটি সম্পূর্ণ সুস্থ ও স্বাভাবিক বৃদ্ধির ধারায় রয়েছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো বালাইনাশক স্প্রে করার প্রয়োজন নেই।",
+        "সাপ্তাহিক রুটিন পর্যবেক্ষণ বজায় রাখুন।"
+      ],
+      "preventionMethods": [
+        "গাছের গোড়ায় নিয়মিত জৈব সার ও পরিমিত সেচ প্রদান করুন।"
+      ],
+      "fieldCareGuidance": [
+        "শীতের শেষে নিয়মিত ছাঁটাই ও কান্ড চুনকাম করে রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "ভবিষ্যতে পাতায় কোনো অস্বাভাবিক দাগ বা কুঁকড়ানো ভাব দেখলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে অপ্রয়োজনীয় রাসায়নিক স্প্রে করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Continue Routine Preventative Monitoring",
+          "description": "Inspect lower foliage and new flushes once weekly for early scab or mildew spots.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Maintain balanced N-P-K soil nutrition with micronutrients (Boron, Zinc)",
+        "Mulch root zones with clean organic straw to retain moisture"
+      ],
+      "culturalPractices": [
+        "Annual winter dormant pruning to promote canopy air circulation"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "blueberry-healthy",
+    "crop": "Blueberry",
+    "banglaCrop": "ব্লুবেরি",
+    "commonName": "Healthy Blueberry Leaf",
+    "banglaName": "সুস্থ ব্লুবেরি পাতা",
+    "scientificName": "Vaccinium corymbosum",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.2,
+    "summary": "Glossy, dark-green elliptical foliage showing optimum acidic soil nutrition and complete absence of rust, scorch, or fungal leaf spot.",
+    "banglaSummary": "ব্লুবেরি গাছের পাতা অত্যন্ত সতেজ ও সুস্থ। অম্লীয় মাটির পুষ্টি উপাদান স্বাভাবিক এবং কোনো ছত্রাক বা পোকার আক্রমণ নেই।",
+    "symptoms": [
+      "Smooth, glossy, leathery green leaves with crisp margins",
+      "Absence of chlorosis, reddening, or necrotic foliar blotches",
+      "Healthy vegetative canes with balanced fruit bud formation"
+    ],
+    "banglaSymptoms": [
+      "মসৃণ, চকচকে ও চামড়ার মতো শক্ত সতেজ পাতা",
+      "পাতায় কোনো হলুদ বা পোড়া দাগ নেই",
+      "গাছের স্বাভাবিক বৃদ্ধি ও সুস্থ শাখা-প্রশাখা"
+    ],
+    "favorableConditions": [
+      "Acidic soil (pH 4.5 - 5.5), rich in organic matter, consistent drip irrigation"
+    ],
+    "banglaCauses": [
+      "অনুকূল অম্লীয় মাটি ও পরিমিত সেচ"
+    ],
+    "affectedParts": [
+      "None - Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো আক্রান্ত অংশ নেই"
+    ],
+    "banglaCropInfo": "ব্লুবেরি (Ericaceae পরিবার) - অ্যান্টিঅক্সিডেন্টে ভরপুর বিশ্ববিখ্যাত অত্যন্ত মূল্যবান বেরি ফল।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো বালাইনাশক প্রয়োগের প্রয়োজন নেই।"
+      ],
+      "preventionMethods": [
+        "মাটির পিএইচ (pH) ৪.৫ থেকে ৫.৫ এর মধ্যে বজায় রাখুন।"
+      ],
+      "fieldCareGuidance": [
+        "গোড়ায় পাইন বা কাঠের গুঁড়ার মালচিং ব্যবহার করুন।"
+      ],
+      "whenToConsultExpert": [
+        "পাতার শিরা হলুদ হয়ে পুষ্টির ঘাটতি দেখা দিলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে কোনো রাসায়নিক ছিটাবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Maintain Soil Acidity & Drip Irrigation",
+          "description": "Monitor soil pH and maintain shallow moist root zone with pine needle mulch.",
+          "priority": "Low",
+          "timeframe": "Bi-weekly",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Irrigate with non-alkaline clean water",
+        "Apply organic acidic compost (sphagnum peat moss or pine bark)"
+      ],
+      "culturalPractices": [
+        "Netting over bushes to protect berries from migratory birds"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "cherry-powdery-mildew",
+    "crop": "Cherry",
+    "banglaCrop": "চেরি",
+    "commonName": "Cherry Powdery Mildew",
+    "banglaName": "চেরির পাউডারি মিলডিউ রোগ",
+    "scientificName": "Podosphaera clandestina",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 96.5,
+    "summary": "Fungal infection producing white powdery mycelial growth on young cherry leaves and fruit, causing leaf curling and fruit blemishes.",
+    "banglaSummary": "ছত্রাকজনিত রোগ। কচি পাতা ও ফলের ওপর সাদা পাউডার বা গুঁড়োর মতো ছত্রাকের আস্তরণ তৈরি হয়, পাতা বিকৃত হয়ে কুঁকড়ে যায়।",
+    "symptoms": [
+      "Patches of circular white powdery talc-like fungal growth on leaf undersides",
+      "Leaves become distorted, crinkled, and curl upward",
+      "Infected new terminal shoots become stunted and rosette-like",
+      "Cherries develop white powdery blemishes and fail to ripen uniformly"
+    ],
+    "banglaSymptoms": [
+      "পাতার নিচের অংশে সাদা পাউডার বা ময়দার মতো গোল গোল দাগ",
+      "পাতা বিকৃত হয়ে ওপরের দিকে কুঁকড়ে বা মোচড় খেয়ে যায়",
+      "কচি ডগার বৃদ্ধি ব্যাহত হয়",
+      "ফলের ত্বক সাদা পাউডারের মতো হয়ে ফল অপরিপক্ব থেকে যায়"
+    ],
+    "favorableConditions": [
+      "Warm days (20°C - 28°C), cool nights with high relative humidity (>70%), shady dense canopies"
+    ],
+    "banglaCauses": [
+      "উষ্ণ দিন ও আর্দ্র রাত, ঘন ডালপালায় বাতাস চলাচলের অভাব"
+    ],
+    "affectedParts": [
+      "Young leaves",
+      "Shoots",
+      "Fruit"
+    ],
+    "banglaAffectedParts": [
+      "কচি পাতা",
+      "ডগা",
+      "চেরি ফল"
+    ],
+    "banglaCropInfo": "চেরি (Prunus avium) - সুস্বাদু ও পুষ্টিকর দানাযুক্ত ফল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "সাদা পাউডার দেখা মাত্রই অনুমোদিত সালফার বা ছত্রাকনাশক স্প্রে করুন।",
+        "আক্রান্ত কচি ডগা কেটে বাগান থেকে অপসারণ করুন।"
+      ],
+      "preventionMethods": [
+        "গাছ যাতে খোলামেলা থাকে সেজন্য প্রতি বছর ডালপালা হালকা করুন।"
+      ],
+      "fieldCareGuidance": [
+        "অতিরিক্ত ইউরিয়া সার প্রয়োগ বন্ধ রাখুন যাতে অতিরিক্ত নরম কচি ডগা না গজায়।"
+      ],
+      "whenToConsultExpert": [
+        "যদি ফলের ওপর সাদা পাউডারের আবরণ দ্রুত ছড়িয়ে পড়ে।"
+      ],
+      "safetyNote": "দিনের তীব্র রোদে সালফার স্প্রে করবেন না, পাতা পুড়ে যেতে পারে।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Potassium Bicarbonate / Micronized Sulfur",
+          "description": "Thorough foliar coverage to eradicate active mycelial colonies on young shoots.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "92-96%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Potassium Bicarbonate (MilStop / Armicarb)",
+          "preparation": "3-5 g per liter of clean water",
+          "application": "Spray every 7 days at first sign of powdery patches",
+          "certifications": "OMRI Listed Organic"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Quinoxyfen / Tebuconazole",
+          "activeIngredient": "Folicur (Tebuconazole 250 EC)",
+          "dosage": "1 ml per liter of water",
+          "safetyInterval": "14 days pre-harvest",
+          "cautions": "Rotate FRAC classes to avoid fungicide resistance."
+        }
+      ],
+      "preventiveMeasures": [
+        "Prune tree centers to ensure morning sunlight penetration",
+        "Avoid late-season excessive nitrogen fertilization"
+      ],
+      "culturalPractices": [
+        "Remove water sprouts and dense suckers from tree bases"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "cherry-healthy",
+    "crop": "Cherry",
+    "banglaCrop": "চেরি",
+    "commonName": "Healthy Cherry Leaf",
+    "banglaName": "সুস্থ চেরি পাতা",
+    "scientificName": "Prunus avium",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.1,
+    "summary": "Firm, glossy green foliage free from powdery mildew, shot hole perforations, or black knot cankers.",
+    "banglaSummary": "চেরি গাছের পাতা সম্পূর্ণ সুস্থ ও রোগমুক্ত। পাতায় কোনো পাউডারি মিলডিউ বা ছিদ্রের উপস্থিতি নেই।",
+    "symptoms": [
+      "Vibrant green leaves with sharp serrated margins",
+      "Clean leaf blades with optimal chlorophyll content",
+      "Sturdy petiole with glands intact and active vascular transport"
+    ],
+    "banglaSymptoms": [
+      "সতেজ গাঢ় সবুজ পাতা ও সূক্ষ্ম খাঁজকাটা কিনারা",
+      "কোনো সাদা পাউডার বা ছিদ্রযুক্ত দাগ নেই",
+      "গাছের চমৎকার বৃদ্ধি"
+    ],
+    "favorableConditions": [
+      "Full sun (6-8 hours), well-drained loamy soil, good air drainage"
+    ],
+    "banglaCauses": [
+      "উত্তম সুষম সার ও বাগান পরিচর্যা"
+    ],
+    "affectedParts": [
+      "None - Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো অংশ আক্রান্ত নয়"
+    ],
+    "banglaCropInfo": "চেরি - বর্তমানে সম্পূর্ণ সুস্থ ও ফলনমুখী অবস্থায় রয়েছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো বালাইনাশক প্রয়োগের প্রয়োজন নেই।"
+      ],
+      "preventionMethods": [
+        "শীতকালে সুষম সার ও খড় দিয়ে মালচিং বজায় রাখুন।"
+      ],
+      "fieldCareGuidance": [
+        "গাছের গোড়ায় পানি জমে থাকতে দেবেন না।"
+      ],
+      "whenToConsultExpert": [
+        "নতুন ডগায় কোনো বিকৃতি দেখলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে অপ্রয়োজনীয় ওষুধ ব্যবহার করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Routine Canopy Monitoring",
+          "description": "Weekly scouting of new vegetative growth during spring shoot expansion.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Drip irrigation to avoid wetting foliage",
+        "Annual summer pruning post-harvest"
+      ],
+      "culturalPractices": [
+        "Paint base trunk with white paint to deter borer insects"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "corn-gray-leaf-spot",
+    "crop": "Corn (Maize)",
+    "banglaCrop": "ভুট্টা",
+    "commonName": "Corn Gray Leaf Spot (GLS)",
+    "banglaName": "ভুট্টার ধূসর পাতার দাগ রোগ",
+    "scientificName": "Cercospora zeae-maydis",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 96.8,
+    "summary": "One of the most yield-limiting maize diseases, characterized by rectangular, blocky lesions restricted by parallel leaf veins.",
+    "banglaSummary": "সারকোস্পোরা ছত্রাকজনিত ভুট্টার একটি মারাত্মক রোগ। পাতার শিরার মাঝখানে আয়তাকার ব্লক বা ইটের মতো ধূসর বাদামী দাগ সৃষ্টি হয়, যা দ্রুত পুরো পাতা পুড়িয়ে ফেলে।",
+    "symptoms": [
+      "Small tan spots with yellow halos that expand into long rectangular, blocky lesions",
+      "Lesions are strictly vein-limited with sharp, straight parallel margins",
+      "Spots turn gray or brown with velvety fungal sporulation in humid weather",
+      "Extensive blighting causes premature stalk lodging and drastic grain yield loss"
+    ],
+    "banglaSymptoms": [
+      "পাতায় ছোট ছোট বাদামী দাগ যার চারপাশে হলুদ বলয় থাকে",
+      "দাগগুলো বড় হয়ে শিরার সমান্তরালে আয়তাকার বা ইটের মতো রূপ নেয়",
+      "আর্দ্র আবহাওয়ায় দাগগুলো ধূসর ও ছাই রঙা ভেলভেটের মতো হয়ে যায়",
+      "গাছের সব পাতা ঝলসে যায় এবং কান্ড দুর্বল হয়ে গাছ ভেঙে পড়ে"
+    ],
+    "favorableConditions": [
+      "Extended periods of warm (25°C - 32°C), humid weather (>90% RH) with continuous fog or dew",
+      "Continuous no-till maize cropping with infected surface residue"
+    ],
+    "banglaCauses": [
+      "উচ্চ আর্দ্রতা, একটানা শিশির ও আগের বছরের আক্রান্ত ভুট্টার অবশিষ্টাংশ"
+    ],
+    "affectedParts": [
+      "Foliage",
+      "Ear husks",
+      "Stalks"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ভুট্টার খোসা",
+      "কাণ্ড"
+    ],
+    "banglaCropInfo": "ভুট্টা (Zea mays) - বাংলাদেশের দ্বিতীয় প্রধান দানাদার ও পশুখাদ্য ফসল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "মোচা বের হওয়ার সময় বা গাছে প্রাথমিক লক্ষণ দেখামাত্র অনুমোদিত ট্রায়াজল বা স্ট্রোবিলুরিন ছত্রাকনাশক স্প্রে করুন।",
+        "আক্রান্ত পাতা সংগ্রহ করে ক্ষেতের বাইরে ধ্বংস করুন।"
+      ],
+      "preventionMethods": [
+        "একই জমিতে পর পর ভুট্টা চাষ না করে শস্যপর্যায় অবলম্বন করুন।",
+        "রোগ সহনশীল হাইব্রিড জাতের ভুট্টা চাষ করুন।"
+      ],
+      "fieldCareGuidance": [
+        "জমি চাষের সময় ফসলের আগের অবশিষ্টাংশ মাটির গভীরে পুঁতে দিন।"
+      ],
+      "whenToConsultExpert": [
+        "যদি ভুট্টার মোচার নিচের ৩টি পাতায় দ্রুত দাগ ছড়িয়ে পড়ে।"
+      ],
+      "safetyNote": "কীটনাশক স্প্রে করার পর নির্দিষ্ট মেয়াদ পর্যন্ত গবাদিপশুকে পাতার অংশ খাওয়াবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Systemic Dual-Action Foliar Fungicide",
+          "description": "Spray Azoxystrobin + Difenoconazole or Pyraclostrobin at VT-R1 (tasseling/silking) stage.",
+          "priority": "High",
+          "timeframe": "Within 48 hours",
+          "effectiveness": "90-95%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Copper Hydroxide + Bio-stimulant spray",
+          "preparation": "2 g Copper hydroxide per liter water",
+          "application": "Foliar mist every 10 days during early vegetative stages",
+          "certifications": "Bio-compatible"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Azoxystrobin + Difenoconazole",
+          "activeIngredient": "Amistar Top 325 SC",
+          "dosage": "1 ml per liter of water",
+          "safetyInterval": "21 days pre-harvest",
+          "cautions": "Wear mask and goggles; ensure complete upper and lower leaf coverage."
+        }
+      ],
+      "preventiveMeasures": [
+        "Rotate fields out of corn for at least 1-2 seasons",
+        "Plant GLS-resistant high-yielding hybrid varieties"
+      ],
+      "culturalPractices": [
+        "Deep tillage to bury fungal debris and reduce spore inoculum"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "corn-northern-leaf-blight",
+    "crop": "Corn (Maize)",
+    "banglaCrop": "ভুট্টা",
+    "commonName": "Northern Corn Leaf Blight (NCLB)",
+    "banglaName": "ভুট্টার উত্তরাঞ্চলীয় পাতাধসা রোগ (টার্সিকাম ব্লাইট)",
+    "scientificName": "Exserohilum turcicum",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 97.5,
+    "summary": "Forms large, cigar-shaped grayish-green to tan elliptical lesions that cause extensive leaf necrosis and grain shriveling.",
+    "banglaSummary": "এক্সেরোহাইলাম টার্সিকাম ছত্রাক দ্বারা সৃষ্ট মারাত্মক রোগ। পাতার ওপর লম্বা সিগার আকৃতির (১-৬ ইঞ্চি) ধূসর ক্ষতচিহ্ন তৈরি হয় যা পুরো পাতাকে পুড়িয়ে দেয়।",
+    "symptoms": [
+      "Elongated, elliptical, cigar-shaped grayish-green lesions (2.5 to 15 cm long)",
+      "Lesions turn tan to brown and develop dark olive-green fuzzy fungal spores in damp weather",
+      "Multiple lesions coalesce, causing complete blighting of upper foliage",
+      "Significant reduction in photosynthetic area resulting in poorly filled cobs"
+    ],
+    "banglaSymptoms": [
+      "পাতায় লম্বা সিগার বা মাকুর মতো বড় বড় (১ থেকে ৬ ইঞ্চি) ধূসর বাদামী দাগ",
+      "স্যাঁতসেঁতে আবহাওয়ায় দাগগুলোর ওপর কালচে জলপাই রঙের ছত্রাক জন্মায়",
+      "একাধিক দাগ মিলে পুরো পাতা ঝলসে শুকিয়ে খড়ের মতো হয়ে যায়",
+      "ভুট্টার দানা পুষ্ট হয় না এবং মোচা অপূর্ণ থেকে যায়"
+    ],
+    "favorableConditions": [
+      "Moderate temperatures (18°C - 27°C) with frequent showers and prolonged dew (>6 hours)"
+    ],
+    "banglaCauses": [
+      "১৮° থেকে ২৭° সে. তাপমাত্রা এবং ঘন কুয়াশা বা গুঁড়ি গুঁড়ি বৃষ্টিপাত"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Husks"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ভুট্টার খোসা"
+    ],
+    "banglaCropInfo": "ভুট্টা - পুষ্টিকর খাদ্য ও পোল্ট্রি শিল্পের অন্যতম প্রধান কাঁচামাল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "রোগের লক্ষণ দেখা মাত্রই প্রপিকোনাজল বা ডাইফেনোকোনাজল জাতীয় ওষুধ স্প্রে করুন।",
+        "জমিতে মাত্রাতিরিক্ত ইউরিয়া প্রয়োগ বন্ধ রাখুন।"
+      ],
+      "preventionMethods": [
+        "টার্সিকাম ব্লাইট প্রতিরোধী প্রত্যয়িত হাইব্রিড জাত চাষ করুন।",
+        "বপনের পূর্বে কার্বেন্ডাজিম দিয়ে বীজ শোধন করুন।"
+      ],
+      "fieldCareGuidance": [
+        "শতকে সুষম মাত্রায় পটাশ সার ব্যবহার করুন যা রোগ প্রতিরোধ ক্ষমতা বাড়ায়।"
+      ],
+      "whenToConsultExpert": [
+        "যদি ভুট্টার মোচা আসার আগেই ওপরের পাতায় বড় বড় ক্ষত দেখা দেয়।"
+      ],
+      "safetyNote": "বাতাসের বিপরীত দিকে স্প্রে করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Systemic Fungicide Barrier",
+          "description": "Spray Propiconazole or Azoxystrobin immediately upon detecting cigar lesions on lower canopy.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "92-96%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Trichoderma harzianum Bio-control",
+          "preparation": "5g wettable powder per liter water",
+          "application": "Foliar mist every 10 days early morning",
+          "certifications": "Bio-certified"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Propiconazole 25% EC",
+          "activeIngredient": "Tilt 250 EC (Propiconazole)",
+          "dosage": "1 ml per liter of water",
+          "safetyInterval": "21 days pre-harvest",
+          "cautions": "Wear protective respirator; avoid spraying during hottest midday hours."
+        }
+      ],
+      "preventiveMeasures": [
+        "Seed treatment with Thiram or Carbendazim at 2.5g/kg seed",
+        "Adopt 2-year crop rotation with legumes or oilseeds"
+      ],
+      "culturalPractices": [
+        "Incorporate crop residues into soil post-harvest"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "corn-healthy",
+    "crop": "Corn (Maize)",
+    "banglaCrop": "ভুট্টা",
+    "commonName": "Healthy Corn (Maize)",
+    "banglaName": "সুস্থ ভুট্টার গাছ",
+    "scientificName": "Zea mays",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.2,
+    "summary": "Upright, arching deep green leaves exhibiting optimal nitrogen balance, clean venation, and zero signs of rust pustules or blights.",
+    "banglaSummary": "ভুট্টার চারা বা গাছ সম্পূর্ণ সুস্থ। গাঢ় সবুজ টানটান খাড়া পাতা, কোনো মরিচা বা পাতাধসার দাগ নেই।",
+    "symptoms": [
+      "Broad, arching deep green leaves with crisp margins",
+      "Vigorous stalk development and healthy nodal brace roots",
+      "Zero chlorosis, blighting, or pustular lesions"
+    ],
+    "banglaSymptoms": [
+      "চওড়া ও সতেজ উজ্জ্বল গাঢ় সবুজ পাতা",
+      "শক্তপোক্ত কাণ্ড ও স্বাভাবিক ঠেস-শিকড়ের গঠন",
+      "কোনো ক্ষত বা পোড়ার দাগের অনুপস্থিতি"
+    ],
+    "favorableConditions": [
+      "Full sunlight, well-draining rich loam, balanced N-P-K fertilizer and consistent moisture"
+    ],
+    "banglaCauses": [
+      "উত্তম সার ব্যবস্থাপনা ও পরিমিত সেচ"
+    ],
+    "affectedParts": [
+      "None - Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো আক্রান্ত অংশ নেই"
+    ],
+    "banglaCropInfo": "ভুট্টা - বর্তমানে চমৎকার স্বাস্থ্যবান ও উৎপাদনশীল অবস্থায় রয়েছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো রাসায়নিক স্প্রে করার প্রয়োজন নেই।"
+      ],
+      "preventionMethods": [
+        "গাছের বৃদ্ধি পর্যায়ে নির্দিষ্ট সময়ে উপরিপ্রয়োগ সার ও সেচ দিন।"
+      ],
+      "fieldCareGuidance": [
+        "গাছের গোড়ায় মাটি তুলে দিন যাতে ঝড়-বাতাসে নুয়ে না পড়ে।"
+      ],
+      "whenToConsultExpert": [
+        "পাতায় হঠাৎ কোনো দাগ পড়লে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে অপ্রয়োজনীয় কীটনাশক ব্যবহার করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Maintain Routine Scouting & Fertilizer Regimen",
+          "description": "Scout fields weekly through tassel emergence for corn borer or rust.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Balanced side-dressing of urea and potash at knee-high and tasseling stages",
+        "Keep field weed-free during first 45 days"
+      ],
+      "culturalPractices": [
+        "Earthing-up ridges to anchor brace roots firmly"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "grape-black-rot",
+    "crop": "Grape",
+    "banglaCrop": "আঙ্গুর",
+    "commonName": "Grape Black Rot",
+    "banglaName": "আঙ্গুরের ব্ল্যাক রট বা কালো পচন রোগ",
+    "scientificName": "Guignardia bidwellii",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 96.6,
+    "summary": "Devastating fungal disease of grapevines causing brown circular leaf spots with black fruiting pycnidia and shriveling whole fruit clusters into hard, black mummies.",
+    "banglaSummary": "গিগনার্ডিয়া বিডওয়েলি ছত্রাকজনিত অত্যন্ত ধ্বংসাত্মক রোগ। পাতায় লালচে-বাদামী গোল দাগ পড়ে এবং আঙ্গুরের থোকার সব ফল শুকিয়ে শক্ত কালো মমিতে পরিণত হয়।",
+    "symptoms": [
+      "Reddish-brown circular spots on leaves with dark borders and tiny black pimple-like pycnidia",
+      "Young berries develop light brown circular spots that rot rapidly within 48 hours",
+      "Berries turn pitch-black, shrivel, and transform into hard, wrinkled mummies attached to clusters",
+      "Shoots develop dark, elongated cankers"
+    ],
+    "banglaSymptoms": [
+      "পাতায় লালচে-বাদামী গোল দাগ যার কিনারায় সূক্ষ্ম কালো ফোস্কার মতো বিন্দু থাকে",
+      "কাঁচা আঙ্গুরে হালকা বাদামী দাগ পড়ে এবং মাত্র ৪৮ ঘণ্টায় পুরো ফল পচে যায়",
+      "ফল কুঁচকে শক্ত কালো মমিতে পরিণত হয়ে থোকায় ঝুলে থাকে",
+      "কচি ডগায় লম্বাটে কালচে ক্ষতের সৃষ্টি হয়"
+    ],
+    "favorableConditions": [
+      "Warm, wet weather (21°C - 32°C) with persistent rainfall or dew (>8 hours)"
+    ],
+    "banglaCauses": [
+      "উষ্ণ ও আর্দ্র আবহাওয়া এবং গাছে দীর্ঘক্ষণ পানি লেগে থাকা"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Shoots",
+      "Berries",
+      "Tendrils"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "ডাল",
+      "আঙ্গুরের থোকা"
+    ],
+    "banglaCropInfo": "আঙ্গুর (Vitaceae পরিবার) - অত্যন্ত জনপ্রিয় ও অর্থকরী মিষ্টি লতানো ফল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "শুকনো মমি ফল ও আক্রান্ত পাতা অবিলম্বে কেটে পুড়িয়ে ধ্বংস করুন।",
+        "ফুল আসার আগে ও ফল ছোট থাকা অবস্থায় ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      "preventionMethods": [
+        "মাচা এমনভাবে তৈরি করুন যাতে আঙ্গুরের থোকায় বাতাস ও আলো লাগে।"
+      ],
+      "fieldCareGuidance": [
+        "শীতকালীন ছাঁটাইয়ের পর লতাগুলোকে ছত্রাকনাশক দিয়ে জীবাণুমুক্ত করুন।"
+      ],
+      "whenToConsultExpert": [
+        "যদি থোকার ফলের ওপর কালো পচন দ্রুত ছড়িয়ে পড়ে।"
+      ],
+      "safetyNote": "ফল তোলার ৩ সপ্তাহ আগে রাসায়নিক স্প্রে বন্ধ করুন।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Remove Mummified Clusters & Apply Mancozeb",
+          "description": "Cut out all black mummies and spray protectant Mancozeb or Ziram before precipitation.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "94%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Bordeaux Mixture (1%) / Copper Soap",
+          "preparation": "100g copper sulfate + 100g hydrated lime in 10L water",
+          "application": "Spray every 10-14 days starting at bud-break",
+          "certifications": "OMRI Listed"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Myclobutanil / Mancozeb",
+          "activeIngredient": "Dithane M-45 (Mancozeb 80% WP)",
+          "dosage": "2 g per liter of water",
+          "safetyInterval": "21 days pre-harvest",
+          "cautions": "Do not apply within 66 days of harvest for wine grapes if restricted."
+        }
+      ],
+      "preventiveMeasures": [
+        "Open vine canopy through shoot thinning and leaf pulling around clusters",
+        "Plant resistant cultivars where feasible"
+      ],
+      "culturalPractices": [
+        "Flail mow or disc vineyard floor in spring to bury overwintering mummies"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "grape-esca-black-measles",
+    "crop": "Grape",
+    "banglaCrop": "আঙ্গুর",
+    "commonName": "Grape Esca (Black Measles)",
+    "banglaName": "আঙ্গুরের এসকা বা ব্ল্যাক মিজলস রোগ",
+    "scientificName": "Phaeomoniella chlamydospora & Phaeoacremonium minimum",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 95.9,
+    "summary": "Complex trunk vascular disease causing distinctive 'tiger-stripe' leaf chlorosis/necrosis and spotted berries resembling measles.",
+    "banglaSummary": "আঙ্গুর লতার কাণ্ডের জটিল ছত্রাকজনিত সংবহন রোগ। পাতায় বাঘের ডোরাকাটা দাগের (টাইগার স্ট্রাইপ) মতো হলুদ ও পোড়া বাদামী শিরা তৈরি হয় এবং আঙ্গুরে হামের মতো কালচে ফুটকি দাগ দেখা যায়।",
+    "symptoms": [
+      "Interveinal yellowing and browning creating a dramatic 'tiger-stripe' pattern on leaves",
+      "Small dark purple or brown spots on berries resembling measles outbreaks",
+      "Severe sudden apoplexy: entire vine collapses and wilts rapidly in hot midsummer",
+      "Dark brown wood vascular striping visible in cross-sections of trunk"
+    ],
+    "banglaSymptoms": [
+      "পাতায় শিরার মাঝখানে হলুদ ও বাদামী বাঘের চামড়ার মতো ডোরাকাটা দাগ (টাইগার স্ট্রাইপ)",
+      "আঙ্গুরের গায়ে হামের মতো ছোট ছোট কালচে বা বেগুনী ফুটকি দাগ",
+      "গ্রীষ্মের গরমে হঠাৎ করে পুরো লতা ঢলে পড়ে মারা যাওয়া (অ্যাপোপ্লেক্সি)",
+      "কাণ্ড কাটলে ভেতরের নালীতে কালচে রিং বা পচন রেখা দেখা যায়"
+    ],
+    "favorableConditions": [
+      "Mature vineyards (>8 years old), large pruning wounds exposed during wet winter pruning"
+    ],
+    "banglaCauses": [
+      "ছাঁটাইয়ের ক্ষতের মাধ্যমে ছত্রাকের কাণ্ডে প্রবেশ ও সংবহন নালী বন্ধ হওয়া"
+    ],
+    "affectedParts": [
+      "Trunk",
+      "Leaves",
+      "Fruit clusters"
+    ],
+    "banglaAffectedParts": [
+      "লতার মূল কাণ্ড",
+      "পাতা",
+      "আঙ্গুর ফল"
+    ],
+    "banglaCropInfo": "আঙ্গুর - বহুবর্ষজীবী অত্যন্ত অর্থকরী মিষ্টি লতানো ফল।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "ছাঁটাই সবসময় শুষ্ক আবহাওয়ায় করুন এবং বড় ক্ষতে অবিলম্বে পেস্ট দিয়ে প্রলেপ দিন।",
+        "তীব্র আক্রান্ত লতা কেটে মাটি থেকে তুলে ফেলে দিন।"
+      ],
+      "preventionMethods": [
+        "শীতের শেষে দেরিতে ছাঁটাই করুন যাতে ক্ষত দ্রুত শুকিয়ে যায়।"
+      ],
+      "fieldCareGuidance": [
+        "ছাঁটাইয়ের কাঁচি প্রতি গাছ কাটার পর জীবাণুমুক্ত করুন।"
+      ],
+      "whenToConsultExpert": [
+        "যদি পুরনো লতা হঠাৎ শুকিয়ে মারা যেতে থাকে।"
+      ],
+      "safetyNote": "সংবহন নালী আক্রান্ত হলে সহজে রাসায়নিক স্প্রেতে ভালো হয় না, কাণ্ডের পরিচর্যা জরুরি।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Trunk Surgery / Apply Wound Protectant",
+          "description": "Paint all pruning wounds immediately with wound sealant containing Pyraclostrobin or Trichoderma.",
+          "priority": "High",
+          "timeframe": "Immediately after pruning",
+          "effectiveness": "85%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Trichoderma atroviride Wound Protectant (Vintec)",
+          "preparation": "Mix paste with bio-control suspension",
+          "application": "Brush directly onto fresh pruning wounds",
+          "certifications": "Bio-certified"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Fosetyl-Al / Thiophanate-Methyl Paste",
+          "activeIngredient": "Thiophanate-Methyl wound seal",
+          "dosage": "Apply undiluted paint paste to cuts > 1 inch",
+          "safetyInterval": "Dormant season only",
+          "cautions": "Wear gloves; avoid open skin contact."
+        }
+      ],
+      "preventiveMeasures": [
+        "Delay annual pruning until late winter when wound healing is rapid",
+        "Avoid making large flush pruning cuts close to the cordon"
+      ],
+      "culturalPractices": [
+        "Retrain healthy suckers from below trunk cankers to regenerate vine"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "grape-leaf-blight",
+    "crop": "Grape",
+    "banglaCrop": "আঙ্গুর",
+    "commonName": "Grape Leaf Blight (Isariopsis Spot)",
+    "banglaName": "আঙ্গুরের পাতার ব্লাইট বা দাগ রোগ",
+    "scientificName": "Pseudocercospora vitis (Isariopsis clavispora)",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 96.1,
+    "summary": "Foliar fungal disease characterized by irregular dark reddish-brown lesions with distinct dark borders, leading to premature defoliation.",
+    "banglaSummary": "ছত্রাকজনিত পাতার রোগ। পাতায় অনিয়মিত আকারের লালচে-বাদামী দাগ পড়ে, দাগগুলো একত্র হয়ে পাতা শুকিয়ে ঝরে যায় এবং আঙ্গুরের মিষ্টতা কমে যায়।",
+    "symptoms": [
+      "Irregular angular reddish-brown to dark necrotic spots on leaves",
+      "Spots expand and coalesce, forming large blighted zones",
+      "Olive to dark gray fungal growth on lesion undersides during humid periods",
+      "Premature defoliation exposing grape clusters to sunburn"
+    ],
+    "banglaSymptoms": [
+      "পাতায় কোণাকৃতি বা অনিয়মিত লালচে-বাদামী দাগ",
+      "দাগগুলো ছড়িয়ে পুরো পাতা ঝলসে শুকিয়ে যায়",
+      "পাতা সময়ের আগেই ঝরে পড়ে ফলে আঙ্গুরের থোকায় সরাসরি রোদ লেগে পুড়ে যায়",
+      "গাছের সালোকসংশ্লেষণ মারাত্মকভাবে ব্যাহত হয়"
+    ],
+    "favorableConditions": [
+      "Warm temperatures (22°C - 30°C) and high humidity after rain in late summer"
+    ],
+    "banglaCauses": [
+      "গ্রীষ্মের শেষভাগে বৃষ্টিপাত, উচ্চ আর্দ্রতা ও ঘন লতা"
+    ],
+    "affectedParts": [
+      "Mature leaves",
+      "Stems"
+    ],
+    "banglaAffectedParts": [
+      "বয়স্ক পাতা",
+      "লতা"
+    ],
+    "banglaCropInfo": "আঙ্গুর - সুস্বাদু পুষ্টিকর ফল।",
+    "transmissionRisk": "Moderate",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত পাতা ছেঁটে ফেলে দিন এবং অনুমোদিত ছত্রাকনাশক স্প্রে করুন।",
+        "মাচার নিচে পর্যাপ্ত আলো-বাতাস নিশ্চিত করুন।"
+      ],
+      "preventionMethods": [
+        "বর্ষাকালে নিয়মিত প্রতিষেধক স্প্রে বজায় রাখুন।"
+      ],
+      "fieldCareGuidance": [
+        "জমিতে আগাছা পরিষ্কার রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "যদি ২০% এর বেশি পাতা ঝরে যায়।"
+      ],
+      "safetyNote": "স্প্রে করার সময় ব্যক্তিগত সুরক্ষা সরঞ্জাম পরিধান করুন।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Protective Copper / Mancozeb Spray",
+          "description": "Spray both upper and underside of canopy foliage before rainy spells.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "90%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Copper Oxychloride (50% WP)",
+          "preparation": "2 g per liter of clean water",
+          "application": "Spray every 10-12 days during rainy periods",
+          "certifications": "OMRI Listed"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Mancozeb + Carbendazim",
+          "activeIngredient": "Companion (Carbendazim 12% + Mancozeb 63% WP)",
+          "dosage": "2 g per liter of water",
+          "safetyInterval": "21 days pre-harvest",
+          "cautions": "Ensure thorough leaf underside wetting."
+        }
+      ],
+      "preventiveMeasures": [
+        "Summer leaf-thinning around fruiting zone",
+        "Clean cultivation of vineyard floor"
+      ],
+      "culturalPractices": [
+        "Prune and destroy infected fallen foliage post-harvest"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "grape-healthy",
+    "crop": "Grape",
+    "banglaCrop": "আঙ্গুর",
+    "commonName": "Healthy Grape Leaf",
+    "banglaName": "সুস্থ আঙ্গুর পাতা",
+    "scientificName": "Vitis vinifera",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.3,
+    "summary": "Large, vigorous palmate leaves exhibiting optimal chlorophyll density, sharp lobed margins, and zero foliar spots or powdery coatings.",
+    "banglaSummary": "আঙ্গুর লতার পাতা সম্পূর্ণ সতেজ ও সুস্থ। সুন্দর সবুজ রঙ, কোনো পচন, দাগ বা পাউডারের মতো ছত্রাক নেই।",
+    "symptoms": [
+      "Broad, robust palmate leaves with vibrant green coloration",
+      "Intact petiolar sinus and clean lobes without necrotic margins",
+      "Vigorous tendril growth and balanced cluster architecture"
+    ],
+    "banglaSymptoms": [
+      "উজ্জ্বল সবুজ চওড়া সুন্দর খাঁজকাটা পাতা",
+      "কোনো রোগজীবাণু বা পোকার দাগ নেই",
+      "লতা ও আঁকশির বলিষ্ঠ বৃদ্ধি"
+    ],
+    "favorableConditions": [
+      "Warm dry climate, full sunlight, well-drained soil with deep root aeration"
+    ],
+    "banglaCauses": [
+      "উত্তম পরিচর্যা, সুষম সার ও মাচার সঠিক ব্যবস্থাপনা"
+    ],
+    "affectedParts": [
+      "None - Vine is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো অংশ আক্রান্ত নয়"
+    ],
+    "banglaCropInfo": "আঙ্গুর - বর্তমানে লতাটি সম্পূর্ণ সুস্থ ও ফলনমুখী অবস্থায় রয়েছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো বালাইনাশক স্প্রে করার প্রয়োজন নেই।"
+      ],
+      "preventionMethods": [
+        "লতায় পরিমিত সেচ ও সুষম সার দিন।"
+      ],
+      "fieldCareGuidance": [
+        "মাচায় লতা সুন্দরভাবে ছড়িয়ে দিন যাতে পর্যাপ্ত আলো পায়।"
+      ],
+      "whenToConsultExpert": [
+        "নতুন গজানো পাতায় দাগ দেখা দিলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ লতায় অপ্রয়োজনীয় রাসায়নিক স্প্রে করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Routine Canopy Inspection",
+          "description": "Inspect interior leaves near grape clusters once weekly for earliest mildew signs.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Maintain open trellis system for maximum air circulation",
+        "Mulch root zones to conserve soil moisture"
+      ],
+      "culturalPractices": [
+        "Summer shoot positioning and hedging above fruiting wires"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "citrus-greening-huanglongbing",
+    "crop": "Orange (Citrus)",
+    "banglaCrop": "লেবু / কমলা",
+    "commonName": "Citrus Greening (Huanglongbing / HLB)",
+    "banglaName": "লেবু ও কমলার হলুদ পাতা ও গ্রিনিং রোগ (এইচএলবি)",
+    "scientificName": "Candidatus Liberibacter asiaticus",
+    "pathogenType": "Bacterial",
+    "severity": "Severe",
+    "confidence": 97.8,
+    "summary": "One of the most destructive citrus diseases worldwide, vectored by Asian citrus psyllids, causing asymmetric yellow mottle on leaves, twig dieback, and bitter lopsided fruit.",
+    "banglaSummary": "সাইট্রাস সাইলিড পোকা দ্বারা বাহিত লেবু জাতীয় ফসলের শীর্ষ মারাত্মক ব্যাকটেরিয়া রোগ। পাতায় অপ্রতিসম হলুদ ছোপ (ব্লচি মটল) তৈরি হয়, গাছের ডগা ওপর থেকে শুকিয়ে মারা যায় এবং ফল টক ও তিতা হয়ে যায়।",
+    "symptoms": [
+      "Asymmetric 'blotchy mottle' pattern where yellow patches on one side of leaf vein do not match the other",
+      "Leaves become small, upright, pointing upward with prominent raised corky veins",
+      "Severe twig dieback from upper canopy downward",
+      "Fruit remains small, lopsided, poorly colored with bitter taste and aborted dark seeds"
+    ],
+    "banglaSymptoms": [
+      "পাতায় অপ্রতিসম হলুদ ছোপ (এক পাশের দাগের সাথে অন্য পাশের মিল থাকে না)",
+      "পাতা শক্ত হয়ে খাড়া ওপরের দিকে মুখ করে থাকে ও শিরাগুলো ফুলে শক্ত হয়ে যায়",
+      "গাছের ডগা ওপর থেকে নিচের দিকে শুকিয়ে মারা যায় (ডাইব্যাক)",
+      "ফল ছোট, এবড়োখেবড়ো ও বাঁকা হয় এবং ফল খেতে অতিরিক্ত তিতা লাগে"
+    ],
+    "favorableConditions": [
+      "Presence of the Asian Citrus Psyllid (Diaphorina citri) vector, warm temperatures (24°C - 30°C)"
+    ],
+    "banglaCauses": [
+      "সাইট্রাস সাইলিড পোকার আক্রমণ ও ব্যাকটেরিয়ার সংক্রমণ"
+    ],
+    "affectedParts": [
+      "Vascular phloem",
+      "Leaves",
+      "Twigs",
+      "Fruit"
+    ],
+    "banglaAffectedParts": [
+      "ফ্লোয়েম নালী",
+      "পাতা",
+      "ডালপালা",
+      "লেবু বা কমলা ফল"
+    ],
+    "banglaCropInfo": "লেবু ও কমলা (Rutaceae পরিবার) - ভিটামিন-সি সমৃদ্ধ অত্যন্ত গুরুত্বপূর্ণ অর্থকরী ফল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "বাহক সাইলিড পোকা দমনে অবিলম্বে অনুমোদিত কীটনাশক স্প্রে করুন।",
+        "তীব্র আক্রান্ত গাছ সম্পূর্ণ মূলসহ তুলে পুড়িয়ে নষ্ট করুন।"
+      ],
+      "preventionMethods": [
+        "সবসময় প্রত্যায়িত রোগমুক্ত নার্সারির চারা রোপণ করুন।"
+      ],
+      "fieldCareGuidance": [
+        "গাছে সুষম পুষ্টি স্প্রে (জিংক, আয়রন, ম্যাঙ্গানিজ) প্রয়োগ করে গাছের জীবনীশক্তি ধরে রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "বাগানের গাছে অসম হলুদ ছোপ বা ডাইব্যাক দেখা দিলে তাৎক্ষণিক উপজেলা কৃষি অফিসে জানান।"
+      ],
+      "safetyNote": "সাইলিড পোকা দমনে সমন্বিত বালাই ব্যবস্থাপনা (IPM) মেনে চলুন।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Asian Citrus Psyllid Vector Suppression",
+          "description": "Apply systemic insecticide (Imidacloprid or Thiamethoxam) to halt psyllid feeding and transmission.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "90%"
+        },
+        {
+          "title": "Eradicate Severely Infected Trees",
+          "description": "Remove and burn trees confirmed with HLB to eliminate bacterial reservoir.",
+          "priority": "High",
+          "timeframe": "Within 48 hours",
+          "effectiveness": "95%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Horticultural Mineral Oil / Neem Extract",
+          "preparation": "1-2% horticultural oil in water",
+          "application": "Spray every 7-10 days on new flush to suffocate psyllid nymphs",
+          "certifications": "OMRI Listed"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Imidacloprid / Clothianidin",
+          "activeIngredient": "Admire (Imidacloprid 200 SL)",
+          "dosage": "0.5 ml per liter of water as foliar spray or soil drench",
+          "safetyInterval": "21 days pre-harvest",
+          "cautions": "Do not apply during bloom to protect honeybees."
+        }
+      ],
+      "preventiveMeasures": [
+        "Plant only certified disease-free rootstocks produced in insect-proof screenhouses",
+        "Strict quarantine of citrus plant materials"
+      ],
+      "culturalPractices": [
+        "Foliar micronutrient supplementation (Zn, Mn, B) to support remaining vascular vigor"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "peach-bacterial-spot",
+    "crop": "Peach",
+    "banglaCrop": "পিচ",
+    "commonName": "Peach Bacterial Spot (Bacteriosis)",
+    "banglaName": "পিচ ফলের ব্যাকটেরিয়াল দাগ রোগ",
+    "scientificName": "Xanthomonas arboricola pv. pruni",
+    "pathogenType": "Bacterial",
+    "severity": "Moderate",
+    "confidence": 96.3,
+    "summary": "Bacterial disease causing angular water-soaked leaf lesions that drop out creating a 'shot-hole' effect, and fruit cracking with oozing gum.",
+    "banglaSummary": "জ্যান্থোমোনাস ব্যাকটেরিয়াজনিত রোগ। পাতায় ছোট জলছাপযুক্ত কোণাকৃতি দাগ পড়ে যা শুকিয়ে খসে পড়ে শট-হোলের (ছিদ্র) মতো দেখায় এবং ফলের গায়ে আঠা নির্গত ক্ষত সৃষ্টি হয়।",
+    "symptoms": [
+      "Small angular water-soaked purple-brown lesions on leaves near tips and margins",
+      "Centers of lesions drop out, giving foliage a distinct 'shot-hole' perforated appearance",
+      "Premature defoliation starting at base of terminal branches",
+      "Peaches develop pitted, crater-like cracked lesions exuding gummy amber sap"
+    ],
+    "banglaSymptoms": [
+      "পাতায় ছোট কোণাকৃতি জলছাপযুক্ত কালচে দাগ",
+      "দাগের মাঝের অংশ খসে পড়ে পাতাজুড়ে বন্দুকের গুলির মতো ঝাঁঝরা ছিদ্র তৈরি হয় (শট-হোল)",
+      "গাছের নিচের বয়স্ক পাতা দ্রুত ঝরে পড়ে",
+      "ফলের ত্বক ফেটে খসখসে হয়ে যায় এবং ক্ষতস্থান থেকে আঠা বের হয়"
+    ],
+    "favorableConditions": [
+      "Warm (20°C - 30°C), windy, wet spring weather; sandy soils with blowing abrasive sand grains"
+    ],
+    "banglaCauses": [
+      "উষ্ণ ও ঝড়ো বৃষ্টিপাত, বাতাসে ধূলিকণার ঘর্ষণে পাতায় ক্ষত তৈরি হওয়া"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Fruit",
+      "Twigs"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "পিচ ফল",
+      "কচি ডাল"
+    ],
+    "banglaCropInfo": "পিচ (Prunus persica) - রসালো সুস্বাদু শীতপ্রধান অঞ্চলের ফল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "বসন্তের শুরুতেই কুঁড়ি ফোটার আগে অনুমোদিত কপার বা কপার অক্সিক্লোরাইড স্প্রে করুন।",
+        "আক্রান্ত ডালপালা ছেঁটে বাগান পরিষ্কার রাখুন।"
+      ],
+      "preventionMethods": [
+        "ব্যাকটেরিয়াল স্পট প্রতিরোধী জাত নির্বাচন করুন।"
+      ],
+      "fieldCareGuidance": [
+        "গাছ যাতে অতিরিক্ত দুর্বল না হয় সেজন্য সুষম সার দিন।"
+      ],
+      "whenToConsultExpert": [
+        "যদি ফলের ওপর ব্যাপকভাবে আঠা বের হওয়া ক্ষত দেখা দেয়।"
+      ],
+      "safetyNote": "পাতায় কচি অবস্থায় অতিরিক্ত কপার স্প্রে করলে তামাঘটিত বিষক্রিয়া বা পাতা পোড়া হতে পারে।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Low-Dose Copper / Oxytetracycline",
+          "description": "Apply bactericide spray program starting at petal fall through shuck split.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "88-92%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Fixed Copper Soap (Copper Octanoate)",
+          "preparation": "Dilute as per stone fruit label",
+          "application": "Apply during dormant season and early bloom only",
+          "certifications": "OMRI Listed"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Oxytetracycline (Mycoshield) / Copper Hydroxide",
+          "activeIngredient": "Oxytetracycline 17% WP",
+          "dosage": "1 g per liter of water",
+          "safetyInterval": "21 days pre-harvest",
+          "cautions": "Use exact dilution to avoid stone fruit phytotoxicity."
+        }
+      ],
+      "preventiveMeasures": [
+        "Select bacterial-spot resistant peach cultivars (e.g., Candor, Biscoe, Reliance)",
+        "Establish windbreaks in sandy orchards to prevent abrasive grit injury"
+      ],
+      "culturalPractices": [
+        "Prune dead and cankered twigs during winter dormancy"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "peach-healthy",
+    "crop": "Peach",
+    "banglaCrop": "পিচ",
+    "commonName": "Healthy Peach Leaf",
+    "banglaName": "সুস্থ পিচ পাতা",
+    "scientificName": "Prunus persica",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.2,
+    "summary": "Elongated lanceolate vibrant green foliage without bacterial perforations, leaf curl distortions, or mildew.",
+    "banglaSummary": "পিচ গাছের পাতা সম্পূর্ণ সুস্থ ও রোগমুক্ত। পাতায় কোনো ছিদ্র, কোঁকড়ানো ভাব বা দাগ নেই।",
+    "symptoms": [
+      "Lanceolate, glossy green leaf blades with crisp fine serration",
+      "Uniform chlorophyll distribution and high leaf turgor",
+      "Zero gum exudation or cankering on twigs"
+    ],
+    "banglaSymptoms": [
+      "বর্শার ফলার মতো লম্বাটে সতেজ সবুজ পাতা",
+      "কোনো ছিদ্র বা কোঁকড়ানো রোগ নেই",
+      "গাছের স্বাভাবিক বৃদ্ধি"
+    ],
+    "favorableConditions": [
+      "Full sun, sandy-loam soil with excellent drainage, balanced nutrition"
+    ],
+    "banglaCauses": [
+      "উত্তম পরিচর্যা ও রোগমুক্ত পরিবেশ"
+    ],
+    "affectedParts": [
+      "None - Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো অংশ আক্রান্ত নয়"
+    ],
+    "banglaCropInfo": "পিচ - বর্তমানে গাছটি সম্পূর্ণ সুস্থ অবস্থায় রয়েছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো বালাইনাশক স্প্রে করার প্রয়োজন নেই।"
+      ],
+      "preventionMethods": [
+        "শীতকালে সুষম সার ও পানি নিষ্কাশন নিশ্চিত করুন।"
+      ],
+      "fieldCareGuidance": [
+        "গাছের নিচে পরিষ্কার পরিচ্ছন্ন রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "পাতায় শট-হোল বা ডগায় আঠা দেখলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে কোনো রাসায়নিক ছিটাবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Routine Orchard Scouting",
+          "description": "Monitor lower leaves weekly through harvest for early leaf spot or rust.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Drip irrigation to prevent foliar splashing",
+        "Adequate thinning of fruit load to reduce branch stress"
+      ],
+      "culturalPractices": [
+        "Annual open-center (vase) pruning system"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "raspberry-healthy",
+    "crop": "Raspberry",
+    "banglaCrop": "রাস্পবেরি",
+    "commonName": "Healthy Raspberry Leaf",
+    "banglaName": "সুস্থ রাস্পবেরি পাতা",
+    "scientificName": "Rubus idaeus",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.4,
+    "summary": "Pinnately compound, vibrant green leaves with whitish downy undersides, showing robust cane vigor and absence of anthracnose or spur blight.",
+    "banglaSummary": "রাস্পবেরি গাছের পাতা চমৎকার সুস্থ ও স্বাভাবিক। কোনো অ্যানথ্রাকনোজ, রাস্ট বা দাগের লক্ষণ নেই।",
+    "symptoms": [
+      "Lush compound leaflets with silvery-white pubescence on undersides",
+      "Sturdy floricanes and primocanes free from cankers or blotches",
+      "Normal floral cluster development and optimal chlorophyll levels"
+    ],
+    "banglaSymptoms": [
+      "সতেজ সবুজ পাতা যার নিচের পিঠে হালকা রূপালী লোমশ ভাব থাকে",
+      "লতা ও ডালপালায় কোনো ক্ষতের দাগ নেই",
+      "গাছের চমৎকার বৃদ্ধি"
+    ],
+    "favorableConditions": [
+      "Cool summers, well-draining organic rich soil, consistent trellis support"
+    ],
+    "banglaCauses": [
+      "উত্তম নিষ্কাশনযুক্ত মাটি ও নিয়মিত পরিচর্যা"
+    ],
+    "affectedParts": [
+      "None - Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো অংশ আক্রান্ত নয়"
+    ],
+    "banglaCropInfo": "রাস্পবেরি (Rosaceae পরিবার) - অত্যন্ত সুস্বাদু ও দামি মিষ্টি বেরি ফল।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো ওষুধের প্রয়োজন নেই।"
+      ],
+      "preventionMethods": [
+        "গাছের গোড়ায় খড় দিয়ে মালচিং বজায় রাখুন।"
+      ],
+      "fieldCareGuidance": [
+        "পুরনো শুকনো লতা কেটে সরিয়ে ফেলুন।"
+      ],
+      "whenToConsultExpert": [
+        "ডাল বা পাতায় কালচে দাগ দেখলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে অপ্রয়োজনীয় কীটনাশক ব্যবহার করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Maintain Trellis & Cane Thinning",
+          "description": "Prune spent floricanes after fruiting to maintain strong canopy airflow.",
+          "priority": "Low",
+          "timeframe": "Post-harvest",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Drip irrigation to keep canes and foliage dry",
+        "Keep row width under 2 feet to prevent humidity buildup"
+      ],
+      "culturalPractices": [
+        "Sanitize pruning shears before cutting canes"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1577069808021-5085e510842e?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "soybean-healthy",
+    "crop": "Soybean",
+    "banglaCrop": "সয়াবিন",
+    "commonName": "Healthy Soybean Leaf",
+    "banglaName": "সুস্থ সয়াবিন পাতা",
+    "scientificName": "Glycine max",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.3,
+    "summary": "Trifoliolate rich green leaves showing excellent biological nitrogen fixation nodulation and complete freedom from rust or mosaic virus.",
+    "banglaSummary": "সয়াবিনের পাতা সম্পূর্ণ সুস্থ ও রোগমুক্ত। পাতার রঙ সতেজ সবুজ, কোনো এশিয়ান রাস্ট, দাগ বা হলুদ মোজাইকের লক্ষণ নেই।",
+    "symptoms": [
+      "Uniform dark-green trifoliate leaflets with fine pubescence",
+      "Absence of chlorotic mottling, rust pustules, or frog-eye spots",
+      "Healthy root nodules with active pink leghemoglobin"
+    ],
+    "banglaSymptoms": [
+      "গাঢ় সবুজ রঙের সুস্থ ত্রিপত্রিক পাতা",
+      "কোনো হলুদ দাগ বা ছত্রাকের আক্রমণ নেই",
+      "শিকড়ে কার্যকর নাইট্রোজেন সৃষ্টিকারী সুস্থ নডিউল"
+    ],
+    "favorableConditions": [
+      "Warm climate (20°C - 30°C), balanced soil moisture, full sun"
+    ],
+    "banglaCauses": [
+      "উত্তম সুষম সার ও রোগমুক্ত পরিবেশ"
+    ],
+    "affectedParts": [
+      "None - Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো অংশ আক্রান্ত নয়"
+    ],
+    "banglaCropInfo": "সয়াবিন (Fabaceae পরিবার) - প্রোটিন ও ভোজ্য তেলের অন্যতম সেরা উৎস।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো রাসায়নিক স্প্রে করার প্রয়োজন নেই।"
+      ],
+      "preventionMethods": [
+        "জমি আগাছামুক্ত রাখুন।"
+      ],
+      "fieldCareGuidance": [
+        "ফুল ও শুঁটি আসার সময় পরিমিত সেচ নিশ্চিত করুন।"
+      ],
+      "whenToConsultExpert": [
+        "পাতার নিচে মরিচার গুঁড়ো দাগ দেখলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে কীটনাশক স্প্রে করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Routine Crop Scouting",
+          "description": "Scout lower canopy leaves every 7 days from flowering through pod-fill for Asian soybean rust.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Inoculate seed with Bradyrhizobium japonicum before planting",
+        "Adopt crop rotation with non-legumes"
+      ],
+      "culturalPractices": [
+        "Maintain optimal plant spacing for air circulation"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "squash-powdery-mildew",
+    "crop": "Squash",
+    "banglaCrop": "মিষ্টি কুমড়া / স্কোয়াশ",
+    "commonName": "Squash Powdery Mildew",
+    "banglaName": "মিষ্টি কুমড়া ও স্কোয়াশের পাউডারি মিলডিউ",
+    "scientificName": "Podosphaera xanthii (Erysiphe cichoracearum)",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 97.1,
+    "summary": "Ubiquitous cucurbit disease causing talcum-like white powdery fungal patches on upper and lower leaf surfaces, causing premature senescing and sunscalded squash.",
+    "banglaSummary": "ছত্রাকজনিত অত্যন্ত সাধারণ রোগ। মিষ্টি কুমড়া ও স্কোয়াশের পাতার ওপর ও নিচের অংশে সাদা পাউডার বা ময়দার মতো দাগ পড়ে, পাতা দ্রুত শুকিয়ে মরে যায় এবং ফল রোদে পুড়ে যায়।",
+    "symptoms": [
+      "Circular white powdery fungal spots on leaf blades, petioles, and stems",
+      "Spots expand rapidly to coat entire leaf surface in a dense white talc-like layer",
+      "Infected leaves turn yellow, then brown and become dry and brittle ('paper-like')",
+      "Premature defoliation exposes fruits to severe sunburn and reduces sugar content"
+    ],
+    "banglaSymptoms": [
+      "পাতার উপরিভাগে ও নিচে সাদা পাউডারের মতো গোল গোল দাগ",
+      "দাগগুলো দ্রুত ছড়িয়ে পুরো পাতাকে সাদা আস্তরণে ঢেকে ফেলে",
+      "পাতা হলুদ হয়ে খসখসে কাগজের মতো শুকিয়ে মরে যায়",
+      "ফল সরাসরি রোদে পুড়ে যায় এবং ফলের মিষ্টতা নষ্ট হয়"
+    ],
+    "favorableConditions": [
+      "Warm temperatures (20°C - 28°C), high relative humidity at night, shady dry conditions (free water actually inhibits spore germination)"
+    ],
+    "banglaCauses": [
+      "উষ্ণ আবহাওয়া, উচ্চ আর্দ্রতা ও রোদ না পাওয়া ঘন পাতার আড়াল"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Petioles",
+      "Stems"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "বোঁটা",
+      "ডগা"
+    ],
+    "banglaCropInfo": "মিষ্টি কুমড়া ও স্কোয়াশ (Cucurbitaceae পরিবার) - ভিটামিন-এ সমৃদ্ধ জনপ্রিয় অর্থকরী সবজি।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "সাদা পাউডার দেখা মাত্রই অনুমোদিত সালফার বা জৈব বালাইনাশক স্প্রে করুন।",
+        "বেশি আক্রান্ত নিচের বয়স্ক পাতা সাবধানে কেটে ফেলে দিন।"
+      ],
+      "preventionMethods": [
+        "চারা রোপণের সময় পর্যাপ্ত দূরত্ব বজায় রাখুন যাতে গাছ আলো-বাতাস পায়।"
+      ],
+      "fieldCareGuidance": [
+        "গাছের গোড়ায় সেচ দিন, পাতার ওপর নয়।"
+      ],
+      "whenToConsultExpert": [
+        "যদি ৩ দিনের মধ্যে অধিকাংশ পাতায় পাউডার ছড়িয়ে পড়ে।"
+      ],
+      "safetyNote": "তীব্র রোদে (৩২° সে. এর ওপরে) সালফার স্প্রে করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Potassium Bicarbonate / Sulfur Foliar Spray",
+          "description": "Spray both upper and underside of leaves thoroughly at first detection of white talcum spots.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "92-95%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Neem Oil Extract / Potassium Bicarbonate",
+          "preparation": "5 ml Neem extract + 2 g baking soda per liter of water",
+          "application": "Spray every 5-7 days early morning",
+          "certifications": "100% Bio-based"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Hexaconazole / Myclobutanil",
+          "activeIngredient": "Contaf 5 EC (Hexaconazole)",
+          "dosage": "1 ml per liter of water",
+          "safetyInterval": "7 days pre-harvest",
+          "cautions": "Ensure thorough underside leaf coverage."
+        }
+      ],
+      "preventiveMeasures": [
+        "Select powdery mildew-resistant squash varieties (PMR)",
+        "Wider plant spacing (minimum 4-6 feet between hills)"
+      ],
+      "culturalPractices": [
+        "Plant in full sunlight with drip irrigation"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1506917728037-b6af01a7d403?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "strawberry-leaf-scorch",
+    "crop": "Strawberry",
+    "banglaCrop": "স্ট্রবেরি",
+    "commonName": "Strawberry Leaf Scorch",
+    "banglaName": "স্ট্রবেরির পাতা ঝলসানো রোগ (লিফ স্কর্চ)",
+    "scientificName": "Diplocarpon earlianum",
+    "pathogenType": "Fungal",
+    "severity": "Moderate",
+    "confidence": 96.7,
+    "summary": "Fungal disease causing numerous small, irregular dark purple blotches that enlarge and coalesce, giving the foliage a burnt, scorched appearance.",
+    "banglaSummary": "ছত্রাকজনিত পাতা ঝলসানো রোগ। পাতায় অসংখ্য ছোট ছোট কালচে-বেগুনি দাগ পড়ে যা এক সাথে মিশে পুরো পাতাকে আগুনে পোড়ার মতো বাদামী করে ফেলে।",
+    "symptoms": [
+      "Numerous small (1-5 mm) irregular purplish spots on upper leaf surfaces",
+      "Spots coalesce, turning the entire leaf purplish-brown, dry, and curled at the edges ('scorched')",
+      "Infected leaves drop early, stunting plant growth and reducing berry size",
+      "Lesions may appear on petioles, fruit runners, and calyx lobes"
+    ],
+    "banglaSymptoms": [
+      "পাতায় ছোট ছোট অসংখ্য অনিয়মিত বেগুনি বা কালচে দাগ",
+      "দাগগুলো বড় হয়ে মিলে গিয়ে পুরো পাতা আগুনে পোড়ার মতো বাদামী হয়ে যায়",
+      "পাতার কিনারা ওপরের দিকে কুঁকড়ে শুকিয়ে যায়",
+      "ফলের বোঁটা ও লতা দুর্বল হয়ে ফলন কমে যায়"
+    ],
+    "favorableConditions": [
+      "Warm temperatures (20°C - 28°C) with persistent leaf wetness or frequent overhead sprinkling"
+    ],
+    "banglaCauses": [
+      "উষ্ণ তাপমাত্রা এবং পাতায় দীর্ঘক্ষণ পানি জমে থাকা"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Petioles",
+      "Runners",
+      "Fruit calyx"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "বোঁটা",
+      "লতা"
+    ],
+    "banglaCropInfo": "স্ট্রবেরি (Fragaria × ananassa) - পুষ্টিকর ও আকর্ষণীয় উচ্চমূল্যের অর্থকরী ফল।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "আক্রান্ত শুকনো পাতা সাবধানে কেটে বাগান থেকে অপসারণ করুন।",
+        "পাতার ওপর দিয়ে পানি না দিয়ে গাছের গোড়ায় ড্রিপ সেচ দিন।"
+      ],
+      "preventionMethods": [
+        "গাছের গোড়ায় শুকনো খড় বা পলিথিন মালচিং ব্যবহার করুন।"
+      ],
+      "fieldCareGuidance": [
+        "পুরনো রোপণ করা গাছ ৩ বছর পর পর নতুন চারা দিয়ে প্রতিস্থাপন করুন।"
+      ],
+      "whenToConsultExpert": [
+        "যদি ৩০% এর বেশি পাতা ঝলসে শুকিয়ে যায়।"
+      ],
+      "safetyNote": "ফল তোলার সময় কোনো রাসায়নিক স্প্রে করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Protectant Copper / Captan Spray",
+          "description": "Spray foliage thoroughly to protect newly emerging runner leaves.",
+          "priority": "High",
+          "timeframe": "Within 24 hours",
+          "effectiveness": "90%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Copper Octanoate / Bio-fungicide spray",
+          "preparation": "2 ml per liter clean water",
+          "application": "Spray every 7-10 days early morning",
+          "certifications": "OMRI Listed"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Captan / Azoxystrobin",
+          "activeIngredient": "Captan 50% WP",
+          "dosage": "2 g per liter of water",
+          "safetyInterval": "3 days pre-harvest",
+          "cautions": "Wear mask and goggles; ensure complete leaf coverage."
+        }
+      ],
+      "preventiveMeasures": [
+        "Use certified disease-free strawberry runners",
+        "Employ plastic mulch beds to prevent soil splash"
+      ],
+      "culturalPractices": [
+        "Drip irrigation to keep foliage completely dry"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "strawberry-healthy",
+    "crop": "Strawberry",
+    "banglaCrop": "স্ট্রবেরি",
+    "commonName": "Healthy Strawberry Leaf",
+    "banglaName": "সুস্থ স্ট্রবেরি পাতা",
+    "scientificName": "Fragaria × ananassa",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.1,
+    "summary": "Vibrant dark green trifoliate foliage with crisp serrated margins, free from scorch spots, mildew, or leaf blight.",
+    "banglaSummary": "স্ট্রবেরির পাতা সম্পূর্ণ সুস্থ ও রোগমুক্ত। পাতায় কোনো দাগ বা পোড়াভাব নেই, ফলন উপযোগী সতেজ গঠন।",
+    "symptoms": [
+      "Deep glossy green trifoliate leaflets with sharp serration",
+      "Sturdy hairy petioles and vigorous crown development",
+      "Zero necrotic spots, chlorosis, or curling"
+    ],
+    "banglaSymptoms": [
+      "উজ্জ্বল গাঢ় সবুজ ত্রিপত্রিক পাতা",
+      "কোনো রোগজীবাণু বা দাগ নেই",
+      "গাছের চমৎকার বৃদ্ধি ও বলিষ্ঠ কান্ড"
+    ],
+    "favorableConditions": [
+      "Full sunlight, slightly acidic sandy loam (pH 5.8 - 6.5), drip irrigation and straw mulch"
+    ],
+    "banglaCauses": [
+      "উত্তম পরিচর্যা, সুষম সার ও মালচিং"
+    ],
+    "affectedParts": [
+      "None - Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো অংশ আক্রান্ত নয়"
+    ],
+    "banglaCropInfo": "স্ট্রবেরি - বর্তমানে গাছটি সম্পূর্ণ সুস্থ ও ফলনমুখী অবস্থায় রয়েছে।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো বালাইনাশক স্প্রে করার প্রয়োজন নেই।"
+      ],
+      "preventionMethods": [
+        "নিয়মিত পরিমিত ড্রিপ সেচ দিন।"
+      ],
+      "fieldCareGuidance": [
+        "গোড়ায় খড় বা পলিথিন মালচিং বজায় রাখুন যাতে ফল মাটিতে না ঠেকে।"
+      ],
+      "whenToConsultExpert": [
+        "পাতায় বেগুনি ফুটকি দেখা দিলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে অপ্রয়োজনীয় ওষুধ ব্যবহার করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Maintain Routine Scouting & Drip Scheduling",
+          "description": "Inspect crowns and leaf undersides weekly for spider mites or early scorch.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Straw or black polyethylene mulch to prevent fruit contact with moist soil",
+        "Balanced potassium nutrition for fruit firmness"
+      ],
+      "culturalPractices": [
+        "Remove old dead runner leaves at the start of spring growth"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "wheat-healthy",
+    "crop": "Wheat",
+    "banglaCrop": "গম",
+    "commonName": "Healthy Wheat Foliage",
+    "banglaName": "সুস্থ গমের পাতা ও গাছ",
+    "scientificName": "Triticum aestivum",
+    "pathogenType": "None",
+    "severity": "Healthy",
+    "confidence": 99.2,
+    "summary": "Erect, slender, rich-green linear leaves with optimal tillering and complete absence of rust pustules or Septoria blotches.",
+    "banglaSummary": "গমের গাছ সম্পূর্ণ সুস্থ ও সতেজ। পাতার সর্বত্র গাঢ় সবুজ বর্ণ, কোনো মরিচা বা সেপটেরিয়া দাগের উপস্থিতি নেই।",
+    "symptoms": [
+      "Uniform vibrant green linear leaf blades with parallel venation",
+      "Vigorous tillering and sturdy culms free from lodging",
+      "Intact flag leaf with high photosynthetic capacity for grain filling"
+    ],
+    "banglaSymptoms": [
+      "সোজা ও সতেজ উজ্জ্বল সবুজ পাতা",
+      "গাছের চমৎকার কুশি ও বলিষ্ঠ বৃদ্ধি",
+      "কোনো হলুদ মরিচা বা ব্লাইটের দাগের অনুপস্থিতি"
+    ],
+    "favorableConditions": [
+      "Cool winter growing conditions (15°C - 22°C), fertile loamy soil, balanced irrigation"
+    ],
+    "banglaCauses": [
+      "অনুকূল শীতকালীন আবহাওয়া ও সুষম সার ব্যবস্থাপনা"
+    ],
+    "affectedParts": [
+      "None - Plant is Healthy"
+    ],
+    "banglaAffectedParts": [
+      "কোনো অংশ আক্রান্ত নয়"
+    ],
+    "banglaCropInfo": "গম (Poaceae পরিবার) - বাংলাদেশের দ্বিতীয় প্রধান খাদ্যশস্য।",
+    "transmissionRisk": "None",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "কোনো রাসায়নিক স্প্রে করার প্রয়োজন নেই।"
+      ],
+      "preventionMethods": [
+        "কুশি গজানোর সময় ও শীষ বের হওয়ার সময় পরিমিত সেচ দিন।"
+      ],
+      "fieldCareGuidance": [
+        "জমিতে আগাছা পরিষ্কার রাখুন।"
+      ],
+      "whenToConsultExpert": [
+        "পাতায় হলুদ গুঁড়ো দাগ দেখলে যোগাযোগ করুন।"
+      ],
+      "safetyNote": "সুস্থ গাছে কোনো কীটনাশক স্প্রে করবেন না।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Routine Canopy Monitoring",
+          "description": "Scout flag leaves weekly through anthesis for rust pustules.",
+          "priority": "Low",
+          "timeframe": "Weekly",
+          "effectiveness": "100%"
+        }
+      ],
+      "organicTreatments": [],
+      "chemicalTreatments": [],
+      "preventiveMeasures": [
+        "Balanced application of nitrogen, phosphorus, potash, and sulfur at crown root initiation",
+        "Keep field free from weed competition"
+      ],
+      "culturalPractices": [
+        "Timely sowing within November 15-30 for optimal grain yield in Bangladesh"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "wheat-septoria",
+    "crop": "Wheat",
+    "banglaCrop": "গম",
+    "commonName": "Wheat Septoria Leaf Blight (STB)",
+    "banglaName": "গমের সেপটেরিয়া পাতার দাগ বা ব্লাইট",
+    "scientificName": "Zymoseptoria tritici (Septoria tritici)",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 96.9,
+    "summary": "Major foliar fungal disease forming irregular necrotic leaf blotches studded with tiny black fruiting pycnidia, severely damaging the critical flag leaf.",
+    "banglaSummary": "ছত্রাকজনিত মারাত্মক ব্লাইট রোগ। গমের পাতায় অনিয়মিত বাদামী দাগ তৈরি হয় যার মধ্যে অসংখ্য ছোট ছোট কালো বিন্দু (পিকনিডিয়া) দেখা যায়, যা পতাকাপাতা ঝলসে ফলন কমিয়ে দেয়।",
+    "symptoms": [
+      "Irregular chlorotic flecks that expand into light brown to tan oval or rectangular lesions",
+      "Tiny black specks (pycnidia) clearly visible inside the mature lesions with a magnifying glass",
+      "Lesions coalesce, causing complete premature death of lower and flag leaves",
+      "Poor grain filling and drastically shriveled lightweight wheat kernels"
+    ],
+    "banglaSymptoms": [
+      "পাতায় ছোট ছোট হলুদ ফুটকি যা বড় হয়ে ডিম্বাকার বাদামী দাগে রূপ নেয়",
+      "দাগগুলোর ভেতরে ছোট ছোট কালো বিন্দুর মতো পিকনিডিয়া স্পষ্ট দেখা যায়",
+      "দাগগুলো মিলে গিয়ে গমের পতাকাপাতাসহ পুরো পাতা শুকিয়ে মরে যায়",
+      "গমের দানা অপূর্ণ, কুঁচকানো ও হালকা হয়ে যায়"
+    ],
+    "favorableConditions": [
+      "Cool to moderate temperatures (15°C - 22°C) with persistent rain, high humidity, and prolonged leaf wetness (>24 hours)"
+    ],
+    "banglaCauses": [
+      "টানা বৃষ্টিপাত, কুয়াশা ও ১৫° থেকে ২২° সে. তাপমাত্রা"
+    ],
+    "affectedParts": [
+      "Lower leaves",
+      "Flag leaf",
+      "Glumes"
+    ],
+    "banglaAffectedParts": [
+      "নিচের পাতা",
+      "শীষের পতাকাপাতা",
+      "গমের খোসা"
+    ],
+    "banglaCropInfo": "গম - শীতকালীন অত্যন্ত গুরুত্বপূর্ণ অর্থকরী খাদ্যশস্য।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "গাছের নিচের পাতায় দাগ দেখামাত্র অনুমোদিত ট্রায়াজল ছত্রাকনাশক স্প্রে করুন।",
+        "শীষ বের হওয়ার মুখে পতাকাপাতা সুরক্ষায় বিশেষ জোর দিন।"
+      ],
+      "preventionMethods": [
+        "বপনের পূর্বে কার্বেন্ডাজিম বা থাইরাম দিয়ে বীজ শোধন করুন।",
+        "সেপটেরিয়া প্রতিরোধী জাত (যেমন বারি গম ৩৩, ডব্লিউএমআরআই গম ৩) চাষ করুন।"
+      ],
+      "fieldCareGuidance": [
+        "জমিতে অতিরিক্ত সেচ বা জলাবদ্ধতা পরিহার করুন।"
+      ],
+      "whenToConsultExpert": [
+        "যদি পতাকাপাতায় দ্রুত কালো বিন্দুর দাগ ছড়িয়ে পড়ে।"
+      ],
+      "safetyNote": "স্প্রে করার সময় ব্যক্তিগত সুরক্ষা নিশ্চিত করুন।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Apply Systemic Triazole / Strobilurin Fungicide",
+          "description": "Target spray at flag leaf emergence (GS 39) to protect the yield-forming top leaf layer.",
+          "priority": "High",
+          "timeframe": "Immediate",
+          "effectiveness": "92-96%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Copper Hydroxide Bio-fungicide spray",
+          "preparation": "2 g per liter clean water",
+          "application": "Spray every 10 days during cool wet winter weather",
+          "certifications": "OMRI Listed"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Epoxiconazole / Propiconazole + Azoxystrobin",
+          "activeIngredient": "Tilt 250 EC (Propiconazole)",
+          "dosage": "1 ml per liter of water",
+          "safetyInterval": "28 days pre-harvest",
+          "cautions": "Wear mask and goggles; avoid spray drift into water bodies."
+        }
+      ],
+      "preventiveMeasures": [
+        "Fungicidal seed treatment before sowing",
+        "Rotate fields out of cereals for at least 1-2 years"
+      ],
+      "culturalPractices": [
+        "Deep plowing to bury infected wheat stubble post-harvest"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "wheat-stripe-rust",
+    "crop": "Wheat",
+    "banglaCrop": "গম",
+    "commonName": "Wheat Stripe Rust (Yellow Rust)",
+    "banglaName": "গমের হলুদ মরিচা রোগ (স্ট্রাইপ রাস্ট)",
+    "scientificName": "Puccinia striiformis f. sp. tritici",
+    "pathogenType": "Fungal",
+    "severity": "Severe",
+    "confidence": 97.6,
+    "summary": "Airborne fungal epidemic disease producing narrow, bright yellow-orange pustules arranged in parallel stripes along leaf veins, causing catastrophic yield loss under cool conditions.",
+    "banglaSummary": "পুসিনিয়া ছত্রাকজনিত বাতাসে ছড়িয়ে পড়া মারাত্মক রোগ। পাতার শিরা বরাবর সমান্তরাল লাইনে উজ্জ্বল হলুদ বা কমলারঙা গুঁড়োযুক্ত মরিচার ফোস্কা তৈরি হয়, যা কয়েক দিনে পুরো ফসলে ছড়িয়ে পড়ে।",
+    "symptoms": [
+      "Small bright yellow-orange powdery pustules (uredinia) arranged in narrow, parallel linear stripes along leaf veins",
+      "Pustules rupture the leaf epidermis, releasing massive clouds of yellow spores when brushed",
+      "Infected leaves turn yellow, then brown and dry out prematurely like scorched ribbons",
+      "Severely attacked fields develop a distinct yellowish cast and exhibit blank or severely shriveled ears"
+    ],
+    "banglaSymptoms": [
+      "পাতায় শিরা বরাবর লম্বা সমান্তরাল লাইনে উজ্জ্বল হলুদ গুঁড়োর মতো মরিচার ফোস্কা",
+      "পাতায় হাত দিলে আঙুলে হলুদ পাউডার বা হলুদের গুঁড়োর মতো লেগে যায়",
+      "আক্রান্ত পাতা দ্রুত শুকিয়ে খড়ের মতো বিবর্ণ হয়ে যায়",
+      "দূর থেকে পুরো ক্ষেত হলুদ ও পোড়া পোড়া দেখায় এবং গমের শীষ চিটা হয়ে যায়"
+    ],
+    "favorableConditions": [
+      "Cool temperatures (10°C - 18°C) with persistent fog, dew, and intermittent light drizzle"
+    ],
+    "banglaCauses": [
+      "শীতপ্রধান আবহাওয়া (১০°-১৮° সে.), কুয়াশাচ্ছন্ন দিন ও বাতাসে স্পোর ভেসে আসা"
+    ],
+    "affectedParts": [
+      "Leaves",
+      "Leaf sheaths",
+      "Glumes",
+      "Awns"
+    ],
+    "banglaAffectedParts": [
+      "পাতা",
+      "খোল",
+      "শীষ"
+    ],
+    "banglaCropInfo": "গম - দেশের অন্যতম শীর্ষ দানাশস্য।",
+    "transmissionRisk": "High",
+    "banglaTreatment": {
+      "managementAdvice": [
+        "ক্ষেতে প্রথম হলুদ মরিচার রেখা দেখামাত্রই জরুরি ভিত্তিতে প্রপিকোনাজল স্প্রে করুন।",
+        "বাতাসের মাধ্যমে স্পোর দ্রুত ছড়িয়ে পড়ে বিধায় পুরো জমিতে একসাথে স্প্রে নিশ্চিত করুন।"
+      ],
+      "preventionMethods": [
+        "হলুদ মরিচা প্রতিরোধী আধুনিক অনুমোদিত গমের জাত চাষ করুন।"
+      ],
+      "fieldCareGuidance": [
+        "অতিরিক্ত ইউরিয়া সার ব্যবহার পরিহার করুন এবং সুষম পটাশ সার ব্যবহার করুন।"
+      ],
+      "whenToConsultExpert": [
+        "ক্ষেতে হলুদ মরিচার লক্ষণ দেখামাত্র কৃষি উপসহকারী কর্মকর্তাকে জরুরিভাবে জানান।"
+      ],
+      "safetyNote": "বাতাসের অনুকূলে স্প্রে করুন যাতে স্প্রে কণা শরীরের দিকে না আসে।"
+    },
+    "treatmentPlan": {
+      "immediateActions": [
+        {
+          "title": "Emergency Spray with Triazole Fungicide",
+          "description": "Apply Propiconazole or Tebuconazole immediately across entire field upon first confirmation of yellow stripes.",
+          "priority": "High",
+          "timeframe": "Within 12 hours",
+          "effectiveness": "96-98%"
+        }
+      ],
+      "organicTreatments": [
+        {
+          "name": "Bio-sulfur / Bacillus amyloliquefaciens suspension",
+          "preparation": "3 g bio-sulfur per liter water",
+          "application": "Spray at first sign in adjacent plots",
+          "certifications": "Bio-certified"
+        }
+      ],
+      "chemicalTreatments": [
+        {
+          "name": "Propiconazole 25% EC",
+          "activeIngredient": "Tilt 250 EC / Bumper 25 EC",
+          "dosage": "1 ml per liter of water",
+          "safetyInterval": "21 days pre-harvest",
+          "cautions": "Ensure full canopy penetration; repeat after 10-14 days if cool weather persists."
+        }
+      ],
+      "preventiveMeasures": [
+        "Plant stripe rust resistant varieties approved by BARI / WMRC",
+        "Avoid excessive nitrogen fertilization which produces succulent susceptible leaf tissue"
+      ],
+      "culturalPractices": [
+        "Community-wide synchronized sowing to prevent green-bridge rust progression"
+      ]
+    },
+    "sampleImageUrl": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
+  }
+]

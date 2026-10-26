@@ -78,40 +78,35 @@ export default function HistoryPage() {
           <span className="font-semibold text-slate-500 flex items-center gap-1">
             <Filter className="h-3.5 w-3.5" /> {isBangla ? "ফসল ফিল্টার:" : "Filter Crop:"}
           </span>
-          {["All", "Tomato", "Potato", "Rice", "Corn (Maize)", "Bell Pepper"].map((crop) => (
+          {[
+            { id: "All", name: "All", bnName: "সকল ফসল" },
+            { id: "Tomato", name: "Tomato", bnName: "টমেটো" },
+            { id: "Potato", name: "Potato", bnName: "আলু" },
+            { id: "Rice", name: "Rice", bnName: "ধান" },
+            { id: "Wheat", name: "Wheat", bnName: "গম" },
+            { id: "Grape", name: "Grape", bnName: "আঙ্গুর" },
+            { id: "Apple", name: "Apple", bnName: "আপেল" },
+            { id: "Corn (Maize)", name: "Corn", bnName: "ভুট্টা" },
+            { id: "Bell Pepper", name: "Pepper", bnName: "মরিচ" },
+            { id: "Strawberry", name: "Strawberry", bnName: "স্ট্রবেরি" },
+            { id: "Peach", name: "Peach", bnName: "পিচ" },
+            { id: "Cherry", name: "Cherry", bnName: "চেরি" },
+            { id: "Soybean", name: "Soybean", bnName: "সয়াবিন" },
+            { id: "Squash", name: "Squash", bnName: "স্কোয়াশ" },
+            { id: "Cassava", name: "Cassava", bnName: "কাসাভা" },
+            { id: "Mango", name: "Mango", bnName: "আম" },
+          ].map((c) => (
             <button
-              key={crop}
+              key={c.id}
               type="button"
-              onClick={() => setFilterCrop(crop)}
+              onClick={() => setFilterCrop(c.id)}
               className={`rounded-lg px-2.5 py-1 font-semibold transition-colors ${
-                filterCrop === crop
+                filterCrop === c.id
                   ? "bg-agri-600 text-white"
                   : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
               }`}
             >
-              {crop === "All"
-                ? isBangla
-                  ? "সকল ফসল"
-                  : "All"
-                : crop === "Tomato"
-                ? isBangla
-                  ? "টমেটো"
-                  : "Tomato"
-                : crop === "Potato"
-                ? isBangla
-                  ? "আলু"
-                  : "Potato"
-                : crop === "Rice"
-                ? isBangla
-                  ? "ধান"
-                  : "Rice"
-                : crop === "Corn (Maize)"
-                ? isBangla
-                  ? "ভুট্টা"
-                  : "Corn"
-                : isBangla
-                ? "মরিচ"
-                : "Pepper"}
+              {isBangla ? c.bnName : c.name}
             </button>
           ))}
         </div>

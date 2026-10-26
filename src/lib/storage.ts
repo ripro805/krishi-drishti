@@ -426,7 +426,15 @@ export function getStoredDiseases(): DiseaseInfo[] {
       localStorage.setItem(DISEASES_KEY, JSON.stringify(DISEASES_DATABASE));
       return DISEASES_DATABASE;
     }
-    return JSON.parse(raw);
+    const stored = JSON.parse(raw);
+    if (Array.isArray(stored) && stored.length < DISEASES_DATABASE.length) {
+      // Non-destructive synchronization: merge newly expanded diseases while preserving customized records
+      const storedMap = new Map(stored.map((d: any) => [d.id, d]));
+      const merged = DISEASES_DATABASE.map((d) => storedMap.get(d.id) || d);
+      localStorage.setItem(DISEASES_KEY, JSON.stringify(merged));
+      return merged;
+    }
+    return stored;
   } catch {
     return DISEASES_DATABASE;
   }

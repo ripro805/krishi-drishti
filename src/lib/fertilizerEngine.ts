@@ -24,6 +24,13 @@ export function calculateFertilizer(input: FertilizerInput): FertilizerCalculati
     Wheat: { n: 120, p: 60, k: 40 },
     Apple: { n: 80, p: 40, k: 80 },
     Grape: { n: 70, p: 50, k: 90 },
+    Strawberry: { n: 70, p: 50, k: 80 },
+    Peach: { n: 80, p: 40, k: 90 },
+    Cherry: { n: 75, p: 40, k: 80 },
+    Soybean: { n: 30, p: 60, k: 40 },
+    Squash: { n: 100, p: 70, k: 90 },
+    Cassava: { n: 60, p: 40, k: 100 },
+    Mango: { n: 90, p: 50, k: 100 },
   };
 
   const cropRate = baseRates[crop] || { n: 110, p: 60, k: 70 };

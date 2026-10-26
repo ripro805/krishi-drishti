@@ -18,9 +18,10 @@ export const SUGGESTED_CHIPS = [
   { id: "s1", label: "ধানের পাতায় দাগ কেন হয়?", prompt: "ধানের পাতায় বাদামি দাগ কেন হয় এবং প্রতিকার কী?" },
   { id: "s2", label: "টমেটোর পাতা কুঁকড়ে যাচ্ছে", prompt: "টমেটো গাছের পাতা কুঁকড়ে যাচ্ছে কেন? কী সার বা ওষুধ দিব?" },
   { id: "s3", label: "ধান চাষে কোন সার দিব?", prompt: "ধান চাষে ইউরিয়া, ডিএপি ও পটাশ সার দেওয়ার সঠিক নিয়ম ও সময় কী?" },
-  { id: "s4", label: "How to identify plant diseases?", prompt: "How can I easily identify fungal vs bacterial plant diseases?" },
-  { id: "s5", label: "dhan er pata holud hole ki korbo?", prompt: "dhan gacher pata holud hoye jacche, ki shomossha hote pare?" },
+  { id: "s4", label: "আঙ্গুরের পাতা ঝলসানো রোগ", prompt: "আঙ্গুর পাতার ব্লাইট (Isariopsis Leaf Spot / Black Rot) রোগের লক্ষণ ও ছত্রাকনাশক স্প্রে করার নিয়ম কী?" },
+  { id: "s5", label: "গমের মরিচা রোগ দমন", prompt: "গমের হলুদ বা বাদামি মরিচা (Stripe Rust) রোগের বিস্তার রোধে কোন প্রতিরোধক ব্যবহার করব?" },
   { id: "s6", label: "আলুর আগাম ও নাবী ধসা", prompt: "আলুর আগাম ধসা (Early Blight) ও নাবী ধসার (Late Blight) পার্থক্য এবং জৈব দমন পদ্ধতি কী?" },
+  { id: "s7", label: "আপেলের ব্ল্যাক রট প্রতিকার", prompt: "আপেল গাছের পাতায় কালো গোল ক্ষত (Black Rot) এবং স্ক্যাব রোগের ব্যবস্থাপনা নির্দেশিকা কী?" },
 ];
 
 const STORAGE_PREFIX = "krishi_chat_history_";

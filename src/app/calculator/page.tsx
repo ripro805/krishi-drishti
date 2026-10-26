@@ -81,6 +81,13 @@ export default function FertilizerCalculatorPage() {
                 <option value="Wheat">Wheat</option>
                 <option value="Apple">Apple Orchard</option>
                 <option value="Grape">Grape Vineyard</option>
+                <option value="Strawberry">Strawberry</option>
+                <option value="Peach">Peach</option>
+                <option value="Cherry">Cherry</option>
+                <option value="Soybean">Soybean (Legume N-fixer)</option>
+                <option value="Squash">Squash / Cucurbits</option>
+                <option value="Cassava">Cassava (Root tuber)</option>
+                <option value="Mango">Mango</option>
               </select>
             </div>
 

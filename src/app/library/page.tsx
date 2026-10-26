@@ -24,16 +24,22 @@ export default function DiseaseLibraryPage() {
   const [selectedType, setSelectedType] = useState("All");
   const [activeModalDisease, setActiveModalDisease] = useState<DiseaseInfo | null>(null);
 
-  const crops = ["All", "Tomato", "Potato", "Corn (Maize)", "Bell Pepper"];
+  const crops = ["All", ...Array.from(new Set(DISEASES_DATABASE.map((d) => d.crop))).sort()];
   const pathogenTypes = ["All", "Fungal", "Bacterial", "Viral", "None"];
 
   const filteredDiseases = DISEASES_DATABASE.filter((d) => {
+    const q = searchQuery.toLowerCase().trim();
     const matchesSearch =
-      d.commonName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      d.scientificName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      d.crop.toLowerCase().includes(searchQuery.toLowerCase());
+      !q ||
+      d.commonName.toLowerCase().includes(q) ||
+      (d.banglaName && d.banglaName.toLowerCase().includes(q)) ||
+      d.scientificName.toLowerCase().includes(q) ||
+      d.crop.toLowerCase().includes(q) ||
+      (d.banglaCrop && d.banglaCrop.toLowerCase().includes(q)) ||
+      (d.summary && d.summary.toLowerCase().includes(q)) ||
+      (d.banglaSummary && d.banglaSummary.toLowerCase().includes(q));
 
-    const matchesCrop = selectedCrop === "All" || d.crop === selectedCrop;
+    const matchesCrop = selectedCrop === "All" || d.crop.toLowerCase() === selectedCrop.toLowerCase();
     const matchesType = selectedType === "All" || d.pathogenType === selectedType;
 
     return matchesSearch && matchesCrop && matchesType;

@@ -52,11 +52,12 @@ export async function runDiseaseInference(
       if (response.ok) {
         const data = (await response.json()) as any;
         if (data.predictions && Array.isArray(data.predictions) && data.predictions.length > 0) {
-          const top = data.predictions[0];
-          const conf = parseFloat((top.score * 100).toFixed(2));
+          const top = data.disambiguatedTop || data.predictions[0];
+          const conf = parseFloat(((top.score || top.confidence || 0) * 100).toFixed(2));
           const isHealthy = top.label.toLowerCase().includes("healthy");
+          const crop = top.crop || data.dominantCrop || cropHint || "Crop";
           return {
-            crop: cropHint || "Crop",
+            crop,
             diseaseId: top.label.toLowerCase().replace(/___|__/g, "-").replace(/_/g, "-"),
             diseaseName: top.label.replace(/___|__/g, " - ").replace(/_/g, " "),
             scientificName: "Pathology classification via neural vision",
