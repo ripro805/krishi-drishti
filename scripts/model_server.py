@@ -27,12 +27,18 @@ MODEL_REVISION = os.environ.get("MODEL_REVISION", None)
 START_TIME = time.time()
 MAX_PAYLOAD_SIZE = 15 * 1024 * 1024  # 15 MB limit
 
-# Shared pipeline holder
+# Shared pipeline and prototype holder
 _pipeline = None
+_crop_prototypes = {}
+
+try:
+    from crop_taxonomy import LABEL_TO_CROP, aggregate_crop_probabilities
+except ImportError:
+    from scripts.crop_taxonomy import LABEL_TO_CROP, aggregate_crop_probabilities
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global _pipeline
+    global _pipeline, _crop_prototypes
     device_idx = 0 if torch.cuda.is_available() else -1
     device_name = "CUDA GPU" if device_idx == 0 else "Host CPU"
     logger.info(f"Starting KrishiDrishti Model Server on {device_name}...")
@@ -52,6 +58,19 @@ async def lifespan(app: FastAPI):
         load_time = time.time() - t0
         classes_count = len(_pipeline.model.config.id2label) if hasattr(_pipeline.model, "config") else 50
         logger.info(f"Model successfully preloaded in {load_time:.2f}s with {classes_count} classes.")
+
+        # Precompute normalized botanical crop prototypes in 768-dim ConvNeXt feature space
+        W = _pipeline.model.classifier.weight.data
+        id2label = _pipeline.model.config.id2label
+        dev = _pipeline.model.device
+        crops = sorted(list(set(LABEL_TO_CROP.values())))
+        _crop_prototypes = {}
+        for crop in crops:
+            indices = [i for i, label in id2label.items() if LABEL_TO_CROP.get(label) == crop]
+            if indices:
+                v = W[indices].mean(dim=0)
+                _crop_prototypes[crop] = (v / torch.norm(v)).to(dev)
+        logger.info(f"Precomputed {len(_crop_prototypes)} botanical crop visual prototypes for high-precision Auto-Detection.")
     except Exception as e:
         logger.error(f"Failed to load Hugging Face model: {e}")
         raise e
@@ -60,6 +79,8 @@ async def lifespan(app: FastAPI):
     
     logger.info("Shutting down KrishiDrishti Model Server...")
     _pipeline = None
+    _crop_prototypes = {}
+
 
 app = FastAPI(
     title="KrishiDrishti Neural Inference API",
@@ -76,11 +97,6 @@ app.add_middleware(
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
-
-try:
-    from crop_taxonomy import aggregate_crop_probabilities
-except ImportError:
-    from scripts.crop_taxonomy import aggregate_crop_probabilities
 
 class PredictRequest(BaseModel):
     imageData: str = Field(..., description="Base64 encoded leaf image or data URL")
@@ -141,18 +157,36 @@ def predict(req: PredictRequest):
 
     t0 = time.time()
     try:
-        # Request full 50-class probability distribution
-        raw_preds = _pipeline(image, top_k=50)
+        # Extract 768-dim pooled feature embeddings from ConvNeXt backbone
+        inputs = _pipeline.image_processor(images=image, return_tensors="pt")
+        dev = _pipeline.model.device
+        inputs = {k: v.to(dev) for k, v in inputs.items()}
+
+        with torch.no_grad():
+            out = _pipeline.model.convnext(**inputs)
+            feats = out.pooler_output[0]
+            norm_feats = feats / torch.norm(feats)
+
+            # High-precision visual prototype cosine similarity across all 16 botanical crops
+            proto_sims = {c: torch.dot(norm_feats, p).item() for c, p in _crop_prototypes.items()}
+
+            logits = _pipeline.model.classifier(out.pooler_output)[0]
+            probs = torch.softmax(logits, dim=0)
+
+        id2label = _pipeline.model.config.id2label
+        raw_preds = [{"label": id2label[i], "score": float(probs[i].item())} for i in range(len(probs))]
+        raw_preds.sort(key=lambda x: x["score"], reverse=True)
         latency_ms = round((time.time() - t0) * 1000, 2)
         
-        # Hierarchical crop mass aggregation and ambiguity detection
-        analysis = aggregate_crop_probabilities(raw_preds, crop_hint=req.cropHint)
+        # Hierarchical crop aggregation with visual prototype guidance
+        analysis = aggregate_crop_probabilities(raw_preds, crop_hint=req.cropHint, proto_sims=proto_sims)
         
         logger.info(
             f"Inference result: top={analysis['predictions'][0]['label']} ({analysis['predictions'][0]['score']*100:.1f}%) | "
             f"dominantCrop={analysis['dominantCrop']} ({analysis['dominantCropScore']*100:.1f}%) | "
             f"ambiguous={analysis['isCrossCropAmbiguous']} | latency={latency_ms}ms"
         )
+
 
         return {
             "predictions": analysis["predictions"],

@@ -439,10 +439,7 @@ export async function detectCropDisease(options: DetectionOptions): Promise<Scan
         // If probability mass across classes strongly supports dominantCrop (>35%)
         // or user explicitly provided cropHint, use disambiguatedTop to prevent
         // single-class dilution bugs (e.g. strawberry scorch vs multi-class rice).
-        const topCandidate =
-          payload.disambiguatedTop && payload.dominantCropScore && payload.dominantCropScore > 0.35
-            ? payload.disambiguatedTop
-            : predictions[0];
+        const topCandidate = payload.disambiguatedTop || predictions[0];
 
         modelConfidence = parseFloat((topCandidate.score * 100).toFixed(2));
         const meta = HF_LABEL_MAP[topCandidate.label];

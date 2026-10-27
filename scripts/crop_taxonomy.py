@@ -88,14 +88,16 @@ LABEL_TO_CROP = {
     "Wheat_Stripe_Rust": "Wheat",
 }
 
-def aggregate_crop_probabilities(raw_preds, crop_hint=None):
+import math
+
+def aggregate_crop_probabilities(raw_preds, crop_hint=None, proto_sims=None):
     """
     Given raw predictions for all 50 classes (each having 'label' and 'score'):
     1. Computes total probability mass per crop: P(Crop = K) = sum_{c in K} P(c)
-    2. Identifies the dominant crop by probability mass
-    3. Detects cross-crop ambiguity and probability dilution
-    4. If a valid crop_hint is supplied and supported by significant probability (>15%),
-       re-weights within that crop context.
+    2. Uses visual prototype cosine similarity (proto_sims) to identify the true botanical crop
+       in Auto-Detect mode, resolving false-positive attractors (e.g. strawberry scorch vs grape).
+    3. If a valid crop_hint is supplied, re-weights within that crop context.
+    4. Evaluates intra-crop pathology confidence P(Disease | Crop).
     Returns:
         dict containing formatted top predictions, dominantCrop, cropScores,
         isCrossCropAmbiguous, and disambiguatedTop
@@ -111,77 +113,91 @@ def aggregate_crop_probabilities(raw_preds, crop_hint=None):
         crop_mass[crop] = crop_mass.get(crop, 0.0) + score
         preds_by_crop.setdefault(crop, []).append({"label": label, "score": score})
 
-    # Sort crops by probability mass
+    # Sort crops by probability mass as baseline
     sorted_crops = sorted(crop_mass.items(), key=lambda x: x[1], reverse=True)
-    dominant_crop, dominant_crop_score = sorted_crops[0] if sorted_crops else ("Unknown", 0.0)
-    second_crop, second_crop_score = sorted_crops[1] if len(sorted_crops) > 1 else ("None", 0.0)
 
-    # Top-1 flat prediction
-    flat_top1 = raw_preds[0] if raw_preds else {"label": "Unknown", "score": 0.0}
-    flat_top1_crop = LABEL_TO_CROP.get(flat_top1["label"], "Unknown")
-
-    # Crop ambiguity occurs if flat top-1 crop != dominant crop mass
-    # OR if runner-up crop has significant probability (>= 12%)
-    # OR if margin is small (< 0.25) when dominant crop is not strongly confident (< 0.85)
-    # OR known visual confusions (e.g. Strawberry scorch vs Grape leaf blight/measles)
-    crop_margin = dominant_crop_score - second_crop_score
-    cross_crop_ambiguous = (
-        (flat_top1_crop != dominant_crop)
-        or (second_crop_score >= 0.12)
-        or (crop_margin < 0.25 and dominant_crop_score < 0.85)
-        or (dominant_crop == "Strawberry" and crop_mass.get("Grape", 0.0) >= 0.05)
-        or (dominant_crop == "Grape" and crop_mass.get("Strawberry", 0.0) >= 0.05)
-    )
-
-    # Contextual re-ranking if crop_hint is present and not 'auto'
-    target_crop = dominant_crop
+    # 1. Determine target crop and dominant crop
+    target_crop = None
     is_user_guided = False
+
     if crop_hint and crop_hint.lower() not in ["auto", "all", "none", ""]:
         hint_clean = crop_hint.lower().strip()
         matched_crop = next((c for c in crop_mass.keys() if hint_clean in c.lower() or c.lower() in hint_clean), None)
         if matched_crop:
             target_crop = matched_crop
             is_user_guided = True
+            dominant_crop = target_crop
+            dominant_crop_score = crop_mass.get(target_crop, 0.0)
+            crop_scores_dict = {c: round(score, 4) for c, score in sorted_crops}
+            cross_crop_ambiguous = False
+            crop_margin = 1.0
 
-    # Best prediction within target crop
+    if not is_user_guided:
+        if proto_sims and len(proto_sims) > 0:
+            # Temperature-scaled prototype similarity for calibrated botanical crop confidence
+            temp = 0.05
+            exp_sims = {c: math.exp(s / temp) for c, s in proto_sims.items()}
+            sum_exp = sum(exp_sims.values())
+            proto_probs = {c: exp_sims[c] / sum_exp for c in proto_sims}
+            sorted_proto = sorted(proto_probs.items(), key=lambda x: x[1], reverse=True)
+
+            dominant_crop, dominant_crop_score = sorted_proto[0]
+            target_crop = dominant_crop
+            second_score = sorted_proto[1][1] if len(sorted_proto) > 1 else 0.0
+            crop_margin = dominant_crop_score - second_score
+            crop_scores_dict = {c: round(score, 4) for c, score in sorted_proto}
+            cross_crop_ambiguous = (crop_margin < 0.20 and dominant_crop_score < 0.60)
+        else:
+            dominant_crop, dominant_crop_score = sorted_crops[0] if sorted_crops else ("Unknown", 0.0)
+            second_score = sorted_crops[1][1] if len(sorted_crops) > 1 else 0.0
+            target_crop = dominant_crop
+            crop_margin = dominant_crop_score - second_score
+            crop_scores_dict = {c: round(score, 4) for c, score in sorted_crops}
+            cross_crop_ambiguous = (crop_margin < 0.25 and dominant_crop_score < 0.85)
+
+    # 2. Disease candidates within target crop
     target_mass = crop_mass.get(target_crop, 0.0)
     crop_candidates = sorted(preds_by_crop.get(target_crop, []), key=lambda x: x["score"], reverse=True)
-    if crop_candidates and target_mass > 0:
+
+    if crop_candidates:
         best_candidate = crop_candidates[0]
-        conditional_score = best_candidate["score"] / target_mass
-        # When user explicitly selects crop context, use the crop-conditional confidence
-        effective_score = conditional_score if is_user_guided else best_candidate["score"]
+        conditional_score = best_candidate["score"] / target_mass if target_mass > 0 else best_candidate["score"]
+
         best_within_crop = {
             "label": best_candidate["label"],
-            "score": round(effective_score, 4),
+            "score": round(conditional_score, 4),
             "raw_score": round(best_candidate["score"], 4),
             "conditional_score": round(conditional_score, 4),
             "crop": target_crop
         }
-    else:
-        best_within_crop = flat_top1
 
-    # Formatted predictions (prioritizing target crop candidates if user guided)
-    if is_user_guided and crop_candidates:
+        # Format predictions: prioritize target crop candidates normalized by target_mass
         formatted_preds = [
             {"label": p["label"], "score": round(p["score"] / target_mass, 4) if target_mass > 0 else round(p["score"], 4)}
-            for p in crop_candidates[:5]
+            for p in crop_candidates
         ]
+        # Append remaining predictions from other crops for fallback/transparency
+        for p in raw_preds:
+            if p["label"] not in [c["label"] for c in crop_candidates]:
+                formatted_preds.append({"label": p["label"], "score": round(p["score"], 4)})
     else:
+        flat_top = raw_preds[0] if raw_preds else {"label": "Unknown", "score": 0.0}
+        best_within_crop = flat_top
         formatted_preds = [
             {"label": p["label"], "score": round(p["score"], 4)}
             for p in raw_preds[:5]
         ]
 
     return {
-        "predictions": formatted_preds,
+        "predictions": formatted_preds[:10],
         "allClassScores": {p["label"]: round(float(p["score"]), 4) for p in raw_preds},
         "dominantCrop": dominant_crop,
         "dominantCropScore": round(dominant_crop_score, 4),
         "targetCrop": target_crop,
         "isUserGuided": is_user_guided,
-        "cropScores": {c: round(score, 4) for c, score in sorted_crops},
+        "cropScores": crop_scores_dict,
         "isCrossCropAmbiguous": cross_crop_ambiguous,
         "cropMargin": round(crop_margin, 4),
         "disambiguatedTop": best_within_crop
     }
+

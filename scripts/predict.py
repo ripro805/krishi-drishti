@@ -14,23 +14,38 @@ from PIL import Image
 from transformers import pipeline
 
 sys.path.insert(0, os.path.dirname(__file__))
+import torch
+
 try:
-    from crop_taxonomy import aggregate_crop_probabilities
+    from crop_taxonomy import LABEL_TO_CROP, aggregate_crop_probabilities
 except ImportError:
-    from scripts.crop_taxonomy import aggregate_crop_probabilities
+    from scripts.crop_taxonomy import LABEL_TO_CROP, aggregate_crop_probabilities
 
 MODEL_NAME = os.environ.get("MODEL_NAME", "ripro805/krishidrishti-plant-disease")
 MODEL_REVISION = os.environ.get("MODEL_REVISION", None)
 
 _pipe = None
+_crop_prototypes = {}
+
 
 def get_pipeline():
-    global _pipe
+    global _pipe, _crop_prototypes
     if _pipe is None:
         kwargs = {"task": "image-classification", "model": MODEL_NAME}
         if MODEL_REVISION:
             kwargs["revision"] = MODEL_REVISION
         _pipe = pipeline(**kwargs)
+
+        # Precompute normalized botanical crop prototypes
+        W = _pipe.model.classifier.weight.data
+        id2label = _pipe.model.config.id2label
+        crops = sorted(list(set(LABEL_TO_CROP.values())))
+        _crop_prototypes = {}
+        for crop in crops:
+            indices = [i for i, label in id2label.items() if LABEL_TO_CROP.get(label) == crop]
+            if indices:
+                v = W[indices].mean(dim=0)
+                _crop_prototypes[crop] = (v / torch.norm(v)).to(_pipe.model.device)
     return _pipe
 
 def predict_image(image_input, crop_hint=None, return_meta=False):
@@ -50,13 +65,30 @@ def predict_image(image_input, crop_hint=None, return_meta=False):
     else:
         img = image_input
 
-    # Request all 50 class probabilities
-    raw_preds = pipe(img, top_k=50)
-    analysis = aggregate_crop_probabilities(raw_preds, crop_hint=crop_hint)
+    # Extract features and compute prototype similarities
+    inputs = pipe.image_processor(images=img, return_tensors="pt")
+    dev = pipe.model.device
+    inputs = {k: v.to(dev) for k, v in inputs.items()}
+
+    with torch.no_grad():
+        out = pipe.model.convnext(**inputs)
+        feats = out.pooler_output[0]
+        norm_feats = feats / torch.norm(feats)
+        proto_sims = {c: torch.dot(norm_feats, p).item() for c, p in _crop_prototypes.items()}
+
+        logits = pipe.model.classifier(out.pooler_output)[0]
+        probs = torch.softmax(logits, dim=0)
+
+    id2label = pipe.model.config.id2label
+    raw_preds = [{"label": id2label[i], "score": float(probs[i].item())} for i in range(len(probs))]
+    raw_preds.sort(key=lambda x: x["score"], reverse=True)
+
+    analysis = aggregate_crop_probabilities(raw_preds, crop_hint=crop_hint, proto_sims=proto_sims)
 
     if return_meta:
         return analysis
     return analysis["predictions"]
+
 
 if __name__ == "__main__":
     try:
