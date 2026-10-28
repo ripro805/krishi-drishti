@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generateAgricultureAnswer } from "@/lib/ai/aiService";
 import { AgricultureChatRequest } from "@/lib/ai/types";
+import {
+  findCachedKnowledgeAnswer,
+  saveToKnowledgeDatabase,
+} from "@/lib/ai/chatKnowledgeService";
 
 // In-memory rate limiting map: ip -> { count, resetTime }
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -66,7 +70,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 3. Generate Answer through centralized AI Service
+    // 3. STEP A: Check Database Cache for existing cultivation technique or frequent answer
+    // This avoids redundant AI API calls for common farming methods (e.g. mango, strawberry, tomato chas).
+    const cachedRecord = findCachedKnowledgeAnswer(message);
+    if (cachedRecord) {
+      console.log(`[/api/chat] Database Cache HIT for: "${message}" -> Stored Topic: "${cachedRecord.topic}"`);
+      return NextResponse.json(
+        {
+          success: true,
+          answer: cachedRecord.answer,
+          conversationId: conversationId || `conv-${Date.now().toString(36)}`,
+          detectedLanguage: cachedRecord.language,
+          responseLanguage: cachedRecord.language,
+          provider: "database-cache",
+          model: "agri-knowledge-base",
+          cachedTopic: cachedRecord.topic,
+          fromCache: true,
+        },
+        { status: 200 }
+      );
+    }
+
+    console.log(`[/api/chat] Database Cache MISS for: "${message}". Invoking AI Provider API...`);
+
+    // 3. STEP B: Generate Answer through centralized AI Service when not found in Database
     const response = await generateAgricultureAnswer({
       message,
       conversationId,
@@ -75,6 +102,18 @@ export async function POST(request: NextRequest) {
       history,
       diseaseContext,
     });
+
+    // 4. STEP C: Automatically save newly answered questions into the Database for future queries
+    if (response.success && response.answer && response.answer.length >= 20) {
+      try {
+        saveToKnowledgeDatabase(message, response.answer, {
+          crop: diseaseContext?.crop,
+          language: response.responseLanguage,
+        });
+      } catch (saveErr: any) {
+        console.warn("[/api/chat] Notice: Could not save to knowledge database:", saveErr.message || saveErr);
+      }
+    }
 
     return NextResponse.json(response, { status: 200 });
   } catch (error: any) {

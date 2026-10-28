@@ -154,3 +154,23 @@ model FertilizerCalculation {
 
   @@map("fertilizer_calculations")
 }
+
+
+model ChatKnowledge {
+  id              String   @id @default(uuid())
+  topic           String
+  crop            String?
+  category        String   @default("cultivation")
+  question        String   @db.Text
+  normalizedQuery String   @db.Text
+  keywords        String[]
+  answer          String   @db.Text
+  language        String   @default("bn")
+  hitCount        Int      @default(1)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([crop])
+  @@index([category])
+  @@map("chat_knowledge")
+}
