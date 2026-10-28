@@ -67,20 +67,38 @@ def test_regression():
     sys.path.insert(0, os.path.abspath("scripts"))
     sys.path.insert(0, os.path.abspath("."))
     from predict import predict_image
-    test_img = Image.new("RGB", (224, 224), color=(34, 139, 34))
+
+    sample_leaf_path = os.path.join("public", "uploads", "scans", "leaf_1793041150846_cef02.jpeg")
+    if os.path.exists(sample_leaf_path):
+        test_img = Image.open(sample_leaf_path).convert("RGB")
+    else:
+        # Fallback to realistic gradient pattern
+        test_img = Image.effect_mandelbrot((224, 224), (-2, -1.5, 1, 1.5), 100).convert("RGB")
+
     t0 = time.time()
     preds = predict_image(test_img)
     latency_ms = (time.time() - t0) * 1000
 
     print(f"  -> Prediction returned {len(preds)} results in {latency_ms:.1f}ms")
-    top_pred = preds[0]
-    print(f"  -> Top predicted class: '{top_pred['label']}' with confidence score: {top_pred['score']:.4f}")
-
-    if top_pred['label'] not in label_to_id:
-        errors.append(f"Predicted label '{top_pred['label']}' not found in HF_LABEL_MAP")
+    if not preds:
+        errors.append("Live inference returned 0 results on genuine leaf scan")
     else:
-        matched_id = label_to_id[top_pred['label']]
-        print(f"  -> Successfully resolved to disease ID: '{matched_id}'")
+        top_pred = preds[0]
+        print(f"  -> Top predicted class: '{top_pred['label']}' with confidence score: {top_pred['score']:.4f}")
+
+        if top_pred['label'] not in label_to_id:
+            errors.append(f"Predicted label '{top_pred['label']}' not found in HF_LABEL_MAP")
+        else:
+            matched_id = label_to_id[top_pred['label']]
+            print(f"  -> Successfully resolved to disease ID: '{matched_id}'")
+
+    # Verify that a blank solid image is correctly rejected
+    blank_img = Image.new("RGB", (224, 224), color=(34, 139, 34))
+    blank_preds = predict_image(blank_img)
+    if len(blank_preds) == 0:
+        print("  -> Quality Gate Verified: Blank solid color image correctly rejected!")
+    else:
+        errors.append("Blank solid color image was not rejected by quality gate")
 
     # 6. Verify Critical Fields in DISEASES_DATABASE entries for new crops
     print("\n[TEST 7] Verifying Schema Integrity for Sample Expanded Diseases...")

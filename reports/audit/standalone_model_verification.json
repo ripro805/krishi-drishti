@@ -1,0 +1,1910 @@
+{
+  "model_repository": "ripro805/krishi-drishty-v2",
+  "pinned_revision": "c7a772ef2ae36fb3285db268482863d0f039c83b",
+  "model_type": "efficientnet",
+  "architecture": "EfficientNetForImageClassification",
+  "num_classes": 55,
+  "total_parameters": 4078003,
+  "trainable_parameters": 4078003,
+  "preprocessor": {
+    "class": "EfficientNetImageProcessor",
+    "size": "SizeDict(height=224, width=224, longest_edge=None, shortest_edge=None, max_height=None, max_width=None, min_pixels=None, max_pixels=None)",
+    "image_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "image_std": [
+      0.47853944,
+      0.4732864,
+      0.47434163
+    ],
+    "resample": "0",
+    "do_rescale": true,
+    "do_normalize": true
+  },
+  "label_audit": {
+    "num_classes": 55,
+    "is_valid": true,
+    "issues": [],
+    "class_manifest": {
+      "0": "Apple___Apple_scab",
+      "1": "Apple___Black_rot",
+      "2": "Apple___Cedar_apple_rust",
+      "3": "Apple___healthy",
+      "4": "Blueberry___healthy",
+      "5": "Cherry_(including_sour)___Powdery_mildew",
+      "6": "Cherry_(including_sour)___healthy",
+      "7": "Corn_(maize)___Cercospora_leaf_spot_Gray_leaf_spot",
+      "8": "Corn_(maize)___Common_rust",
+      "9": "Corn_(maize)___Northern_Leaf_Blight",
+      "10": "Corn_(maize)___healthy",
+      "11": "Grape___Black_rot",
+      "12": "Grape___Esca_(Black_Measles)",
+      "13": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+      "14": "Grape___healthy",
+      "15": "Orange___Haunglongbing_(Citrus_greening)",
+      "16": "Peach___Bacterial_spot",
+      "17": "Peach___healthy",
+      "18": "Pepper__bell___Bacterial_spot",
+      "19": "Pepper__bell___healthy",
+      "20": "Potato___Early_blight",
+      "21": "Potato___Late_blight",
+      "22": "Potato___healthy",
+      "23": "Raspberry___healthy",
+      "24": "Rice_Bacterial_leaf_blight",
+      "25": "Rice_Brown_spot",
+      "26": "Rice_Leaf_smut",
+      "27": "Soybean___healthy",
+      "28": "Squash___Powdery_mildew",
+      "29": "Strawberry___Leaf_scorch",
+      "30": "Strawberry___healthy",
+      "31": "Tomato_Bacterial_spot",
+      "32": "Tomato_Early_blight",
+      "33": "Tomato_Late_blight",
+      "34": "Tomato_Leaf_Mold",
+      "35": "Tomato_Septoria_leaf_spot",
+      "36": "Tomato_Spider_mites_Two_spotted_spider_mite",
+      "37": "Tomato__Target_Spot",
+      "38": "Tomato__Tomato_YellowLeaf__Curl_Virus",
+      "39": "Tomato__Tomato_mosaic_virus",
+      "40": "Tomato___Bacterial_spot",
+      "41": "Tomato___Early_blight",
+      "42": "Tomato___Late_blight",
+      "43": "Tomato___Leaf_Mold",
+      "44": "Tomato___Septoria_leaf_spot",
+      "45": "Tomato___Spider_mites_Two-spotted_spider_mite",
+      "46": "Tomato___Target_Spot",
+      "47": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "48": "Tomato___Tomato_mosaic_virus",
+      "49": "Tomato___healthy",
+      "50": "Wheat_BlackPoint",
+      "51": "Wheat_FusariumFootRot",
+      "52": "Wheat_HealthyLeaf",
+      "53": "Wheat_LeafBlight",
+      "54": "Wheat_WheatBlast"
+    }
+  },
+  "sample_inferences": [
+    {
+      "image_path": "public/uploads/scans/leaf_1793182634962_kl2lu.jpeg",
+      "input_shape": [
+        1,
+        3,
+        224,
+        224
+      ],
+      "output_shape": [
+        1,
+        55
+      ],
+      "top1": {
+        "index": 20,
+        "label": "Potato___Early_blight",
+        "logit": 2.073076009750366,
+        "probability": 0.17410168051719666
+      },
+      "top2": {
+        "index": 6,
+        "label": "Cherry_(including_sour)___healthy",
+        "logit": 1.885329246520996,
+        "probability": 0.14429974555969238
+      },
+      "top3": {
+        "index": 52,
+        "label": "Wheat_HealthyLeaf",
+        "logit": 1.4194815158843994,
+        "probability": 0.09056293219327927
+      },
+      "top_margin": 0.029801934957504272,
+      "full_prediction_vector": [
+        {
+          "index": 0,
+          "label": "Apple___Apple_scab",
+          "logit": -2.490509033203125,
+          "probability": 0.0018149432726204395
+        },
+        {
+          "index": 1,
+          "label": "Apple___Black_rot",
+          "logit": -0.2074366956949234,
+          "probability": 0.01779872365295887
+        },
+        {
+          "index": 2,
+          "label": "Apple___Cedar_apple_rust",
+          "logit": -3.0313799381256104,
+          "probability": 0.0010567345889285207
+        },
+        {
+          "index": 3,
+          "label": "Apple___healthy",
+          "logit": -2.9966695308685303,
+          "probability": 0.0010940582724288106
+        },
+        {
+          "index": 4,
+          "label": "Blueberry___healthy",
+          "logit": -1.8243554830551147,
+          "probability": 0.003533214796334505
+        },
+        {
+          "index": 5,
+          "label": "Cherry_(including_sour)___Powdery_mildew",
+          "logit": -3.37483549118042,
+          "probability": 0.0007495578029192984
+        },
+        {
+          "index": 6,
+          "label": "Cherry_(including_sour)___healthy",
+          "logit": 1.885329246520996,
+          "probability": 0.14429974555969238
+        },
+        {
+          "index": 7,
+          "label": "Corn_(maize)___Cercospora_leaf_spot_Gray_leaf_spot",
+          "logit": -1.7756606340408325,
+          "probability": 0.0037095206789672375
+        },
+        {
+          "index": 8,
+          "label": "Corn_(maize)___Common_rust",
+          "logit": -0.39646100997924805,
+          "probability": 0.01473318599164486
+        },
+        {
+          "index": 9,
+          "label": "Corn_(maize)___Northern_Leaf_Blight",
+          "logit": -3.0193564891815186,
+          "probability": 0.0010695168748497963
+        },
+        {
+          "index": 10,
+          "label": "Corn_(maize)___healthy",
+          "logit": -2.7442615032196045,
+          "probability": 0.0014081854606047273
+        },
+        {
+          "index": 11,
+          "label": "Grape___Black_rot",
+          "logit": 1.2279562950134277,
+          "probability": 0.07477770745754242
+        },
+        {
+          "index": 12,
+          "label": "Grape___Esca_(Black_Measles)",
+          "logit": -1.1731661558151245,
+          "probability": 0.006776071153581142
+        },
+        {
+          "index": 13,
+          "label": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+          "logit": -1.366976261138916,
+          "probability": 0.005582224112004042
+        },
+        {
+          "index": 14,
+          "label": "Grape___healthy",
+          "logit": -1.5303624868392944,
+          "probability": 0.004740777425467968
+        },
+        {
+          "index": 15,
+          "label": "Orange___Haunglongbing_(Citrus_greening)",
+          "logit": -4.096076488494873,
+          "probability": 0.0003643964882940054
+        },
+        {
+          "index": 16,
+          "label": "Peach___Bacterial_spot",
+          "logit": 1.182682752609253,
+          "probability": 0.07146774977445602
+        },
+        {
+          "index": 17,
+          "label": "Peach___healthy",
+          "logit": -2.6270370483398438,
+          "probability": 0.0015833235811442137
+        },
+        {
+          "index": 18,
+          "label": "Pepper__bell___Bacterial_spot",
+          "logit": 0.6342806220054626,
+          "probability": 0.0412992425262928
+        },
+        {
+          "index": 19,
+          "label": "Pepper__bell___healthy",
+          "logit": 1.3620432615280151,
+          "probability": 0.08550772815942764
+        },
+        {
+          "index": 20,
+          "label": "Potato___Early_blight",
+          "logit": 2.073076009750366,
+          "probability": 0.17410168051719666
+        },
+        {
+          "index": 21,
+          "label": "Potato___Late_blight",
+          "logit": -3.750274658203125,
+          "probability": 0.0005149366334080696
+        },
+        {
+          "index": 22,
+          "label": "Potato___healthy",
+          "logit": -2.6007485389709473,
+          "probability": 0.001625499571673572
+        },
+        {
+          "index": 23,
+          "label": "Raspberry___healthy",
+          "logit": -0.7783237099647522,
+          "probability": 0.010056708008050919
+        },
+        {
+          "index": 24,
+          "label": "Rice_Bacterial_leaf_blight",
+          "logit": -6.349066257476807,
+          "probability": 3.829245179076679e-05
+        },
+        {
+          "index": 25,
+          "label": "Rice_Brown_spot",
+          "logit": -5.1371026039123535,
+          "probability": 0.00012866554607171565
+        },
+        {
+          "index": 26,
+          "label": "Rice_Leaf_smut",
+          "logit": -4.568077564239502,
+          "probability": 0.00022729333431925625
+        },
+        {
+          "index": 27,
+          "label": "Soybean___healthy",
+          "logit": -3.203636407852173,
+          "probability": 0.0008895203354768455
+        },
+        {
+          "index": 28,
+          "label": "Squash___Powdery_mildew",
+          "logit": -1.1450482606887817,
+          "probability": 0.006969302427023649
+        },
+        {
+          "index": 29,
+          "label": "Strawberry___Leaf_scorch",
+          "logit": -0.726151704788208,
+          "probability": 0.010595313273370266
+        },
+        {
+          "index": 30,
+          "label": "Strawberry___healthy",
+          "logit": -2.8864738941192627,
+          "probability": 0.0012215122114866972
+        },
+        {
+          "index": 31,
+          "label": "Tomato_Bacterial_spot",
+          "logit": -3.711533308029175,
+          "probability": 0.0005352775915525854
+        },
+        {
+          "index": 32,
+          "label": "Tomato_Early_blight",
+          "logit": -2.8354363441467285,
+          "probability": 0.0012854738160967827
+        },
+        {
+          "index": 33,
+          "label": "Tomato_Late_blight",
+          "logit": -2.192275047302246,
+          "probability": 0.002445594407618046
+        },
+        {
+          "index": 34,
+          "label": "Tomato_Leaf_Mold",
+          "logit": -4.754183769226074,
+          "probability": 0.0001886955287773162
+        },
+        {
+          "index": 35,
+          "label": "Tomato_Septoria_leaf_spot",
+          "logit": 0.16495825350284576,
+          "probability": 0.02582961693406105
+        },
+        {
+          "index": 36,
+          "label": "Tomato_Spider_mites_Two_spotted_spider_mite",
+          "logit": -5.702069282531738,
+          "probability": 7.313077367143705e-05
+        },
+        {
+          "index": 37,
+          "label": "Tomato__Target_Spot",
+          "logit": -3.2013068199157715,
+          "probability": 0.000891595147550106
+        },
+        {
+          "index": 38,
+          "label": "Tomato__Tomato_YellowLeaf__Curl_Virus",
+          "logit": -3.672983169555664,
+          "probability": 0.0005563153536058962
+        },
+        {
+          "index": 39,
+          "label": "Tomato__Tomato_mosaic_virus",
+          "logit": -3.083561658859253,
+          "probability": 0.00100300635676831
+        },
+        {
+          "index": 40,
+          "label": "Tomato___Bacterial_spot",
+          "logit": -3.6168973445892334,
+          "probability": 0.000588408496696502
+        },
+        {
+          "index": 41,
+          "label": "Tomato___Early_blight",
+          "logit": -2.017918825149536,
+          "probability": 0.0029114310164004564
+        },
+        {
+          "index": 42,
+          "label": "Tomato___Late_blight",
+          "logit": -0.9236465692520142,
+          "probability": 0.00869646668434143
+        },
+        {
+          "index": 43,
+          "label": "Tomato___Leaf_Mold",
+          "logit": -4.209717750549316,
+          "probability": 0.0003252521564718336
+        },
+        {
+          "index": 44,
+          "label": "Tomato___Septoria_leaf_spot",
+          "logit": 1.2344796657562256,
+          "probability": 0.07526710629463196
+        },
+        {
+          "index": 45,
+          "label": "Tomato___Spider_mites_Two-spotted_spider_mite",
+          "logit": -5.372669696807861,
+          "probability": 0.0001016615642583929
+        },
+        {
+          "index": 46,
+          "label": "Tomato___Target_Spot",
+          "logit": -1.2774043083190918,
+          "probability": 0.006105311680585146
+        },
+        {
+          "index": 47,
+          "label": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+          "logit": -3.482292890548706,
+          "probability": 0.000673188827931881
+        },
+        {
+          "index": 48,
+          "label": "Tomato___Tomato_mosaic_virus",
+          "logit": -2.008505344390869,
+          "probability": 0.002938967663794756
+        },
+        {
+          "index": 49,
+          "label": "Tomato___healthy",
+          "logit": -0.09418781101703644,
+          "probability": 0.019932981580495834
+        },
+        {
+          "index": 50,
+          "label": "Wheat_BlackPoint",
+          "logit": -2.327877998352051,
+          "probability": 0.0021354667842388153
+        },
+        {
+          "index": 51,
+          "label": "Wheat_FusariumFootRot",
+          "logit": -0.4321073889732361,
+          "probability": 0.014217250049114227
+        },
+        {
+          "index": 52,
+          "label": "Wheat_HealthyLeaf",
+          "logit": 1.4194815158843994,
+          "probability": 0.09056293219327927
+        },
+        {
+          "index": 53,
+          "label": "Wheat_LeafBlight",
+          "logit": 0.4063655436038971,
+          "probability": 0.032882120460271835
+        },
+        {
+          "index": 54,
+          "label": "Wheat_WheatBlast",
+          "logit": -0.0849817618727684,
+          "probability": 0.02011733315885067
+        }
+      ]
+    },
+    {
+      "image_path": "public/uploads/scans/leaf_1793077705950_v4xne.jpeg",
+      "input_shape": [
+        1,
+        3,
+        224,
+        224
+      ],
+      "output_shape": [
+        1,
+        55
+      ],
+      "top1": {
+        "index": 29,
+        "label": "Strawberry___Leaf_scorch",
+        "logit": 6.133112907409668,
+        "probability": 0.9189361333847046
+      },
+      "top2": {
+        "index": 52,
+        "label": "Wheat_HealthyLeaf",
+        "logit": 2.403975009918213,
+        "probability": 0.02206689864397049
+      },
+      "top3": {
+        "index": 30,
+        "label": "Strawberry___healthy",
+        "logit": 2.1808853149414062,
+        "probability": 0.01765447109937668
+      },
+      "top_margin": 0.8968692347407341,
+      "full_prediction_vector": [
+        {
+          "index": 0,
+          "label": "Apple___Apple_scab",
+          "logit": -3.202730417251587,
+          "probability": 8.105507004074752e-05
+        },
+        {
+          "index": 1,
+          "label": "Apple___Black_rot",
+          "logit": -1.1138205528259277,
+          "probability": 0.0006546091753989458
+        },
+        {
+          "index": 2,
+          "label": "Apple___Cedar_apple_rust",
+          "logit": -4.247386455535889,
+          "probability": 2.851621866284404e-05
+        },
+        {
+          "index": 3,
+          "label": "Apple___healthy",
+          "logit": -3.9932141304016113,
+          "probability": 3.676860796986148e-05
+        },
+        {
+          "index": 4,
+          "label": "Blueberry___healthy",
+          "logit": -3.2805821895599365,
+          "probability": 7.498413469875231e-05
+        },
+        {
+          "index": 5,
+          "label": "Cherry_(including_sour)___Powdery_mildew",
+          "logit": -6.006968021392822,
+          "probability": 4.908117716695415e-06
+        },
+        {
+          "index": 6,
+          "label": "Cherry_(including_sour)___healthy",
+          "logit": -1.553510308265686,
+          "probability": 0.0004217230307403952
+        },
+        {
+          "index": 7,
+          "label": "Corn_(maize)___Cercospora_leaf_spot_Gray_leaf_spot",
+          "logit": -2.6202197074890137,
+          "probability": 0.0001451314310543239
+        },
+        {
+          "index": 8,
+          "label": "Corn_(maize)___Common_rust",
+          "logit": -1.7012673616409302,
+          "probability": 0.0003637954650912434
+        },
+        {
+          "index": 9,
+          "label": "Corn_(maize)___Northern_Leaf_Blight",
+          "logit": -1.9493434429168701,
+          "probability": 0.00028386968187987804
+        },
+        {
+          "index": 10,
+          "label": "Corn_(maize)___healthy",
+          "logit": -1.5959551334381104,
+          "probability": 0.0004041976935695857
+        },
+        {
+          "index": 11,
+          "label": "Grape___Black_rot",
+          "logit": 0.40799155831336975,
+          "probability": 0.00299844890832901
+        },
+        {
+          "index": 12,
+          "label": "Grape___Esca_(Black_Measles)",
+          "logit": -2.608499526977539,
+          "probability": 0.0001468423433834687
+        },
+        {
+          "index": 13,
+          "label": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+          "logit": -4.114549160003662,
+          "probability": 3.2567349990131333e-05
+        },
+        {
+          "index": 14,
+          "label": "Grape___healthy",
+          "logit": -3.8635146617889404,
+          "probability": 4.18605595768895e-05
+        },
+        {
+          "index": 15,
+          "label": "Orange___Haunglongbing_(Citrus_greening)",
+          "logit": -4.448540687561035,
+          "probability": 2.3320160835282877e-05
+        },
+        {
+          "index": 16,
+          "label": "Peach___Bacterial_spot",
+          "logit": -0.6846009492874146,
+          "probability": 0.0010055180173367262
+        },
+        {
+          "index": 17,
+          "label": "Peach___healthy",
+          "logit": -2.7470388412475586,
+          "probability": 0.0001278451964026317
+        },
+        {
+          "index": 18,
+          "label": "Pepper__bell___Bacterial_spot",
+          "logit": 0.7102366089820862,
+          "probability": 0.004056579899042845
+        },
+        {
+          "index": 19,
+          "label": "Pepper__bell___healthy",
+          "logit": 1.108452320098877,
+          "probability": 0.0060409181751310825
+        },
+        {
+          "index": 20,
+          "label": "Potato___Early_blight",
+          "logit": -2.4209887981414795,
+          "probability": 0.00017712751287035644
+        },
+        {
+          "index": 21,
+          "label": "Potato___Late_blight",
+          "logit": -5.273040294647217,
+          "probability": 1.0224831385130528e-05
+        },
+        {
+          "index": 22,
+          "label": "Potato___healthy",
+          "logit": -4.1102752685546875,
+          "probability": 3.2706822821637616e-05
+        },
+        {
+          "index": 23,
+          "label": "Raspberry___healthy",
+          "logit": 1.7030290365219116,
+          "probability": 0.010947738774120808
+        },
+        {
+          "index": 24,
+          "label": "Rice_Bacterial_leaf_blight",
+          "logit": -6.972634792327881,
+          "probability": 1.8686656630961807e-06
+        },
+        {
+          "index": 25,
+          "label": "Rice_Brown_spot",
+          "logit": -6.45294713973999,
+          "probability": 3.1421659514307976e-06
+        },
+        {
+          "index": 26,
+          "label": "Rice_Leaf_smut",
+          "logit": -5.215073585510254,
+          "probability": 1.0835040484380443e-05
+        },
+        {
+          "index": 27,
+          "label": "Soybean___healthy",
+          "logit": -4.918293476104736,
+          "probability": 1.4578751688532066e-05
+        },
+        {
+          "index": 28,
+          "label": "Squash___Powdery_mildew",
+          "logit": -0.47969138622283936,
+          "probability": 0.0012341865804046392
+        },
+        {
+          "index": 29,
+          "label": "Strawberry___Leaf_scorch",
+          "logit": 6.133112907409668,
+          "probability": 0.9189361333847046
+        },
+        {
+          "index": 30,
+          "label": "Strawberry___healthy",
+          "logit": 2.1808853149414062,
+          "probability": 0.01765447109937668
+        },
+        {
+          "index": 31,
+          "label": "Tomato_Bacterial_spot",
+          "logit": -2.5437328815460205,
+          "probability": 0.0001566675928188488
+        },
+        {
+          "index": 32,
+          "label": "Tomato_Early_blight",
+          "logit": -0.12374202162027359,
+          "probability": 0.0017618450801819563
+        },
+        {
+          "index": 33,
+          "label": "Tomato_Late_blight",
+          "logit": -1.008116602897644,
+          "probability": 0.0007275933166965842
+        },
+        {
+          "index": 34,
+          "label": "Tomato_Leaf_Mold",
+          "logit": -5.001492977142334,
+          "probability": 1.3414906788966618e-05
+        },
+        {
+          "index": 35,
+          "label": "Tomato_Septoria_leaf_spot",
+          "logit": -0.7993909120559692,
+          "probability": 0.0008964730659499764
+        },
+        {
+          "index": 36,
+          "label": "Tomato_Spider_mites_Two_spotted_spider_mite",
+          "logit": -6.613557815551758,
+          "probability": 2.67594123215531e-06
+        },
+        {
+          "index": 37,
+          "label": "Tomato__Target_Spot",
+          "logit": -3.9634644985198975,
+          "probability": 3.787890091189183e-05
+        },
+        {
+          "index": 38,
+          "label": "Tomato__Tomato_YellowLeaf__Curl_Virus",
+          "logit": -3.878915548324585,
+          "probability": 4.1220810089726e-05
+        },
+        {
+          "index": 39,
+          "label": "Tomato__Tomato_mosaic_virus",
+          "logit": -4.0097198486328125,
+          "probability": 3.616671165218577e-05
+        },
+        {
+          "index": 40,
+          "label": "Tomato___Bacterial_spot",
+          "logit": -3.7816162109375,
+          "probability": 4.543318573269062e-05
+        },
+        {
+          "index": 41,
+          "label": "Tomato___Early_blight",
+          "logit": 0.34949034452438354,
+          "probability": 0.002828068332746625
+        },
+        {
+          "index": 42,
+          "label": "Tomato___Late_blight",
+          "logit": -0.5417340397834778,
+          "probability": 0.0011599413119256496
+        },
+        {
+          "index": 43,
+          "label": "Tomato___Leaf_Mold",
+          "logit": -4.694705963134766,
+          "probability": 1.8231539797852747e-05
+        },
+        {
+          "index": 44,
+          "label": "Tomato___Septoria_leaf_spot",
+          "logit": -0.8626500368118286,
+          "probability": 0.0008415193879045546
+        },
+        {
+          "index": 45,
+          "label": "Tomato___Spider_mites_Two-spotted_spider_mite",
+          "logit": -5.9468255043029785,
+          "probability": 5.212361429585144e-06
+        },
+        {
+          "index": 46,
+          "label": "Tomato___Target_Spot",
+          "logit": -3.107877016067505,
+          "probability": 8.911985787563026e-05
+        },
+        {
+          "index": 47,
+          "label": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+          "logit": -3.5363881587982178,
+          "probability": 5.805962791782804e-05
+        },
+        {
+          "index": 48,
+          "label": "Tomato___Tomato_mosaic_virus",
+          "logit": -4.383242130279541,
+          "probability": 2.4893741283449344e-05
+        },
+        {
+          "index": 49,
+          "label": "Tomato___healthy",
+          "logit": -3.085125684738159,
+          "probability": 9.117065201280639e-05
+        },
+        {
+          "index": 50,
+          "label": "Wheat_BlackPoint",
+          "logit": -2.0490682125091553,
+          "probability": 0.0002569266362115741
+        },
+        {
+          "index": 51,
+          "label": "Wheat_FusariumFootRot",
+          "logit": -0.3421047329902649,
+          "probability": 0.0014162305742502213
+        },
+        {
+          "index": 52,
+          "label": "Wheat_HealthyLeaf",
+          "logit": 2.403975009918213,
+          "probability": 0.02206689864397049
+        },
+        {
+          "index": 53,
+          "label": "Wheat_LeafBlight",
+          "logit": -1.3661752939224243,
+          "probability": 0.0005086111486889422
+        },
+        {
+          "index": 54,
+          "label": "Wheat_WheatBlast",
+          "logit": -0.7743543982505798,
+          "probability": 0.0009192007128149271
+        }
+      ]
+    },
+    {
+      "image_path": "public/uploads/scans/leaf_1793184643419_6pj2e.jpeg",
+      "input_shape": [
+        1,
+        3,
+        224,
+        224
+      ],
+      "output_shape": [
+        1,
+        55
+      ],
+      "top1": {
+        "index": 3,
+        "label": "Apple___healthy",
+        "logit": 7.074223518371582,
+        "probability": 0.9906743168830872
+      },
+      "top2": {
+        "index": 13,
+        "label": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+        "logit": 1.1498535871505737,
+        "probability": 0.00264855963177979
+      },
+      "top3": {
+        "index": 1,
+        "label": "Apple___Black_rot",
+        "logit": 0.914072573184967,
+        "probability": 0.0020922392141073942
+      },
+      "top_margin": 0.9880257572513074,
+      "full_prediction_vector": [
+        {
+          "index": 0,
+          "label": "Apple___Apple_scab",
+          "logit": -1.8322798013687134,
+          "probability": 0.00013424109783954918
+        },
+        {
+          "index": 1,
+          "label": "Apple___Black_rot",
+          "logit": 0.914072573184967,
+          "probability": 0.0020922392141073942
+        },
+        {
+          "index": 2,
+          "label": "Apple___Cedar_apple_rust",
+          "logit": -3.077990770339966,
+          "probability": 3.86260544473771e-05
+        },
+        {
+          "index": 3,
+          "label": "Apple___healthy",
+          "logit": 7.074223518371582,
+          "probability": 0.9906743168830872
+        },
+        {
+          "index": 4,
+          "label": "Blueberry___healthy",
+          "logit": -2.0074775218963623,
+          "probability": 0.00011266736692050472
+        },
+        {
+          "index": 5,
+          "label": "Cherry_(including_sour)___Powdery_mildew",
+          "logit": -3.2907419204711914,
+          "probability": 3.1223644327837974e-05
+        },
+        {
+          "index": 6,
+          "label": "Cherry_(including_sour)___healthy",
+          "logit": -1.1275602579116821,
+          "probability": 0.00027160721947439015
+        },
+        {
+          "index": 7,
+          "label": "Corn_(maize)___Cercospora_leaf_spot_Gray_leaf_spot",
+          "logit": -4.617744445800781,
+          "probability": 8.282734597742092e-06
+        },
+        {
+          "index": 8,
+          "label": "Corn_(maize)___Common_rust",
+          "logit": -1.8787109851837158,
+          "probability": 0.00012815069931093603
+        },
+        {
+          "index": 9,
+          "label": "Corn_(maize)___Northern_Leaf_Blight",
+          "logit": -1.6692759990692139,
+          "probability": 0.0001580073294462636
+        },
+        {
+          "index": 10,
+          "label": "Corn_(maize)___healthy",
+          "logit": -3.983257532119751,
+          "probability": 1.5621690181433223e-05
+        },
+        {
+          "index": 11,
+          "label": "Grape___Black_rot",
+          "logit": -2.626924991607666,
+          "probability": 6.0642265452770516e-05
+        },
+        {
+          "index": 12,
+          "label": "Grape___Esca_(Black_Measles)",
+          "logit": -4.222007751464844,
+          "probability": 1.2303820767556317e-05
+        },
+        {
+          "index": 13,
+          "label": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+          "logit": 1.1498535871505737,
+          "probability": 0.00264855963177979
+        },
+        {
+          "index": 14,
+          "label": "Grape___healthy",
+          "logit": -3.4946696758270264,
+          "probability": 2.5463539714110084e-05
+        },
+        {
+          "index": 15,
+          "label": "Orange___Haunglongbing_(Citrus_greening)",
+          "logit": -3.308958053588867,
+          "probability": 3.0660023185191676e-05
+        },
+        {
+          "index": 16,
+          "label": "Peach___Bacterial_spot",
+          "logit": -3.3789641857147217,
+          "probability": 2.858703192032408e-05
+        },
+        {
+          "index": 17,
+          "label": "Peach___healthy",
+          "logit": -4.834949016571045,
+          "probability": 6.6656607486947905e-06
+        },
+        {
+          "index": 18,
+          "label": "Pepper__bell___Bacterial_spot",
+          "logit": -6.314884185791016,
+          "probability": 1.5174532563833054e-06
+        },
+        {
+          "index": 19,
+          "label": "Pepper__bell___healthy",
+          "logit": -6.7598981857299805,
+          "probability": 9.724072924655047e-07
+        },
+        {
+          "index": 20,
+          "label": "Potato___Early_blight",
+          "logit": -2.9341254234313965,
+          "probability": 4.460262061911635e-05
+        },
+        {
+          "index": 21,
+          "label": "Potato___Late_blight",
+          "logit": -2.3236074447631836,
+          "probability": 8.213055843953043e-05
+        },
+        {
+          "index": 22,
+          "label": "Potato___healthy",
+          "logit": -2.886125087738037,
+          "probability": 4.679577614297159e-05
+        },
+        {
+          "index": 23,
+          "label": "Raspberry___healthy",
+          "logit": -2.003819227218628,
+          "probability": 0.00011308029206702486
+        },
+        {
+          "index": 24,
+          "label": "Rice_Bacterial_leaf_blight",
+          "logit": -11.835402488708496,
+          "probability": 6.075536962413253e-09
+        },
+        {
+          "index": 25,
+          "label": "Rice_Brown_spot",
+          "logit": -10.823243141174316,
+          "probability": 1.6717059736492956e-08
+        },
+        {
+          "index": 26,
+          "label": "Rice_Leaf_smut",
+          "logit": -8.018843650817871,
+          "probability": 2.761182713584276e-07
+        },
+        {
+          "index": 27,
+          "label": "Soybean___healthy",
+          "logit": -2.127908945083618,
+          "probability": 9.988393867388368e-05
+        },
+        {
+          "index": 28,
+          "label": "Squash___Powdery_mildew",
+          "logit": -3.5801572799682617,
+          "probability": 2.337718069611583e-05
+        },
+        {
+          "index": 29,
+          "label": "Strawberry___Leaf_scorch",
+          "logit": 0.5424640774726868,
+          "probability": 0.0014428590657189488
+        },
+        {
+          "index": 30,
+          "label": "Strawberry___healthy",
+          "logit": -3.670555830001831,
+          "probability": 2.1356614524847828e-05
+        },
+        {
+          "index": 31,
+          "label": "Tomato_Bacterial_spot",
+          "logit": -4.659167289733887,
+          "probability": 7.94664811110124e-06
+        },
+        {
+          "index": 32,
+          "label": "Tomato_Early_blight",
+          "logit": -1.2447888851165771,
+          "probability": 0.00024156256404239684
+        },
+        {
+          "index": 33,
+          "label": "Tomato_Late_blight",
+          "logit": -2.5148656368255615,
+          "probability": 6.78331998642534e-05
+        },
+        {
+          "index": 34,
+          "label": "Tomato_Leaf_Mold",
+          "logit": -4.769533634185791,
+          "probability": 7.116268534446135e-06
+        },
+        {
+          "index": 35,
+          "label": "Tomato_Septoria_leaf_spot",
+          "logit": -4.491209506988525,
+          "probability": 9.399980626767501e-06
+        },
+        {
+          "index": 36,
+          "label": "Tomato_Spider_mites_Two_spotted_spider_mite",
+          "logit": -5.308888912200928,
+          "probability": 4.149671440245584e-06
+        },
+        {
+          "index": 37,
+          "label": "Tomato__Target_Spot",
+          "logit": -1.8689111471176147,
+          "probability": 0.00012941272871103138
+        },
+        {
+          "index": 38,
+          "label": "Tomato__Tomato_YellowLeaf__Curl_Virus",
+          "logit": -7.722752094268799,
+          "probability": 3.712665659350023e-07
+        },
+        {
+          "index": 39,
+          "label": "Tomato__Tomato_mosaic_virus",
+          "logit": -5.107695579528809,
+          "probability": 5.074469299870543e-06
+        },
+        {
+          "index": 40,
+          "label": "Tomato___Bacterial_spot",
+          "logit": -7.0396857261657715,
+          "probability": 7.350860755650501e-07
+        },
+        {
+          "index": 41,
+          "label": "Tomato___Early_blight",
+          "logit": -2.615095853805542,
+          "probability": 6.136389129096642e-05
+        },
+        {
+          "index": 42,
+          "label": "Tomato___Late_blight",
+          "logit": -3.4174106121063232,
+          "probability": 2.7508822313393466e-05
+        },
+        {
+          "index": 43,
+          "label": "Tomato___Leaf_Mold",
+          "logit": -7.7548017501831055,
+          "probability": 3.595564237457438e-07
+        },
+        {
+          "index": 44,
+          "label": "Tomato___Septoria_leaf_spot",
+          "logit": -6.455120086669922,
+          "probability": 1.3188993079893407e-06
+        },
+        {
+          "index": 45,
+          "label": "Tomato___Spider_mites_Two-spotted_spider_mite",
+          "logit": -6.1346659660339355,
+          "probability": 1.8171186866311473e-06
+        },
+        {
+          "index": 46,
+          "label": "Tomato___Target_Spot",
+          "logit": -1.7351328134536743,
+          "probability": 0.00014793669106438756
+        },
+        {
+          "index": 47,
+          "label": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+          "logit": -7.5478386878967285,
+          "probability": 4.4223159534340084e-07
+        },
+        {
+          "index": 48,
+          "label": "Tomato___Tomato_mosaic_virus",
+          "logit": -6.229687213897705,
+          "probability": 1.652401806495618e-06
+        },
+        {
+          "index": 49,
+          "label": "Tomato___healthy",
+          "logit": -3.6081533432006836,
+          "probability": 2.2731786884833127e-05
+        },
+        {
+          "index": 50,
+          "label": "Wheat_BlackPoint",
+          "logit": -3.270864725112915,
+          "probability": 3.185050081810914e-05
+        },
+        {
+          "index": 51,
+          "label": "Wheat_FusariumFootRot",
+          "logit": -1.7151954174041748,
+          "probability": 0.00015091577370185405
+        },
+        {
+          "index": 52,
+          "label": "Wheat_HealthyLeaf",
+          "logit": -3.999250888824463,
+          "probability": 1.5373823771369644e-05
+        },
+        {
+          "index": 53,
+          "label": "Wheat_LeafBlight",
+          "logit": -4.901153087615967,
+          "probability": 6.23865753368591e-06
+        },
+        {
+          "index": 54,
+          "label": "Wheat_WheatBlast",
+          "logit": -0.17759183049201965,
+          "probability": 0.0007022754871286452
+        }
+      ]
+    },
+    {
+      "image_path": "public/uploads/scans/leaf_1793184448452_ntuwj.jpeg",
+      "input_shape": [
+        1,
+        3,
+        224,
+        224
+      ],
+      "output_shape": [
+        1,
+        55
+      ],
+      "top1": {
+        "index": 52,
+        "label": "Wheat_HealthyLeaf",
+        "logit": 2.45328688621521,
+        "probability": 0.1750599592924118
+      },
+      "top2": {
+        "index": 29,
+        "label": "Strawberry___Leaf_scorch",
+        "logit": 2.1110031604766846,
+        "probability": 0.12431824952363968
+      },
+      "top3": {
+        "index": 6,
+        "label": "Cherry_(including_sour)___healthy",
+        "logit": 1.7630027532577515,
+        "probability": 0.08778093755245209
+      },
+      "top_margin": 0.050741709768772125,
+      "full_prediction_vector": [
+        {
+          "index": 0,
+          "label": "Apple___Apple_scab",
+          "logit": -1.6138315200805664,
+          "probability": 0.002998193260282278
+        },
+        {
+          "index": 1,
+          "label": "Apple___Black_rot",
+          "logit": 0.6668249368667603,
+          "probability": 0.029331635683774948
+        },
+        {
+          "index": 2,
+          "label": "Apple___Cedar_apple_rust",
+          "logit": -3.4933226108551025,
+          "probability": 0.0004577276122290641
+        },
+        {
+          "index": 3,
+          "label": "Apple___healthy",
+          "logit": 0.45395344495773315,
+          "probability": 0.023707589134573936
+        },
+        {
+          "index": 4,
+          "label": "Blueberry___healthy",
+          "logit": -1.525145411491394,
+          "probability": 0.003276239847764373
+        },
+        {
+          "index": 5,
+          "label": "Cherry_(including_sour)___Powdery_mildew",
+          "logit": -3.822836399078369,
+          "probability": 0.0003292313776910305
+        },
+        {
+          "index": 6,
+          "label": "Cherry_(including_sour)___healthy",
+          "logit": 1.7630027532577515,
+          "probability": 0.08778093755245209
+        },
+        {
+          "index": 7,
+          "label": "Corn_(maize)___Cercospora_leaf_spot_Gray_leaf_spot",
+          "logit": -1.0510236024856567,
+          "probability": 0.005263614468276501
+        },
+        {
+          "index": 8,
+          "label": "Corn_(maize)___Common_rust",
+          "logit": 1.1108230352401733,
+          "probability": 0.04572589322924614
+        },
+        {
+          "index": 9,
+          "label": "Corn_(maize)___Northern_Leaf_Blight",
+          "logit": -1.2811102867126465,
+          "probability": 0.004181756637990475
+        },
+        {
+          "index": 10,
+          "label": "Corn_(maize)___healthy",
+          "logit": -1.3523406982421875,
+          "probability": 0.0038942494429647923
+        },
+        {
+          "index": 11,
+          "label": "Grape___Black_rot",
+          "logit": 0.37658631801605225,
+          "probability": 0.02194255217909813
+        },
+        {
+          "index": 12,
+          "label": "Grape___Esca_(Black_Measles)",
+          "logit": -1.7069365978240967,
+          "probability": 0.002731648040935397
+        },
+        {
+          "index": 13,
+          "label": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+          "logit": 0.9653069376945496,
+          "probability": 0.03953351080417633
+        },
+        {
+          "index": 14,
+          "label": "Grape___healthy",
+          "logit": 0.6283568739891052,
+          "probability": 0.028224730864167213
+        },
+        {
+          "index": 15,
+          "label": "Orange___Haunglongbing_(Citrus_greening)",
+          "logit": -3.268193006515503,
+          "probability": 0.000573296973016113
+        },
+        {
+          "index": 16,
+          "label": "Peach___Bacterial_spot",
+          "logit": 1.2310421466827393,
+          "probability": 0.051567092537879944
+        },
+        {
+          "index": 17,
+          "label": "Peach___healthy",
+          "logit": -0.29067790508270264,
+          "probability": 0.011258956044912338
+        },
+        {
+          "index": 18,
+          "label": "Pepper__bell___Bacterial_spot",
+          "logit": -1.6865304708480835,
+          "probability": 0.0027879630215466022
+        },
+        {
+          "index": 19,
+          "label": "Pepper__bell___healthy",
+          "logit": 0.48968595266342163,
+          "probability": 0.024570034816861153
+        },
+        {
+          "index": 20,
+          "label": "Potato___Early_blight",
+          "logit": 1.017458438873291,
+          "probability": 0.0416499488055706
+        },
+        {
+          "index": 21,
+          "label": "Potato___Late_blight",
+          "logit": -2.771754503250122,
+          "probability": 0.0009418466361239552
+        },
+        {
+          "index": 22,
+          "label": "Potato___healthy",
+          "logit": -1.09727144241333,
+          "probability": 0.005025727674365044
+        },
+        {
+          "index": 23,
+          "label": "Raspberry___healthy",
+          "logit": 0.14317026734352112,
+          "probability": 0.017374645918607712
+        },
+        {
+          "index": 24,
+          "label": "Rice_Bacterial_leaf_blight",
+          "logit": -3.869436025619507,
+          "probability": 0.00031424121698364615
+        },
+        {
+          "index": 25,
+          "label": "Rice_Brown_spot",
+          "logit": -2.87984299659729,
+          "probability": 0.000845352653414011
+        },
+        {
+          "index": 26,
+          "label": "Rice_Leaf_smut",
+          "logit": -1.8428071737289429,
+          "probability": 0.002384607447311282
+        },
+        {
+          "index": 27,
+          "label": "Soybean___healthy",
+          "logit": -1.2208857536315918,
+          "probability": 0.004441339056938887
+        },
+        {
+          "index": 28,
+          "label": "Squash___Powdery_mildew",
+          "logit": -0.32849401235580444,
+          "probability": 0.010841134004294872
+        },
+        {
+          "index": 29,
+          "label": "Strawberry___Leaf_scorch",
+          "logit": 2.1110031604766846,
+          "probability": 0.12431824952363968
+        },
+        {
+          "index": 30,
+          "label": "Strawberry___healthy",
+          "logit": -0.4174448549747467,
+          "probability": 0.009918450377881527
+        },
+        {
+          "index": 31,
+          "label": "Tomato_Bacterial_spot",
+          "logit": -1.1429005861282349,
+          "probability": 0.004801560193300247
+        },
+        {
+          "index": 32,
+          "label": "Tomato_Early_blight",
+          "logit": -1.9899420738220215,
+          "probability": 0.0020583400037139654
+        },
+        {
+          "index": 33,
+          "label": "Tomato_Late_blight",
+          "logit": -0.24263396859169006,
+          "probability": 0.011813081800937653
+        },
+        {
+          "index": 34,
+          "label": "Tomato_Leaf_Mold",
+          "logit": -2.4491844177246094,
+          "probability": 0.0013003806816413999
+        },
+        {
+          "index": 35,
+          "label": "Tomato_Septoria_leaf_spot",
+          "logit": 1.0838100910186768,
+          "probability": 0.044507235288619995
+        },
+        {
+          "index": 36,
+          "label": "Tomato_Spider_mites_Two_spotted_spider_mite",
+          "logit": -2.945889472961426,
+          "probability": 0.0007913237786851823
+        },
+        {
+          "index": 37,
+          "label": "Tomato__Target_Spot",
+          "logit": -1.1384854316711426,
+          "probability": 0.004822807386517525
+        },
+        {
+          "index": 38,
+          "label": "Tomato__Tomato_YellowLeaf__Curl_Virus",
+          "logit": -2.835550546646118,
+          "probability": 0.0008836369961500168
+        },
+        {
+          "index": 39,
+          "label": "Tomato__Tomato_mosaic_virus",
+          "logit": -2.1353533267974854,
+          "probability": 0.0017797775799408555
+        },
+        {
+          "index": 40,
+          "label": "Tomato___Bacterial_spot",
+          "logit": -1.9146859645843506,
+          "probability": 0.0022192196920514107
+        },
+        {
+          "index": 41,
+          "label": "Tomato___Early_blight",
+          "logit": -2.537221908569336,
+          "probability": 0.0011907931184396148
+        },
+        {
+          "index": 42,
+          "label": "Tomato___Late_blight",
+          "logit": 0.01907254196703434,
+          "probability": 0.015346909873187542
+        },
+        {
+          "index": 43,
+          "label": "Tomato___Leaf_Mold",
+          "logit": -3.326612949371338,
+          "probability": 0.0005407647113315761
+        },
+        {
+          "index": 44,
+          "label": "Tomato___Septoria_leaf_spot",
+          "logit": -0.7594001889228821,
+          "probability": 0.0070458692498505116
+        },
+        {
+          "index": 45,
+          "label": "Tomato___Spider_mites_Two-spotted_spider_mite",
+          "logit": -3.553889274597168,
+          "probability": 0.00043082734919153154
+        },
+        {
+          "index": 46,
+          "label": "Tomato___Target_Spot",
+          "logit": -0.7807721495628357,
+          "probability": 0.006896881852298975
+        },
+        {
+          "index": 47,
+          "label": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+          "logit": -3.2853152751922607,
+          "probability": 0.0005635644192807376
+        },
+        {
+          "index": 48,
+          "label": "Tomato___Tomato_mosaic_virus",
+          "logit": -2.223231792449951,
+          "probability": 0.0016300489660352468
+        },
+        {
+          "index": 49,
+          "label": "Tomato___healthy",
+          "logit": -1.9571691751480103,
+          "probability": 0.002126914681866765
+        },
+        {
+          "index": 50,
+          "label": "Wheat_BlackPoint",
+          "logit": -1.2928279638290405,
+          "probability": 0.00413304241374135
+        },
+        {
+          "index": 51,
+          "label": "Wheat_FusariumFootRot",
+          "logit": -0.5069456100463867,
+          "probability": 0.009069308638572693
+        },
+        {
+          "index": 52,
+          "label": "Wheat_HealthyLeaf",
+          "logit": 2.45328688621521,
+          "probability": 0.1750599592924118
+        },
+        {
+          "index": 53,
+          "label": "Wheat_LeafBlight",
+          "logit": -0.23124761879444122,
+          "probability": 0.01194836013019085
+        },
+        {
+          "index": 54,
+          "label": "Wheat_WheatBlast",
+          "logit": 1.68071711063385,
+          "probability": 0.08084701746702194
+        }
+      ]
+    },
+    {
+      "image_path": "public/uploads/scans/leaf_1793102766923_uxx70.jpeg",
+      "input_shape": [
+        1,
+        3,
+        224,
+        224
+      ],
+      "output_shape": [
+        1,
+        55
+      ],
+      "top1": {
+        "index": 29,
+        "label": "Strawberry___Leaf_scorch",
+        "logit": 11.414155006408691,
+        "probability": 0.9996485710144043
+      },
+      "top2": {
+        "index": 16,
+        "label": "Peach___Bacterial_spot",
+        "logit": 2.094219207763672,
+        "probability": 8.958816761150956e-05
+      },
+      "top3": {
+        "index": 11,
+        "label": "Grape___Black_rot",
+        "logit": 1.759270429611206,
+        "probability": 6.408912304323167e-05
+      },
+      "top_margin": 0.9995589828467928,
+      "full_prediction_vector": [
+        {
+          "index": 0,
+          "label": "Apple___Apple_scab",
+          "logit": -2.637618064880371,
+          "probability": 7.892959388300369e-07
+        },
+        {
+          "index": 1,
+          "label": "Apple___Black_rot",
+          "logit": 0.17486412823200226,
+          "probability": 1.3142718671588227e-05
+        },
+        {
+          "index": 2,
+          "label": "Apple___Cedar_apple_rust",
+          "logit": -0.8895401358604431,
+          "probability": 4.533364062808687e-06
+        },
+        {
+          "index": 3,
+          "label": "Apple___healthy",
+          "logit": -2.058324098587036,
+          "probability": 1.408718162565492e-06
+        },
+        {
+          "index": 4,
+          "label": "Blueberry___healthy",
+          "logit": -2.958299160003662,
+          "probability": 5.727565053348371e-07
+        },
+        {
+          "index": 5,
+          "label": "Cherry_(including_sour)___Powdery_mildew",
+          "logit": -3.8907651901245117,
+          "probability": 2.2542648991930037e-07
+        },
+        {
+          "index": 6,
+          "label": "Cherry_(including_sour)___healthy",
+          "logit": -0.9380282163619995,
+          "probability": 4.31879198004026e-06
+        },
+        {
+          "index": 7,
+          "label": "Corn_(maize)___Cercospora_leaf_spot_Gray_leaf_spot",
+          "logit": -1.6874022483825684,
+          "probability": 2.0413315269252053e-06
+        },
+        {
+          "index": 8,
+          "label": "Corn_(maize)___Common_rust",
+          "logit": 0.025027712807059288,
+          "probability": 1.1313892173347995e-05
+        },
+        {
+          "index": 9,
+          "label": "Corn_(maize)___Northern_Leaf_Blight",
+          "logit": 1.0018634796142578,
+          "probability": 3.005014696100261e-05
+        },
+        {
+          "index": 10,
+          "label": "Corn_(maize)___healthy",
+          "logit": -3.1803765296936035,
+          "probability": 4.5869353471061913e-07
+        },
+        {
+          "index": 11,
+          "label": "Grape___Black_rot",
+          "logit": 1.759270429611206,
+          "probability": 6.408912304323167e-05
+        },
+        {
+          "index": 12,
+          "label": "Grape___Esca_(Black_Measles)",
+          "logit": -2.305377721786499,
+          "probability": 1.1003475037796306e-06
+        },
+        {
+          "index": 13,
+          "label": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+          "logit": 0.9048474431037903,
+          "probability": 2.7271744329482317e-05
+        },
+        {
+          "index": 14,
+          "label": "Grape___healthy",
+          "logit": -3.385150194168091,
+          "probability": 3.7375832562247524e-07
+        },
+        {
+          "index": 15,
+          "label": "Orange___Haunglongbing_(Citrus_greening)",
+          "logit": -3.219686985015869,
+          "probability": 4.410119061049045e-07
+        },
+        {
+          "index": 16,
+          "label": "Peach___Bacterial_spot",
+          "logit": 2.094219207763672,
+          "probability": 8.958816761150956e-05
+        },
+        {
+          "index": 17,
+          "label": "Peach___healthy",
+          "logit": -3.8027760982513428,
+          "probability": 2.461603116898914e-07
+        },
+        {
+          "index": 18,
+          "label": "Pepper__bell___Bacterial_spot",
+          "logit": -1.0491174459457397,
+          "probability": 3.864711288770195e-06
+        },
+        {
+          "index": 19,
+          "label": "Pepper__bell___healthy",
+          "logit": -0.9793895483016968,
+          "probability": 4.143807018408552e-06
+        },
+        {
+          "index": 20,
+          "label": "Potato___Early_blight",
+          "logit": -3.3504390716552734,
+          "probability": 3.8695958437529043e-07
+        },
+        {
+          "index": 21,
+          "label": "Potato___Late_blight",
+          "logit": -3.358532190322876,
+          "probability": 3.838405859823979e-07
+        },
+        {
+          "index": 22,
+          "label": "Potato___healthy",
+          "logit": -3.141808271408081,
+          "probability": 4.7673026415395725e-07
+        },
+        {
+          "index": 23,
+          "label": "Raspberry___healthy",
+          "logit": 0.3314604163169861,
+          "probability": 1.537071329948958e-05
+        },
+        {
+          "index": 24,
+          "label": "Rice_Bacterial_leaf_blight",
+          "logit": -5.874281406402588,
+          "probability": 3.101520107406941e-08
+        },
+        {
+          "index": 25,
+          "label": "Rice_Brown_spot",
+          "logit": -4.227472305297852,
+          "probability": 1.609811164371422e-07
+        },
+        {
+          "index": 26,
+          "label": "Rice_Leaf_smut",
+          "logit": -3.113771677017212,
+          "probability": 4.902855152977281e-07
+        },
+        {
+          "index": 27,
+          "label": "Soybean___healthy",
+          "logit": -2.881542444229126,
+          "probability": 6.184504854900297e-07
+        },
+        {
+          "index": 28,
+          "label": "Squash___Powdery_mildew",
+          "logit": -2.30344820022583,
+          "probability": 1.102472538150323e-06
+        },
+        {
+          "index": 29,
+          "label": "Strawberry___Leaf_scorch",
+          "logit": 11.414155006408691,
+          "probability": 0.9996485710144043
+        },
+        {
+          "index": 30,
+          "label": "Strawberry___healthy",
+          "logit": -1.7757805585861206,
+          "probability": 1.8686633893594262e-06
+        },
+        {
+          "index": 31,
+          "label": "Tomato_Bacterial_spot",
+          "logit": -0.8583341836929321,
+          "probability": 4.67705922346795e-06
+        },
+        {
+          "index": 32,
+          "label": "Tomato_Early_blight",
+          "logit": -1.9248332977294922,
+          "probability": 1.609897935850313e-06
+        },
+        {
+          "index": 33,
+          "label": "Tomato_Late_blight",
+          "logit": -0.1726577877998352,
+          "probability": 9.284497537009884e-06
+        },
+        {
+          "index": 34,
+          "label": "Tomato_Leaf_Mold",
+          "logit": -4.4320807456970215,
+          "probability": 1.311942412485223e-07
+        },
+        {
+          "index": 35,
+          "label": "Tomato_Septoria_leaf_spot",
+          "logit": -0.3074069023132324,
+          "probability": 8.114054253383074e-06
+        },
+        {
+          "index": 36,
+          "label": "Tomato_Spider_mites_Two_spotted_spider_mite",
+          "logit": -3.6406688690185547,
+          "probability": 2.8948122121619235e-07
+        },
+        {
+          "index": 37,
+          "label": "Tomato__Target_Spot",
+          "logit": -2.4764695167541504,
+          "probability": 9.273113050767279e-07
+        },
+        {
+          "index": 38,
+          "label": "Tomato__Tomato_YellowLeaf__Curl_Virus",
+          "logit": -2.505402088165283,
+          "probability": 9.008662686937896e-07
+        },
+        {
+          "index": 39,
+          "label": "Tomato__Tomato_mosaic_virus",
+          "logit": -4.640918254852295,
+          "probability": 1.0646768799915662e-07
+        },
+        {
+          "index": 40,
+          "label": "Tomato___Bacterial_spot",
+          "logit": -1.332316517829895,
+          "probability": 2.911556066464982e-06
+        },
+        {
+          "index": 41,
+          "label": "Tomato___Early_blight",
+          "logit": -2.4981918334960938,
+          "probability": 9.073855835595168e-07
+        },
+        {
+          "index": 42,
+          "label": "Tomato___Late_blight",
+          "logit": -0.12043981999158859,
+          "probability": 9.782201232155785e-06
+        },
+        {
+          "index": 43,
+          "label": "Tomato___Leaf_Mold",
+          "logit": -4.065978050231934,
+          "probability": 1.891955889732344e-07
+        },
+        {
+          "index": 44,
+          "label": "Tomato___Septoria_leaf_spot",
+          "logit": -0.736493706703186,
+          "probability": 5.283083737595007e-06
+        },
+        {
+          "index": 45,
+          "label": "Tomato___Spider_mites_Two-spotted_spider_mite",
+          "logit": -3.895059108734131,
+          "probability": 2.2446072023285524e-07
+        },
+        {
+          "index": 46,
+          "label": "Tomato___Target_Spot",
+          "logit": -2.5177547931671143,
+          "probability": 8.89807154180744e-07
+        },
+        {
+          "index": 47,
+          "label": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+          "logit": -1.6967891454696655,
+          "probability": 2.022258968281676e-06
+        },
+        {
+          "index": 48,
+          "label": "Tomato___Tomato_mosaic_virus",
+          "logit": -4.382599830627441,
+          "probability": 1.378490850356684e-07
+        },
+        {
+          "index": 49,
+          "label": "Tomato___healthy",
+          "logit": -4.641050815582275,
+          "probability": 1.0645347714444142e-07
+        },
+        {
+          "index": 50,
+          "label": "Wheat_BlackPoint",
+          "logit": -0.9629037976264954,
+          "probability": 4.212684416415868e-06
+        },
+        {
+          "index": 51,
+          "label": "Wheat_FusariumFootRot",
+          "logit": -0.9466243982315063,
+          "probability": 4.281825113139348e-06
+        },
+        {
+          "index": 52,
+          "label": "Wheat_HealthyLeaf",
+          "logit": -0.6829416751861572,
+          "probability": 5.573719590756809e-06
+        },
+        {
+          "index": 53,
+          "label": "Wheat_LeafBlight",
+          "logit": -3.1020967960357666,
+          "probability": 4.960430715073016e-07
+        },
+        {
+          "index": 54,
+          "label": "Wheat_WheatBlast",
+          "logit": -0.3898538053035736,
+          "probability": 7.471909611922456e-06
+        }
+      ]
+    }
+  ]
+}

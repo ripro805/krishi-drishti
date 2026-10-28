@@ -3916,4 +3916,358 @@ export const DISEASES_DATABASE: DiseaseInfo[] = [
     },
     sampleImageUrl: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
   },
+
+  // 26. Rice Leaf Smut (Entyloma oryzae)
+  {
+    id: "rice-leaf-smut",
+    crop: "Rice",
+    banglaCrop: "ধান",
+    commonName: "Rice Leaf Smut",
+    banglaName: "ধানের পাতার ভুষি রোগ (লিফ স্মাট)",
+    scientificName: "Entyloma oryzae",
+    pathogenType: "Fungal",
+    severity: "Moderate",
+    confidence: 96.5,
+    summary: "Fungal foliar disease causing small, angular, slightly raised black spots on rice leaves, reducing photosynthetic efficiency during late crop maturity.",
+    banglaSummary: "এন্টাইলোমা ছত্রাকজনিত ধানের পাতার রোগ। পাতার উভয় পিঠে ছোট ছোট কোণাকৃতি সামান্য উঁচু কালো দাগ দেখা যায়, যা ফসলের শেষভাগে সালোকসংশ্লেষণ কমিয়ে দেয়।",
+    symptoms: [
+      "Small, angular, slightly raised black spots on leaf blades",
+      "Spots remain covered by leaf epidermis until maturity",
+      "Leaves turn yellow and wither prematurely when heavily infected",
+      "Most prevalent during the grain filling to ripening stages"
+    ],
+    banglaSymptoms: [
+      "ধানের পাতার উভয় পিঠে ছোট ছোট কোণাকৃতি কালো দাগ বা ভুষির মতো ফোস্কা",
+      "আক্রান্ত পাতার অংশ ধীরে ধীরে হলুদ হয়ে শুকিয়ে যায়",
+      "দানা ভরার সময় বা ধান পাকার পর্যায়ে লক্ষণ বেশি প্রকট হয়",
+      "মারাত্মক আক্রমণে পাতার ডগা পুড়ে যাওয়ার মতো দেখায়"
+    ],
+    favorableConditions: [
+      "High humidity (85-95%) and warm temperatures (25-30°C)",
+      "Excessive nitrogen application and dense crop planting"
+    ],
+    banglaCauses: ["উচ্চ আর্দ্রতা (৮৫-৯৫%), অতিরিক্ত নাইট্রোজেন সার ব্যবহার ও ঘন রোপণ"],
+    affectedParts: ["Leaves", "Leaf Sheaths"],
+    banglaAffectedParts: ["পাতা", "পাতার খোল"],
+    banglaCropInfo: "ধান - বাংলাদেশের প্রধান খাদ্যশস্য।",
+    transmissionRisk: "Moderate",
+    banglaTreatment: {
+      managementAdvice: [
+        "সুষম সার ব্যবহার করুন এবং অতিরিক্ত ইউরিয়া প্রয়োগ পরিহার করুন।",
+        "আক্রান্ত জমিতে পটাশ সারের পরিমাণ কিছুটা বৃদ্ধি করুন।"
+      ],
+      preventionMethods: [
+        "রোগমুক্ত প্রত্যয়িত বীজ ব্যবহার করুন এবং বীজ শোধন করে বপন করুন।",
+        "ফসল কাটার পর জমির নাড়া পুড়িয়ে ফেলুন বা গভীরভাবে চাষ দিয়ে মাটিতে মিশিয়ে দিন।"
+      ],
+      fieldCareGuidance: [
+        "জমিতে নিয়মিত পানি নিষ্কাশন ও বাতাস চলাচলের ব্যবস্থা নিশ্চিত করুন।"
+      ],
+      whenToConsultExpert: [
+        "লক্ষণ দেখা দিলে স্থানীয় উপসহকারী কৃষি কর্মকর্তার সাথে পরামর্শ করে অনুমোদিত ছত্রাকনাশক স্প্রে করুন।"
+      ],
+      safetyNote: "বাতাসের বিপরীতে স্প্রে করবেন না এবং সুরক্ষামূলক পোশাক পরিধান করুন।"
+    },
+    treatmentPlan: {
+      immediateActions: [
+        {
+          title: "Balanced Foliar Nutrition",
+          description: "Top-dress with MOP (Muriate of Potash) and avoid extra urea to increase leaf cell wall resistance.",
+          priority: "High",
+          timeframe: "Immediate",
+          effectiveness: "85-90%"
+        }
+      ],
+      organicTreatments: [
+        {
+          name: "Trichoderma harzianum foliar spray",
+          preparation: "5 g per liter clean water",
+          application: "Spray every 10 days during cloudy weather",
+          certifications: "Bio-certified"
+        }
+      ],
+      chemicalTreatments: [
+        {
+          name: "Propiconazole / Mancozeb",
+          activeIngredient: "Tilt 250 EC (1 ml/L) or Dithane M-45 (2 g/L)",
+          dosage: "1-2 ml/g per liter of water",
+          safetyInterval: "21 days pre-harvest",
+          cautions: "Ensure full coverage of upper and lower leaf canopy."
+        }
+      ],
+      preventiveMeasures: [
+        "Certified disease-free seeds and hot water treatment (52°C for 10 min)",
+        "Proper plant spacing (20cm x 15cm) to ensure airflow"
+      ],
+      culturalPractices: [
+        "Deep winter plowing to bury crop residues and fungal sclerotia"
+      ]
+    },
+    sampleImageUrl: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=600&auto=format&fit=crop&q=80"
+  },
+
+  // 27. Wheat Blast (Magnaporthe oryzae Triticum)
+  {
+    id: "wheat-blast",
+    crop: "Wheat",
+    banglaCrop: "গম",
+    commonName: "Wheat Blast",
+    banglaName: "গমের ব্লাস্ট রোগ (হুইট ব্লাস্ট)",
+    scientificName: "Magnaporthe oryzae pathotype Triticum",
+    pathogenType: "Fungal",
+    severity: "Severe",
+    confidence: 98.2,
+    summary: "Devastating fungal epidemic causing complete or partial bleaching of wheat spikes, leaving shriveled grains or empty heads.",
+    banglaSummary: "ম্যাগনাপর্থে ছত্রাকজনিত মারাত্মক মহামারি রোগ। গমের শীষের গোড়ায় কালো দাগ হয়ে শীষের উপরের অংশ সম্পূর্ণ বা আংশিক সাদা হয়ে শুকিয়ে যায় এবং দানা চিটা হয়ে যায়।",
+    symptoms: [
+      "Partial or total bleaching of wheat spikes above the infected rachis node",
+      "Distinct grayish-white bleached spikelets with dark lesions at the rachis base",
+      "Elliptical, grayish-green eye-shaped lesions on leaves with dark borders",
+      "Severe grain deformation, chalky appearance, and high sterility"
+    ],
+    banglaSymptoms: [
+      "গমের শীষের গোড়ায় কালো দাগ পড়ে এবং দাগের উপরের অংশ শুকিয়ে সাদা বা বিবর্ণ হয়ে যায়",
+      "দূর থেকে তাকালে মাঠের সুস্থ সবুজ বা সোনালি শীষের মাঝে মাঝে সাদা শীষ চোখে পড়ে",
+      "শীষে কোনো দানা হয় না অথবা দানা অত্যন্ত কুঁচকে অপুষ্ট ও হালকা হয়ে যায়",
+      "পাতায় ছোট ছোট ধূসর কেন্দ্রবিশিষ্ট চোখের মতো দাগ দেখা যায়"
+    ],
+    favorableConditions: [
+      "Warm temperatures (22-28°C) accompanied by overcast skies and intermittent rainfall during heading"
+    ],
+    banglaCauses: ["শীষ বের হওয়ার সময়ে উষ্ণ আবহাওয়া (২২-২৮° সে.) ও আকস্মিক বৃষ্টিপাত বা মেঘলা আকাশ"],
+    affectedParts: ["Spikes", "Rachis", "Leaves", "Stems"],
+    banglaAffectedParts: ["শীষ", "শীষের কাণ্ড", "পাতা"],
+    banglaCropInfo: "গম - শীতকালীন গুরুত্বপূর্ণ দানাশস্য।",
+    transmissionRisk: "High",
+    banglaTreatment: {
+      managementAdvice: [
+        "শীষ বের হওয়ার সাথে সাথেই প্রতিরক্ষামূলক ছত্রাকনাশক স্প্রে করুন।",
+        "আক্রান্ত ক্ষেত থেকে বীজ সংগ্রহ করবেন না।"
+      ],
+      preventionMethods: [
+        "ব্লাস্ট প্রতিরোধী জাত যেমন 'বারি গম ৩৩' (WMRI গম ৩) চাষ করুন।",
+        "নভেম্বরের ১৫-৩০ তারিখের মধ্যে উপযুক্ত সময়ে গম বপন সম্পন্ন করুন।"
+      ],
+      fieldCareGuidance: [
+        "প্রোভ্যাক্স-২০০ বা অটোস্টিন দিয়ে বীজ শোধন করে বপন করুন।"
+      ],
+      whenToConsultExpert: [
+        "লক্ষণ দেখা দিলে অবিলম্বে উপজেলা কৃষি কর্মকর্তা বা BARI-র বিজ্ঞানীদের অবহিত করুন।"
+      ],
+      safetyNote: "স্প্রে করার সময় ব্যক্তিগত সুরক্ষা সরঞ্জাম (মাস্ক, গ্লাভস) ব্যবহার করুন।"
+    },
+    treatmentPlan: {
+      immediateActions: [
+        {
+          title: "Preventive Triazole-Strobilurin Spray",
+          description: "Apply Nativo 75 WG (Tebuconazole + Trifloxystrobin) at 0.75 g/L twice: at heading and 12-15 days later.",
+          priority: "High",
+          timeframe: "Immediate",
+          effectiveness: "95-98%"
+        }
+      ],
+      organicTreatments: [
+        {
+          name: "Pseudomonas fluorescens biological seed & foliar treatment",
+          preparation: "10 g/kg seed; 5 g/L foliar spray",
+          application: "Apply at heading stage in non-epidemic areas",
+          certifications: "Bio-certified"
+        }
+      ],
+      chemicalTreatments: [
+        {
+          name: "Tebuconazole + Trifloxystrobin (Nativo 75 WG)",
+          activeIngredient: "Nativo 75 WG",
+          dosage: "0.75 g per liter of water",
+          safetyInterval: "28 days pre-harvest",
+          cautions: "Must be applied proactively before visual bleaching sets in."
+        }
+      ],
+      preventiveMeasures: [
+        "Cultivate BARI Gom-33 blast-resistant variety",
+        "Treat seed with Carboxin + Thiram (Provex-200) @ 3 g/kg"
+      ],
+      culturalPractices: [
+        "Sow between November 15-30 to avoid high heat at heading"
+      ]
+    },
+    sampleImageUrl: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
+  },
+
+  // 28. Wheat Fusarium Foot Rot / Crown Rot (Fusarium spp.)
+  {
+    id: "wheat-fusarium-foot-rot",
+    crop: "Wheat",
+    banglaCrop: "গম",
+    commonName: "Wheat Fusarium Foot Rot (Crown Rot)",
+    banglaName: "গমের ফিউজারিয়াম গোড়া পচা রোগ",
+    scientificName: "Fusarium culmorum / Fusarium pseudograminearum",
+    pathogenType: "Fungal",
+    severity: "Severe",
+    confidence: 97.4,
+    summary: "Soil- and seed-borne fungal disease attacking wheat crowns, sub-crown internodes, and stem bases, causing brown stem discoloration and premature whiteheads.",
+    banglaSummary: "মাটি ও বীজবাহিত ফিউজারিয়াম ছত্রাকজনিত রোগ। গমের কাণ্ডের গোড়ায় ও মূলে গাঢ় বাদামি দাগ পড়ে, গোড়া পচে যায় এবং গাছ অকালে সাদা হয়ে হেলে পড়ে।",
+    symptoms: [
+      "Dark chocolate-brown discoloration of the crown, lower leaf sheaths, and stem bases",
+      "Pinkish or carmine fungal mycelium visible under leaf sheaths under damp conditions",
+      "Stunted tillers and premature development of empty whiteheads ('whiteheads')",
+      "Stems easily break near the soil line when pulled"
+    ],
+    banglaSymptoms: [
+      "গমের কাণ্ডের গোড়ায় ও মাটির কাছাকাছি অংশে গাঢ় বাদামি বা চকোলেট রঙের দাগ",
+      "আর্দ্র আবহাওয়ায় গোড়ার ভেতরে হালকা গোলাপি বা সাদা রঙের ছত্রাকের জাল দেখা যায়",
+      "গাছ সহজে মাটি থেকে উপড়ে আসে এবং গোড়া ভেঙে যায়",
+      "শীষ অকালে সাদা হয়ে যায় এবং ভেতরে দানা থাকে না"
+    ],
+    favorableConditions: [
+      "Warm soil temperatures (18-25°C) followed by moisture stress during grain filling",
+      "Continuous cereal-on-cereal crop rotations"
+    ],
+    banglaCauses: ["উষ্ণ মাটি (১৮-২৫° সে.), মাটিতে ছত্রাকের উপস্থিতি এবং দীর্ঘ খরা বা আর্দ্রতার অভাব"],
+    affectedParts: ["Stem base", "Crown", "Roots", "Spikes"],
+    banglaAffectedParts: ["কাণ্ডের গোড়া", "মূল", "শীষ"],
+    banglaCropInfo: "গম - রবি মৌসুমের প্রধান দানাশস্য।",
+    transmissionRisk: "High",
+    banglaTreatment: {
+      managementAdvice: [
+        "জমিতে রস বজায় রাখুন এবং দানা ভরার সময় হালকা সেচ দিন।",
+        "আক্রান্ত গাছ তুলে পুড়িয়ে ফেলুন।"
+      ],
+      preventionMethods: [
+        "ডালজাতীয় বা তৈলবীজ ফসলের সাথে ২-৩ বছরের ফসল পর্যায় নিশ্চিত করুন।",
+        "বীজ বপনের পূর্বে ছত্রাকনাশক দিয়ে শোধন করুন।"
+      ],
+      fieldCareGuidance: [
+        "সুষম সার ও ট্রাইকোডার্মা মিশ্রিত জৈব সার জমিতে প্রয়োগ করুন।"
+      ],
+      whenToConsultExpert: [
+        "গোড়ায় লক্ষণ তীব্র হলে স্থানীয় কৃষি কর্মকর্তার পরামর্শ নিন।"
+      ],
+      safetyNote: "রাসায়নিক ব্যবহারের সময় চোখ ও ত্বকের সংস্পর্শ এড়িয়ে চলুন।"
+    },
+    treatmentPlan: {
+      immediateActions: [
+        {
+          title: "Irrigation Scheduling to Relieve Moisture Stress",
+          description: "Provide light irrigation during grain fill to prevent moisture shock which triggers severe foot rot symptom expression.",
+          priority: "High",
+          timeframe: "Immediate",
+          effectiveness: "80-85%"
+        }
+      ],
+      organicTreatments: [
+        {
+          name: "Trichoderma harzianum soil incorporation",
+          preparation: "50 g per decimal mixed with well-rotted compost",
+          application: "Apply during final land preparation",
+          certifications: "OMRI Listed"
+        }
+      ],
+      chemicalTreatments: [
+        {
+          name: "Carbendazim / Fludioxonil + Difenoconazole",
+          activeIngredient: "Autostin 50 WDG / Celest Extra",
+          dosage: "2 g per kg seed; 1.5 g/L drenching at base",
+          safetyInterval: "30 days pre-harvest",
+          cautions: "Drench around plant roots if symptoms appear at seedling stage."
+        }
+      ],
+      preventiveMeasures: [
+        "Seed treatment with Carboxin + Thiram (Provex-200) @ 2.5 g/kg",
+        "Crop rotation with legumes (lentil, chickpea) or mustard"
+      ],
+      culturalPractices: [
+        "Ensure uniform seeding depth (3-5 cm) and avoid planting too deep"
+      ]
+    },
+    sampleImageUrl: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
+  },
+
+  // 29. Wheat Black Point (Bipolaris sorokiniana / Alternaria spp.)
+  {
+    id: "wheat-black-point",
+    crop: "Wheat",
+    banglaCrop: "গম",
+    commonName: "Wheat Black Point",
+    banglaName: "গমের দানার কালো দাগ রোগ (ব্ল্যাক পয়েন্ট)",
+    scientificName: "Bipolaris sorokiniana / Alternaria alternata",
+    pathogenType: "Fungal",
+    severity: "Moderate",
+    confidence: 96.8,
+    summary: "Fungal complex causing dark brown to black discoloration at the embryo (germ) end of the wheat kernel, impairing germination and flour quality.",
+    banglaSummary: "অল্টারনারিয়া ও বাইপোলারিস ছত্রাকজনিত রোগ। গমের দানার ভ্রূণ বা জার্ম অংশে গাঢ় বাদামি থেকে কুচকুচে কালো দাগ পড়ে, যার ফলে বীজের অঙ্কুরোদগম ক্ষমতা ও আটার মান হ্রাস পায়।",
+    symptoms: [
+      "Dark brown to pitch black discoloration of the embryo end of mature wheat kernels",
+      "Pericarp and germ tissues become discolored while endosperm remains largely intact",
+      "Significant reduction in seed germination vigor and seedling emergence",
+      "Dark discoloration visible through the glumes during late dough stage"
+    ],
+    banglaSymptoms: [
+      "গমের দানার মুখ বা ভ্রূণের মাথায় স্পষ্ট গাঢ় কালো বা কালচে বাদামি দাগ",
+      "দানা পাকার সময় শীষের খোলের ভেতর থেকেই দানার কালচে আভা দেখা যায়",
+      "আক্রান্ত বীজের গজানোর ক্ষমতা কমে যায় এবং চারা দুর্বল হয়",
+      "আটার রং কালচে হয়ে যায় এবং বাজারমূল্য ব্যাপকভাবে হ্রাস পায়"
+    ],
+    favorableConditions: [
+      "Rain, fog, or prolonged heavy dew during grain ripening (dough stage) with temperatures >22°C"
+    ],
+    banglaCauses: ["দানা গঠনের সময় মেঘলা বা কুয়াশাচ্ছন্ন আবহাওয়া, বৃষ্টি এবং অতিরিক্ত আর্দ্রতা"],
+    affectedParts: ["Grain", "Spikes", "Embryo"],
+    banglaAffectedParts: ["গমের দানা", "শীষ", "ভ্রূণ"],
+    banglaCropInfo: "গম - পুষ্টিসমৃদ্ধ প্রধান খাদ্যশস্য।",
+    transmissionRisk: "Moderate",
+    banglaTreatment: {
+      managementAdvice: [
+        "ফসল পাকার পর অবিলম্বে কেটে শুকিয়ে ফেলুন, জমিতে অতিরিক্ত সময় ফেলে রাখবেন না।",
+        "কালো দাগযুক্ত দানা বীজ হিসেবে ব্যবহার করবেন না।"
+      ],
+      preventionMethods: [
+        "বীজ বপনের পূর্বে ছত্রাকনাশক দিয়ে বীজ শোধন করুন।",
+        "প্রতিরোধী ও উচ্চফলনশীল জাত চাষ করুন।"
+      ],
+      fieldCareGuidance: [
+        "দানা পাকার সময় জমিতে অতিরিক্ত সেচ বা জলাবদ্ধতা পরিহার করুন।"
+      ],
+      whenToConsultExpert: [
+        "বীজ উৎপাদনের জমিতে লক্ষণ দেখা দিলে কৃষি সম্প্রসারণ কর্মকর্তা বা BADC-র পরামর্শ নিন।"
+      ],
+      safetyNote: "বীজ শোধিত গম কোনো অবস্থাতেই মানুষ বা গবাদিপশুর খাদ্য হিসেবে ব্যবহার করবেন না।"
+    },
+    treatmentPlan: {
+      immediateActions: [
+        {
+          title: "Timely Harvest and Prompt Grain Drying",
+          description: "Harvest mature crop promptly and dry grains below 12% moisture to prevent fungal mycelium proliferation in the embryo.",
+          priority: "High",
+          timeframe: "Within 24 hours of maturity",
+          effectiveness: "90-95%"
+        }
+      ],
+      organicTreatments: [
+        {
+          name: "Neem oil / Bio-fungicide spray at dough stage",
+          preparation: "3 ml neem oil per liter water with detergent emulsifier",
+          application: "Spray during milky-to-dough grain stage",
+          certifications: "Bio-certified"
+        }
+      ],
+      chemicalTreatments: [
+        {
+          name: "Propiconazole / Tebuconazole",
+          activeIngredient: "Tilt 250 EC (1 ml/L) or Folicur 250 EC (1 ml/L)",
+          dosage: "1 ml per liter of water",
+          safetyInterval: "21 days pre-harvest",
+          cautions: "Spray at heading and early milk stage if persistent fog or rainfall occurs."
+        }
+      ],
+      preventiveMeasures: [
+        "Fungicidal seed treatment with Provex-200 or Vitavax-200 @ 2.5-3 g/kg",
+        "Sow certified clean seed lot with zero black point incidence"
+      ],
+      culturalPractices: [
+        "Avoid late season top-dressing of nitrogen which delays grain maturity"
+      ]
+    },
+    sampleImageUrl: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80"
+  },
 ];

@@ -1,0 +1,642 @@
+[
+  {
+    "file": "(Wheat Leaf Rust).jpg",
+    "expected_crop": "Wheat",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Rice",
+      "bangla_crop": "ধান",
+      "confidence": 99.77,
+      "prediction": "Rice_Narrow_Brown_Spot",
+      "bangla_msg": "ধান ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.7,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'গম'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "Raspberry Leaf Spot.jpg",
+    "expected_crop": "Raspberry",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Squash",
+      "bangla_crop": "মিষ্টি কুমড়া",
+      "confidence": 100.0,
+      "prediction": "Squash_Powdery_mildew",
+      "bangla_msg": "মিষ্টি কুমড়া ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.08,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'র‍্যাস্পবেরি'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "Raspberry Yellow Rust.jpg",
+    "expected_crop": "Raspberry",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Corn (Maize)",
+      "bangla_crop": "ভুট্টা",
+      "confidence": 62.53,
+      "prediction": "Corn_maize_Common_rust",
+      "bangla_msg": "ভুট্টা ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.3,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'র‍্যাস্পবেরি'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "Rice Brown Spot.jpg",
+    "expected_crop": "Rice",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Rice",
+      "bangla_crop": "ধান",
+      "confidence": 98.83,
+      "prediction": "Rice_Brown_Spot",
+      "bangla_msg": "ধান ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Rice",
+      "bangla_crop": "ধান",
+      "confidence": 98.83,
+      "prediction": "Rice_Brown_Spot",
+      "bangla_msg": "ধান ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "Rice Leaf Blast.jpg",
+    "expected_crop": "Rice",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Rice",
+      "bangla_crop": "ধান",
+      "confidence": 97.91,
+      "prediction": "Rice_Sheath_Blight",
+      "bangla_msg": "ধান ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Rice",
+      "bangla_crop": "ধান",
+      "confidence": 97.91,
+      "prediction": "Rice_Sheath_Blight",
+      "bangla_msg": "ধান ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "Soybean Frogeye Leaf Spot).jpg",
+    "expected_crop": "Soybean",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 44.7,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.26,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'সয়াবিন'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "Soybean Rust.jpg",
+    "expected_crop": "Soybean",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 39.2,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.29,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'সয়াবিন'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "Squash Mosaic Virus.jpg",
+    "expected_crop": "Squash",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Squash",
+      "bangla_crop": "মিষ্টি কুমড়া",
+      "confidence": 100.0,
+      "prediction": "Squash_Powdery_mildew",
+      "bangla_msg": "মিষ্টি কুমড়া ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Squash",
+      "bangla_crop": "মিষ্টি কুমড়া",
+      "confidence": 100.0,
+      "prediction": "Squash_Powdery_mildew",
+      "bangla_msg": "মিষ্টি কুমড়া ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "Squash Powdery Mildew.jpg",
+    "expected_crop": "Squash",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 32.72,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Squash",
+      "bangla_crop": "মিষ্টি কুমড়া",
+      "confidence": 100.0,
+      "prediction": "Squash_Powdery_mildew",
+      "bangla_msg": "মিষ্টি কুমড়া ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "Strawberry Leaf Scorch.jpg",
+    "expected_crop": "Strawberry",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Strawberry",
+      "bangla_crop": "স্ট্রবেরি",
+      "confidence": 100.0,
+      "prediction": "Strawberry_Leaf_scorch",
+      "bangla_msg": "স্ট্রবেরি ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Strawberry",
+      "bangla_crop": "স্ট্রবেরি",
+      "confidence": 100.0,
+      "prediction": "Strawberry_Leaf_scorch",
+      "bangla_msg": "স্ট্রবেরি ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "Strawberry Powdery Mildew.jpg",
+    "expected_crop": "Strawberry",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Tomato",
+      "bangla_crop": "টমেটো",
+      "confidence": 99.89,
+      "prediction": "Tomato_Late_blight",
+      "bangla_msg": "টমেটো ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.21,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'স্ট্রবেরি'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "Tomato Early Blight.jpg",
+    "expected_crop": "Tomato",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Grape",
+      "bangla_crop": "আঙ্গুর",
+      "confidence": 98.53,
+      "prediction": "Grape_Black_rot",
+      "bangla_msg": "আঙ্গুর ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 3.17,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'টমেটো'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "Tomato Yellow Leaf Curl Virus.jpg",
+    "expected_crop": "Tomato",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 29.41,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Tomato",
+      "bangla_crop": "টমেটো",
+      "confidence": 70.84,
+      "prediction": "Tomato_Late_blight",
+      "bangla_msg": "টমেটো ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "Wheat Powdery Mildew)..jpg",
+    "expected_crop": "Wheat",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Wheat",
+      "bangla_crop": "গম",
+      "confidence": 88.79,
+      "prediction": "Wheat_Stripe_Rust",
+      "bangla_msg": "গম ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Wheat",
+      "bangla_crop": "গম",
+      "confidence": 88.79,
+      "prediction": "Wheat_Stripe_Rust",
+      "bangla_msg": "গম ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "apple black rob.jpg",
+    "expected_crop": "Apple",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 47.35,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Apple",
+      "bangla_crop": "আপেল",
+      "confidence": 87.52,
+      "prediction": "Apple_Black_rot",
+      "bangla_msg": "আপেল ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "apple scrab.jpg",
+    "expected_crop": "Apple",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 41.54,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 7.27,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'আপেল'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "blue bary rust.jpg",
+    "expected_crop": "Blueberry",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 37.02,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.18,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'ব্লুবেরি'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "bluebary sterm bright.jpg",
+    "expected_crop": "Blueberry",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 46.47,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.79,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'ব্লুবেরি'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "capcicum bacterial spot.jpg",
+    "expected_crop": "Bell Pepper",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 37.38,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Bell Pepper",
+      "bangla_crop": "মরিচ",
+      "confidence": 99.89,
+      "prediction": "Pepper__bell___Bacterial_spot",
+      "bangla_msg": "মরিচ ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "capcicum fitofora.jpg",
+    "expected_crop": "Bell Pepper",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 41.08,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.45,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'মরিচ'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "cherry leaf spot.jpg",
+    "expected_crop": "Cherry",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Peach",
+      "bangla_crop": "পিচ",
+      "confidence": 99.99,
+      "prediction": "Peach_Bacterial_spot",
+      "bangla_msg": "পিচ ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.01,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'চেরি'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "cherry mildew.jpg",
+    "expected_crop": "Cherry",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Squash",
+      "bangla_crop": "মিষ্টি কুমড়া",
+      "confidence": 100.0,
+      "prediction": "Squash_Powdery_mildew",
+      "bangla_msg": "মিষ্টি কুমড়া ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 6.34,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'চেরি'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "corn common rust.jpg",
+    "expected_crop": "Corn (Maize)",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Corn (Maize)",
+      "bangla_crop": "ভুট্টা",
+      "confidence": 79.82,
+      "prediction": "Corn_maize_Common_rust",
+      "bangla_msg": "ভুট্টা ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Corn (Maize)",
+      "bangla_crop": "ভুট্টা",
+      "confidence": 79.82,
+      "prediction": "Corn_maize_Common_rust",
+      "bangla_msg": "ভুট্টা ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "corn leaf bright.jpg",
+    "expected_crop": "Corn (Maize)",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Corn (Maize)",
+      "bangla_crop": "ভুট্টা",
+      "confidence": 99.64,
+      "prediction": "Corn_maize_Northern_Leaf_Blight",
+      "bangla_msg": "ভুট্টা ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Corn (Maize)",
+      "bangla_crop": "ভুট্টা",
+      "confidence": 99.64,
+      "prediction": "Corn_maize_Northern_Leaf_Blight",
+      "bangla_msg": "ভুট্টা ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "grape eska.jpg",
+    "expected_crop": "Grape",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 43.72,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 3.46,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'আঙ্গুর'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "grape rock.jpg",
+    "expected_crop": "Grape",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Grape",
+      "bangla_crop": "আঙ্গুর",
+      "confidence": 93.01,
+      "prediction": "Grape_Black_rot",
+      "bangla_msg": "আঙ্গুর ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Grape",
+      "bangla_crop": "আঙ্গুর",
+      "confidence": 93.01,
+      "prediction": "Grape_Black_rot",
+      "bangla_msg": "আঙ্গুর ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "orange citus.jpg",
+    "expected_crop": "Orange (Citrus)",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Peach",
+      "bangla_crop": "পিচ",
+      "confidence": 99.81,
+      "prediction": "Peach_Bacterial_spot",
+      "bangla_msg": "পিচ ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.22,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'লেবু/কমলা'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "orange grining.jpg",
+    "expected_crop": "Orange (Citrus)",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 39.36,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Orange (Citrus)",
+      "bangla_crop": "লেবু/কমলা",
+      "confidence": 100.0,
+      "prediction": "Orange_Haunglongbing_Citrus_greening",
+      "bangla_msg": "লেবু/কমলা ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "peach bectarial spot.jpg",
+    "expected_crop": "Peach",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Rice",
+      "bangla_crop": "ধান",
+      "confidence": 67.82,
+      "prediction": "Rice_Brown_Spot",
+      "bangla_msg": "ধান ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.29,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'পিচ'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "pech leaf curl.jpg",
+    "expected_crop": "Peach",
+    "auto": {
+      "status": "unknown_crop",
+      "detected_crop": "Unknown",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 21.08,
+      "prediction": null,
+      "bangla_msg": "অনির্ণীত ফলাফল। এআই মডেল এই ফসলের জাত নিশ্চিত করতে পারছে না। আপলোড করা পাতাটি সমর্থিত ১৬টি ফসল বা কোনো পরিচিত রোগের লক্ষণের সাথে মেলেনি। অনুগ্রহ করে সমর্থিত ফসলের পাতার স্পষ্ট ছবি প্রদান করুন।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Peach",
+      "bangla_crop": "পিচ",
+      "confidence": 76.23,
+      "prediction": "Peach_healthy",
+      "bangla_msg": "পিচ ফসলে সুস্থ পাতা নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  },
+  {
+    "file": "potato blight.jpg",
+    "expected_crop": "Potato",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Strawberry",
+      "bangla_crop": "স্ট্রবেরি",
+      "confidence": 99.98,
+      "prediction": "Strawberry_Leaf_scorch",
+      "bangla_msg": "স্ট্রবেরি ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "crop_mismatch",
+      "detected_crop": "Unknown / Unsupported",
+      "bangla_crop": "অনির্ণীত",
+      "confidence": 0.97,
+      "prediction": null,
+      "bangla_msg": "আপলোড করা পাতাটিতে নির্বাচিত ফসল 'আলু'-এর কোনো পরিচিত রোগ বা বৈশিষ্ট্য মেলেনি। ভুল চিকিৎসা প্রয়োগ রোধে ফলাফল অনির্ণীত রাখা হয়েছে।"
+    }
+  },
+  {
+    "file": "potato let bright.jpg",
+    "expected_crop": "Potato",
+    "auto": {
+      "status": "success",
+      "detected_crop": "Potato",
+      "bangla_crop": "আলু",
+      "confidence": 99.78,
+      "prediction": "Potato___Early_blight",
+      "bangla_msg": "আলু ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    },
+    "guided": {
+      "status": "success",
+      "detected_crop": "Potato",
+      "bangla_crop": "আলু",
+      "confidence": 99.78,
+      "prediction": "Potato___Early_blight",
+      "bangla_msg": "আলু ফসলে রোগ লক্ষণ নিশ্চিতভাবে সনাক্ত হয়েছে।"
+    }
+  }
+]

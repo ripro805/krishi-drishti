@@ -96,8 +96,11 @@ def run_tests():
 
     # 7. Test End-to-End Prediction via FastAPI with Hierarchical Aggregation
     try:
-        dummy_b64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
-        req_data = json.dumps({"imageData": f"data:image/png;base64,{dummy_b64}"}).encode("utf-8")
+        import base64
+        real_img_path = "public/uploads/scans/leaf_1793184643419_6pj2e.jpeg"
+        with open(real_img_path, "rb") as f:
+            b64_content = base64.b64encode(f.read()).decode("utf-8")
+        req_data = json.dumps({"imageData": f"data:image/jpeg;base64,{b64_content}"}).encode("utf-8")
         req = urllib.request.Request(
             "http://127.0.0.1:5005/predict",
             data=req_data,
@@ -106,9 +109,10 @@ def run_tests():
         with urllib.request.urlopen(req, timeout=5) as res:
             res_data = json.loads(res.read().decode())
             preds = res_data.get("predictions", [])
-            dom_crop = res_data.get("dominantCrop")
-            ambig = res_data.get("isCrossCropAmbiguous")
-            print(f"  -> /predict live test passed: latency={res_data.get('latencyMs')}ms | top={preds[0]['label']} | dominantCrop={dom_crop} | ambiguous={ambig}")
+            top_obj = res_data.get("prediction") or (preds[0] if preds else {})
+            dom_crop = res_data.get("detected_crop") or res_data.get("dominantCrop")
+            status = res_data.get("status")
+            print(f"  -> /predict live test passed: status={status} | latency={res_data.get('latencyMs')}ms | top={top_obj.get('label')} | dominantCrop={dom_crop}")
     except Exception as e:
         print(f"FAILED: /predict call failed: {e}")
         return False
