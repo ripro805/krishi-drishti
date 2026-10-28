@@ -36,10 +36,12 @@ export interface AgricultureChatResponse {
   conversationId: string;
   detectedLanguage: "bn" | "en" | "banglish";
   responseLanguage: "bn" | "en" | "banglish";
-  provider: AIProviderName | "fallback-local";
+  provider: AIProviderName | "fallback-local" | "database-cache";
   model: string;
   error?: string;
   fallbackOccurred?: boolean;
+  fromCache?: boolean;
+  cachedTopic?: string;
 }
 
 export interface ProviderGenerationOptions {
