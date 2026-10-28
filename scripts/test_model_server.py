@@ -23,11 +23,10 @@ def run_tests():
         print(f"[FAIL] Health Check Failed: {e}")
         return False
 
-    # 2. Test /predict with synthetic green leaf
-    img = Image.new("RGB", (224, 224), color=(34, 139, 34))
-    buf = io.BytesIO()
-    img.save(buf, format="JPEG")
-    b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
+    # 2. Test /predict with genuine leaf scan
+    scan_path = "public/uploads/scans/leaf_1793184643419_6pj2e.jpeg"
+    with open(scan_path, "rb") as f:
+        b64 = base64.b64encode(f.read()).decode("utf-8")
 
     # Warm-up request
     t0 = time.time()
@@ -35,8 +34,18 @@ def run_tests():
     res.raise_for_status()
     data = res.json()
     first_latency = (time.time() - t0) * 1000
-    top_pred = data["predictions"][0]
-    print(f"[PASS] Request 1 (Initial) Latency: {first_latency:.1f}ms | Top class: {top_pred['label']} ({top_pred['score']*100:.1f}%) | Server internal latency: {data.get('latencyMs')}ms")
+    top_pred = data.get("prediction") or (data.get("predictions") and data["predictions"][0])
+    print(f"[PASS] Real Leaf Scan Latency: {first_latency:.1f}ms | Status: {data.get('status')} | Top class: {top_pred} | Server internal latency: {data.get('latencyMs')}ms")
+
+    # 3. Test quality gate rejection with solid color square
+    solid_img = Image.new("RGB", (224, 224), color=(34, 139, 34))
+    buf = io.BytesIO()
+    solid_img.save(buf, format="JPEG")
+    solid_b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
+    res_solid = requests.post(f"{BASE_URL}/predict", json={"imageData": solid_b64}, timeout=5)
+    data_solid = res_solid.json()
+    assert data_solid.get("status") == "unsupported_image", f"Expected unsupported_image, got {data_solid.get('status')}"
+    print(f"[PASS] Quality Gate correctly rejected solid green square with status: {data_solid.get('status')}")
 
     # Benchmark 5 consecutive warm requests
     latencies = []

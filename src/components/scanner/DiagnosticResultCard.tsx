@@ -25,6 +25,7 @@ import {
   Sprout,
   Bug,
   Wind,
+  RotateCcw,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { saveScanToHistory } from "@/lib/storage";
@@ -48,7 +49,16 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
 
   const { diagnosis } = scanResult;
   const isHealthy = diagnosis.severity === "Healthy";
-  const isLowConfidence = scanResult.isLowConfidence || diagnosis.confidence < 35;
+  const isMismatch = scanResult.status === "crop_mismatch";
+  const isRejected =
+    scanResult.status === "unknown_crop" ||
+    scanResult.status === "unsupported_image" ||
+    scanResult.status === "invalid_image" ||
+    scanResult.status === "model_error" ||
+    scanResult.status === "low_confidence" ||
+    diagnosis.id === "uncertain-low-confidence-sample" ||
+    !scanResult.canProvideTreatment && scanResult.status !== "success";
+  const isLowConfidence = scanResult.isLowConfidence || diagnosis.confidence < 35 || scanResult.status === "low_confidence";
 
   const handleSave = () => {
     saveScanToHistory(scanResult);
@@ -58,6 +68,192 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
     setIsSaved(true);
   };
 
+  // ── A. Specialized Crop Mismatch View ──────────────────────────────
+  if (isMismatch) {
+    const selCrop = scanResult.mismatchDetails?.selectedCrop || scanResult.selectedCrop || "Selected Crop";
+    const detCrop = scanResult.mismatchDetails?.detectedCrop || scanResult.cropDetected || "Detected Crop";
+    const bnSelCrop = scanResult.mismatchDetails?.banglaSelectedCrop || scanResult.banglaSelectedCrop || selCrop;
+    const bnDetCrop = scanResult.mismatchDetails?.banglaDetectedCrop || scanResult.banglaCropDetected || detCrop;
+
+    return (
+      <div className="w-full space-y-6 animate-fadeIn">
+        <div className="rounded-3xl border-2 border-rose-300 bg-gradient-to-br from-rose-50/90 via-white to-amber-50/50 p-6 sm:p-8 shadow-md dark:border-rose-900/60 dark:from-rose-950/40 dark:via-slate-900 dark:to-slate-900">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-rose-200/80 dark:border-rose-900/60">
+            <div className="flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-600 text-white shadow-md">
+                <AlertCircle className="h-6 w-6" />
+              </div>
+              <div>
+                <span className="rounded-md bg-rose-100 dark:bg-rose-950 px-2.5 py-0.5 text-xs font-bold text-rose-800 dark:text-rose-300">
+                  {isBangla ? "⚠️ ফসলের অমিল সনাক্তকরণ" : "⚠️ Crop Mismatch Detected"}
+                </span>
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">
+                  {isBangla
+                    ? `নির্বাচিত '${bnSelCrop}' কিন্তু পাতাটি '${bnDetCrop}'-এর`
+                    : `Selected '${selCrop}' but Specimen resembles '${detCrop}'`}
+                </h2>
+              </div>
+            </div>
+
+            <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-mono text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+              {scanResult.scanId}
+            </span>
+          </div>
+
+          {/* Comparison Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-800/60">
+              <span className="text-xs uppercase font-bold text-slate-500 tracking-wider">
+                {isBangla ? "আপনি যা নির্বাচন করেছেন" : "You Selected"}
+              </span>
+              <p className="text-lg font-extrabold text-slate-700 dark:text-slate-300 mt-1">
+                {isBangla ? bnSelCrop : selCrop}
+              </p>
+              <p className="text-xs text-rose-600 dark:text-rose-400 font-semibold mt-1">
+                {isBangla ? "✗ পাতার চিত্রে এই ফসলের লক্ষণ নেই" : "✗ Image does not match this crop"}
+              </p>
+            </div>
+
+            <div className="rounded-2xl border-2 border-emerald-500/80 bg-emerald-50/60 p-4 dark:border-emerald-600 dark:bg-emerald-950/40 shadow-sm">
+              <span className="text-xs uppercase font-bold text-emerald-800 dark:text-emerald-300 tracking-wider">
+                {isBangla ? "এআই যা সনাক্ত করেছে (প্রমাণিত)" : "AI Detected Foliar Identity"}
+              </span>
+              <p className="text-lg font-black text-emerald-900 dark:text-emerald-100 mt-1">
+                {isBangla ? bnDetCrop : detCrop}
+              </p>
+              <p className="text-xs text-emerald-700 dark:text-emerald-400 font-semibold mt-1">
+                {isBangla
+                  ? `✓ ${scanResult.mismatchDetails?.confidence.toFixed(1) || 95}% নিশ্চয়তায় সনাক্ত`
+                  : `✓ Verified with ${scanResult.mismatchDetails?.confidence.toFixed(1) || 95}% confidence`}
+              </p>
+            </div>
+          </div>
+
+          {/* Clinical Safety Notice */}
+          <div className="rounded-2xl bg-amber-50 dark:bg-amber-950/40 p-4 border border-amber-200 dark:border-amber-900/60 text-xs text-amber-900 dark:text-amber-200 leading-relaxed mb-6">
+            <div className="flex items-start gap-2">
+              <Info className="h-4 w-4 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <strong className="font-bold">
+                  {isBangla ? "রাসায়নিক নিরাপত্তা নিশ্চিতকরণ:" : "Agricultural Agrochemical Safeguard:"}
+                </strong>{" "}
+                {isBangla
+                  ? scanResult.banglaStatusMessage ||
+                    `ভুল ফসলে ভুল কীটনাশক বা ছত্রাকনাশক প্রয়োগে ফসল ক্ষতিগ্রস্ত হতে পারে। তাই '${bnSelCrop}'-এর কোনো চিকিৎসা পরামর্শ প্রদর্শন করা হয়নি। অনুগ্রহ করে '${bnDetCrop}' নির্বাচন করে সঠিক রোগ নির্ণয় দেখুন।`
+                  : scanResult.statusMessage ||
+                    `Treatment recommendations for ${selCrop} are withheld to prevent applying inappropriate agrochemicals to your field. Please switch to ${detCrop} to review verified pathology.`}
+              </div>
+            </div>
+          </div>
+
+          {/* Resolution Action Toolbar */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-2">
+              {onSelectCrop && (
+                <Button
+                  variant="primary"
+                  size="md"
+                  onClick={() => onSelectCrop(detCrop)}
+                  className="shadow-md"
+                >
+                  <Sprout className="h-4 w-4 mr-1.5" />
+                  {isBangla
+                    ? `১-ক্লিকে '${bnDetCrop}' নির্বাচন করে রোগ দেখুন`
+                    : `Switch to '${detCrop}' & View Diagnosis`}
+                </Button>
+              )}
+              {onRetake && (
+                <Button variant="outline" size="md" onClick={onRetake}>
+                  <RotateCcw className="h-4 w-4 mr-1.5" />
+                  {isBangla ? "নতুন ছবি তুলুন" : "Retake Photo"}
+                </Button>
+              )}
+            </div>
+
+            <span className="text-xs text-slate-500">
+              {isBangla ? "কৃষি সুরক্ষা নিয়ম ৩.১ সক্রিয়" : "Validation Policy 3.1 Active"}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── B. Specialized Unsupported / Unknown Specimen View ─────────────
+  if (isRejected) {
+    return (
+      <div className="w-full space-y-6 animate-fadeIn">
+        <div className="rounded-3xl border-2 border-slate-300 bg-gradient-to-br from-slate-50 via-white to-slate-100/60 p-6 sm:p-8 shadow-sm dark:border-slate-700 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-700 text-white shadow-md">
+                <AlertCircle className="h-6 w-6" />
+              </div>
+              <div>
+                <span className="rounded-md bg-amber-100 dark:bg-amber-950 px-2.5 py-0.5 text-xs font-bold text-amber-900 dark:text-amber-300">
+                  {scanResult.status === "unknown_crop"
+                    ? isBangla
+                      ? "অনির্ণীত ফসল / অচেনা নমুনা"
+                      : "Unknown Crop Specimen"
+                    : scanResult.status === "low_confidence"
+                    ? isBangla
+                      ? "কম কনফিডেন্স / অনির্ভরযোগ্য লক্ষণ"
+                      : "Low Confidence / Inconclusive Pathology"
+                    : isBangla
+                    ? "অসমর্থিত অথবা অস্পষ্ট ছবি"
+                    : "Unsupported or Non-Foliar Image"}
+                </span>
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">
+                  {isBangla ? "রোগ নির্ণয় সম্ভব হয়নি" : "Unable to Determine Diagnosis Reliably"}
+                </h2>
+              </div>
+            </div>
+
+            <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-mono text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+              {scanResult.scanId}
+            </span>
+          </div>
+
+          <div className="my-6 space-y-3">
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-300 leading-relaxed">
+              {isBangla
+                ? scanResult.banglaStatusMessage ||
+                  "এআই মডেল এই ছবি থেকে নিশ্চিত কোনো ফসলের পাতা সনাক্ত করতে পারেনি। মডেলটি শুধুমাত্র ১৬টি নির্দিষ্ট ফসলের পাতার রোগ নির্ণয়ের জন্য অনুমোদিত।"
+                : scanResult.statusMessage ||
+                  "The neural vision system could not confidently identify a supported crop leaf. Please verify that the image contains a clear foliar specimen."}
+            </p>
+
+            {/* Quality Checklist */}
+            <div className="rounded-2xl bg-white dark:bg-slate-800/80 p-4 border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+              <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                {isBangla ? "সঠিক ছবি তোলার নির্দেশিকা:" : "Best Practices for Leaf Scanning:"}
+              </h4>
+              <ul className="space-y-1 text-slate-600 dark:text-slate-400 list-disc list-inside">
+                <li>{isBangla ? "পাতাটি ক্যামেরার মাঝামাঝি রাখুন এবং ফোকাস নিশ্চিত করুন।" : "Frame the leaf blade in the center and ensure sharp focus."}</li>
+                <li>{isBangla ? "পর্যাপ্ত দিনের আলোতে ছবি তুলুন (অতিরিক্ত অন্ধকার বা ফ্ল্যাশ এড়িয়ে চলুন)।" : "Capture under natural daytime lighting (avoid dark shadows or glare)."}</li>
+                <li>{isBangla ? "সমর্থিত ১৬টি ফসলের পাতার ছবি দিন (ধান, টমেটো, আলু, মরিচ, গম, ভুট্টা, আপেল, আঙ্গুর ইত্যাদি)।" : "Ensure the leaf belongs to one of the 16 supported crops."}</li>
+                <li>{isBangla ? "ফল, কাণ্ড বা দূর থেকে তোলা পুরো গাছের ছবি এড়িয়ে চলুন।" : "Avoid photos of whole trees, bare stems, or non-foliar objects."}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+            {onRetake && (
+              <Button variant="primary" size="md" onClick={onRetake}>
+                <RotateCcw className="h-4 w-4 mr-1.5" />
+                {isBangla ? "স্পষ্ট পাতার ছবি আপলোড করুন" : "Upload Clearer Leaf Photo"}
+              </Button>
+            )}
+            <span className="text-xs text-slate-400">
+              {isBangla ? "চিকিৎসা নির্দেশিকা স্থগিত রাখা হয়েছে" : "Treatment advice withheld for unverified inputs"}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── C. Standard Diagnosis View (Success / Low-Confidence Verified) ─
   return (
     <div className="w-full space-y-6 animate-fadeIn">
       {/* 1. Low Confidence Warning Banner (Feature 8) */}
@@ -355,23 +551,25 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
       </div>
 
       {/* 4. Treatment Plan Section Card */}
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white mb-2">
-          {isBangla
-            ? "ব্যবস্থাপনা ও রোগ প্রতিরোধের সমন্বিত নির্দেশনা (Treatment & Recovery)"
-            : "Integrated Treatment & Recovery Protocol"}
-        </h3>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
-          {isBangla
-            ? "নিচে বাংলা পরামর্শ, জৈব নিয়ন্ত্রণ এবং প্রতিরোধমূলক নির্দেশিকাগুলো নির্বাচন করে পড়ুন:"
-            : "Select treatment categories below to review organic bio-controls, chemical fungicides, and priority actions:"}
-        </p>
+      {scanResult.canProvideTreatment && (
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white mb-2">
+            {isBangla
+              ? "ব্যবস্থাপনা ও রোগ প্রতিরোধের সমন্বিত নির্দেশনা (Treatment & Recovery)"
+              : "Integrated Treatment & Recovery Protocol"}
+          </h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            {isBangla
+              ? "নিচে বাংলা পরামর্শ, জৈব নিয়ন্ত্রণ এবং প্রতিরোধমূলক নির্দেশিকাগুলো নির্বাচন করে পড়ুন:"
+              : "Select treatment categories below to review organic bio-controls, chemical fungicides, and priority actions:"}
+          </p>
 
-        <TreatmentPlanTabs
-          treatmentPlan={diagnosis.treatmentPlan}
-          banglaTreatment={diagnosis.banglaTreatment}
-        />
-      </div>
+          <TreatmentPlanTabs
+            treatmentPlan={diagnosis.treatmentPlan}
+            banglaTreatment={diagnosis.banglaTreatment}
+          />
+        </div>
+      )}
 
       {/* 5. User Feedback System Widget (Feature 12) */}
       <PredictionFeedbackCard

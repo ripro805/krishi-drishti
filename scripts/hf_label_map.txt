@@ -1,0 +1,452 @@
+const HF_LABEL_MAP: Record<string, LabelMeta> = {
+  "Apple___Apple_scab": {
+    diseaseId: "apple-scab",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  "Apple___Black_rot": {
+    diseaseId: "apple-black-rot",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  "Apple___Cedar_apple_rust": {
+    diseaseId: "apple-cedar-rust",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  "Apple___healthy": {
+    diseaseId: "apple-healthy",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  "Blueberry___healthy": {
+    diseaseId: "blueberry-healthy",
+    crop: "Blueberry",
+    banglaCrop: "ব্লুবেরি",
+  },
+  "Cherry_(including_sour)___Powdery_mildew": {
+    diseaseId: "cherry-powdery-mildew",
+    crop: "Cherry",
+    banglaCrop: "চেরি",
+  },
+  "Cherry_(including_sour)___healthy": {
+    diseaseId: "cherry-healthy",
+    crop: "Cherry",
+    banglaCrop: "চেরি",
+  },
+  "Corn_(maize)___Cercospora_leaf_spot_Gray_leaf_spot": {
+    diseaseId: "corn-gray-leaf-spot",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  "Corn_(maize)___Common_rust": {
+    diseaseId: "corn-common-rust",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  "Corn_(maize)___Northern_Leaf_Blight": {
+    diseaseId: "corn-northern-leaf-blight",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  "Corn_(maize)___healthy": {
+    diseaseId: "corn-healthy",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  "Grape___Black_rot": {
+    diseaseId: "grape-black-rot",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  "Grape___Esca_(Black_Measles)": {
+    diseaseId: "grape-esca-black-measles",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {
+    diseaseId: "grape-leaf-blight",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  "Grape___healthy": {
+    diseaseId: "grape-healthy",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  "Orange___Haunglongbing_(Citrus_greening)": {
+    diseaseId: "citrus-greening-huanglongbing",
+    crop: "Orange (Citrus)",
+    banglaCrop: "লেবু/কমলা",
+  },
+  "Peach___Bacterial_spot": {
+    diseaseId: "peach-bacterial-spot",
+    crop: "Peach",
+    banglaCrop: "পিচ",
+  },
+  "Peach___healthy": {
+    diseaseId: "peach-healthy",
+    crop: "Peach",
+    banglaCrop: "পিচ",
+  },
+  "Pepper__bell___Bacterial_spot": {
+    diseaseId: "pepper-bacterial-spot",
+    crop: "Bell Pepper",
+    banglaCrop: "মরিচ",
+  },
+  "Pepper__bell___healthy": {
+    diseaseId: "pepper-healthy",
+    crop: "Bell Pepper",
+    banglaCrop: "মরিচ",
+  },
+  "Potato___Early_blight": {
+    diseaseId: "potato-early-blight",
+    crop: "Potato",
+    banglaCrop: "আলু",
+  },
+  "Potato___Late_blight": {
+    diseaseId: "potato-late-blight",
+    crop: "Potato",
+    banglaCrop: "আলু",
+  },
+  "Potato___healthy": {
+    diseaseId: "potato-healthy",
+    crop: "Potato",
+    banglaCrop: "আলু",
+  },
+  "Raspberry___healthy": {
+    diseaseId: "raspberry-healthy",
+    crop: "Raspberry",
+    banglaCrop: "রাস্পবেরি",
+  },
+  "Rice_Bacterial_leaf_blight": {
+    diseaseId: "rice-bacterial-leaf-blight",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Brown_spot": {
+    diseaseId: "rice-brown-spot",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Leaf_smut": {
+    diseaseId: "rice-leaf-smut",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Soybean___healthy": {
+    diseaseId: "soybean-healthy",
+    crop: "Soybean",
+    banglaCrop: "সয়াবিন",
+  },
+  "Squash___Powdery_mildew": {
+    diseaseId: "squash-powdery-mildew",
+    crop: "Squash",
+    banglaCrop: "মিষ্টি কুমড়া",
+  },
+  "Strawberry___Leaf_scorch": {
+    diseaseId: "strawberry-leaf-scorch",
+    crop: "Strawberry",
+    banglaCrop: "স্ট্রবেরি",
+  },
+  "Strawberry___healthy": {
+    diseaseId: "strawberry-healthy",
+    crop: "Strawberry",
+    banglaCrop: "স্ট্রবেরি",
+  },
+  "Tomato_Bacterial_spot": {
+    diseaseId: "tomato-bacterial-spot",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato_Early_blight": {
+    diseaseId: "tomato-early-blight",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato_Late_blight": {
+    diseaseId: "tomato-late-blight",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato_Leaf_Mold": {
+    diseaseId: "tomato-leaf-mold",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato_Septoria_leaf_spot": {
+    diseaseId: "tomato-septoria-leaf-spot",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato_Spider_mites_Two_spotted_spider_mite": {
+    diseaseId: "tomato-spider-mites",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato__Target_Spot": {
+    diseaseId: "tomato-target-spot",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato__Tomato_YellowLeaf__Curl_Virus": {
+    diseaseId: "tomato-yellow-leaf-curl-virus",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato__Tomato_mosaic_virus": {
+    diseaseId: "tomato-mosaic-virus",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___Bacterial_spot": {
+    diseaseId: "tomato-bacterial-spot",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___Early_blight": {
+    diseaseId: "tomato-early-blight",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___Late_blight": {
+    diseaseId: "tomato-late-blight",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___Leaf_Mold": {
+    diseaseId: "tomato-leaf-mold",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___Septoria_leaf_spot": {
+    diseaseId: "tomato-septoria-leaf-spot",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___Spider_mites_Two-spotted_spider_mite": {
+    diseaseId: "tomato-spider-mites",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___Target_Spot": {
+    diseaseId: "tomato-target-spot",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+    diseaseId: "tomato-yellow-leaf-curl-virus",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___Tomato_mosaic_virus": {
+    diseaseId: "tomato-mosaic-virus",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Tomato___healthy": {
+    diseaseId: "healthy-tomato-leaf",
+    crop: "Tomato",
+    banglaCrop: "টমেটো",
+  },
+  "Wheat_BlackPoint": {
+    diseaseId: "wheat-black-point",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+  "Wheat_FusariumFootRot": {
+    diseaseId: "wheat-fusarium-foot-rot",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+  "Wheat_HealthyLeaf": {
+    diseaseId: "wheat-healthy",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+  "Wheat_LeafBlight": {
+    diseaseId: "wheat-septoria",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+  "Wheat_WheatBlast": {
+    diseaseId: "wheat-blast",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+  "Apple_Apple_scab": {
+    diseaseId: "apple-scab",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  "Apple_Black_rot": {
+    diseaseId: "apple-black-rot",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  "Apple_Cedar_apple_rust": {
+    diseaseId: "apple-cedar-rust",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  "Apple_healthy": {
+    diseaseId: "apple-healthy",
+    crop: "Apple",
+    banglaCrop: "আপেল",
+  },
+  "Blueberry_healthy": {
+    diseaseId: "blueberry-healthy",
+    crop: "Blueberry",
+    banglaCrop: "ব্লুবেরি",
+  },
+  "Cherry_including_sour_Powdery_mildew": {
+    diseaseId: "cherry-powdery-mildew",
+    crop: "Cherry",
+    banglaCrop: "চেরি",
+  },
+  "Cherry_including_sour_healthy": {
+    diseaseId: "cherry-healthy",
+    crop: "Cherry",
+    banglaCrop: "চেরি",
+  },
+  "Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot": {
+    diseaseId: "corn-gray-leaf-spot",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  "Corn_maize_Common_rust": {
+    diseaseId: "corn-common-rust",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  "Corn_maize_Northern_Leaf_Blight": {
+    diseaseId: "corn-northern-leaf-blight",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  "Corn_maize_healthy": {
+    diseaseId: "corn-healthy",
+    crop: "Corn (Maize)",
+    banglaCrop: "ভুট্টা",
+  },
+  "Grape_Black_rot": {
+    diseaseId: "grape-black-rot",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  "Grape_Esca_Black_Measles": {
+    diseaseId: "grape-esca-black-measles",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  "Grape_Leaf_blight_Isariopsis_Leaf_Spot": {
+    diseaseId: "grape-leaf-blight",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  "Grape_healthy": {
+    diseaseId: "grape-healthy",
+    crop: "Grape",
+    banglaCrop: "আঙ্গুর",
+  },
+  "Orange_Haunglongbing_Citrus_greening": {
+    diseaseId: "citrus-greening-huanglongbing",
+    crop: "Orange (Citrus)",
+    banglaCrop: "লেবু/কমলা",
+  },
+  "Peach_Bacterial_spot": {
+    diseaseId: "peach-bacterial-spot",
+    crop: "Peach",
+    banglaCrop: "পিচ",
+  },
+  "Peach_healthy": {
+    diseaseId: "peach-healthy",
+    crop: "Peach",
+    banglaCrop: "পিচ",
+  },
+  "Raspberry_healthy": {
+    diseaseId: "raspberry-healthy",
+    crop: "Raspberry",
+    banglaCrop: "রাস্পবেরি",
+  },
+  "Rice_Bacterial_Leaf_Blight": {
+    diseaseId: "rice-bacterial-leaf-blight",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Blast": {
+    diseaseId: "rice-blast",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Brown_Spot": {
+    diseaseId: "rice-brown-spot",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Healthy": {
+    diseaseId: "rice-healthy",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Hispa": {
+    diseaseId: "rice-hispa",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Leaf_Scald": {
+    diseaseId: "rice-leaf-scald",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Narrow_Brown_Spot": {
+    diseaseId: "rice-narrow-brown-spot",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Sheath_Blight": {
+    diseaseId: "rice-sheath-blight",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Rice_Tungro": {
+    diseaseId: "rice-tungro",
+    crop: "Rice",
+    banglaCrop: "ধান",
+  },
+  "Soybean_healthy": {
+    diseaseId: "soybean-healthy",
+    crop: "Soybean",
+    banglaCrop: "সয়াবিন",
+  },
+  "Squash_Powdery_mildew": {
+    diseaseId: "squash-powdery-mildew",
+    crop: "Squash",
+    banglaCrop: "মিষ্টি কুমড়া",
+  },
+  "Strawberry_Leaf_scorch": {
+    diseaseId: "strawberry-leaf-scorch",
+    crop: "Strawberry",
+    banglaCrop: "স্ট্রবেরি",
+  },
+  "Strawberry_healthy": {
+    diseaseId: "strawberry-healthy",
+    crop: "Strawberry",
+    banglaCrop: "স্ট্রবেরি",
+  },
+  "Wheat_Healthy": {
+    diseaseId: "wheat-healthy",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+  "Wheat_Septoria": {
+    diseaseId: "wheat-septoria",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+  "Wheat_Stripe_Rust": {
+    diseaseId: "wheat-stripe-rust",
+    crop: "Wheat",
+    banglaCrop: "গম",
+  },
+};

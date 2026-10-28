@@ -1,0 +1,1069 @@
+[
+  {
+    "file": "(Wheat Leaf Rust).jpg",
+    "raw_top": {
+      "label": "Rice_Narrow_Brown_Spot",
+      "score": 0.9182044863700867
+    },
+    "raw_top3": [
+      {
+        "label": "Rice_Narrow_Brown_Spot",
+        "score": 0.9182044863700867
+      },
+      {
+        "label": "Corn_maize_Common_rust",
+        "score": 0.041408099234104156
+      },
+      {
+        "label": "Corn_maize_Northern_Leaf_Blight",
+        "score": 0.019495557993650436
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Rice",
+    "bangla_crop": "ধান",
+    "confidence": 99.77,
+    "can_treat": true,
+    "prediction": {
+      "label": "Rice_Narrow_Brown_Spot",
+      "crop": "Rice",
+      "score": 0.9977,
+      "raw_score": 0.9182,
+      "conditional_score": 0.9977,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Raspberry Leaf Spot.jpg",
+    "raw_top": {
+      "label": "Squash_Powdery_mildew",
+      "score": 0.6225661635398865
+    },
+    "raw_top3": [
+      {
+        "label": "Squash_Powdery_mildew",
+        "score": 0.6225661635398865
+      },
+      {
+        "label": "Corn_maize_Common_rust",
+        "score": 0.1737138032913208
+      },
+      {
+        "label": "Strawberry_healthy",
+        "score": 0.0764254480600357
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Squash",
+    "bangla_crop": "মিষ্টি কুমড়া",
+    "confidence": 100.0,
+    "can_treat": true,
+    "prediction": {
+      "label": "Squash_Powdery_mildew",
+      "crop": "Squash",
+      "score": 1.0,
+      "raw_score": 0.6226,
+      "conditional_score": 1.0,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Raspberry Yellow Rust.jpg",
+    "raw_top": {
+      "label": "Corn_maize_Common_rust",
+      "score": 0.31443658471107483
+    },
+    "raw_top3": [
+      {
+        "label": "Corn_maize_Common_rust",
+        "score": 0.31443658471107483
+      },
+      {
+        "label": "Squash_Powdery_mildew",
+        "score": 0.31038984656333923
+      },
+      {
+        "label": "Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot",
+        "score": 0.13248306512832642
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Corn (Maize)",
+    "bangla_crop": "ভুট্টা",
+    "confidence": 62.53,
+    "can_treat": true,
+    "prediction": {
+      "label": "Corn_maize_Common_rust",
+      "crop": "Corn (Maize)",
+      "score": 0.6253,
+      "raw_score": 0.3144,
+      "conditional_score": 0.6253,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Rice Brown Spot.jpg",
+    "raw_top": {
+      "label": "Rice_Brown_Spot",
+      "score": 0.9622175693511963
+    },
+    "raw_top3": [
+      {
+        "label": "Rice_Brown_Spot",
+        "score": 0.9622175693511963
+      },
+      {
+        "label": "Rice_Blast",
+        "score": 0.005317483562976122
+      },
+      {
+        "label": "Rice_Bacterial_Leaf_Blight",
+        "score": 0.004599507432430983
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Rice",
+    "bangla_crop": "ধান",
+    "confidence": 98.83,
+    "can_treat": true,
+    "prediction": {
+      "label": "Rice_Brown_Spot",
+      "crop": "Rice",
+      "score": 0.9883,
+      "raw_score": 0.9622,
+      "conditional_score": 0.9883,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Rice Leaf Blast.jpg",
+    "raw_top": {
+      "label": "Rice_Sheath_Blight",
+      "score": 0.9513425827026367
+    },
+    "raw_top3": [
+      {
+        "label": "Rice_Sheath_Blight",
+        "score": 0.9513425827026367
+      },
+      {
+        "label": "Wheat_Stripe_Rust",
+        "score": 0.01950700394809246
+      },
+      {
+        "label": "Rice_Blast",
+        "score": 0.01640143431723118
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Rice",
+    "bangla_crop": "ধান",
+    "confidence": 97.91,
+    "can_treat": true,
+    "prediction": {
+      "label": "Rice_Sheath_Blight",
+      "crop": "Rice",
+      "score": 0.9791,
+      "raw_score": 0.9513,
+      "conditional_score": 0.9791,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Soybean Frogeye Leaf Spot).jpg",
+    "raw_top": {
+      "label": "Grape_Black_rot",
+      "score": 0.4374186396598816
+    },
+    "raw_top3": [
+      {
+        "label": "Grape_Black_rot",
+        "score": 0.4374186396598816
+      },
+      {
+        "label": "Apple_Black_rot",
+        "score": 0.07741397619247437
+      },
+      {
+        "label": "Wheat_Healthy",
+        "score": 0.07561665028333664
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Grape",
+    "bangla_crop": "আঙ্গুর",
+    "confidence": 97.85,
+    "can_treat": true,
+    "prediction": {
+      "label": "Grape_Black_rot",
+      "crop": "Grape",
+      "score": 0.9785,
+      "raw_score": 0.4374,
+      "conditional_score": 0.9785,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Soybean Rust.jpg",
+    "raw_top": {
+      "label": "Corn_maize_Common_rust",
+      "score": 0.322356253862381
+    },
+    "raw_top3": [
+      {
+        "label": "Corn_maize_Common_rust",
+        "score": 0.322356253862381
+      },
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.16746008396148682
+      },
+      {
+        "label": "Grape_Leaf_blight_Isariopsis_Leaf_Spot",
+        "score": 0.11841987073421478
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Corn (Maize)",
+    "bangla_crop": "ভুট্টা",
+    "confidence": 82.23,
+    "can_treat": true,
+    "prediction": {
+      "label": "Corn_maize_Common_rust",
+      "crop": "Corn (Maize)",
+      "score": 0.8223,
+      "raw_score": 0.3224,
+      "conditional_score": 0.8223,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Squash Mosaic Virus.jpg",
+    "raw_top": {
+      "label": "Squash_Powdery_mildew",
+      "score": 0.9031471610069275
+    },
+    "raw_top3": [
+      {
+        "label": "Squash_Powdery_mildew",
+        "score": 0.9031471610069275
+      },
+      {
+        "label": "Tomato_Septoria_leaf_spot",
+        "score": 0.07406042516231537
+      },
+      {
+        "label": "Corn_maize_Common_rust",
+        "score": 0.008431031368672848
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Squash",
+    "bangla_crop": "মিষ্টি কুমড়া",
+    "confidence": 100.0,
+    "can_treat": true,
+    "prediction": {
+      "label": "Squash_Powdery_mildew",
+      "crop": "Squash",
+      "score": 1.0,
+      "raw_score": 0.9031,
+      "conditional_score": 1.0,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Squash Powdery Mildew.jpg",
+    "raw_top": {
+      "label": "Wheat_Healthy",
+      "score": 0.3170907199382782
+    },
+    "raw_top3": [
+      {
+        "label": "Wheat_Healthy",
+        "score": 0.3170907199382782
+      },
+      {
+        "label": "Corn_maize_healthy",
+        "score": 0.25006958842277527
+      },
+      {
+        "label": "Squash_Powdery_mildew",
+        "score": 0.20051725208759308
+      }
+    ],
+    "api_status": "unknown_crop",
+    "detected_crop": "Unknown",
+    "bangla_crop": "অনির্ণীত",
+    "confidence": 32.72,
+    "can_treat": false,
+    "prediction": null
+  },
+  {
+    "file": "Strawberry Leaf Scorch.jpg",
+    "raw_top": {
+      "label": "Strawberry_Leaf_scorch",
+      "score": 0.9856746792793274
+    },
+    "raw_top3": [
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.9856746792793274
+      },
+      {
+        "label": "Rice_Blast",
+        "score": 0.0038449487183243036
+      },
+      {
+        "label": "Wheat_Healthy",
+        "score": 0.0015724836848676205
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Strawberry",
+    "bangla_crop": "স্ট্রবেরি",
+    "confidence": 100.0,
+    "can_treat": true,
+    "prediction": {
+      "label": "Strawberry_Leaf_scorch",
+      "crop": "Strawberry",
+      "score": 1.0,
+      "raw_score": 0.9857,
+      "conditional_score": 1.0,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Strawberry Powdery Mildew.jpg",
+    "raw_top": {
+      "label": "Tomato_Late_blight",
+      "score": 0.6971598267555237
+    },
+    "raw_top3": [
+      {
+        "label": "Tomato_Late_blight",
+        "score": 0.6971598267555237
+      },
+      {
+        "label": "Squash_Powdery_mildew",
+        "score": 0.221943199634552
+      },
+      {
+        "label": "Grape_healthy",
+        "score": 0.02979644015431404
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Tomato",
+    "bangla_crop": "টমেটো",
+    "confidence": 99.89,
+    "can_treat": true,
+    "prediction": {
+      "label": "Tomato_Late_blight",
+      "crop": "Tomato",
+      "score": 0.9989,
+      "raw_score": 0.6972,
+      "conditional_score": 0.9989,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Tomato Early Blight.jpg",
+    "raw_top": {
+      "label": "Grape_Black_rot",
+      "score": 0.53017657995224
+    },
+    "raw_top3": [
+      {
+        "label": "Grape_Black_rot",
+        "score": 0.53017657995224
+      },
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.17810609936714172
+      },
+      {
+        "label": "Rice_Blast",
+        "score": 0.06644070893526077
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Grape",
+    "bangla_crop": "আঙ্গুর",
+    "confidence": 98.53,
+    "can_treat": true,
+    "prediction": {
+      "label": "Grape_Black_rot",
+      "crop": "Grape",
+      "score": 0.9853,
+      "raw_score": 0.5302,
+      "conditional_score": 0.9853,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "Tomato Yellow Leaf Curl Virus.jpg",
+    "raw_top": {
+      "label": "Strawberry_Leaf_scorch",
+      "score": 0.2917247414588928
+    },
+    "raw_top3": [
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.2917247414588928
+      },
+      {
+        "label": "Squash_Powdery_mildew",
+        "score": 0.23588252067565918
+      },
+      {
+        "label": "Tomato_Late_blight",
+        "score": 0.13152004778385162
+      }
+    ],
+    "api_status": "unknown_crop",
+    "detected_crop": "Unknown",
+    "bangla_crop": "অনির্ণীত",
+    "confidence": 29.41,
+    "can_treat": false,
+    "prediction": null
+  },
+  {
+    "file": "Wheat Powdery Mildew)..jpg",
+    "raw_top": {
+      "label": "Wheat_Stripe_Rust",
+      "score": 0.6685546040534973
+    },
+    "raw_top3": [
+      {
+        "label": "Wheat_Stripe_Rust",
+        "score": 0.6685546040534973
+      },
+      {
+        "label": "Rice_Sheath_Blight",
+        "score": 0.1388622373342514
+      },
+      {
+        "label": "Wheat_Septoria",
+        "score": 0.05738992244005203
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Wheat",
+    "bangla_crop": "গম",
+    "confidence": 88.79,
+    "can_treat": true,
+    "prediction": {
+      "label": "Wheat_Stripe_Rust",
+      "crop": "Wheat",
+      "score": 0.8879,
+      "raw_score": 0.6686,
+      "conditional_score": 0.8879,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "apple black rob.jpg",
+    "raw_top": {
+      "label": "Apple_Black_rot",
+      "score": 0.4143971800804138
+    },
+    "raw_top3": [
+      {
+        "label": "Apple_Black_rot",
+        "score": 0.4143971800804138
+      },
+      {
+        "label": "Rice_Blast",
+        "score": 0.07596973329782486
+      },
+      {
+        "label": "Grape_Black_rot",
+        "score": 0.0679612085223198
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Apple",
+    "bangla_crop": "আপেল",
+    "confidence": 87.52,
+    "can_treat": true,
+    "prediction": {
+      "label": "Apple_Black_rot",
+      "crop": "Apple",
+      "score": 0.8752,
+      "raw_score": 0.4144,
+      "conditional_score": 0.8752,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "apple scrab.jpg",
+    "raw_top": {
+      "label": "Strawberry_Leaf_scorch",
+      "score": 0.41403746604919434
+    },
+    "raw_top3": [
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.41403746604919434
+      },
+      {
+        "label": "Grape_Esca_Black_Measles",
+        "score": 0.2404225766658783
+      },
+      {
+        "label": "Wheat_Healthy",
+        "score": 0.06120976805686951
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Grape",
+    "bangla_crop": "আঙ্গুর",
+    "confidence": 92.12,
+    "can_treat": true,
+    "prediction": {
+      "label": "Grape_Esca_Black_Measles",
+      "crop": "Grape",
+      "score": 0.9212,
+      "raw_score": 0.2404,
+      "conditional_score": 0.9212,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "blue bary rust.jpg",
+    "raw_top": {
+      "label": "Grape_Leaf_blight_Isariopsis_Leaf_Spot",
+      "score": 0.3676270544528961
+    },
+    "raw_top3": [
+      {
+        "label": "Grape_Leaf_blight_Isariopsis_Leaf_Spot",
+        "score": 0.3676270544528961
+      },
+      {
+        "label": "Corn_maize_Common_rust",
+        "score": 0.24424795806407928
+      },
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.2344224900007248
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Grape",
+    "bangla_crop": "আঙ্গুর",
+    "confidence": 99.3,
+    "can_treat": true,
+    "prediction": {
+      "label": "Grape_Leaf_blight_Isariopsis_Leaf_Spot",
+      "crop": "Grape",
+      "score": 0.993,
+      "raw_score": 0.3676,
+      "conditional_score": 0.993,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "bluebary sterm bright.jpg",
+    "raw_top": {
+      "label": "Wheat_Stripe_Rust",
+      "score": 0.3996634781360626
+    },
+    "raw_top3": [
+      {
+        "label": "Wheat_Stripe_Rust",
+        "score": 0.3996634781360626
+      },
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.12012648582458496
+      },
+      {
+        "label": "Rice_Blast",
+        "score": 0.10307233035564423
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Wheat",
+    "bangla_crop": "গম",
+    "confidence": 86.01,
+    "can_treat": true,
+    "prediction": {
+      "label": "Wheat_Stripe_Rust",
+      "crop": "Wheat",
+      "score": 0.8601,
+      "raw_score": 0.3997,
+      "conditional_score": 0.8601,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "capcicum bacterial spot.jpg",
+    "raw_top": {
+      "label": "Apple_Black_rot",
+      "score": 0.34276655316352844
+    },
+    "raw_top3": [
+      {
+        "label": "Apple_Black_rot",
+        "score": 0.34276655316352844
+      },
+      {
+        "label": "Pepper__bell___Bacterial_spot",
+        "score": 0.3166341185569763
+      },
+      {
+        "label": "Peach_Bacterial_spot",
+        "score": 0.2537218928337097
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Apple",
+    "bangla_crop": "আপেল",
+    "confidence": 91.7,
+    "can_treat": true,
+    "prediction": {
+      "label": "Apple_Black_rot",
+      "crop": "Apple",
+      "score": 0.917,
+      "raw_score": 0.3428,
+      "conditional_score": 0.917,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "capcicum fitofora.jpg",
+    "raw_top": {
+      "label": "Tomato_Late_blight",
+      "score": 0.4098730981349945
+    },
+    "raw_top3": [
+      {
+        "label": "Tomato_Late_blight",
+        "score": 0.4098730981349945
+      },
+      {
+        "label": "Cherry_including_sour_Powdery_mildew",
+        "score": 0.3272465169429779
+      },
+      {
+        "label": "Apple_Apple_scab",
+        "score": 0.16642984747886658
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Tomato",
+    "bangla_crop": "টমেটো",
+    "confidence": 99.77,
+    "can_treat": true,
+    "prediction": {
+      "label": "Tomato_Late_blight",
+      "crop": "Tomato",
+      "score": 0.9977,
+      "raw_score": 0.4099,
+      "conditional_score": 0.9977,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "cherry leaf spot.jpg",
+    "raw_top": {
+      "label": "Peach_Bacterial_spot",
+      "score": 0.9826971888542175
+    },
+    "raw_top3": [
+      {
+        "label": "Peach_Bacterial_spot",
+        "score": 0.9826971888542175
+      },
+      {
+        "label": "Corn_maize_Common_rust",
+        "score": 0.004712466150522232
+      },
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.0036385187413543463
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Peach",
+    "bangla_crop": "পিচ",
+    "confidence": 99.99,
+    "can_treat": true,
+    "prediction": {
+      "label": "Peach_Bacterial_spot",
+      "crop": "Peach",
+      "score": 0.9999,
+      "raw_score": 0.9827,
+      "conditional_score": 0.9999,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "cherry mildew.jpg",
+    "raw_top": {
+      "label": "Squash_Powdery_mildew",
+      "score": 0.7770357131958008
+    },
+    "raw_top3": [
+      {
+        "label": "Squash_Powdery_mildew",
+        "score": 0.7770357131958008
+      },
+      {
+        "label": "Cherry_including_sour_Powdery_mildew",
+        "score": 0.060897134244441986
+      },
+      {
+        "label": "Wheat_Healthy",
+        "score": 0.05707450583577156
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Squash",
+    "bangla_crop": "মিষ্টি কুমড়া",
+    "confidence": 100.0,
+    "can_treat": true,
+    "prediction": {
+      "label": "Squash_Powdery_mildew",
+      "crop": "Squash",
+      "score": 1.0,
+      "raw_score": 0.777,
+      "conditional_score": 1.0,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "corn common rust.jpg",
+    "raw_top": {
+      "label": "Corn_maize_Common_rust",
+      "score": 0.6044016480445862
+    },
+    "raw_top3": [
+      {
+        "label": "Corn_maize_Common_rust",
+        "score": 0.6044016480445862
+      },
+      {
+        "label": "Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot",
+        "score": 0.08383053541183472
+      },
+      {
+        "label": "Wheat_Stripe_Rust",
+        "score": 0.07023371756076813
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Corn (Maize)",
+    "bangla_crop": "ভুট্টা",
+    "confidence": 79.82,
+    "can_treat": true,
+    "prediction": {
+      "label": "Corn_maize_Common_rust",
+      "crop": "Corn (Maize)",
+      "score": 0.7982,
+      "raw_score": 0.6044,
+      "conditional_score": 0.7982,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "corn leaf bright.jpg",
+    "raw_top": {
+      "label": "Corn_maize_Northern_Leaf_Blight",
+      "score": 0.6997382044792175
+    },
+    "raw_top3": [
+      {
+        "label": "Corn_maize_Northern_Leaf_Blight",
+        "score": 0.6997382044792175
+      },
+      {
+        "label": "Wheat_Septoria",
+        "score": 0.23511110246181488
+      },
+      {
+        "label": "Rice_Leaf_Scald",
+        "score": 0.01951002888381481
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Corn (Maize)",
+    "bangla_crop": "ভুট্টা",
+    "confidence": 99.64,
+    "can_treat": true,
+    "prediction": {
+      "label": "Corn_maize_Northern_Leaf_Blight",
+      "crop": "Corn (Maize)",
+      "score": 0.9964,
+      "raw_score": 0.6997,
+      "conditional_score": 0.9964,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "grape eska.jpg",
+    "raw_top": {
+      "label": "Strawberry_Leaf_scorch",
+      "score": 0.43558239936828613
+    },
+    "raw_top3": [
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.43558239936828613
+      },
+      {
+        "label": "Potato___Early_blight",
+        "score": 0.06795462220907211
+      },
+      {
+        "label": "Squash_Powdery_mildew",
+        "score": 0.06595520675182343
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Strawberry",
+    "bangla_crop": "স্ট্রবেরি",
+    "confidence": 99.63,
+    "can_treat": true,
+    "prediction": {
+      "label": "Strawberry_Leaf_scorch",
+      "crop": "Strawberry",
+      "score": 0.9963,
+      "raw_score": 0.4356,
+      "conditional_score": 0.9963,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "grape rock.jpg",
+    "raw_top": {
+      "label": "Grape_Black_rot",
+      "score": 0.765722930431366
+    },
+    "raw_top3": [
+      {
+        "label": "Grape_Black_rot",
+        "score": 0.765722930431366
+      },
+      {
+        "label": "Grape_healthy",
+        "score": 0.04350709542632103
+      },
+      {
+        "label": "Apple_Black_rot",
+        "score": 0.03202875331044197
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Grape",
+    "bangla_crop": "আঙ্গুর",
+    "confidence": 93.01,
+    "can_treat": true,
+    "prediction": {
+      "label": "Grape_Black_rot",
+      "crop": "Grape",
+      "score": 0.9301,
+      "raw_score": 0.7657,
+      "conditional_score": 0.9301,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "orange citus.jpg",
+    "raw_top": {
+      "label": "Peach_Bacterial_spot",
+      "score": 0.7095085978507996
+    },
+    "raw_top3": [
+      {
+        "label": "Peach_Bacterial_spot",
+        "score": 0.7095085978507996
+      },
+      {
+        "label": "Pepper__bell___Bacterial_spot",
+        "score": 0.12458053231239319
+      },
+      {
+        "label": "Rice_Brown_Spot",
+        "score": 0.03794150799512863
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Peach",
+    "bangla_crop": "পিচ",
+    "confidence": 99.81,
+    "can_treat": true,
+    "prediction": {
+      "label": "Peach_Bacterial_spot",
+      "crop": "Peach",
+      "score": 0.9981,
+      "raw_score": 0.7095,
+      "conditional_score": 0.9981,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "orange grining.jpg",
+    "raw_top": {
+      "label": "Orange_Haunglongbing_Citrus_greening",
+      "score": 0.39360350370407104
+    },
+    "raw_top3": [
+      {
+        "label": "Orange_Haunglongbing_Citrus_greening",
+        "score": 0.39360350370407104
+      },
+      {
+        "label": "Cherry_including_sour_Powdery_mildew",
+        "score": 0.3146456480026245
+      },
+      {
+        "label": "Tomato_Late_blight",
+        "score": 0.17041537165641785
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Orange (Citrus)",
+    "bangla_crop": "লেবু/কমলা",
+    "confidence": 100.0,
+    "can_treat": true,
+    "prediction": {
+      "label": "Orange_Haunglongbing_Citrus_greening",
+      "crop": "Orange (Citrus)",
+      "score": 1.0,
+      "raw_score": 0.3936,
+      "conditional_score": 1.0,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "peach bectarial spot.jpg",
+    "raw_top": {
+      "label": "Rice_Brown_Spot",
+      "score": 0.6188310980796814
+    },
+    "raw_top3": [
+      {
+        "label": "Rice_Brown_Spot",
+        "score": 0.6188310980796814
+      },
+      {
+        "label": "Rice_Blast",
+        "score": 0.291241317987442
+      },
+      {
+        "label": "Wheat_Stripe_Rust",
+        "score": 0.04910075291991234
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Rice",
+    "bangla_crop": "ধান",
+    "confidence": 67.82,
+    "can_treat": true,
+    "prediction": {
+      "label": "Rice_Brown_Spot",
+      "crop": "Rice",
+      "score": 0.6782,
+      "raw_score": 0.6188,
+      "conditional_score": 0.6782,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "pech leaf curl.jpg",
+    "raw_top": {
+      "label": "Peach_healthy",
+      "score": 0.1607242375612259
+    },
+    "raw_top3": [
+      {
+        "label": "Peach_healthy",
+        "score": 0.1607242375612259
+      },
+      {
+        "label": "Wheat_Healthy",
+        "score": 0.13463494181632996
+      },
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.12658196687698364
+      }
+    ],
+    "api_status": "unknown_crop",
+    "detected_crop": "Unknown",
+    "bangla_crop": "অনির্ণীত",
+    "confidence": 21.08,
+    "can_treat": false,
+    "prediction": null
+  },
+  {
+    "file": "potato blight.jpg",
+    "raw_top": {
+      "label": "Strawberry_Leaf_scorch",
+      "score": 0.5197346806526184
+    },
+    "raw_top3": [
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.5197346806526184
+      },
+      {
+        "label": "Grape_Black_rot",
+        "score": 0.21359190344810486
+      },
+      {
+        "label": "Tomato_Early_blight",
+        "score": 0.17668022215366364
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Strawberry",
+    "bangla_crop": "স্ট্রবেরি",
+    "confidence": 99.98,
+    "can_treat": true,
+    "prediction": {
+      "label": "Strawberry_Leaf_scorch",
+      "crop": "Strawberry",
+      "score": 0.9998,
+      "raw_score": 0.5197,
+      "conditional_score": 0.9998,
+      "isHealthy": false
+    }
+  },
+  {
+    "file": "potato let bright.jpg",
+    "raw_top": {
+      "label": "Potato___Early_blight",
+      "score": 0.6464493870735168
+    },
+    "raw_top3": [
+      {
+        "label": "Potato___Early_blight",
+        "score": 0.6464493870735168
+      },
+      {
+        "label": "Strawberry_Leaf_scorch",
+        "score": 0.13096484541893005
+      },
+      {
+        "label": "Squash_Powdery_mildew",
+        "score": 0.06049646437168121
+      }
+    ],
+    "api_status": "success",
+    "detected_crop": "Potato",
+    "bangla_crop": "আলু",
+    "confidence": 99.78,
+    "can_treat": true,
+    "prediction": {
+      "label": "Potato___Early_blight",
+      "crop": "Potato",
+      "score": 0.9978,
+      "raw_score": 0.6464,
+      "conditional_score": 0.9978,
+      "isHealthy": false
+    }
+  }
+]

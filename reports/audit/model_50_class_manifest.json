@@ -1,0 +1,502 @@
+[
+  {
+    "output_index": 0,
+    "training_class_name": "Pepper__bell___Bacterial_spot",
+    "crop_id": "Bell Pepper",
+    "bangla_crop": "মরিচ",
+    "disease_id": "pepper-bacterial-spot",
+    "is_healthy": false,
+    "total_classes_for_crop": 2,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 1,
+    "training_class_name": "Pepper__bell___healthy",
+    "crop_id": "Bell Pepper",
+    "bangla_crop": "মরিচ",
+    "disease_id": "pepper-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 2,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 2,
+    "training_class_name": "Potato___Early_blight",
+    "crop_id": "Potato",
+    "bangla_crop": "আলু",
+    "disease_id": "potato-early-blight",
+    "is_healthy": false,
+    "total_classes_for_crop": 3,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 3,
+    "training_class_name": "Potato___Late_blight",
+    "crop_id": "Potato",
+    "bangla_crop": "আলু",
+    "disease_id": "potato-late-blight",
+    "is_healthy": false,
+    "total_classes_for_crop": 3,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 4,
+    "training_class_name": "Potato___healthy",
+    "crop_id": "Potato",
+    "bangla_crop": "আলু",
+    "disease_id": "potato-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 3,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 5,
+    "training_class_name": "Rice_Bacterial_Leaf_Blight",
+    "crop_id": "Rice",
+    "bangla_crop": "ধান",
+    "disease_id": "rice-bacterial-leaf-blight",
+    "is_healthy": false,
+    "total_classes_for_crop": 9,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 6,
+    "training_class_name": "Rice_Blast",
+    "crop_id": "Rice",
+    "bangla_crop": "ধান",
+    "disease_id": "rice-blast",
+    "is_healthy": false,
+    "total_classes_for_crop": 9,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 7,
+    "training_class_name": "Rice_Brown_Spot",
+    "crop_id": "Rice",
+    "bangla_crop": "ধান",
+    "disease_id": "rice-brown-spot",
+    "is_healthy": false,
+    "total_classes_for_crop": 9,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 8,
+    "training_class_name": "Rice_Healthy",
+    "crop_id": "Rice",
+    "bangla_crop": "ধান",
+    "disease_id": "rice-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 9,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 9,
+    "training_class_name": "Rice_Hispa",
+    "crop_id": "Rice",
+    "bangla_crop": "ধান",
+    "disease_id": "rice-hispa",
+    "is_healthy": false,
+    "total_classes_for_crop": 9,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 10,
+    "training_class_name": "Rice_Leaf_Scald",
+    "crop_id": "Rice",
+    "bangla_crop": "ধান",
+    "disease_id": "rice-leaf-scald",
+    "is_healthy": false,
+    "total_classes_for_crop": 9,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 11,
+    "training_class_name": "Rice_Narrow_Brown_Spot",
+    "crop_id": "Rice",
+    "bangla_crop": "ধান",
+    "disease_id": "rice-narrow-brown-spot",
+    "is_healthy": false,
+    "total_classes_for_crop": 9,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 12,
+    "training_class_name": "Rice_Sheath_Blight",
+    "crop_id": "Rice",
+    "bangla_crop": "ধান",
+    "disease_id": "rice-sheath-blight",
+    "is_healthy": false,
+    "total_classes_for_crop": 9,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 13,
+    "training_class_name": "Rice_Tungro",
+    "crop_id": "Rice",
+    "bangla_crop": "ধান",
+    "disease_id": "rice-tungro",
+    "is_healthy": false,
+    "total_classes_for_crop": 9,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 14,
+    "training_class_name": "Tomato_Bacterial_spot",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-bacterial-spot",
+    "is_healthy": false,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 15,
+    "training_class_name": "Tomato_Early_blight",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-early-blight",
+    "is_healthy": false,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 16,
+    "training_class_name": "Tomato_Late_blight",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-late-blight",
+    "is_healthy": false,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 17,
+    "training_class_name": "Tomato_Leaf_Mold",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-leaf-mold",
+    "is_healthy": false,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 18,
+    "training_class_name": "Tomato_Septoria_leaf_spot",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-septoria-leaf-spot",
+    "is_healthy": false,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 19,
+    "training_class_name": "Tomato_Spider_mites_Two_spotted_spider_mite",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-spider-mites-two-spotted-spider-mite",
+    "is_healthy": false,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 20,
+    "training_class_name": "Tomato__Target_Spot",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-target-spot",
+    "is_healthy": false,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 21,
+    "training_class_name": "Tomato__Tomato_YellowLeaf__Curl_Virus",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-tomato-yellowleaf-curl-virus",
+    "is_healthy": false,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 22,
+    "training_class_name": "Tomato__Tomato_mosaic_virus",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-tomato-mosaic-virus",
+    "is_healthy": false,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 23,
+    "training_class_name": "Tomato_healthy",
+    "crop_id": "Tomato",
+    "bangla_crop": "টমেটো",
+    "disease_id": "tomato-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 10,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 24,
+    "training_class_name": "Apple_Apple_scab",
+    "crop_id": "Apple",
+    "bangla_crop": "আপেল",
+    "disease_id": "apple-apple-scab",
+    "is_healthy": false,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 25,
+    "training_class_name": "Apple_Black_rot",
+    "crop_id": "Apple",
+    "bangla_crop": "আপেল",
+    "disease_id": "apple-black-rot",
+    "is_healthy": false,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 26,
+    "training_class_name": "Apple_Cedar_apple_rust",
+    "crop_id": "Apple",
+    "bangla_crop": "আপেল",
+    "disease_id": "apple-cedar-apple-rust",
+    "is_healthy": false,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 27,
+    "training_class_name": "Apple_healthy",
+    "crop_id": "Apple",
+    "bangla_crop": "আপেল",
+    "disease_id": "apple-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 28,
+    "training_class_name": "Blueberry_healthy",
+    "crop_id": "Blueberry",
+    "bangla_crop": "ব্লুবেরি",
+    "disease_id": "blueberry-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 1,
+    "supported_scope": "Single-condition benchmark"
+  },
+  {
+    "output_index": 29,
+    "training_class_name": "Cherry_including_sour_Powdery_mildew",
+    "crop_id": "Cherry",
+    "bangla_crop": "চেরি",
+    "disease_id": "cherry-including-sour-powdery-mildew",
+    "is_healthy": false,
+    "total_classes_for_crop": 2,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 30,
+    "training_class_name": "Cherry_including_sour_healthy",
+    "crop_id": "Cherry",
+    "bangla_crop": "চেরি",
+    "disease_id": "cherry-including-sour-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 2,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 31,
+    "training_class_name": "Corn_maize_Cercospora_leaf_spot_Gray_leaf_spot",
+    "crop_id": "Corn (Maize)",
+    "bangla_crop": "ভুট্টা",
+    "disease_id": "corn-maize-cercospora-leaf-spot-gray-leaf-spot",
+    "is_healthy": false,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 32,
+    "training_class_name": "Corn_maize_Common_rust",
+    "crop_id": "Corn (Maize)",
+    "bangla_crop": "ভুট্টা",
+    "disease_id": "corn-maize-common-rust",
+    "is_healthy": false,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 33,
+    "training_class_name": "Corn_maize_Northern_Leaf_Blight",
+    "crop_id": "Corn (Maize)",
+    "bangla_crop": "ভুট্টা",
+    "disease_id": "corn-maize-northern-leaf-blight",
+    "is_healthy": false,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 34,
+    "training_class_name": "Corn_maize_healthy",
+    "crop_id": "Corn (Maize)",
+    "bangla_crop": "ভুট্টা",
+    "disease_id": "corn-maize-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 35,
+    "training_class_name": "Grape_Black_rot",
+    "crop_id": "Grape",
+    "bangla_crop": "আঙ্গুর",
+    "disease_id": "grape-black-rot",
+    "is_healthy": false,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 36,
+    "training_class_name": "Grape_Esca_Black_Measles",
+    "crop_id": "Grape",
+    "bangla_crop": "আঙ্গুর",
+    "disease_id": "grape-esca-black-measles",
+    "is_healthy": false,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 37,
+    "training_class_name": "Grape_Leaf_blight_Isariopsis_Leaf_Spot",
+    "crop_id": "Grape",
+    "bangla_crop": "আঙ্গুর",
+    "disease_id": "grape-leaf-blight-isariopsis-leaf-spot",
+    "is_healthy": false,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 38,
+    "training_class_name": "Grape_healthy",
+    "crop_id": "Grape",
+    "bangla_crop": "আঙ্গুর",
+    "disease_id": "grape-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 4,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 39,
+    "training_class_name": "Orange_Haunglongbing_Citrus_greening",
+    "crop_id": "Orange (Citrus)",
+    "bangla_crop": "লেবু / কমলা",
+    "disease_id": "orange-haunglongbing-citrus-greening",
+    "is_healthy": false,
+    "total_classes_for_crop": 1,
+    "supported_scope": "Single-condition benchmark"
+  },
+  {
+    "output_index": 40,
+    "training_class_name": "Peach_Bacterial_spot",
+    "crop_id": "Peach",
+    "bangla_crop": "পিচ",
+    "disease_id": "peach-bacterial-spot",
+    "is_healthy": false,
+    "total_classes_for_crop": 2,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 41,
+    "training_class_name": "Peach_healthy",
+    "crop_id": "Peach",
+    "bangla_crop": "পিচ",
+    "disease_id": "peach-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 2,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 42,
+    "training_class_name": "Raspberry_healthy",
+    "crop_id": "Raspberry",
+    "bangla_crop": "রাস্পবেরি",
+    "disease_id": "raspberry-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 1,
+    "supported_scope": "Single-condition benchmark"
+  },
+  {
+    "output_index": 43,
+    "training_class_name": "Soybean_healthy",
+    "crop_id": "Soybean",
+    "bangla_crop": "সয়াবিন",
+    "disease_id": "soybean-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 1,
+    "supported_scope": "Single-condition benchmark"
+  },
+  {
+    "output_index": 44,
+    "training_class_name": "Squash_Powdery_mildew",
+    "crop_id": "Squash",
+    "bangla_crop": "মিষ্টি কুমড়া / স্কোয়াশ",
+    "disease_id": "squash-powdery-mildew",
+    "is_healthy": false,
+    "total_classes_for_crop": 1,
+    "supported_scope": "Single-condition benchmark"
+  },
+  {
+    "output_index": 45,
+    "training_class_name": "Strawberry_Leaf_scorch",
+    "crop_id": "Strawberry",
+    "bangla_crop": "স্ট্রবেরি",
+    "disease_id": "strawberry-leaf-scorch",
+    "is_healthy": false,
+    "total_classes_for_crop": 2,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 46,
+    "training_class_name": "Strawberry_healthy",
+    "crop_id": "Strawberry",
+    "bangla_crop": "স্ট্রবেরি",
+    "disease_id": "strawberry-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 2,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 47,
+    "training_class_name": "Wheat_Healthy",
+    "crop_id": "Wheat",
+    "bangla_crop": "গম",
+    "disease_id": "wheat-healthy",
+    "is_healthy": true,
+    "total_classes_for_crop": 3,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 48,
+    "training_class_name": "Wheat_Septoria",
+    "crop_id": "Wheat",
+    "bangla_crop": "গম",
+    "disease_id": "wheat-septoria",
+    "is_healthy": false,
+    "total_classes_for_crop": 3,
+    "supported_scope": "Multi-pathology diagnosis"
+  },
+  {
+    "output_index": 49,
+    "training_class_name": "Wheat_Stripe_Rust",
+    "crop_id": "Wheat",
+    "bangla_crop": "গম",
+    "disease_id": "wheat-stripe-rust",
+    "is_healthy": false,
+    "total_classes_for_crop": 3,
+    "supported_scope": "Multi-pathology diagnosis"
+  }
+]

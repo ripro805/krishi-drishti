@@ -1,18 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { spawn } from "child_process";
 import path from "path";
+import { CROP_REGISTRY, LABEL_TO_CROP, THRESHOLDS, resolveCropName } from "@/lib/cropRegistry";
 
 /**
- * Multi-tier AI Inference Engine for KrishiDrishti
+ * Multi-tier AI Inference & Validation Engine for KrishiDrishti
  *
  * Tier 1: Local FastAPI model server (http://127.0.0.1:5005/predict)
  *         Fastest (~50ms) as the model weights are preloaded in memory.
  *
- * Tier 2: Direct Python CLI execution (scripts/predict.py --stdin)
+ * Tier 2: Direct Python CLI execution (scripts/predict.py --stdin --meta --hint=...)
  *         Automatic local fallback if the FastAPI server is not currently running.
  *
- * Tier 3: HuggingFace Serverless Inference Router
- *         Remote fallback if Python is unavailable.
+ * Tier 3: HuggingFace Serverless Inference Router + Local Hierarchical Aggregation
+ *         Remote fallback if local Python is unavailable.
  */
 
 const LOCAL_SERVER_URL = process.env.MODEL_SERVER_URL || "http://127.0.0.1:5005/predict";
@@ -20,29 +21,29 @@ const HF_MODEL_ID = process.env.HF_MODEL_ID || "ripro805/krishidrishti-plant-dis
 const HF_ROUTER_URL = `https://router.huggingface.co/hf-inference/models/${HF_MODEL_ID}`;
 const HF_TOKEN = process.env.HF_TOKEN || "";
 
-interface Prediction {
-  label: string;
-  score: number;
-}
-
-interface FastAPIResponse {
-  predictions: Prediction[];
-  latencyMs?: number;
-  provider?: string;
-  classesCount?: number;
-  dominantCrop?: string;
-  dominantCropScore?: number;
+interface StructuredModelResponse {
+  status: string;
+  can_provide_treatment: boolean;
+  selected_crop?: string | null;
+  detected_crop?: string | null;
+  bangla_selected_crop?: string | null;
+  bangla_detected_crop?: string | null;
+  confidence?: number | null;
+  crop_confidence?: number | null;
+  prediction?: any;
+  predictions: Array<{ label: string; score: number; raw_score?: number }>;
+  message?: string;
+  banglaMessage?: string;
   cropScores?: Record<string, number>;
   isCrossCropAmbiguous?: boolean;
-  disambiguatedTop?: {
-    label: string;
-    score: number;
-    crop: string;
-  };
+  cropMargin?: number;
+  disambiguatedTop?: any;
+  latencyMs?: number;
+  provider?: string;
 }
 
 // ── Tier 1: Local FastAPI Server ──────────────────────────────────
-async function queryLocalFastAPI(base64Data: string, cropHint?: string): Promise<FastAPIResponse> {
+async function queryLocalFastAPI(base64Data: string, cropHint?: string): Promise<StructuredModelResponse> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 4000);
 
@@ -56,8 +57,11 @@ async function queryLocalFastAPI(base64Data: string, cropHint?: string): Promise
 
     if (response.ok) {
       const data = await response.json();
-      if (Array.isArray(data.predictions) && data.predictions.length > 0) {
-        return data as FastAPIResponse;
+      if (data && (data.status || Array.isArray(data.predictions))) {
+        return {
+          ...data,
+          provider: "local-fastapi",
+        } as StructuredModelResponse;
       }
     }
     throw new Error(`Local FastAPI error: status ${response.status}`);
@@ -67,10 +71,15 @@ async function queryLocalFastAPI(base64Data: string, cropHint?: string): Promise
 }
 
 // ── Tier 2: Local Python CLI Subprocess ───────────────────────────
-function queryPythonCLI(base64Data: string): Promise<Prediction[]> {
+function queryPythonCLI(base64Data: string, cropHint?: string): Promise<StructuredModelResponse> {
   return new Promise((resolve, reject) => {
     const scriptPath = path.resolve(process.cwd(), "scripts", "predict.py");
-    const py = spawn("python", [scriptPath, "--stdin"], {
+    const cliArgs = ["--stdin", "--meta"];
+    if (cropHint) {
+      cliArgs.push(`--hint=${cropHint}`);
+    }
+
+    const py = spawn("python", [scriptPath, ...cliArgs], {
       stdio: ["pipe", "pipe", "pipe"],
     });
 
@@ -98,8 +107,11 @@ function queryPythonCLI(base64Data: string): Promise<Prediction[]> {
 
       try {
         const parsed = JSON.parse(stdout.trim());
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return resolve(parsed);
+        if (parsed && (parsed.status || Array.isArray(parsed.predictions))) {
+          return resolve({
+            ...parsed,
+            provider: "local-python-cli",
+          });
         }
         if (parsed.error) {
           return reject(new Error(parsed.error));
@@ -115,11 +127,13 @@ function queryPythonCLI(base64Data: string): Promise<Prediction[]> {
   });
 }
 
-// ── Tier 3: Hugging Face Router ──────────────────────────────────
+// ── Tier 3: Hugging Face Router + Local Aggregation ───────────────
 async function queryHuggingFaceRouter(
   binaryData: Buffer,
-  mimeType: string
-): Promise<Prediction[]> {
+  mimeType: string,
+  cropHint?: string
+): Promise<StructuredModelResponse> {
+  const t0 = Date.now();
   const response = await fetch(HF_ROUTER_URL, {
     method: "POST",
     headers: {
@@ -129,13 +143,200 @@ async function queryHuggingFaceRouter(
     body: binaryData,
   });
 
-  if (response.ok) {
-    const result = await response.json();
-    return result as Prediction[];
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`HF Router error: ${response.status}: ${errorText}`);
   }
 
-  const errorText = await response.text();
-  throw new Error(`HF Router error: ${response.status}: ${errorText}`);
+  const rawPredictions: Array<{ label: string; score: number }> = await response.json();
+  const latencyMs = Date.now() - t0;
+
+  // Aggregate probabilities across all 16 crops using cropRegistry
+  const cropMass: Record<string, number> = {};
+  const predsByCrop: Record<string, Array<{ label: string; score: number }>> = {};
+
+  for (const cropName of Object.keys(CROP_REGISTRY)) {
+    cropMass[cropName] = 0.0;
+    predsByCrop[cropName] = [];
+  }
+
+  for (const p of rawPredictions) {
+    const crop = LABEL_TO_CROP[p.label];
+    if (crop && cropMass[crop] !== undefined) {
+      cropMass[crop] += p.score;
+      predsByCrop[crop].push(p);
+    }
+  }
+
+  const sortedCrops = Object.entries(cropMass).sort((a, b) => b[1] - a[1]);
+  const [dominantCrop, dominantCropMass] = sortedCrops[0] || ["Unknown", 0.0];
+  const [secondCrop, secondCropMass] = sortedCrops[1] || ["None", 0.0];
+  const cropMargin = dominantCropMass - secondCropMass;
+
+  const resolvedHint = resolveCropName(cropHint);
+  const isUserGuided = resolvedHint !== null;
+
+  if (isUserGuided) {
+    const selectedCropName = resolvedHint!;
+    const selectedMass = cropMass[selectedCropName] || 0.0;
+    const selMeta = CROP_REGISTRY[selectedCropName];
+    const domMeta = CROP_REGISTRY[dominantCrop] || { bnName: dominantCrop };
+
+    // Selected Crop Mismatch Check (Two-Stage Verification)
+    const dominantIsCredible =
+      dominantCropMass >= 0.35 ||
+      (dominantCropMass >= 0.28 && cropMargin >= THRESHOLDS.cropAmbiguityMargin);
+
+    const isMismatch =
+      (selectedCropName !== dominantCrop && dominantIsCredible) ||
+      selectedMass < THRESHOLDS.selectedCropAcceptanceThreshold;
+
+    if (isMismatch) {
+      const conf = Math.round(selectedMass * 10000) / 100;
+
+      return {
+        status: "crop_mismatch",
+        can_provide_treatment: false,
+        selected_crop: selectedCropName,
+        detected_crop: "Unknown / Unsupported",
+        bangla_selected_crop: selMeta.bnName,
+        bangla_detected_crop: "অনির্ণীত",
+        confidence: conf,
+        crop_confidence: conf,
+        prediction: null,
+        predictions: [],
+        message: `The uploaded image does not appear to match the selected crop, ${selectedCropName}.`,
+        banglaMessage: `আপলোড করা পাতাটিতে নির্বাচিত ফসল '${selMeta.bnName}'-এর কোনো পরিচিত রোগ বা লক্ষণ মেলেনি। ভুল চিকিৎসা রোধে ফলাফল অনির্ণীত রাখা হয়েছে।`,
+        cropScores: {},
+        isCrossCropAmbiguous: true,
+        cropMargin: Math.round(cropMargin * 10000) / 10000,
+        provider: "huggingface-router-fallback",
+        latencyMs,
+      };
+    }
+
+    const candidates = predsByCrop[selectedCropName].sort((a, b) => b.score - a.score);
+    const best = candidates[0];
+    const condScore = selectedMass > 0 ? best.score / selectedMass : best.score;
+    const isHealthy = selMeta.healthyClasses.includes(best.label);
+    const isLowConfidence = condScore < THRESHOLDS.diseaseConfidenceThreshold || best.score < 0.12;
+    const status = isLowConfidence ? "low_confidence" : "success";
+
+    return {
+      status,
+      can_provide_treatment: !isHealthy && status === "success",
+      selected_crop: selectedCropName,
+      detected_crop: selectedCropName,
+      bangla_selected_crop: selMeta.bnName,
+      bangla_detected_crop: selMeta.bnName,
+      confidence: Math.round(condScore * 10000) / 100,
+      crop_confidence: Math.round(selectedMass * 10000) / 100,
+      prediction: status === "success" ? {
+        label: best.label,
+        crop: selectedCropName,
+        score: Math.round(condScore * 10000) / 10000,
+        isHealthy,
+      } : null,
+      predictions: status === "success" ? candidates.map((p) => ({
+        label: p.label,
+        score: Math.round((selectedMass > 0 ? p.score / selectedMass : p.score) * 10000) / 10000,
+        raw_score: Math.round(p.score * 10000) / 10000,
+      })) : [],
+      message: `${isHealthy ? "Healthy foliage" : "Pathology confirmed"} identified for ${selectedCropName}.`,
+      banglaMessage: `${selMeta.bnName} ফসলে ${isHealthy ? "সুস্থ পাতা" : "রোগ"} নিশ্চিতভাবে সনাক্ত হয়েছে।`,
+      cropScores: Object.fromEntries(sortedCrops.slice(0, 5).map(([c, m]) => [c, Math.round(m * 10000) / 10000])),
+      isCrossCropAmbiguous: cropMargin < THRESHOLDS.cropAmbiguityMargin,
+      cropMargin: Math.round(cropMargin * 10000) / 10000,
+      provider: "huggingface-router-fallback",
+      latencyMs,
+    };
+  }
+
+  // Auto-Detect Mode (Two-Stage Verification)
+  const CONFUSION_PAIRS: [string, string][] = [
+    ["Strawberry", "Grape"],
+    ["Strawberry", "Rice"],
+    ["Strawberry", "Tomato"],
+    ["Strawberry", "Bell Pepper"],
+    ["Wheat", "Rice"],
+    ["Corn", "Rice"],
+    ["Corn", "Wheat"],
+    ["Potato", "Tomato"],
+    ["Apple", "Grape"],
+    ["Apple", "Peach"],
+    ["Squash", "Strawberry"],
+  ];
+  const isConfPair = CONFUSION_PAIRS.some(
+    ([a, b]) => (dominantCrop === a && secondCrop === b) || (dominantCrop === b && secondCrop === a)
+  );
+  const minMarginNeeded = isConfPair ? 0.35 : 0.20;
+  const autoIsCredible =
+    (dominantCropMass >= 0.65 && cropMargin >= minMarginNeeded) ||
+    dominantCropMass >= 0.75;
+
+  if (!autoIsCredible) {
+    return {
+      status: "unknown_crop",
+      can_provide_treatment: false,
+      selected_crop: null,
+      detected_crop: "Unknown",
+      bangla_selected_crop: null,
+      bangla_detected_crop: "অনির্ণীত",
+      confidence: Math.round(dominantCropMass * 10000) / 100,
+      crop_confidence: Math.round(dominantCropMass * 10000) / 100,
+      prediction: null,
+      predictions: [],
+      message:
+        "Inconclusive result. The AI model detected ambiguous symptoms matching multiple crops in auto mode. To guarantee diagnostic accuracy and prevent incorrect treatments, please select your specific crop from the dropdown.",
+      banglaMessage:
+        "অনির্ণীত ফলাফল। পাতার লক্ষণগুলো একাধিক ফসলের লক্ষণের সাথে আংশিক মিল প্রদর্শন করছে। ভুল ফলাফল ও ভুল চিকিৎসা এড়াতে অনুগ্রহ করে ড্রপডাউন থেকে আপনার নির্দিষ্ট ফসলটি নির্বাচন করুন।",
+      cropScores: Object.fromEntries(sortedCrops.slice(0, 5).map(([c, m]) => [c, Math.round(m * 10000) / 10000])),
+      isCrossCropAmbiguous: true,
+      cropMargin: Math.round(cropMargin * 10000) / 10000,
+      provider: "huggingface-router-fallback",
+      latencyMs,
+    };
+  }
+
+  const domMeta = CROP_REGISTRY[dominantCrop] || { bnName: dominantCrop, healthyClasses: [] };
+  const candidates = predsByCrop[dominantCrop].sort((a, b) => b.score - a.score);
+  const best = candidates[0];
+  const condScore = dominantCropMass > 0 ? best.score / dominantCropMass : best.score;
+  const isHealthy = domMeta.healthyClasses.includes(best.label);
+  const isLowConfidence =
+    condScore < THRESHOLDS.diseaseConfidenceThreshold ||
+    best.score < 0.12 ||
+    (isHealthy && best.score < 0.70);
+  const status = isLowConfidence ? "low_confidence" : "success";
+
+  return {
+    status,
+    can_provide_treatment: !isHealthy && status === "success",
+    selected_crop: null,
+    detected_crop: dominantCrop,
+    bangla_selected_crop: null,
+    bangla_detected_crop: domMeta.bnName,
+    confidence: Math.round(condScore * 10000) / 100,
+    crop_confidence: Math.round(dominantCropMass * 10000) / 100,
+    prediction: status === "success" ? {
+      label: best.label,
+      crop: dominantCrop,
+      score: Math.round(condScore * 10000) / 10000,
+      isHealthy,
+    } : null,
+    predictions: status === "success" ? candidates.map((p) => ({
+      label: p.label,
+      score: Math.round((dominantCropMass > 0 ? p.score / dominantCropMass : p.score) * 10000) / 10000,
+      raw_score: Math.round(p.score * 10000) / 10000,
+    })) : [],
+    message: `${isHealthy ? "Healthy foliage" : "Pathology confirmed"} identified for ${dominantCrop}.`,
+    banglaMessage: `${domMeta.bnName} ফসলে ${isHealthy ? "সুস্থ পাতা" : "রোগ"} নিশ্চিতভাবে সনাক্ত হয়েছে।`,
+    cropScores: Object.fromEntries(sortedCrops.slice(0, 5).map(([c, m]) => [c, Math.round(m * 10000) / 10000])),
+    isCrossCropAmbiguous: cropMargin < THRESHOLDS.cropAmbiguityMargin && dominantCropMass < 0.50,
+    cropMargin: Math.round(cropMargin * 10000) / 10000,
+    provider: "huggingface-router-fallback",
+    latencyMs,
+  };
 }
 
 // ── Main API Route Handler ───────────────────────────────────────
@@ -159,24 +360,15 @@ export async function POST(request: NextRequest) {
     // 1. Try Tier 1: Local FastAPI Server (fastest)
     try {
       const fastApiRes = await queryLocalFastAPI(base64Data, cropHint);
-      return NextResponse.json({
-        predictions: fastApiRes.predictions,
-        latencyMs: fastApiRes.latencyMs,
-        provider: "local-fastapi",
-        dominantCrop: fastApiRes.dominantCrop,
-        dominantCropScore: fastApiRes.dominantCropScore,
-        cropScores: fastApiRes.cropScores,
-        isCrossCropAmbiguous: fastApiRes.isCrossCropAmbiguous,
-        disambiguatedTop: fastApiRes.disambiguatedTop,
-      });
+      return NextResponse.json(fastApiRes);
     } catch (e: any) {
       console.warn("[detect API] Tier 1 (FastAPI) unavailable, falling back to Tier 2 (Python CLI)...");
     }
 
     // 2. Try Tier 2: Python CLI Subprocess
     try {
-      const predictions = await queryPythonCLI(base64Data);
-      return NextResponse.json({ predictions, provider: "local-python-cli" });
+      const cliRes = await queryPythonCLI(base64Data, cropHint);
+      return NextResponse.json(cliRes);
     } catch (e: any) {
       console.warn("[detect API] Tier 2 (Python CLI) failed, falling back to Tier 3 (HuggingFace)...", e.message);
     }
@@ -184,18 +376,23 @@ export async function POST(request: NextRequest) {
     // 3. Try Tier 3: Remote HuggingFace Router
     try {
       const binaryData = Buffer.from(base64Data, "base64");
-      const predictions = await queryHuggingFaceRouter(binaryData, mimeType);
-      return NextResponse.json({ predictions, provider: "huggingface-router" });
+      const routerRes = await queryHuggingFaceRouter(binaryData, mimeType, cropHint);
+      return NextResponse.json(routerRes);
     } catch (e: any) {
       console.error("[detect API] Tier 3 (HuggingFace) failed:", e.message);
     }
 
     return NextResponse.json(
-      { error: "INFERENCE_FAILED", message: "Failed to generate AI predictions across all providers." },
+      {
+        status: "model_error",
+        error: "INFERENCE_FAILED",
+        message: "Failed to generate AI predictions across all providers.",
+        can_provide_treatment: false,
+      },
       { status: 500 }
     );
   } catch (error: any) {
     console.error("[detect route] Unexpected error:", error.message);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error.message, status: "model_error" }, { status: 500 });
   }
 }
