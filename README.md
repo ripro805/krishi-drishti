@@ -12,6 +12,9 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Playwright](https://img.shields.io/badge/Playwright_E2E-54_Tests_Passing-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge)](./LICENSE)
+[![Live Web Application](https://img.shields.io/badge/Live_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://krishi-drishti-iota.vercel.app/)
+[![API Gateway](https://img.shields.io/badge/Live_API-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://krishi-drishti-backend-ewjt.onrender.com)
+[![Database](https://img.shields.io/badge/Database-Neon_Postgres-00E599?style=for-the-badge&logo=postgresql&logoColor=white)](https://neon.tech/)
 
 <br />
 
@@ -20,7 +23,7 @@
 
 <br />
 
-[Explore Live Scanner](#-neural-crop-scanner-studio) • [Dual-Layer Guardrail](#-dual-layer-anti-hallucination-vision-guardrail) • [Fertilizer Engine](#-precision-n-p-k--micronutrient-calculator) • [System Architecture](#-system-architecture) • [API Reference](#-rest-api-specification) • [E2E Testing](#-automated-e2e-testing--quality-assurance) • [Quickstart](#-installation--local-development)
+[🚀 Live Web App](https://krishi-drishti-iota.vercel.app/) • [⚙️ API Gateway](https://krishi-drishti-backend-ewjt.onrender.com) • [Explore Live Scanner](#-neural-crop-scanner-studio) • [Dual-Layer Guardrail](#-dual-layer-anti-hallucination-vision-guardrail) • [Fertilizer Engine](#-precision-n-p-k--micronutrient-calculator) • [System Architecture](#-system-architecture) • [API Reference](#-rest-api-specification) • [E2E Testing](#-automated-e2e-testing--quality-assurance) • [Quickstart](#-installation--local-development)
 
 <br />
 
@@ -41,6 +44,34 @@ Foliar plant diseases and unscientific fertilizer over-application cause **20% t
 - 🤖 **Bilingual AI Agronomist (Crop Doctor)**: Context-aware conversational agent powered by Gemini 1.5 and Groq LLMs with local agro-climatic knowledge retrieval in native **English and বাংলা (Bangla)**.
 - 📑 **Comprehensive Agronomic Dossier**: One-click printable PDF pathology reports detailing pathogen vectors, tissue necrosis %, SPAD chlorophyll index, OMRI-certified organic treatments, and Pre-Harvest Intervals (PHI).
 - 📊 **Epidemiological Telemetry & Heatmap**: Centralized disease surveillance dashboards for regional agricultural extension officers and agronomists.
+
+<br />
+
+---
+
+## 🌐 Live Production Deployments & Demo Access
+
+KrishiDrishti is fully deployed in high-availability cloud environments:
+
+| Service Component | Deployment Target | Live Production URL / Status | Description |
+| :--- | :--- | :--- | :--- |
+| **Frontend Web App** | **Vercel** | [https://krishi-drishti-iota.vercel.app](https://krishi-drishti-iota.vercel.app) | Next.js 14 App Router, glassmorphic UI, responsive camera/drag-and-drop scanner, and bilingual assistant |
+| **API Gateway Backend** | **Render** | [https://krishi-drishti-backend-ewjt.onrender.com](https://krishi-drishti-backend-ewjt.onrender.com) | Express.js 4 REST API, JWT auth, Neon PostgreSQL connection pool, health check |
+| **API Health Status** | **Render Monitoring** | [`/health` endpoint](https://krishi-drishti-backend-ewjt.onrender.com/health) | Returns HTTP 200 `{"status":"UP","environment":"production"}` |
+| **Cloud Database** | **Neon Tech** | Managed Serverless PostgreSQL | Pooled connection with 52 indexed diseases, users, and scan history telemetry |
+| **Neural Vision Model** | **Hugging Face** | [`ripro805/krishidrishti-plant-disease`](https://huggingface.co/ripro805/krishidrishti-plant-disease) | Fine-tuned 50-class ConvNeXt-Tiny botanical pathology model weights |
+
+<br />
+
+### 🔑 Instant 1-Click Evaluation Accounts
+
+Use the 1-click demo buttons on [https://krishi-drishti-iota.vercel.app/login](https://krishi-drishti-iota.vercel.app/login) or enter credentials directly:
+
+| Role | Email Address | Password | Accessible Capabilities |
+| :--- | :--- | :--- | :--- |
+| 🌾 **Farmer (কৃষক)** | `farmer@krishi.gov.bd` | `krishi123` | Leaf scanner, Bangla audio voice guidance, fertilizer split dosage engine, diagnosis history |
+| 🩺 **Agriculture Extension Officer (কৃষিবিদ)** | `expert@krishi.gov.bd` | `krishi123` | Escalated pathology triage, prescription management, farmer consultation notes |
+| 🛡️ **System Administrator (অ্যাডমিন)** | `admin@krishi.gov.bd` | `admin123` | Epidemiological outbreak surveillance heatmap, regional disease telemetry, user & model logs |
 
 <br />
 
