@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { authRoutes } from "./modules/auth/auth.routes.js";
 import { usersRoutes } from "./modules/users/users.routes.js";
 import { diseaseRoutes } from "./modules/diseases/disease.routes.js";
@@ -10,7 +10,7 @@ import { chatbotRoutes } from "./modules/chatbot/chatbot.routes.js";
 
 const apiV1Router = Router();
 
-apiV1Router.get("/health", (req, res) => {
+apiV1Router.get("/health", (req: Request, res: Response) => {
   res.json({
     status: "healthy",
     service: "krishi-drishti-express-api",

@@ -89,9 +89,9 @@ export class FeedbackService {
     });
 
     const total = list.length;
-    const accurateCount = list.filter((f) => f.rating === "accurate").length;
-    const inaccurateCount = list.filter((f) => f.rating === "inaccurate").length;
-    const unsureCount = list.filter((f) => f.rating === "unsure").length;
+    const accurateCount = list.filter((f: any) => f.rating === "accurate").length;
+    const inaccurateCount = list.filter((f: any) => f.rating === "inaccurate").length;
+    const unsureCount = list.filter((f: any) => f.rating === "unsure").length;
     const accuracyRate = total > 0 ? Math.round((accurateCount / total) * 100) : 95;
 
     return {

@@ -132,7 +132,7 @@ export class ScanService {
     ]);
 
     // Format like frontend's HistoryItem
-    const formatted = scans.map((s) => ({
+    const formatted = scans.map((s: any) => ({
       id: s.id,
       scanCode: s.scanCode,
       date: s.createdAt.toISOString(),
