@@ -317,11 +317,13 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
 
             {/* Disease Names: Bangla & English (Feature 1.2) */}
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-              {diagnosis.banglaName || diagnosis.commonName}
+              {isBangla ? (diagnosis.banglaName || diagnosis.commonName) : diagnosis.commonName}
             </h2>
             <div className="flex flex-wrap items-center gap-3 mt-1 text-sm text-slate-500 dark:text-slate-400">
               <span className="font-semibold text-slate-700 dark:text-slate-300">
-                English: {diagnosis.commonName}
+                {isBangla
+                  ? `English: ${diagnosis.commonName}`
+                  : (diagnosis.banglaName ? `বাংলা: ${diagnosis.banglaName}` : `Common: ${diagnosis.commonName}`)}
               </span>
               <span>•</span>
               <span className="italic font-mono text-xs">
@@ -352,7 +354,7 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
                     : "text-emerald-700 dark:text-emerald-300"
                 }`}
               >
-                {isLowConfidence ? "অনিশ্চিত (Low Match)" : "উচ্চ সামঞ্জস্য (High Match)"}
+                {isLowConfidence ? (isBangla ? "অনিশ্চিত (Low Match)" : "Low Match (Inconclusive)") : (isBangla ? "উচ্চ সামঞ্জস্য (High Match)" : "High Match (Clinical)")}
               </p>
               <p className="text-[11px] text-slate-400">
                 {isBangla ? "তথ্যসূত্র: BARI / PlantVillage" : "Reference: BARI / PlantVillage"}
@@ -364,9 +366,9 @@ export const DiagnosticResultCard: React.FC<DiagnosticResultCardProps> = ({
         {/* Clinical Overview Paragraph: Bangla & English */}
         <div className="mt-6 rounded-2xl bg-slate-50/80 p-4 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
           <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-200 font-medium">
-            {diagnosis.banglaSummary || diagnosis.summary}
+            {isBangla ? (diagnosis.banglaSummary || diagnosis.summary) : (diagnosis.summary || diagnosis.banglaSummary)}
           </p>
-          {diagnosis.banglaCropInfo && (
+          {isBangla && diagnosis.banglaCropInfo && (
             <p className="mt-2 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200/60 dark:border-slate-700/60 pt-2 flex items-center gap-1.5">
               <Info className="h-3.5 w-3.5 text-agri-600 flex-shrink-0" />
               <span>{diagnosis.banglaCropInfo}</span>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KrishiDrishti — Official Platform Video Walkthrough (Real Scan & Full Tour)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background-color: #0f172a;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 1100px;
+    }
+    header {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: #1e293b;
+      color: #34d399;
+      border: 1px solid #10b981;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    h1 span {
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 15px;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .video-wrapper {
+      position: relative;
+      background: #020617;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1.5px solid #334155;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      outline: none;
+    }
+    .chapters {
+      margin-top: 28px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 20px 24px;
+    }
+    .chapters h3 {
+      font-size: 16px;
+      color: #34d399;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    button.chapter-btn {
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    button.chapter-btn:hover {
+      background: #10b981;
+      color: #022c22;
+      border-color: #34d399;
+      transform: translateY(-2px);
+    }
+    button.chapter-btn span.time {
+      font-family: monospace;
+      font-size: 12px;
+      opacity: 0.75;
+    }
+    footer {
+      margin-top: 35px;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Official Platform Video Walkthrough</div>
+      <h1>KrishiDrishti <span>(কৃষি দৃষ্টি)</span></h1>
+      <p class="subtitle">Complete Full HD (1920x1080) End-to-End Screen Recording featuring real foliar specimen scanning (Apple Black Rot), clinical pathology dossier, AI chatbot, fertilizer engine, and dual control panels.</p>
+    </header>
+
+    <div class="video-wrapper">
+      <video id="player" controls autoplay loop playsinline>
+        <source src="KrishiDrishti_Full_Platform_Walkthrough.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="chapters">
+      <h3>⏱️ Jump Directly to Feature Chapters:</h3>
+      <div class="grid">
+        <button class="chapter-btn" onclick="seek(0)">
+          <span>1. Landing & Bangla Toggle</span>
+          <span class="time">0:00</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(22)">
+          <span>2. Real Scan (Apple Black Rot)</span>
+          <span class="time">0:22</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(37)">
+          <span>3. Pathology Result & Protocols</span>
+          <span class="time">0:37</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(48)">
+          <span>4. PDF Dossier Modal Preview</span>
+          <span class="time">0:48</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(54)">
+          <span>5. Two-Stage Guardrail Alert</span>
+          <span class="time">0:54</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(68)">
+          <span>6. Crop Doctor AI Chatbot</span>
+          <span class="time">1:08</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(85)">
+          <span>7. Fertilizer & N-P-K Engine</span>
+          <span class="time">1:25</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(107)">
+          <span>8. Disease Encyclopedia</span>
+          <span class="time">1:47</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(121)">
+          <span>9. Field Scan History</span>
+          <span class="time">2:01</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(132)">
+          <span>10. Expert Consultation Desk</span>
+          <span class="time">2:12</span>
+        </button>
+        <button class="chapter-btn" onclick="seek(142)">
+          <span>11. Admin Telemetry Panel</span>
+          <span class="time">2:22</span>
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      KrishiDrishti Autonomous Agricultural Pathology Platform | Recorded at 1080p 25fps via Playwright Automation
+    </footer>
+  </div>
+
+  <script>
+    const player = document.getElementById('player');
+    function seek(seconds) {
+      player.currentTime = seconds;
+      player.play();
+    }
+  </script>
+</body>
+</html>

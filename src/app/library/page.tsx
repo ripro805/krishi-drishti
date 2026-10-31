@@ -8,6 +8,7 @@ import { Badge } from "@/components/common/Badge";
 import { Modal } from "@/components/common/Modal";
 import { Button } from "@/components/common/Button";
 import { TreatmentPlanTabs } from "@/components/scanner/TreatmentPlanTabs";
+import { useLanguage } from "@/context/LanguageContext";
 import {
   BookOpen,
   Search,
@@ -19,6 +20,7 @@ import {
 } from "lucide-react";
 
 export default function DiseaseLibraryPage() {
+  const { isBangla } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCrop, setSelectedCrop] = useState("All");
   const [selectedType, setSelectedType] = useState("All");
@@ -51,13 +53,15 @@ export default function DiseaseLibraryPage() {
       <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
         <Badge variant="success" size="md">
           <BookOpen className="h-3.5 w-3.5" />
-          Agricultural Plant Pathology Archive
+          {isBangla ? "কৃষি উদ্ভিদ রোগতত্ত্ব সংগ্রহশালা" : "Agricultural Plant Pathology Archive"}
         </Badge>
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-          Plant Disease & Pathogen Encyclopedia
+          {isBangla ? "উদ্ভিদের রোগ ও প্যাথোজেন এনসাইক্লোপিডিয়া" : "Plant Disease & Pathogen Encyclopedia"}
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-400">
-          Browse verified biological profiles, microscopic infection symptoms, and treatment guidelines for 200+ crop pathogens.
+          {isBangla
+            ? "২০০+ ফসলের রোগের বৈজ্ঞানিক জীবনচক্র, লক্ষণ ও আধুনিক প্রতিকার নির্দেশিকা খুঁজুন।"
+            : "Browse verified biological profiles, microscopic infection symptoms, and treatment guidelines for 200+ crop pathogens."}
         </p>
       </div>
 
@@ -69,7 +73,11 @@ export default function DiseaseLibraryPage() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by disease name, pathogen (e.g. Alternaria, Phytophthora), or crop..."
+            placeholder={
+              isBangla
+                ? "রোগের নাম, প্যাথোজেন (যেমন Alternaria, ব্লাইট) বা ফসল দিয়ে খুঁজুন..."
+                : "Search by disease name, pathogen (e.g. Alternaria, Phytophthora), or crop..."
+            }
             className="w-full rounded-2xl border border-slate-200 bg-slate-50 pl-11 pr-4 py-3 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-agri-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           />
         </div>
@@ -78,39 +86,60 @@ export default function DiseaseLibraryPage() {
           {/* Crop filter chips */}
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-xs font-semibold text-slate-500 mr-1 flex items-center gap-1">
-              <Filter className="h-3 w-3" /> Crop:
+              <Filter className="h-3 w-3" />
+              {isBangla ? "ফসল:" : "Crop:"}
             </span>
             {crops.map((c) => (
               <button
                 key={c}
                 type="button"
                 onClick={() => setSelectedCrop(c)}
-                className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition-colors ${
+                className={`rounded-xl px-3 py-1 text-xs font-semibold transition-colors ${
                   selectedCrop === c
                     ? "bg-agri-600 text-white shadow-xs"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
                 }`}
               >
-                {c}
+                {c === "All" ? (isBangla ? "সকল ফসল" : "All Crops") : c}
               </button>
             ))}
           </div>
 
           {/* Pathogen Type filter chips */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-xs font-semibold text-slate-500 mr-1">Type:</span>
+            <span className="text-xs font-semibold text-slate-500 mr-1">
+              {isBangla ? "ধরন:" : "Pathogen:"}
+            </span>
             {pathogenTypes.map((t) => (
               <button
                 key={t}
                 type="button"
                 onClick={() => setSelectedType(t)}
-                className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition-colors ${
+                className={`rounded-xl px-3 py-1 text-xs font-semibold transition-colors ${
                   selectedType === t
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
+                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
                 }`}
               >
-                {t}
+                {t === "All"
+                  ? isBangla
+                    ? "সকল ধরন"
+                    : "All Types"
+                  : t === "Fungal"
+                  ? isBangla
+                    ? "ছত্রাকজনিত"
+                    : "Fungal"
+                  : t === "Bacterial"
+                  ? isBangla
+                    ? "ব্যাকটেরিয়াজনিত"
+                    : "Bacterial"
+                  : t === "Viral"
+                  ? isBangla
+                    ? "ভাইরাসজনিত"
+                    : "Viral"
+                  : isBangla
+                  ? "সুস্থ"
+                  : "Healthy Control"}
               </button>
             ))}
           </div>
@@ -144,26 +173,32 @@ export default function DiseaseLibraryPage() {
                       }
                       className="shadow-sm"
                     >
-                      {d.severity} Severity
+                      {isBangla
+                        ? d.severity === "Healthy"
+                          ? "সুস্থ ফসল"
+                          : `${d.severity} তীব্রতা`
+                        : `${d.severity} Severity`}
                     </Badge>
                   </div>
                 </div>
               )}
 
               <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
-                <span className="font-bold text-agri-700 dark:text-agri-400">{d.crop}</span>
+                <span className="font-bold text-agri-700 dark:text-agri-400">
+                  {isBangla ? (d.banglaCrop || d.crop) : d.crop}
+                </span>
                 <span className="font-mono">{d.pathogenType}</span>
               </div>
 
               <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-agri-600 transition-colors">
-                {d.commonName}
+                {isBangla ? (d.banglaName || d.commonName) : d.commonName}
               </h3>
               <p className="text-xs italic text-slate-500 font-mono mb-3">
                 {d.scientificName}
               </p>
 
               <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
-                {d.summary}
+                {isBangla ? (d.banglaSummary || d.summary) : (d.summary || d.banglaSummary)}
               </p>
             </div>
 
@@ -173,14 +208,14 @@ export default function DiseaseLibraryPage() {
                 onClick={() => setActiveModalDisease(d)}
                 className="text-xs font-bold text-agri-600 hover:text-agri-700 dark:text-agri-400 inline-flex items-center gap-1"
               >
-                <span>Full Pathology Details</span>
+                <span>{isBangla ? "বিস্তারিত প্যাথলজি দেখুন" : "Full Pathology Details"}</span>
                 <ExternalLink className="h-3.5 w-3.5" />
               </button>
 
               <Link href={`/scan?crop=${encodeURIComponent(d.crop)}`}>
                 <Button variant="ghost" size="sm" className="text-xs py-1">
                   <Scan className="h-3.5 w-3.5 mr-1" />
-                  Scan This
+                  {isBangla ? "স্ক্যান করুন" : "Scan This"}
                 </Button>
               </Link>
             </div>
@@ -193,29 +228,37 @@ export default function DiseaseLibraryPage() {
         <Modal
           isOpen={!!activeModalDisease}
           onClose={() => setActiveModalDisease(null)}
-          title={activeModalDisease.commonName}
+          title={isBangla ? (activeModalDisease.banglaName || activeModalDisease.commonName) : activeModalDisease.commonName}
           description={`Scientific Classification: ${activeModalDisease.scientificName}`}
           maxWidth="2xl"
         >
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="success">Crop: {activeModalDisease.crop}</Badge>
-              <Badge variant="outline">Pathogen: {activeModalDisease.pathogenType}</Badge>
-              <Badge variant="danger">Severity: {activeModalDisease.severity}</Badge>
-              <Badge variant="info">Transmission: {activeModalDisease.transmissionRisk}</Badge>
+              <Badge variant="success">
+                {isBangla ? `ফসল: ${activeModalDisease.banglaCrop || activeModalDisease.crop}` : `Crop: ${activeModalDisease.crop}`}
+              </Badge>
+              <Badge variant="outline">
+                {isBangla ? `জীবাণু: ${activeModalDisease.pathogenType}` : `Pathogen: ${activeModalDisease.pathogenType}`}
+              </Badge>
+              <Badge variant="danger">
+                {isBangla ? `তীব্রতা: ${activeModalDisease.severity}` : `Severity: ${activeModalDisease.severity}`}
+              </Badge>
+              <Badge variant="info">
+                {isBangla ? `ছড়ানোর ঝুঁকি: ${activeModalDisease.transmissionRisk}` : `Transmission: ${activeModalDisease.transmissionRisk}`}
+              </Badge>
             </div>
 
             <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-              {activeModalDisease.summary}
+              {isBangla ? (activeModalDisease.banglaSummary || activeModalDisease.summary) : (activeModalDisease.summary || activeModalDisease.banglaSummary)}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
                 <h4 className="font-bold text-slate-900 dark:text-white mb-2">
-                  Observable Symptoms
+                  {isBangla ? "দৃশ্যমান লক্ষণসমূহ:" : "Observable Symptoms:"}
                 </h4>
                 <ul className="space-y-1 text-slate-600 dark:text-slate-400">
-                  {activeModalDisease.symptoms.map((s, i) => (
+                  {(isBangla && activeModalDisease.banglaSymptoms ? activeModalDisease.banglaSymptoms : activeModalDisease.symptoms).map((s, i) => (
                     <li key={i}>&bull; {s}</li>
                   ))}
                 </ul>
@@ -223,10 +266,10 @@ export default function DiseaseLibraryPage() {
 
               <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
                 <h4 className="font-bold text-slate-900 dark:text-white mb-2">
-                  Favorable Conditions
+                  {isBangla ? "অনুকূল পরিবেশ ও কারণ:" : "Favorable Conditions:"}
                 </h4>
                 <ul className="space-y-1 text-slate-600 dark:text-slate-400">
-                  {activeModalDisease.favorableConditions.map((c, i) => (
+                  {(isBangla && activeModalDisease.banglaCauses ? activeModalDisease.banglaCauses : activeModalDisease.favorableConditions).map((c, i) => (
                     <li key={i}>&bull; {c}</li>
                   ))}
                 </ul>
@@ -235,9 +278,12 @@ export default function DiseaseLibraryPage() {
 
             <div>
               <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3">
-                Treatment & Remediation Guidelines
+                {isBangla ? "চিকিৎসা ও প্রতিকার নির্দেশিকা:" : "Treatment & Remediation Guidelines:"}
               </h4>
-              <TreatmentPlanTabs treatmentPlan={activeModalDisease.treatmentPlan} />
+              <TreatmentPlanTabs
+                treatmentPlan={activeModalDisease.treatmentPlan}
+                banglaTreatment={activeModalDisease.banglaTreatment}
+              />
             </div>
 
             <div className="flex justify-end pt-3">
@@ -246,7 +292,7 @@ export default function DiseaseLibraryPage() {
                 size="sm"
                 onClick={() => setActiveModalDisease(null)}
               >
-                Close Dossier
+                {isBangla ? "ডসিয়ার বন্ধ করুন" : "Close Dossier"}
               </Button>
             </div>
           </div>

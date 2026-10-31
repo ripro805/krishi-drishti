@@ -1,0 +1,45 @@
+services:
+  # 1. Express Backend Web Service
+  - type: web
+    name: krishi-drishti-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    region: singapore
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: krishi-drishti-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: FRONTEND_URL
+        sync: false # Set to your Vercel URL, e.g. https://krishi-drishti.vercel.app
+
+  # 2. FastAPI PyTorch Model Server
+  - type: web
+    name: krishi-drishti-ai-server
+    runtime: docker
+    dockerfilePath: Dockerfile.model_server
+    plan: standard # 2GB RAM recommended for PyTorch models
+    region: singapore
+    envVars:
+      - key: MODEL_NAME
+        value: ripro805/krishidrishti-plant-disease
+
+databases:
+  # 3. PostgreSQL Database
+  - name: krishi-drishti-db
+    plan: free
+    region: singapore
+    databaseName: krishi_drishti
+    user: krishi_admin
+

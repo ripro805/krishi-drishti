@@ -49,3 +49,14 @@ src/data/*_store.json
 
 # user uploaded files
 public/uploads/
+
+# Office temporary lock files
+~$*
+
+# Video screen recordings (large binary files exceeding git thresholds)
+docs/presentation/video/*.webm
+docs/presentation/video/*.mp4
+*.webm
+
+# Intermediate mockup captures
+docs/presentation/images/mockups/

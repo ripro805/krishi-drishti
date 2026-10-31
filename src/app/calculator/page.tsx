@@ -5,6 +5,7 @@ import { useFertilizerCalc } from "@/hooks/useFertilizerCalc";
 import { Button } from "@/components/common/Button";
 import { Badge } from "@/components/common/Badge";
 import { AreaUnit, SoilFertilityLevel } from "@/types/calculator";
+import { useLanguage } from "@/context/LanguageContext";
 import {
   Calculator,
   Leaf,
@@ -17,6 +18,7 @@ import {
 } from "lucide-react";
 
 export default function FertilizerCalculatorPage() {
+  const { isBangla } = useLanguage();
   const {
     crop,
     setCrop,
@@ -33,19 +35,46 @@ export default function FertilizerCalculatorPage() {
     result,
   } = useFertilizerCalc();
 
+  const cropOptions = [
+    { id: "Tomato", en: "Tomato (High N-K demand)", bn: "টমেটো (উচ্চ নাইট্রোজেন ও পটাশ চাহিদা)" },
+    { id: "Potato", en: "Potato (Heavy feeder)", bn: "আলু (ভারী পুষ্টিগ্রাহী ফসল)" },
+    { id: "Corn (Maize)", en: "Corn / Maize (Cereal)", bn: "ভুট্টা / খরিফ ভুট্টা" },
+    { id: "Bell Pepper", en: "Bell Pepper", bn: "মরিচ / ক্যাপসিকাম" },
+    { id: "Rice", en: "Rice (Paddy)", bn: "ধান (বোরো / আমন ধান)" },
+    { id: "Wheat", en: "Wheat", bn: "গম" },
+    { id: "Apple", en: "Apple Orchard", bn: "আপেল বাগান" },
+    { id: "Grape", en: "Grape Vineyard", bn: "আঙ্গুর বাগান" },
+    { id: "Strawberry", en: "Strawberry", bn: "স্ট্রবেরি" },
+    { id: "Peach", en: "Peach", bn: "পীচ" },
+    { id: "Cherry", en: "Cherry", bn: "চেরি" },
+    { id: "Soybean", en: "Soybean (Legume N-fixer)", bn: "সয়াবিন (ডাল জাতীয়)" },
+    { id: "Squash", en: "Squash / Cucurbits", bn: "মিষ্টি কুমড়া / স্কোয়াশ" },
+    { id: "Cassava", en: "Cassava (Root tuber)", bn: "কাসাভা" },
+    { id: "Mango", en: "Mango", bn: "আম বাগান" },
+  ];
+
+  const unitOptions: { id: AreaUnit; en: string; bn: string }[] = [
+    { id: "Acres", en: "Acres", bn: "একর" },
+    { id: "Hectares", en: "Hectares (ha)", bn: "হেক্টর (ha)" },
+    { id: "Bigha", en: "Bigha (Standard)", bn: "বিঘা (স্ট্যান্ডার্ড)" },
+    { id: "Decimals", en: "Decimals / শতক", bn: "শতাংশ / শতক" },
+  ];
+
   return (
     <div className="py-12 sm:py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Title */}
       <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
         <Badge variant="success" size="md">
           <Calculator className="h-3.5 w-3.5" />
-          Agronomic Input Precision
+          {isBangla ? "কৃষি ইনপুট প্রিসিশন" : "Agronomic Input Precision"}
         </Badge>
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-          Urea & N-P-K Fertilizer Dosage Calculator
+          {isBangla ? "ইউরিয়া ও এন-পি-কে সার মাত্রা ক্যালকুলেটর" : "Urea & N-P-K Fertilizer Dosage Calculator"}
         </h1>
         <p className="text-sm text-slate-600 dark:text-slate-400">
-          Optimize crop nutrition, prevent nitrogen leaching, and maximize harvest yield with scientific split-dosage scheduling.
+          {isBangla
+            ? "সঠিক মাত্রায় সুষম সার প্রয়োগ করে মাটির স্বাস্থ্য রক্ষা করুন ও সর্বোচ্চ ফলন নিশ্চিত করুন।"
+            : "Optimize crop nutrition, prevent nitrogen leaching, and maximize harvest yield with scientific split-dosage scheduling."}
         </p>
       </div>
 
@@ -54,10 +83,12 @@ export default function FertilizerCalculatorPage() {
         <div className="lg:col-span-5 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xl dark:border-slate-800 dark:bg-slate-900 space-y-6">
           <div className="border-b border-slate-100 dark:border-slate-800 pb-4">
             <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-              Field & Soil Parameters
+              {isBangla ? "জমি ও মাটির তথ্য" : "Field & Soil Parameters"}
             </h2>
             <p className="text-xs text-slate-500">
-              Enter your field dimensions and laboratory soil test levels:
+              {isBangla
+                ? "জমির আয়তন এবং মাটির উর্বরতার মাত্রা নির্বাচন করুন:"
+                : "Enter your field dimensions and laboratory soil test levels:"}
             </p>
           </div>
 
@@ -65,7 +96,7 @@ export default function FertilizerCalculatorPage() {
             {/* Crop Selection */}
             <div>
               <label htmlFor="calcCrop" className="block font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Target Crop:
+                {isBangla ? "উদ্দিষ্ট ফসল:" : "Target Crop:"}
               </label>
               <select
                 id="calcCrop"
@@ -73,21 +104,11 @@ export default function FertilizerCalculatorPage() {
                 onChange={(e) => setCrop(e.target.value)}
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-agri-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               >
-                <option value="Tomato">Tomato (High N-K demand)</option>
-                <option value="Potato">Potato (Heavy feeder)</option>
-                <option value="Corn (Maize)">Corn / Maize (Cereal)</option>
-                <option value="Bell Pepper">Bell Pepper</option>
-                <option value="Rice">Rice (Paddy)</option>
-                <option value="Wheat">Wheat</option>
-                <option value="Apple">Apple Orchard</option>
-                <option value="Grape">Grape Vineyard</option>
-                <option value="Strawberry">Strawberry</option>
-                <option value="Peach">Peach</option>
-                <option value="Cherry">Cherry</option>
-                <option value="Soybean">Soybean (Legume N-fixer)</option>
-                <option value="Squash">Squash / Cucurbits</option>
-                <option value="Cassava">Cassava (Root tuber)</option>
-                <option value="Mango">Mango</option>
+                {cropOptions.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {isBangla ? c.bn : c.en}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -95,7 +116,7 @@ export default function FertilizerCalculatorPage() {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label htmlFor="fieldSize" className="block font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                  Field Area:
+                  {isBangla ? "জমির আয়তন:" : "Field Area:"}
                 </label>
                 <input
                   id="fieldSize"
@@ -110,7 +131,7 @@ export default function FertilizerCalculatorPage() {
 
               <div>
                 <label htmlFor="areaUnit" className="block font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                  Unit:
+                  {isBangla ? "একক:" : "Unit:"}
                 </label>
                 <select
                   id="areaUnit"
@@ -118,10 +139,11 @@ export default function FertilizerCalculatorPage() {
                   onChange={(e) => setAreaUnit(e.target.value as AreaUnit)}
                   className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-agri-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 >
-                  <option value="Acres">Acres</option>
-                  <option value="Hectares">Hectares (ha)</option>
-                  <option value="Bigha">Bigha (Standard)</option>
-                  <option value="Decimals">Decimals</option>
+                  {unitOptions.map((u) => (
+                    <option key={u.id} value={u.id}>
+                      {isBangla ? u.bn : u.en}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -129,13 +151,18 @@ export default function FertilizerCalculatorPage() {
             {/* Soil Test N-P-K Levels */}
             <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-3">
               <span className="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                Soil Test Levels (Available Nutrients):
+                {isBangla ? "মাটির উর্বরতা মাত্রা (ল্যাব টেস্ট):" : "Soil Test Levels (Available Nutrients):"}
               </span>
 
+              {/* Nitrogen */}
               <div>
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="font-semibold text-slate-700 dark:text-slate-300">Soil Nitrogen (N):</span>
-                  <span className="font-bold text-agri-600">{soilNitrogen}</span>
+                  <span className="font-semibold text-slate-700 dark:text-slate-300">
+                    {isBangla ? "মাটির নাইট্রোজেন (N):" : "Soil Nitrogen (N):"}
+                  </span>
+                  <span className="font-bold text-agri-600">
+                    {isBangla ? (soilNitrogen === "Low" ? "কম" : soilNitrogen === "High" ? "বেশি" : "মাঝারি") : soilNitrogen}
+                  </span>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   {(["Low", "Medium", "High"] as SoilFertilityLevel[]).map((lvl) => (
@@ -149,16 +176,21 @@ export default function FertilizerCalculatorPage() {
                           : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400"
                       }`}
                     >
-                      {lvl}
+                      {isBangla ? (lvl === "Low" ? "কম" : lvl === "High" ? "বেশি" : "মাঝারি") : lvl}
                     </button>
                   ))}
                 </div>
               </div>
 
+              {/* Phosphorus */}
               <div>
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="font-semibold text-slate-700 dark:text-slate-300">Soil Phosphorus (P):</span>
-                  <span className="font-bold text-agri-600">{soilPhosphorus}</span>
+                  <span className="font-semibold text-slate-700 dark:text-slate-300">
+                    {isBangla ? "মাটির ফসফরাস (P):" : "Soil Phosphorus (P):"}
+                  </span>
+                  <span className="font-bold text-agri-600">
+                    {isBangla ? (soilPhosphorus === "Low" ? "কম" : soilPhosphorus === "High" ? "বেশি" : "মাঝারি") : soilPhosphorus}
+                  </span>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   {(["Low", "Medium", "High"] as SoilFertilityLevel[]).map((lvl) => (
@@ -172,16 +204,21 @@ export default function FertilizerCalculatorPage() {
                           : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400"
                       }`}
                     >
-                      {lvl}
+                      {isBangla ? (lvl === "Low" ? "কম" : lvl === "High" ? "বেশি" : "মাঝারি") : lvl}
                     </button>
                   ))}
                 </div>
               </div>
 
+              {/* Potassium */}
               <div>
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="font-semibold text-slate-700 dark:text-slate-300">Soil Potassium (K):</span>
-                  <span className="font-bold text-agri-600">{soilPotassium}</span>
+                  <span className="font-semibold text-slate-700 dark:text-slate-300">
+                    {isBangla ? "মাটির পটাশিয়াম (K):" : "Soil Potassium (K):"}
+                  </span>
+                  <span className="font-bold text-agri-600">
+                    {isBangla ? (soilPotassium === "Low" ? "কম" : soilPotassium === "High" ? "বেশি" : "মাঝারি") : soilPotassium}
+                  </span>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   {(["Low", "Medium", "High"] as SoilFertilityLevel[]).map((lvl) => (
@@ -195,7 +232,7 @@ export default function FertilizerCalculatorPage() {
                           : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400"
                       }`}
                     >
-                      {lvl}
+                      {isBangla ? (lvl === "Low" ? "কম" : lvl === "High" ? "বেশি" : "মাঝারি") : lvl}
                     </button>
                   ))}
                 </div>
@@ -210,32 +247,38 @@ export default function FertilizerCalculatorPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             <div className="rounded-2xl border border-agri-200 bg-agri-50/60 p-4 dark:border-agri-900/40 dark:bg-agri-950/20 shadow-xs">
               <span className="text-[11px] font-bold uppercase tracking-wider text-agri-800 dark:text-agri-300">
-                Total Urea (46% N)
+                {isBangla ? "মোট ইউরিয়া (৪৬% N)" : "Total Urea (46% N)"}
               </span>
               <p className="text-2xl font-extrabold text-agri-700 dark:text-agri-400 mt-1 font-mono">
-                {result.totalUreaKg} <span className="text-xs font-medium">kg</span>
+                {result.totalUreaKg} <span className="text-xs font-medium">{isBangla ? "কেজি" : "kg"}</span>
               </p>
-              <p className="text-[10px] text-agri-600/80 mt-0.5">Applied in 3 split doses</p>
+              <p className="text-[10px] text-agri-600/80 mt-0.5">
+                {isBangla ? "৩টি কিস্তিতে প্রয়োগ করুন" : "Applied in 3 split doses"}
+              </p>
             </div>
 
             <div className="rounded-2xl border border-blue-200 bg-blue-50/60 p-4 dark:border-blue-900/40 dark:bg-blue-950/20 shadow-xs">
               <span className="text-[11px] font-bold uppercase tracking-wider text-blue-800 dark:text-blue-300">
-                Total DAP (18-46-0)
+                {isBangla ? "মোট ডিএপি (১৮-৪৬-০)" : "Total DAP (18-46-0)"}
               </span>
               <p className="text-2xl font-extrabold text-blue-700 dark:text-blue-400 mt-1 font-mono">
-                {result.totalDapKg} <span className="text-xs font-medium">kg</span>
+                {result.totalDapKg} <span className="text-xs font-medium">{isBangla ? "কেজি" : "kg"}</span>
               </p>
-              <p className="text-[10px] text-blue-600/80 mt-0.5">100% Basal at planting</p>
+              <p className="text-[10px] text-blue-600/80 mt-0.5">
+                {isBangla ? "১০০% জমি তৈরির সময়" : "100% Basal at planting"}
+              </p>
             </div>
 
             <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4 dark:border-amber-900/40 dark:bg-amber-950/20 shadow-xs col-span-2 sm:col-span-1">
               <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-                Total MOP (60% K2O)
+                {isBangla ? "মোট এমওপি (৬০% K2O)" : "Total MOP (60% K2O)"}
               </span>
               <p className="text-2xl font-extrabold text-amber-700 dark:text-amber-400 mt-1 font-mono">
-                {result.totalMopKg} <span className="text-xs font-medium">kg</span>
+                {result.totalMopKg} <span className="text-xs font-medium">{isBangla ? "কেজি" : "kg"}</span>
               </p>
-              <p className="text-[10px] text-amber-600/80 mt-0.5">Split Basal & Flowering</p>
+              <p className="text-[10px] text-amber-600/80 mt-0.5">
+                {isBangla ? "বেসাল ও ফুল আসার সময় বিভক্ত" : "Split Basal & Flowering"}
+              </p>
             </div>
           </div>
 
@@ -245,11 +288,11 @@ export default function FertilizerCalculatorPage() {
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5 text-agri-600" />
                 <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                  3-Stage Crop Split Application Schedule
+                  {isBangla ? "৩-ধাপের শস্য পুষ্টি প্রয়োগ সূচি (স্প্লিট শিডিউল)" : "3-Stage Crop Split Application Schedule"}
                 </h3>
               </div>
               <Badge variant="success" size="sm">
-                {result.efficiencyRating}
+                {isBangla ? "বারি প্রোটোকল" : result.efficiencyRating}
               </Badge>
             </div>
 
@@ -261,7 +304,7 @@ export default function FertilizerCalculatorPage() {
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
-                      Stage {i + 1}: {st.stage}
+                      {isBangla ? `ধাপ ${i + 1}: ${st.stage}` : `Stage ${i + 1}: ${st.stage}`}
                     </h4>
                     <span className="flex items-center gap-1 text-[11px] font-medium text-slate-500">
                       <Clock className="h-3 w-3 text-agri-600" />
@@ -271,16 +314,16 @@ export default function FertilizerCalculatorPage() {
 
                   <div className="grid grid-cols-3 gap-2 text-xs py-2 border-y border-slate-200/60 dark:border-slate-700/60 my-2">
                     <div>
-                      <span className="text-slate-500">Urea: </span>
-                      <span className="font-bold text-slate-900 dark:text-white font-mono">{st.ureaKg} kg</span>
+                      <span className="text-slate-500">{isBangla ? "ইউরিয়া: " : "Urea: "}</span>
+                      <span className="font-bold text-slate-900 dark:text-white font-mono">{st.ureaKg} {isBangla ? "কেজি" : "kg"}</span>
                     </div>
                     <div>
-                      <span className="text-slate-500">DAP: </span>
-                      <span className="font-bold text-slate-900 dark:text-white font-mono">{st.dapKg} kg</span>
+                      <span className="text-slate-500">{isBangla ? "ডিএপি: " : "DAP: "}</span>
+                      <span className="font-bold text-slate-900 dark:text-white font-mono">{st.dapKg} {isBangla ? "কেজি" : "kg"}</span>
                     </div>
                     <div>
-                      <span className="text-slate-500">MOP: </span>
-                      <span className="font-bold text-slate-900 dark:text-white font-mono">{st.mopKg} kg</span>
+                      <span className="text-slate-500">{isBangla ? "এমওপি: " : "MOP: "}</span>
+                      <span className="font-bold text-slate-900 dark:text-white font-mono">{st.mopKg} {isBangla ? "কেজি" : "kg"}</span>
                     </div>
                   </div>
 
@@ -296,15 +339,19 @@ export default function FertilizerCalculatorPage() {
           <div className="rounded-2xl bg-emerald-900 p-5 text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
             <div className="space-y-1 text-center sm:text-left">
               <p className="text-xs uppercase tracking-wider text-emerald-300 font-bold">
-                Environmental & Cost Savings
+                {isBangla ? "পরিবেশ ও খরচ সাশ্রয়" : "Environmental & Cost Savings"}
               </p>
               <p className="text-sm text-emerald-100">
-                Estimated Fertilizer Budget: <span className="font-bold text-white font-mono">${result.estimatedCostUSD} USD</span> &bull; CO2 Reduced: <span className="font-bold text-white font-mono">{result.co2SavingsKg} kg</span>
+                {isBangla
+                  ? <>আনুমানিক সারের খরচ: <span className="font-bold text-white font-mono">${result.estimatedCostUSD} USD</span> &bull; কার্বন নিঃসরণ হ্রাস: <span className="font-bold text-white font-mono">{result.co2SavingsKg} কেজি</span></>
+                  : <>Estimated Fertilizer Budget: <span className="font-bold text-white font-mono">${result.estimatedCostUSD} USD</span> &bull; CO2 Reduced: <span className="font-bold text-white font-mono">{result.co2SavingsKg} kg</span></>}
               </p>
             </div>
             <div className="flex items-center gap-2">
               <TrendingDown className="h-6 w-6 text-emerald-300" />
-              <span className="text-xs font-bold text-emerald-200">Zero Runoff Target</span>
+              <span className="text-xs font-bold text-emerald-200">
+                {isBangla ? "জিরো রানঅফ টার্গেট" : "Zero Runoff Target"}
+              </span>
             </div>
           </div>
         </div>

@@ -1,31 +1,39 @@
+"use client";
+
 import React from "react";
 import { Camera, Cpu, FileCheck2, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const HowItWorks: React.FC = () => {
+  const { isBangla } = useLanguage();
+
   const steps = [
     {
       step: "01",
-      title: "Capture or Upload Leaf",
-      description:
-        "Take a clear photo of an infected or discolored leaf using your phone camera or upload an image file from your device.",
+      title: isBangla ? "পাতার ছবি তুলুন বা আপলোড করুন" : "Capture or Upload Leaf",
+      description: isBangla
+        ? "ফোনের ক্যামেরা দিয়ে আক্রান্ত বা বিবর্ণ পাতার ছবি তুলুন অথবা আপনার ডিভাইস থেকে ইমেজ ফাইল আপলোড করুন।"
+        : "Take a clear photo of an infected or discolored leaf using your phone camera or upload an image file from your device.",
       icon: Camera,
-      tag: "10 Seconds",
+      tag: isBangla ? "১০ সেকেন্ড" : "10 Seconds",
     },
     {
       step: "02",
-      title: "Deep Vision AI Analysis",
-      description:
-        "Our convolutional neural network extracts chlorotic halos, necrotic spot patterns, and vein morphology in under 3 seconds.",
+      title: isBangla ? "ডিপ ভিশন এআই বিশ্লেষণ" : "Deep Vision AI Analysis",
+      description: isBangla
+        ? "আমাদের উন্নত কনভোলিউশনাল নিউরাল নেটওয়ার্ক ৩ সেকেন্ডের মধ্যে পাতার ক্ষত ও নেক্রোটিক লক্ষণ বিশ্লেষণ করে।"
+        : "Our convolutional neural network extracts chlorotic halos, necrotic spot patterns, and vein morphology in under 3 seconds.",
       icon: Cpu,
-      tag: "Real-time AI",
+      tag: isBangla ? "রিয়েল-টাইম এআই" : "Real-time AI",
     },
     {
       step: "03",
-      title: "Receive Targeted Prescription",
-      description:
-        "Get instant pathogen classification, severity rating, and step-by-step biological and chemical treatment recommendations.",
+      title: isBangla ? "সঠিক চিকিৎসা প্রেসক্রিপশন পান" : "Receive Targeted Prescription",
+      description: isBangla
+        ? "তাত্ক্ষণিক প্যাথোজেনের নাম, ক্ষতির মাত্রা এবং ধাপে ধাপে কার্যকর জৈব ও রাসায়নিক প্রতিকার পরামর্শ জেনে নিন।"
+        : "Get instant pathogen classification, severity rating, and step-by-step biological and chemical treatment recommendations.",
       icon: FileCheck2,
-      tag: "Actionable",
+      tag: isBangla ? "কার্যকর সমাধান" : "Actionable",
     },
   ];
 
@@ -34,13 +42,15 @@ export const HowItWorks: React.FC = () => {
       <div className="mx-auto w-full max-w-[1720px] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="text-center max-w-4xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-bold uppercase tracking-wider text-agri-600 dark:text-agri-400">
-            Simple 3-Step Workflow
+            {isBangla ? "সহজ ৩-ধাপের প্রক্রিয়া" : "Simple 3-Step Workflow"}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            How AI Crop Disease Detection Works
+            {isBangla ? "কৃষি দৃষ্টি এআই কীভাবে কাজ করে" : "How AI Crop Disease Detection Works"}
           </h2>
           <p className="text-base text-slate-600 dark:text-slate-400">
-            No lab equipment or specialized agronomic training required. Instant clinical guidance in the palm of your hand.
+            {isBangla
+              ? "ল্যাবরেটরি বা কোনো জটিল যন্ত্রপাতি ছাড়াই আপনার হাতের মুঠোয় তাত্ক্ষণিক রোগ নির্ণয় ও সমাধান।"
+              : "No lab equipment or specialized agronomic training required. Instant clinical guidance in the palm of your hand."}
           </p>
         </div>
 

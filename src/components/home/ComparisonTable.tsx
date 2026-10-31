@@ -1,20 +1,29 @@
+"use client";
+
 import React from "react";
 import { Check, X, Sparkles } from "lucide-react";
 import { Badge } from "@/components/common/Badge";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const ComparisonTable: React.FC = () => {
+  const { isBangla } = useLanguage();
+
   return (
     <section className="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800">
       <div className="mx-auto w-full max-w-[1720px] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="text-center max-w-4xl mx-auto mb-16 space-y-3">
           <Badge variant="info" size="md">
-            Methodology Comparison
+            {isBangla ? "পদ্ধতিগত তুলনা" : "Methodology Comparison"}
           </Badge>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Traditional Inspection vs. Laboratory vs. AI Scanning
+            {isBangla
+              ? "ঐতিহ্যবাহী মাঠ পরিদর্শন বনাম ল্যাব টেস্ট বনাম কৃষি দৃষ্টি এআই"
+              : "Traditional Inspection vs. Laboratory vs. KrishiDrishti AI"}
           </h2>
           <p className="text-base text-slate-600 dark:text-slate-400">
-            Compare diagnostic accuracy, turnaround speed, and operational costs across agricultural disease detection methods:
+            {isBangla
+              ? "কৃষি রোগ নির্ণয় পদ্ধতিতে নির্ভুলতা, ফলাফল গতি ও খরচের তুলনামূলক পর্যালোচনা:"
+              : "Compare diagnostic accuracy, turnaround speed, and operational costs across agricultural disease detection methods:"}
           </p>
         </div>
 
@@ -25,13 +34,13 @@ export const ComparisonTable: React.FC = () => {
                 <thead className="bg-slate-100/70 dark:bg-slate-800/60 text-xs uppercase tracking-wider text-slate-700 dark:text-slate-300 font-bold">
                   <tr>
                     <th scope="col" className="px-6 py-4">
-                      Diagnostic Parameter
+                      {isBangla ? "রোগ নির্ণয়ের মাপকাঠি" : "Diagnostic Parameter"}
                     </th>
                     <th scope="col" className="px-6 py-4 text-slate-500">
-                      Visual Field Scouting
+                      {isBangla ? "চাক্ষুষ ক্ষেত্র পর্যবেক্ষণ" : "Visual Field Scouting"}
                     </th>
                     <th scope="col" className="px-6 py-4 text-slate-500">
-                      Laboratory Assay / PCR
+                      {isBangla ? "ল্যাবরেটরি টেস্ট / PCR" : "Laboratory Assay / PCR"}
                     </th>
                     <th scope="col" className="px-6 py-4 bg-agri-50 dark:bg-agri-950/40 text-agri-700 dark:text-agri-300 font-extrabold border-l border-r border-agri-200 dark:border-agri-800">
                       <div className="flex items-center gap-1.5">
@@ -44,76 +53,76 @@ export const ComparisonTable: React.FC = () => {
                 <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-xs sm:text-sm">
                   <tr>
                     <td className="px-6 py-4 font-semibold text-slate-900 dark:text-white">
-                      Diagnostic Accuracy
+                      {isBangla ? "শনাক্তকরণের নির্ভুলতা" : "Diagnostic Accuracy"}
                     </td>
                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
-                      60% - 75% (Subject to human error)
+                      {isBangla ? "৬০% - ৭৫% (মানুষের ভুলের ঝুঁকি)" : "60% - 75% (Subject to human error)"}
                     </td>
                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
-                      95%+ (High chemical purity)
+                      {isBangla ? "৯৫%+ (উচ্চ রাসায়নিক বিশুদ্ধতা)" : "95%+ (High chemical purity)"}
                     </td>
                     <td className="px-6 py-4 bg-agri-50/50 dark:bg-agri-950/20 font-bold text-emerald-600 dark:text-emerald-400 border-l border-r border-agri-200 dark:border-agri-800">
-                      98.2% (Validated Benchmarks)
+                      {isBangla ? "৯৮.২% (বৈজ্ঞানিক বেঞ্চমার্ক)" : "98.2% (Validated Benchmarks)"}
                     </td>
                   </tr>
 
                   <tr>
                     <td className="px-6 py-4 font-semibold text-slate-900 dark:text-white">
-                      Turnaround Speed
+                      {isBangla ? "ফলাফল পেতে সময়" : "Turnaround Speed"}
                     </td>
                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
-                      Hours to days per hectare
+                      {isBangla ? "হেক্টর প্রতি কয়েক ঘণ্টা থেকে দিন" : "Hours to days per hectare"}
                     </td>
                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
-                      3 - 7 Business Days
+                      {isBangla ? "৩ - ৭ কর্মদিবস" : "3 - 7 Business Days"}
                     </td>
                     <td className="px-6 py-4 bg-agri-50/50 dark:bg-agri-950/20 font-bold text-emerald-600 dark:text-emerald-400 border-l border-r border-agri-200 dark:border-agri-800">
-                      Instant (&lt; 3.0 Seconds)
+                      {isBangla ? "তাত্ক্ষণিক (< ৩.০ সেকেন্ড)" : "Instant (< 3.0 Seconds)"}
                     </td>
                   </tr>
 
                   <tr>
                     <td className="px-6 py-4 font-semibold text-slate-900 dark:text-white">
-                      Cost per Diagnosis
+                      {isBangla ? "প্রতি টেস্টে খরচ" : "Cost per Diagnosis"}
                     </td>
                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
-                      Moderate labor expense
+                      {isBangla ? "মাঝারি জনবল ব্যয়" : "Moderate labor expense"}
                     </td>
                     <td className="px-6 py-4 text-rose-600 font-medium">
-                      High ($75 - $250 per sample)
+                      {isBangla ? "অতিরিক্ত উচ্চ ($৭৫ - $২৫০ / নমুনা)" : "High ($75 - $250 per sample)"}
                     </td>
                     <td className="px-6 py-4 bg-agri-50/50 dark:bg-agri-950/20 font-bold text-emerald-600 dark:text-emerald-400 border-l border-r border-agri-200 dark:border-agri-800">
-                      Free / Low marginal cost
+                      {isBangla ? "সম্পূর্ণ ফ্রি / শূন্য অতিরিক্ত ব্যয়" : "Free / Low marginal cost"}
                     </td>
                   </tr>
 
                   <tr>
                     <td className="px-6 py-4 font-semibold text-slate-900 dark:text-white">
-                      Specialized Expertise
+                      {isBangla ? "প্রয়োজনীয় কারিগরি দক্ষতা" : "Specialized Expertise"}
                     </td>
                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
-                      Requires experienced agronomist
+                      {isBangla ? "অভিজ্ঞ কৃষিবিদ আবশ্যক" : "Requires experienced agronomist"}
                     </td>
                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
-                      Certified laboratory pathologist
+                      {isBangla ? "সনদপ্রাপ্ত ল্যাব প্যাথলজিস্ট" : "Certified laboratory pathologist"}
                     </td>
                     <td className="px-6 py-4 bg-agri-50/50 dark:bg-agri-950/20 font-bold text-emerald-600 dark:text-emerald-400 border-l border-r border-agri-200 dark:border-agri-800">
-                      Zero (Any farmer with a smartphone)
+                      {isBangla ? "শূন্য (যে কোনো স্মার্টফোন ব্যবহারকারী)" : "Zero (Any farmer with a smartphone)"}
                     </td>
                   </tr>
 
                   <tr>
                     <td className="px-6 py-4 font-semibold text-slate-900 dark:text-white">
-                      Immediate Treatment Guidance
+                      {isBangla ? "তাৎক্ষণিক চিকিৎসা প্রেসক্রিপশন" : "Immediate Treatment Guidance"}
                     </td>
                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
-                      Manual reference books
+                      {isBangla ? "ম্যানুয়াল বই বা স্মৃতি নির্ভর" : "Manual reference books"}
                     </td>
                     <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
-                      Report only, no treatment plan
+                      {isBangla ? "শুধুমাত্র ল্যাব রিপোর্ট, কোনো চিকিৎসা নয়" : "Report only, no treatment plan"}
                     </td>
                     <td className="px-6 py-4 bg-agri-50/50 dark:bg-agri-950/20 font-bold text-emerald-600 dark:text-emerald-400 border-l border-r border-agri-200 dark:border-agri-800">
-                      Full Organic & Agchem Prescription
+                      {isBangla ? "পূর্ণাঙ্গ জৈব ও রাসায়নিক প্রেসক্রিপশন" : "Full Organic & Agchem Prescription"}
                     </td>
                   </tr>
                 </tbody>

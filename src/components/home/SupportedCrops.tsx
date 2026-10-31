@@ -1,120 +1,173 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const SupportedCrops: React.FC = () => {
+  const { isBangla } = useLanguage();
+
   const crops = [
     {
-      name: "Rice / Paddy (ধান)",
-      diseasesCount: "9 AI Classes",
-      keyIssues: "Leaf Blast, Bacterial Leaf Blight, Brown Spot, Tungro, Sheath Blight",
+      name: isBangla ? "ধান (Rice / Paddy)" : "Rice / Paddy",
+      cropParam: "Rice",
+      diseasesCount: isBangla ? "৯টি এআই ক্লাস" : "9 AI Classes",
+      keyIssues: isBangla
+        ? "লিফ ব্লাস্ট, ব্যাকটেরিয়াল ব্লাইট, ব্রাউন স্পট, টুংরো ভাইরাস"
+        : "Leaf Blast, Bacterial Leaf Blight, Brown Spot, Tungro",
       imageUrl: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Tomato (টমেটো)",
-      diseasesCount: "10 AI Classes",
-      keyIssues: "Early Blight, Late Blight, Leaf Mold, Bacterial Spot, Mosaic Virus",
+      name: isBangla ? "টমেটো (Tomato)" : "Tomato",
+      cropParam: "Tomato",
+      diseasesCount: isBangla ? "১০টি এআই ক্লাস" : "10 AI Classes",
+      keyIssues: isBangla
+        ? "আর্লি ব্লাইট, লেট ব্লাইট, লিফ মোল্ড, মোজাইক ভাইরাস"
+        : "Early Blight, Late Blight, Leaf Mold, Mosaic Virus",
       imageUrl: "https://images.unsplash.com/photo-1592417817098-8f3d69109853?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Potato (আলু)",
-      diseasesCount: "3 AI Classes",
-      keyIssues: "Late Blight, Early Blight, Healthy Foliage Control",
+      name: isBangla ? "আলু (Potato)" : "Potato",
+      cropParam: "Potato",
+      diseasesCount: isBangla ? "৩টি এআই ক্লাস" : "3 AI Classes",
+      keyIssues: isBangla
+        ? "লেট ব্লাইট (নাবি ধসা), আর্লি ব্লাইট, সুস্থ পাতা"
+        : "Late Blight, Early Blight, Healthy Foliage Control",
       imageUrl: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Chili / Bell Pepper (মরিচ)",
-      diseasesCount: "2 AI Classes",
-      keyIssues: "Bacterial Spot, Healthy Foliage Control",
+      name: isBangla ? "মরিচ (Chili / Pepper)" : "Chili / Bell Pepper",
+      cropParam: "Chili",
+      diseasesCount: isBangla ? "২টি এআই ক্লাস" : "2 AI Classes",
+      keyIssues: isBangla
+        ? "ব্যাকটেরিয়াল স্পট, সুস্থ পাতা যাচাই"
+        : "Bacterial Spot, Healthy Foliage Control",
       imageUrl: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Corn / Maize (ভুট্টা)",
-      diseasesCount: "4 AI Classes",
-      keyIssues: "Common Rust, Northern Leaf Blight, Gray Leaf Spot",
+      name: isBangla ? "ভুট্টা (Corn / Maize)" : "Corn / Maize",
+      cropParam: "Corn",
+      diseasesCount: isBangla ? "৪টি এআই ক্লাস" : "4 AI Classes",
+      keyIssues: isBangla
+        ? "কমন মরিচা, নর্দার্ন লিফ ব্লাইট, গ্রে লিফ স্পট"
+        : "Common Rust, Northern Leaf Blight, Gray Leaf Spot",
       imageUrl: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Wheat (গম)",
-      diseasesCount: "3 AI Classes",
-      keyIssues: "Stripe Rust (Yellow Rust), Septoria Leaf Blight",
+      name: isBangla ? "গম (Wheat)" : "Wheat",
+      cropParam: "Wheat",
+      diseasesCount: isBangla ? "৩টি এআই ক্লাস" : "3 AI Classes",
+      keyIssues: isBangla
+        ? "স্ট্রাইপ মরিচা (হলুদ মরিচা), সেপটোরিয়া লিফ ব্লাইট"
+        : "Stripe Rust (Yellow Rust), Septoria Leaf Blight",
       imageUrl: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Apple (আপেল)",
-      diseasesCount: "4 AI Classes",
-      keyIssues: "Apple Scab, Black Rot, Cedar Apple Rust, Healthy",
+      name: isBangla ? "আপেল (Apple)" : "Apple",
+      cropParam: "Apple",
+      diseasesCount: isBangla ? "৪টি এআই ক্লাস" : "4 AI Classes",
+      keyIssues: isBangla
+        ? "আপেল স্ক্যাব, ব্ল্যাক রট (কালো পচন), সিডার রাস্ট"
+        : "Apple Scab, Black Rot, Cedar Apple Rust, Healthy",
       imageUrl: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Grape (আঙ্গুর)",
-      diseasesCount: "4 AI Classes",
-      keyIssues: "Black Rot, Esca (Black Measles), Leaf Blight",
+      name: isBangla ? "আঙ্গুর (Grape)" : "Grape",
+      cropParam: "Grape",
+      diseasesCount: isBangla ? "৪টি এআই ক্লাস" : "4 AI Classes",
+      keyIssues: isBangla
+        ? "ব্ল্যাক রট, এসকা রোগ, লিফ ব্লাইট"
+        : "Black Rot, Esca (Black Measles), Leaf Blight",
       imageUrl: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Strawberry (স্ট্রবেরি)",
-      diseasesCount: "2 AI Classes",
-      keyIssues: "Leaf Scorch, Healthy Foliage Control",
+      name: isBangla ? "স্ট্রবেরি (Strawberry)" : "Strawberry",
+      cropParam: "Strawberry",
+      diseasesCount: isBangla ? "২টি এআই ক্লাস" : "2 AI Classes",
+      keyIssues: isBangla
+        ? "লিফ স্কর্চ, সুস্থ পাতা মূল্যায়ন"
+        : "Leaf Scorch, Healthy Foliage Control",
       imageUrl: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Citrus / Orange (লেবু/কমলা)",
-      diseasesCount: "1 AI Class",
-      keyIssues: "Huanglongbing (HLB Citrus Greening)",
+      name: isBangla ? "লেবু / কমলা (Citrus)" : "Citrus / Orange",
+      cropParam: "Citrus",
+      diseasesCount: isBangla ? "১টি এআই ক্লাস" : "1 AI Class",
+      keyIssues: isBangla
+        ? "সাইট্রাস গ্রিনিং (হুয়াংলংবিং - HLB)"
+        : "Huanglongbing (HLB Citrus Greening)",
       imageUrl: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Peach (পিচ)",
-      diseasesCount: "2 AI Classes",
-      keyIssues: "Bacterial Spot, Healthy Foliage Control",
+      name: isBangla ? "পিচ ফল (Peach)" : "Peach",
+      cropParam: "Peach",
+      diseasesCount: isBangla ? "২টি এআই ক্লাস" : "2 AI Classes",
+      keyIssues: isBangla
+        ? "ব্যাকটেরিয়াল স্পট, সুস্থ পাতা মনিটরিং"
+        : "Bacterial Spot, Healthy Foliage Control",
       imageUrl: "https://images.unsplash.com/photo-1629828874514-c1e5103f2150?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Cherry (চেরি)",
-      diseasesCount: "2 AI Classes",
-      keyIssues: "Powdery Mildew, Healthy Foliage Control",
+      name: isBangla ? "চেরি (Cherry)" : "Cherry",
+      cropParam: "Cherry",
+      diseasesCount: isBangla ? "২টি এআই ক্লাস" : "2 AI Classes",
+      keyIssues: isBangla
+        ? "পাউডারি মিলডিউ, সুস্থ পাতা যাচাই"
+        : "Powdery Mildew, Healthy Foliage Control",
       imageUrl: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Blueberry (ব্লুবেরি)",
-      diseasesCount: "1 AI Class",
-      keyIssues: "Healthy Leaf Diagnostics",
+      name: isBangla ? "ব্লুবেরি (Blueberry)" : "Blueberry",
+      cropParam: "Blueberry",
+      diseasesCount: isBangla ? "১টি এআই ক্লাস" : "1 AI Class",
+      keyIssues: isBangla
+        ? "সুস্থ পাতার স্বাস্থ্য মূল্যায়ন"
+        : "Healthy Leaf Diagnostics",
       imageUrl: "https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Raspberry (রাস্পবেরি)",
-      diseasesCount: "1 AI Class",
-      keyIssues: "Healthy Foliage Verification",
+      name: isBangla ? "রাস্পবেরি (Raspberry)" : "Raspberry",
+      cropParam: "Raspberry",
+      diseasesCount: isBangla ? "১টি এআই ক্লাস" : "1 AI Class",
+      keyIssues: isBangla
+        ? "উদ্ভিদের স্বাস্থ্য ও লক্ষণ নিরীক্ষা"
+        : "Healthy Foliage Verification",
       imageUrl: "https://images.unsplash.com/photo-1577069808021-5a50787a718c?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Soybean (সয়াবিন)",
-      diseasesCount: "1 AI Class",
-      keyIssues: "Foliage Health & Pathogen Screening",
+      name: isBangla ? "সয়াবিন (Soybean)" : "Soybean",
+      cropParam: "Soybean",
+      diseasesCount: isBangla ? "১টি এআই ক্লাস" : "1 AI Class",
+      keyIssues: isBangla
+        ? "পাতার স্বাস্থ্য ও প্যাথোজেন স্ক্রিনিং"
+        : "Foliage Health & Pathogen Screening",
       imageUrl: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
     {
-      name: "Squash / Pumpkin (মিষ্টি কুমড়া)",
-      diseasesCount: "1 AI Class",
-      keyIssues: "Powdery Mildew Screening",
+      name: isBangla ? "মিষ্টি কুমড়া (Squash)" : "Squash / Pumpkin",
+      cropParam: "Squash",
+      diseasesCount: isBangla ? "১টি এআই ক্লাস" : "1 AI Class",
+      keyIssues: isBangla
+        ? "পাউডারি মিলডিউ ফাঙ্গাল স্ক্রিনিং"
+        : "Powdery Mildew Screening",
       imageUrl: "https://images.unsplash.com/photo-1570586437263-ab629fccc818?w=400&auto=format&fit=crop&q=80",
-      status: "Active AI (ConvNeXt)",
+      status: isBangla ? "সক্রিয় এআই" : "Active AI (ConvNeXt)",
     },
   ];
 
@@ -124,13 +177,15 @@ export const SupportedCrops: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-agri-600 dark:text-agri-400">
-              Agricultural Spectrum
+              {isBangla ? "কৃষি বৈচিত্র্য ও কভারেজ" : "Agricultural Spectrum"}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-1">
-              Supported Crops & Plant Families
+              {isBangla ? "সমর্থিত ফসল ও উদ্ভিদ পরিবার" : "Supported Crops & Plant Families"}
             </h2>
             <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 max-w-xl">
-              Trained on extensive botanical pathology archives covering Solanaceae, field grains, tree fruits, and row vegetables.
+              {isBangla
+                ? "সোলেসিয়াস, খাদ্যশস্য, বাগানের ফল ও শাকসবজির বিশাল প্যাথলজি ডেটাসেটে প্রশিক্ষিত ডিপ ভিশন এআই মডেল।"
+                : "Trained on extensive botanical pathology archives covering Solanaceae, field grains, tree fruits, and row vegetables."}
             </p>
           </div>
 
@@ -138,7 +193,7 @@ export const SupportedCrops: React.FC = () => {
             href="/supported-crops"
             className="inline-flex items-center gap-2 text-sm font-bold text-agri-600 hover:text-agri-700 dark:text-agri-400"
           >
-            <span>View All 16 Crops & 50 Classes &rarr;</span>
+            <span>{isBangla ? "সকল ১৬টি ফসল ও ৫০টি রোগ দেখুন →" : "View All 16 Crops & 50 Classes →"}</span>
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
@@ -146,8 +201,8 @@ export const SupportedCrops: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {crops.map((c) => (
             <Link
-              key={c.name}
-              href={`/scan?crop=${encodeURIComponent(c.name)}`}
+              key={c.cropParam}
+              href={`/scan?crop=${encodeURIComponent(c.cropParam)}`}
               className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-800/40 p-5 hover:border-agri-500 hover:shadow-xl transition-all duration-300"
             >
               <div className="flex items-center gap-4">
@@ -176,7 +231,7 @@ export const SupportedCrops: React.FC = () => {
                     {c.keyIssues}
                   </p>
                   <p className="mt-2 text-[11px] font-semibold text-agri-600 dark:text-agri-400 flex items-center gap-1">
-                    Scan {c.name.split(" ")[0]} leaf &rarr;
+                    {isBangla ? `${c.name.split(" ")[0]} পাতা স্ক্যান করুন →` : `Scan ${c.cropParam} leaf →`}
                   </p>
                 </div>
               </div>
