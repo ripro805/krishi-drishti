@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { AlertTriangle, Camera, PhoneCall, HelpCircle, ShieldAlert } from "lucide-react";
+import { AlertTriangle, Camera, HelpCircle, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/common/Button";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface LowConfidenceWarningProps {
   confidence: number;
@@ -14,6 +15,8 @@ export const LowConfidenceWarning: React.FC<LowConfidenceWarningProps> = ({
   confidence,
   onRetake,
 }) => {
+  const { isBangla } = useLanguage();
+
   return (
     <div className="rounded-3xl border-2 border-amber-300 bg-amber-50/90 p-5 sm:p-7 dark:border-amber-700/70 dark:bg-amber-950/40 shadow-sm animate-fadeIn">
       <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -24,31 +27,47 @@ export const LowConfidenceWarning: React.FC<LowConfidenceWarningProps> = ({
         <div className="flex-1 space-y-2">
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-lg bg-amber-200/90 px-2.5 py-1 text-xs font-black uppercase tracking-wider text-amber-950 dark:bg-amber-800 dark:text-amber-100">
-              কম কনফিডেন্স সতর্কতা (Low Confidence Match)
+              {isBangla ? "কম কনফিডেন্স সতর্কতা (Low Confidence Match)" : "Low Confidence Match Warning"}
             </span>
             <span className="text-xs font-bold text-amber-800 dark:text-amber-300">
-              নিশ্চয়তার মাত্রা: {confidence.toFixed(1)}% (প্রয়োজনীয় মান &ge; ৩৫%)
+              {isBangla
+                ? `নিশ্চয়তার মাত্রা: ${confidence.toFixed(1)}% (প্রয়োজনীয় মান ≥ ৩৫%)`
+                : `Match Confidence: ${confidence.toFixed(1)}% (Required ≥ 35%)`}
             </span>
           </div>
 
           <h3 className="text-base sm:text-lg font-extrabold text-amber-950 dark:text-amber-100">
-            AI মডেল এই ফলাফল সম্পর্কে সম্পূর্ণ নিশ্চিত হতে পারছে না
+            {isBangla
+              ? "AI মডেল এই ফলাফল সম্পর্কে সম্পূর্ণ নিশ্চিত হতে পারছে না"
+              : "AI Model is Uncertain About this Diagnosis"}
           </h3>
 
           <p className="text-sm leading-relaxed text-amber-900/90 dark:text-amber-200/90">
-            ছবির অস্পষ্টতা, অপর্যাপ্ত আলো, দূর থেকে তোলা বা একাধিক রোগের মিশ্র লক্ষণের কারণে সঠিক রোগ শনাক্তকরণে দ্বিধা রয়েছে। ভুল ওষুধ প্রয়োগ ফসলের অপূরণীয় ক্ষতি করতে পারে।
+            {isBangla
+              ? "ছবির অস্পষ্টতা, অপর্যাপ্ত আলো, দূর থেকে তোলা বা একাধিক রোগের মিশ্র লক্ষণের কারণে সঠিক রোগ শনাক্তকরণে দ্বিধা রয়েছে। ভুল ওষুধ প্রয়োগ ফসলের অপূরণীয় ক্ষতি করতে পারে।"
+              : "Due to image blurriness, insufficient lighting, distant perspective, or overlapping symptoms, the AI cannot diagnose with high certainty. Applying unverified chemical remedies can harm your crops."}
           </p>
 
           {/* Action Guidelines */}
           <div className="mt-3 rounded-2xl bg-white/80 p-3.5 dark:bg-slate-900/80 border border-amber-200 dark:border-amber-800/60">
             <p className="text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5 flex items-center gap-1.5">
               <ShieldAlert className="h-4 w-4 text-amber-600" />
-              আপনার পরবর্তী জরুরি করণীয়:
+              {isBangla ? "আপনার পরবর্তী জরুরি করণীয়:" : "Immediate Recommended Actions:"}
             </p>
             <ul className="text-xs text-slate-700 dark:text-slate-300 space-y-1 list-disc list-inside">
-              <li>দিনের স্বাভাবিক ভালো আলোতে আক্রান্ত পাতার একদম কাছাকাছি ফোকাস করে পুনরায় ছবি তুলুন।</li>
-              <li>পাতার ওপর ছায়া পড়া বা হাত কেঁপে যাওয়া পরিহার করুন।</li>
-              <li>কোনো রাসায়নিক ওষুধ বা ছত্রাকনাশক স্প্রে করার আগে অবশ্যই আক্রান্ত পাতাসহ নিকটস্থ <strong>উপজেলা কৃষি কর্মকর্তা</strong> বা <strong>উপসহকারী কৃষি কর্মকর্তার (SAAO)</strong> সরাসরি পরামর্শ নিন।</li>
+              {isBangla ? (
+                <>
+                  <li>দিনের স্বাভাবিক আলোতে আক্রান্ত পাতার একদম কাছাকাছি ফোকাস করে পুনরায় ছবি তুলুন।</li>
+                  <li>পাতার ওপর ছায়া পড়া বা হাত কেঁপে যাওয়া পরিহার করুন।</li>
+                  <li>কোনো রাসায়নিক স্প্রে করার আগে অবশ্যই আক্রান্ত পাতাসহ নিকটস্থ <strong>উপজেলা কৃষি কর্মকর্তা</strong> বা <strong>উপসহকারী কৃষি কর্মকর্তার (SAAO)</strong> সরাসরি পরামর্শ নিন।</li>
+                </>
+              ) : (
+                <>
+                  <li>Retake a steady photo in natural daylight with close-up focus on the leaf lesion.</li>
+                  <li>Avoid heavy shadows or blurry camera motion.</li>
+                  <li>Before spraying any agrochemicals, consult a certified local agricultural extension officer.</li>
+                </>
+              )}
             </ul>
           </div>
 
@@ -63,11 +82,11 @@ export const LowConfidenceWarning: React.FC<LowConfidenceWarningProps> = ({
                 className="bg-amber-600 hover:bg-amber-700 text-white shadow-md shadow-amber-600/30"
               >
                 <Camera className="h-4 w-4 mr-1.5" />
-                নতুন স্পষ্ট ছবি তুলুন
+                {isBangla ? "নতুন স্পষ্ট ছবি তুলুন" : "Retake Clearer Photo"}
               </Button>
             )}
 
-            <Link href="/chat?prompt=আমার পাতার ছবিতে রোগ স্পষ্ট ধরা পড়ছে না, কম কনফিডেন্স এসেছে। এখন আমার কী করণীয়?">
+            <Link href={isBangla ? "/chat?prompt=আমার পাতার ছবিতে রোগ স্পষ্ট ধরা পড়ছে না, কম কনফিডেন্স এসেছে। এখন আমার কী করণীয়?" : "/chat?prompt=The leaf scan resulted in low confidence. What steps should I take?"}>
               <Button
                 type="button"
                 variant="outline"
@@ -75,7 +94,7 @@ export const LowConfidenceWarning: React.FC<LowConfidenceWarningProps> = ({
                 className="border-amber-400 bg-white text-amber-900 hover:bg-amber-50 dark:border-amber-700 dark:bg-slate-800 dark:text-amber-200"
               >
                 <HelpCircle className="h-4 w-4 mr-1.5" />
-                কৃষি সহকারীর সাথে কথা বলুন
+                {isBangla ? "কৃষি সহকারীর সাথে কথা বলুন" : "Consult AI Crop Doctor"}
               </Button>
             </Link>
           </div>

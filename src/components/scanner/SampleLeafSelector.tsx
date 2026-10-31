@@ -71,18 +71,18 @@ export const SampleLeafSelector: React.FC<SampleLeafSelectorProps> = ({
                     className="text-[10px] px-1.5 py-0 shadow-sm"
                   >
                     {leaf.isLowConfidenceDemo
-                      ? "কম কনফিডেন্স"
-                      : leaf.expectedSeverity}
+                      ? (isBangla ? "কম কনফিডেন্স" : "Low Match")
+                      : (isBangla && leaf.expectedSeverity === "Healthy" ? "সুস্থ" : leaf.expectedSeverity)}
                   </Badge>
                 </div>
               </div>
 
               <div className="mt-2 flex-1">
                 <p className="text-[11px] font-semibold text-agri-700 dark:text-agri-400">
-                  {leaf.banglaCrop || leaf.crop}
+                  {isBangla ? (leaf.banglaCrop || leaf.crop) : leaf.crop}
                 </p>
                 <p className="text-xs font-bold text-slate-900 dark:text-white line-clamp-1">
-                  {leaf.banglaDiseaseName || leaf.diseaseName.split("(")[0]}
+                  {isBangla ? (leaf.banglaDiseaseName || leaf.diseaseName.split("(")[0]) : leaf.diseaseName.split("(")[0]}
                 </p>
               </div>
             </button>

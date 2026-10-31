@@ -220,8 +220,8 @@ export default function HistoryPage() {
                           <AlertTriangle className="h-3 w-3 mr-1" />
                         ) : null}
                         {isLow
-                          ? "কম কনফিডেন্স"
-                          : `${item.confidence.toFixed(0)}% Match`}
+                          ? (isBangla ? "কম কনফিডেন্স" : "Low Match")
+                          : (isBangla ? `${item.confidence.toFixed(0)}% মিল` : `${item.confidence.toFixed(0)}% Match`)}
                       </Badge>
                     </div>
 
@@ -247,7 +247,7 @@ export default function HistoryPage() {
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-xs text-slate-500">
                       <span className="font-semibold text-agri-700 dark:text-agri-400">
-                        {item.banglaCrop || item.crop}
+                        {isBangla ? (item.banglaCrop || item.crop) : item.crop}
                       </span>
                       <span className="flex items-center gap-1 text-[11px]">
                         <Clock className="h-3 w-3" />
@@ -255,10 +255,10 @@ export default function HistoryPage() {
                       </span>
                     </div>
                     <h3 className="text-base font-extrabold text-slate-900 dark:text-white line-clamp-1">
-                      {item.banglaName || item.disease}
+                      {isBangla ? (item.banglaName || item.disease) : item.disease}
                     </h3>
                     <p className="text-xs text-slate-400 italic">
-                      English: {item.disease}
+                      {isBangla ? `English: ${item.disease}` : (item.banglaName ? `বাংলা: ${item.banglaName}` : "")}
                     </p>
                   </div>
 
@@ -267,7 +267,7 @@ export default function HistoryPage() {
                       {item.feedbackRating === "accurate" ? (
                         <>
                           <ThumbsUp className="h-3 w-3 text-emerald-600" />
-                          <span>কৃষক রেটিং: সঠিক ছিল</span>
+                          <span>{isBangla ? 'কৃষক রেটিং: সঠিক ছিল' : 'Farmer Rating: Accurate'}</span>
                         </>
                       ) : item.feedbackRating === "inaccurate" ? (
                         <>

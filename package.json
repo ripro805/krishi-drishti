@@ -7,6 +7,8 @@
     "dev": "next dev",
     "model": "python scripts/model_server.py",
     "test:chat": "node scripts/test_chatbot_suite.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:report": "playwright show-report artifacts/playwright/html-report",
     "build": "next build",
     "start": "next start"
   },
@@ -34,6 +36,7 @@
     "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/canvas-confetti": "^1.9.0",
     "@types/jsonwebtoken": "^9.0.10",

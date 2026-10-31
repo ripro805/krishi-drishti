@@ -1,0 +1,32 @@
+# Multi-stage optimized Dockerfile for KrishiDrishti FastAPI Model Server
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies (libgl1 for OpenCV/PIL if needed, curl for health checks)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install PyTorch CPU and core ML dependencies
+RUN pip install --no-cache-dir \
+    torch --index-url https://download.pytorch.org/whl/cpu \
+    transformers \
+    fastapi \
+    uvicorn \
+    pydantic \
+    pillow \
+    requests
+
+# Copy model server scripts
+COPY scripts/ /app/scripts/
+
+ENV PORT=5005
+ENV HOST=0.0.0.0
+ENV MODEL_NAME=ripro805/krishidrishti-plant-disease
+ENV PYTHONPATH=/app/scripts:/app
+
+EXPOSE 5005
+
+CMD ["sh", "-c", "uvicorn scripts.model_server:app --host 0.0.0.0 --port ${PORT:-5005}"]
+

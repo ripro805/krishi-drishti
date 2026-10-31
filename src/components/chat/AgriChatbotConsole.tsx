@@ -265,17 +265,17 @@ export const AgriChatbotConsole: React.FC<AgriChatbotConsoleProps> = ({
                           type="button"
                           onClick={() => handleCopy(msg.content, msg.id)}
                           className="flex items-center gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
-                          title="উত্তর কপি করুন"
+                          title={isBangla ? "উত্তর কপি করুন" : "Copy response"}
                         >
                           {copiedId === msg.id ? (
                             <>
                               <Check className="h-3 w-3 text-emerald-600" />
-                              <span className="text-emerald-600 font-semibold">কপি হয়েছে!</span>
+                              <span className="text-emerald-600 font-semibold">{isBangla ? "কপি হয়েছে!" : "Copied!"}</span>
                             </>
                           ) : (
                             <>
                               <Copy className="h-3 w-3" />
-                              <span>কপি</span>
+                              <span>{isBangla ? "কপি" : "Copy"}</span>
                             </>
                           )}
                         </button>

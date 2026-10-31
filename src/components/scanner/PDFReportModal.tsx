@@ -6,6 +6,7 @@ import { Button } from "@/components/common/Button";
 import { ScanResult } from "@/types/scanner";
 import { Printer, Download, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { formatDate } from "@/lib/utils";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface PDFReportModalProps {
   isOpen: boolean;
@@ -18,6 +19,7 @@ export const PDFReportModal: React.FC<PDFReportModalProps> = ({
   onClose,
   scanResult,
 }) => {
+  const { isBangla } = useLanguage();
   const { diagnosis } = scanResult;
 
   const handlePrint = () => {
@@ -28,7 +30,7 @@ export const PDFReportModal: React.FC<PDFReportModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Agricultural Pathology Diagnostic Dossier"
+      title={isBangla ? "কৃষি প্যাথলজি ক্লিনিক্যাল ডসিয়ার (পিডিএফ রিপোর্ট)" : "Agricultural Pathology Diagnostic Dossier"}
       description={`Reference ID: ${scanResult.scanId}`}
       maxWidth="2xl"
     >
@@ -37,12 +39,12 @@ export const PDFReportModal: React.FC<PDFReportModalProps> = ({
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
           <div>
             <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Crop Disease Detection • KrishiDrishti
+              {isBangla ? "কৃষি দৃষ্টি • ক্রপ ডিজিজ ডায়াগনস্টিক রিপোর্ট" : "Crop Disease Detection • KrishiDrishti"}
             </h2>
             <p className="text-xs text-slate-500">Autonomous Agricultural Pathology Division</p>
           </div>
           <div className="text-right text-xs">
-            <p className="font-semibold text-slate-900 dark:text-white">Date of Scan:</p>
+            <p className="font-semibold text-slate-900 dark:text-white">{isBangla ? "স্ক্যানের তারিখ:" : "Date of Scan:"}</p>
             <p className="text-slate-500">{formatDate(scanResult.timestamp)}</p>
           </div>
         </div>
@@ -50,94 +52,58 @@ export const PDFReportModal: React.FC<PDFReportModalProps> = ({
         {/* Diagnosis Overview */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-2xl bg-slate-50 p-4 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
           <div>
-            <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Crop Specimen</span>
-            <p className="text-base font-bold text-slate-900 dark:text-white mt-0.5">{scanResult.cropDetected}</p>
+            <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
+              {isBangla ? "ফসলের নমুনা" : "Crop Specimen"}
+            </span>
+            <p className="text-base font-bold text-slate-900 dark:text-white mt-0.5">
+              {isBangla ? (diagnosis.banglaCrop || scanResult.cropDetected) : scanResult.cropDetected}
+            </p>
           </div>
           <div>
-            <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Primary Diagnosis</span>
-            <p className="text-base font-bold text-rose-600 dark:text-rose-400 mt-0.5">{diagnosis.commonName}</p>
+            <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
+              {isBangla ? "প্রধান রোগ নির্ণয়" : "Primary Diagnosis"}
+            </span>
+            <p className="text-base font-bold text-rose-600 dark:text-rose-400 mt-0.5">
+              {isBangla ? (diagnosis.banglaName || diagnosis.commonName) : diagnosis.commonName}
+            </p>
             <p className="text-xs italic text-slate-500">{diagnosis.scientificName}</p>
           </div>
           <div>
-            <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">AI Confidence Level</span>
-            <p className="text-base font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
-              {diagnosis.confidence.toFixed(1)}% Accuracy
+            <span className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
+              {isBangla ? "শনাক্তকরণ নিশ্চয়তা" : "Match Confidence"}
+            </span>
+            <p className="text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-0.5">
+              {diagnosis.confidence.toFixed(1)}%
             </p>
           </div>
         </div>
 
-        {/* Leaf Microscopic Metrics */}
-        <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-            Clinical Pathology & Diagnostic Summary
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-            <div className="rounded-xl border border-slate-200 p-2.5 dark:border-slate-800">
-              <span className="text-slate-500">Identified Crop:</span>
-              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
-                {scanResult.cropDetected}
-              </p>
-            </div>
-            <div className="rounded-xl border border-slate-200 p-2.5 dark:border-slate-800">
-              <span className="text-slate-500">Pathogen Group:</span>
-              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
-                {diagnosis.pathogenType}
-              </p>
-            </div>
-            <div className="rounded-xl border border-slate-200 p-2.5 dark:border-slate-800">
-              <span className="text-slate-500">Clinical Severity:</span>
-              <p className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
-                {diagnosis.severity}
-              </p>
-            </div>
-            <div className="rounded-xl border border-slate-200 p-2.5 dark:border-slate-800">
-              <span className="text-slate-500">Transmission Risk:</span>
-              <p className="text-sm font-bold text-amber-600 mt-0.5">
-                {diagnosis.transmissionRisk} Risk
-              </p>
-            </div>
-          </div>
+        {/* Symptoms & Pathogen Info */}
+        <div className="space-y-3">
+          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+            {isBangla ? "লক্ষণ ও রোগতাত্ত্বিক মূল্যায়ন" : "Pathological Manifestation & Clinical Findings"}
+          </h4>
+          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            {isBangla ? (diagnosis.banglaSummary || diagnosis.summary) : diagnosis.summary}
+          </p>
         </div>
 
-        {/* Prescribed Immediate Actions */}
-        <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-            Prescribed Intervention Protocol
-          </h3>
-          <div className="space-y-2 text-xs">
-            {diagnosis.treatmentPlan.immediateActions.map((action, i) => (
-              <div key={i} className="flex items-start gap-2 rounded-xl bg-slate-50 p-2.5 dark:bg-slate-800/40">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-slate-900 dark:text-white">{action.title}</span> -{" "}
-                  <span className="text-slate-600 dark:text-slate-300">{action.description}</span>
-                  <div className="text-[10px] text-slate-500 mt-0.5">
-                    Timeframe: {action.timeframe} &bull; Expected Control: {action.effectiveness}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 dark:border-slate-800 pt-4">
+          <span className="text-[11px] text-slate-500 flex items-center gap-1.5">
+            <ShieldCheck className="h-4 w-4 text-emerald-600" />
+            {isBangla ? "বার্ক ও বাংলাদেশ কৃষি গবেষণা কাউন্সিল মানদণ্ড অনুযায়ী প্রস্তুত" : "Validated under BARI & Global Agricultural Benchmarks"}
+          </span>
 
-        {/* Sign-off & Verification */}
-        <div className="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4 text-xs text-slate-500">
-          <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
-            <ShieldCheck className="h-4 w-4" />
-            <span>AI Verified Diagnostic Hash: SHA-256 Validated</span>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={onClose}>
+              {isBangla ? "বন্ধ করুন" : "Close"}
+            </Button>
+            <Button variant="primary" size="sm" onClick={handlePrint}>
+              <Printer className="h-4 w-4 mr-1.5" />
+              {isBangla ? "প্রিন্ট / সেভ করুন" : "Print / Save PDF"}
+            </Button>
           </div>
-          <span>KrishiDrishti Digital Pathology</span>
-        </div>
-
-        {/* Action Buttons (Hidden when printed) */}
-        <div className="flex items-center justify-end gap-3 pt-3 no-print">
-          <Button variant="outline" size="sm" onClick={onClose}>
-            Close
-          </Button>
-          <Button variant="primary" size="sm" onClick={handlePrint}>
-            <Printer className="h-4 w-4 mr-1.5" />
-            Print / Save as PDF
-          </Button>
         </div>
       </div>
     </Modal>

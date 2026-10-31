@@ -1,17 +1,26 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const ScanningAnimation: React.FC = () => {
+  const { isBangla } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
 
-  const steps = [
-    "Preprocessing optical leaf pixels & chlorophyll ratio...",
-    "Extracting cellular necrosis & lesion morphology...",
-    "Querying 200+ pathogen profiles in plant pathology model...",
-    "Synthesizing customized organic & chemical treatment plan...",
-  ];
+  const steps = isBangla
+    ? [
+        "পাতার অপটিক্যাল পিক্সেল ও ক্লোরোফিল অনুপাত প্রি-প্রসেস করা হচ্ছে...",
+        "কোষীয় নেক্রোসিস ও ক্ষতের আকৃতি বিশ্লেষণ চলছে...",
+        "উদ্ভিদ রোগতত্ত্ব মডেলের ২০০+ প্যাথোজেনের সাথে তুলনা করা হচ্ছে...",
+        "কাস্টমাইজড জৈব ও রাসায়নিক প্রেসক্রিপশন তৈরি হচ্ছে...",
+      ]
+    : [
+        "Preprocessing optical leaf pixels & chlorophyll ratio...",
+        "Extracting cellular necrosis & lesion morphology...",
+        "Querying 200+ pathogen profiles in plant pathology model...",
+        "Synthesizing customized organic & chemical treatment plan...",
+      ];
 
   useEffect(() => {
     const timer1 = setTimeout(() => setCurrentStep(1), 400);
@@ -40,7 +49,7 @@ export const ScanningAnimation: React.FC = () => {
 
         <div>
           <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white">
-            KrishiDrishti AI Diagnostic Engine
+            {isBangla ? "কৃষি দৃষ্টি এআই ডায়াগনস্টিক ইঞ্জিন" : "KrishiDrishti AI Diagnostic Engine"}
           </h3>
           <p className="text-xs text-emerald-300 font-mono mt-1">
             ConvNeXt-Tiny &bull; 98% Pathology Benchmark Active
@@ -58,20 +67,16 @@ export const ScanningAnimation: React.FC = () => {
                 key={step}
                 className={`flex items-center gap-3 text-xs transition-colors duration-300 ${
                   isDone
-                    ? "text-emerald-400 font-medium"
+                    ? "text-emerald-400 font-semibold"
                     : isCurrent
-                    ? "text-white font-semibold"
+                    ? "text-white font-bold"
                     : "text-slate-500"
                 }`}
               >
-                {isDone ? (
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0" />
-                ) : isCurrent ? (
-                  <Loader2 className="h-4 w-4 text-emerald-400 animate-spin flex-shrink-0" />
-                ) : (
-                  <div className="h-4 w-4 rounded-full border border-slate-700 flex-shrink-0" />
-                )}
-                <span className="line-clamp-1">{step}</span>
+                <span className="flex h-5 w-5 items-center justify-center rounded-full text-[10px] bg-slate-800 border border-slate-700">
+                  {isDone ? "✓" : idx + 1}
+                </span>
+                <span>{step}</span>
               </div>
             );
           })}

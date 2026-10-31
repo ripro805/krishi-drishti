@@ -54,8 +54,9 @@ export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({
                 : "Mandatory Agricultural Safety & Pesticide Dosage Notice"}
             </p>
             <p className="text-rose-800/90 dark:text-rose-300 leading-relaxed">
-              {banglaTreatment?.safetyNote ||
-                "রাসায়নিক বা কীটনাশকের নির্দিষ্ট বাণিজ্যিক ডোজ অনুমান করে প্রয়োগ করা আইনত দণ্ডনীয় ও ফসলের জন্য ক্ষতিকর। সর্বদা প্রস্তুতকারকের অনুমোদিত লেবেলে উল্লেখিত সঠিক মাত্রা মেনে চলুন এবং উপজেলা কৃষি কর্মকর্তা বা কৃষি সম্প্রসারণ অধিদপ্তরের (DAE) প্রেসক্রিপশন অনুযায়ী প্রয়োগ করুন।"}
+              {banglaTreatment?.safetyNote || (isBangla
+                ? "রাসায়নিক বা কীটনাশকের নির্দিষ্ট বাণিজ্যিক ডোজ অনুমান করে প্রয়োগ করা আইনত দণ্ডনীয় ও ফসলের জন্য ক্ষতিকর। সর্বদা প্রস্তুতকারকের অনুমোদিত লেবেলে উল্লেখিত সঠিক মাত্রা মেনে চলুন এবং উপজেলা কৃষি কর্মকর্তা বা কৃষি সম্প্রসারণ অধিদপ্তরের (DAE) প্রেসক্রিপশন অনুযায়ী প্রয়োগ করুন।"
+                : "Applying unverified chemical doses is hazardous to crop health. Always adhere to authorized manufacturer product labels and consult registered agricultural extension officers (DAE) before broad spraying.")}
             </p>
             {banglaTreatment?.verifiedSource && (
               <p className="text-[11px] font-semibold text-rose-700 dark:text-rose-400 pt-1">
@@ -79,7 +80,7 @@ export const TreatmentPlanTabs: React.FC<TreatmentPlanTabsProps> = ({
             }`}
           >
             <Stethoscope className="h-4 w-4" />
-            বাংলা নির্দেশিকা (Bangla Guide)
+            {isBangla ? 'বাংলা নির্দেশিকা (BARI)' : 'Clinical Advisory (BARI)'}
           </button>
         )}
 

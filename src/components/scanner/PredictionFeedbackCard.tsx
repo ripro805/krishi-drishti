@@ -7,6 +7,7 @@ import { FeedbackRating } from "@/types/feedback";
 import { saveFeedback } from "@/lib/storage";
 import { apiClient } from "@/lib/apiClient";
 import { useAuth } from "@/context/AuthContext";
+import { useLanguage } from "@/context/LanguageContext";
 import confetti from "canvas-confetti";
 
 interface PredictionFeedbackCardProps {
@@ -25,6 +26,7 @@ export const PredictionFeedbackCard: React.FC<PredictionFeedbackCardProps> = ({
   confidence,
 }) => {
   const { currentUser } = useAuth();
+  const { isBangla } = useLanguage();
   const [selectedRating, setSelectedRating] = useState<FeedbackRating | null>(null);
   const [comment, setComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -66,7 +68,7 @@ export const PredictionFeedbackCard: React.FC<PredictionFeedbackCardProps> = ({
         confidence,
         rating: selectedRating,
         comment: comment.trim() || undefined,
-        userName: currentUser ? `${currentUser.name} (${currentUser.role})` : "অতিথি ব্যবহারকারী (Guest)",
+        userName: currentUser ? `${currentUser.name} (${currentUser.role})` : isBangla ? "অতিথি ব্যবহারকারী (Guest)" : "Guest User",
       });
 
       // Synchronize locally as well for offline cache
@@ -79,13 +81,13 @@ export const PredictionFeedbackCard: React.FC<PredictionFeedbackCardProps> = ({
         rating: selectedRating,
         comment: comment.trim() || undefined,
         userId: currentUser?.id,
-        userName: currentUser ? `${currentUser.name} (${currentUser.role})` : "অতিথি ব্যবহারকারী (Guest)",
+        userName: currentUser ? `${currentUser.name} (${currentUser.role})` : isBangla ? "অতিথি ব্যবহারকারী (Guest)" : "Guest User",
       });
 
       setIsSubmitted(true);
     } catch (err: any) {
       console.error("[PredictionFeedbackCard] Submission failed:", err);
-      setSubmitError(err?.message || "ফিডব্যাক পাঠানো সম্ভব হয়নি। পুনরায় চেষ্টা করুন।");
+      setSubmitError(err?.message || (isBangla ? "ফিডব্যাক পাঠানো সম্ভব হয়নি। পুনরায় চেষ্টা করুন।" : "Failed to submit feedback. Please try again."));
     } finally {
       setIsSubmitting(false);
     }
@@ -97,17 +99,19 @@ export const PredictionFeedbackCard: React.FC<PredictionFeedbackCardProps> = ({
         <div>
           <h4 className="text-sm font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
             <MessageSquare className="h-4 w-4 text-agri-600" />
-            ব্যবহারকারী মূল্যায়ন ও ফিডব্যাক (User Feedback)
+            {isBangla ? "ব্যবহারকারী মূল্যায়ন ও ফিডব্যাক (User Feedback)" : "Diagnostic Accuracy Feedback"}
           </h4>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            এই রোগ শনাক্তকরণের ফলাফলটি কি আপনার মাঠের বাস্তব লক্ষণের সাথে সঠিক মিলেছে?
+            {isBangla
+              ? "এই রোগ শনাক্তকরণের ফলাফলটি কি আপনার মাঠের বাস্তব লক্ষণের সাথে সঠিক মিলেছে?"
+              : "Did this diagnostic result accurately match your observed field symptoms?"}
           </p>
         </div>
 
         {isSubmitted ? (
           <div className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-2 text-xs font-bold text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800">
             <Check className="h-4 w-4 text-emerald-600" />
-            <span>ধন্যবাদ! আপনার মূল্যবান মতামত সংরক্ষিত হয়েছে।</span>
+            <span>{isBangla ? "ধন্যবাদ! আপনার মূল্যবান মতামত সংরক্ষিত হয়েছে।" : "Thank you! Your verified feedback has been recorded."}</span>
           </div>
         ) : (
           <div className="flex items-center flex-wrap gap-2">
@@ -121,7 +125,7 @@ export const PredictionFeedbackCard: React.FC<PredictionFeedbackCardProps> = ({
               }`}
             >
               <ThumbsUp className="h-3.5 w-3.5" />
-              হ্যাঁ, সঠিক (Accurate)
+              {isBangla ? "হ্যাঁ, সঠিক (Accurate)" : "Yes, Accurate"}
             </button>
 
             <button
@@ -134,7 +138,7 @@ export const PredictionFeedbackCard: React.FC<PredictionFeedbackCardProps> = ({
               }`}
             >
               <ThumbsDown className="h-3.5 w-3.5" />
-              না, ভুল (Inaccurate)
+              {isBangla ? "না, ভুল (Inaccurate)" : "No, Inaccurate"}
             </button>
 
             <button
@@ -147,7 +151,7 @@ export const PredictionFeedbackCard: React.FC<PredictionFeedbackCardProps> = ({
               }`}
             >
               <HelpCircle className="h-3.5 w-3.5" />
-              নিশ্চিত নই (Unsure)
+              {isBangla ? "নিশ্চিত নই (Unsure)" : "Unsure"}
             </button>
           </div>
         )}
@@ -171,19 +175,19 @@ export const PredictionFeedbackCard: React.FC<PredictionFeedbackCardProps> = ({
               onChange={(e) => setComment(e.target.value)}
               disabled={isSubmitting}
               maxLength={500}
-              placeholder="আপনার মাঠের পর্যবেক্ষণ বা সঠিক রোগটি জানা থাকলে লিখুন (ঐচ্ছিক)..."
+              placeholder={isBangla ? "আপনার মাঠের পর্যবেক্ষণ বা সঠিক রোগটি জানা থাকলে লিখুন (ঐচ্ছিক)..." : "Add field notes or mention the actual observed symptom (optional)..."}
               className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-agri-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white disabled:opacity-50"
             />
             <Button type="submit" size="sm" variant="primary" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-3.5 w-3.5 mr-1 animate-spin" />
-                  সংরক্ষণ হচ্ছে...
+                  {isBangla ? "সংরক্ষণ হচ্ছে..." : "Submitting..."}
                 </>
               ) : (
                 <>
                   <Send className="h-3.5 w-3.5 mr-1" />
-                  জমা দিন (Submit)
+                  {isBangla ? "জমা দিন" : "Submit"}
                 </>
               )}
             </Button>
