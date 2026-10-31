@@ -13,7 +13,20 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: [env.FRONTEND_URL, "http://localhost:3000"],
+    origin: (origin, callback) => {
+      // Allow requests with no origin, localhost, vercel deployments, or configured FRONTEND_URL
+      if (
+        !origin ||
+        origin.includes("localhost") ||
+        origin.includes("127.0.0.1") ||
+        origin.endsWith(".vercel.app") ||
+        origin === env.FRONTEND_URL ||
+        origin.replace(/\/$/, "") === env.FRONTEND_URL?.replace(/\/$/, "")
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, true); // Allow all web clients in production API
+    },
     credentials: true,
   })
 );
@@ -41,8 +54,10 @@ app.get("/health", (req: Request, res: Response) => {
   });
 });
 
-// Mount Versioned API Modules
+// Mount Versioned and Root API Modules for 100% Client Compatibility
 app.use("/api/v1", apiV1Router);
+app.use("/api", apiV1Router);
+app.use(apiV1Router);
 
 // 404 handler
 app.use((req: Request, res: Response, next) => {

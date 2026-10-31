@@ -18,6 +18,7 @@ import {
   Mail,
   AlertCircle,
   ArrowRight,
+  Info,
 } from "lucide-react";
 
 export default function LoginPage() {
@@ -47,9 +48,14 @@ export default function LoginPage() {
 
   const handleDemo = async (role: "farmer" | "expert" | "admin") => {
     setIsLoading(true);
-    await demoLogin(role);
+    setError(null);
+    const result = await demoLogin(role);
     setIsLoading(false);
-    router.push(role === "admin" ? "/admin" : "/scan");
+    if (result.success) {
+      router.push(role === "admin" ? "/admin" : "/scan");
+    } else {
+      setError(result.error || "ডেমো লগইন ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।");
+    }
   };
 
   return (
@@ -107,6 +113,15 @@ export default function LoginPage() {
               <span className="text-[9px] text-slate-400">Admin</span>
             </button>
           </div>
+
+          <div className="mt-3 pt-2.5 border-t border-agri-200/60 dark:border-agri-900/40 text-[10px] text-agri-800 dark:text-agri-300 space-y-0.5">
+            <p className="font-medium">
+              🌾 <span className="font-bold">কৃষক:</span> farmer@krishi.gov.bd • পাসওয়ার্ড: <span className="font-mono font-bold">krishi123</span>
+            </p>
+            <p className="font-medium">
+              🩺 <span className="font-bold">কৃষি কর্মকর্তা:</span> expert@krishi.gov.bd • পাসওয়ার্ড: <span className="font-mono font-bold">krishi123</span>
+            </p>
+          </div>
         </div>
 
         {/* Main Form Card */}
@@ -141,8 +156,8 @@ export default function LoginPage() {
                 <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
                   {isBangla ? "পাসওয়ার্ড" : "Password"}
                 </label>
-                <span className="text-[11px] text-slate-400">
-                  {isBangla ? "(ডেমোর জন্য যেকোনো ৪+ অক্ষর)" : "(4+ chars for demo)"}
+                <span className="text-[11px] text-slate-400 font-mono">
+                  krishi123
                 </span>
               </div>
               <div className="relative">

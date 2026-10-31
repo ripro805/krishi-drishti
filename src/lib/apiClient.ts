@@ -109,13 +109,25 @@ class ApiClient {
 
   // Domain-specific endpoints
   public auth = {
-    login: (credentials: { email: string; password: string }) =>
-      this.post<{ user: any; token: string }>("/auth/login", credentials),
+    login: async (credentials: { email: string; password: string }) => {
+      const res = await this.post<any>("/auth/login", credentials);
+      const user = res?.user || res?.data?.user;
+      const token = res?.token || res?.data?.token;
+      return { user, token, ...res };
+    },
 
-    register: (data: { name: string; email: string; password: string; phone?: string; role?: string; district?: string }) =>
-      this.post<{ user: any; token: string }>("/auth/register", data),
+    register: async (data: { name: string; email: string; password: string; phone?: string; role?: string; district?: string }) => {
+      const res = await this.post<any>("/auth/register", data);
+      const user = res?.user || res?.data?.user;
+      const token = res?.token || res?.data?.token;
+      return { user, token, ...res };
+    },
 
-    me: () => this.get<{ user: any }>("/auth/me"),
+    me: async () => {
+      const res = await this.get<any>("/auth/me");
+      const user = res?.user || res?.data?.user || res?.data;
+      return { user, ...res };
+    },
 
     logout: () => this.post<{ success: boolean }>("/auth/logout"),
   };

@@ -277,13 +277,27 @@ def aggregate_crop_probabilities(
             (dominant_crop_mass >= 0.75)
         )
 
+        # Active pathology check:
+        # If competing crops are generic healthy classes but a specific crop shows genuine disease pathology (>= 15%),
+        # prioritize that crop to resolve foliar disease signatures accurately in Auto-Detect mode:
+        top_disease_pred = next((p for p in raw_preds if "healthy" not in p["label"].lower() and p["score"] >= 0.15), None)
+        has_prominent_disease = False
+        if not auto_is_credible and top_disease_pred:
+            dis_crop = LABEL_TO_CROP.get(top_disease_pred["label"])
+            if dis_crop and dis_crop in crop_mass:
+                chosen_crop = dis_crop
+                dominant_crop = dis_crop
+                dominant_crop_mass = crop_mass[dis_crop]
+                auto_is_credible = True
+                has_prominent_disease = True
+
         # Botanical consistency guard: Rice leaves do not get rust diseases.
         # If Rice is selected as dominant but cereal rust pustules are active, it is an unrecognized cereal leaf.
         rust_activation = sum(p["score"] for p in raw_preds if "rust" in p["label"].lower())
         if dominant_crop == "Rice" and rust_activation > 0.02:
             auto_is_credible = False
 
-        if not auto_is_credible or (dominant_crop_mass < 0.40 and crop_margin < 0.15) or (dominant_crop_mass < 0.30 and entropy > THRESHOLDS["max_entropy_for_noise"]):
+        if not auto_is_credible or (not has_prominent_disease and dominant_crop_mass < 0.40 and crop_margin < 0.15) or (not has_prominent_disease and dominant_crop_mass < 0.30 and entropy > THRESHOLDS["max_entropy_for_noise"]):
             msg = (
                 "Inconclusive result. The AI model detected ambiguous symptoms matching multiple crops in auto mode. "
                 "To guarantee diagnostic accuracy and prevent incorrect treatments, please select your specific crop from the dropdown."

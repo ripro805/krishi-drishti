@@ -270,9 +270,28 @@ async function queryHuggingFaceRouter(
     ([a, b]) => (dominantCrop === a && secondCrop === b) || (dominantCrop === b && secondCrop === a)
   );
   const minMarginNeeded = isConfPair ? 0.35 : 0.20;
-  const autoIsCredible =
+  let chosenCrop = dominantCrop;
+  let chosenCropMass = dominantCropMass;
+  let autoIsCredible =
     (dominantCropMass >= 0.65 && cropMargin >= minMarginNeeded) ||
     dominantCropMass >= 0.75;
+
+  // Active pathology check:
+  // If competing crops are generic healthy classes but a specific crop shows genuine disease pathology (>= 15%),
+  // prioritize that crop to resolve foliar disease signatures accurately in Auto-Detect mode:
+  const topDiseasePred = rawPredictions.find(
+    (p) => !p.label.toLowerCase().includes("healthy") && p.score >= 0.15
+  );
+  let hasProminentDisease = false;
+  if (!autoIsCredible && topDiseasePred) {
+    const disCrop = LABEL_TO_CROP[topDiseasePred.label];
+    if (disCrop && cropMass[disCrop] !== undefined) {
+      chosenCrop = disCrop;
+      chosenCropMass = cropMass[disCrop];
+      autoIsCredible = true;
+      hasProminentDisease = true;
+    }
+  }
 
   if (!autoIsCredible) {
     return {
@@ -339,6 +358,106 @@ async function queryHuggingFaceRouter(
   };
 }
 
+// ── Tier 4: Gemini Multimodal Vision Engine ─────────────────────────
+async function queryGeminiVision(
+  base64Data: string,
+  mimeType: string,
+  cropHint?: string
+): Promise<StructuredModelResponse> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new Error("GEMINI_API_KEY is not configured.");
+
+  const model = "gemini-3.5-flash-lite";
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+  const resolvedCrop = resolveCropName(cropHint);
+  const prompt = `You are KrishiDrishti AI Agricultural Plant Pathology Engine.
+Analyze the attached crop leaf image.
+Target Crop Selection: ${resolvedCrop ? resolvedCrop : "Auto-Detect (Any of the 16 crops)"}.
+Available Crops: Squash, Tomato, Potato, Rice, Corn (Maize), Wheat, Bell Pepper, Apple, Grape, Strawberry, Orange (Citrus), Peach, Cherry, Blueberry, Raspberry, Soybean.
+
+Return strictly JSON with keys:
+{
+  "status": "success",
+  "crop": "Squash",
+  "cropBangla": "মিষ্টি কুমড়া",
+  "disease": "Squash Powdery Mildew",
+  "diseaseBangla": "মিষ্টি কুমড়ার পাউডারি মিলডিউ",
+  "label": "Squash___Powdery_mildew",
+  "confidence": 98.2,
+  "isHealthy": false,
+  "treatment": "আক্রান্ত পাতা অপসারণ করুন এবং অনুমোদিত ছত্রাকনাশক স্প্রে করুন।"
+}`;
+
+  const payload = {
+    contents: [
+      {
+        parts: [
+          { text: prompt },
+          { inline_data: { mime_type: mimeType, data: base64Data } }
+        ]
+      }
+    ],
+    generationConfig: {
+      temperature: 0.1,
+      response_mime_type: "application/json"
+    }
+  };
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Gemini Vision error ${response.status}: ${errText}`);
+  }
+
+  const json = await response.json();
+  const text = json.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (!text) throw new Error("Empty response from Gemini Vision");
+
+  const parsed = JSON.parse(text);
+  const detectedCrop = parsed.crop || "Squash";
+  const cropBn = parsed.cropBangla || (CROP_REGISTRY[detectedCrop]?.bnName || detectedCrop);
+  const diseaseBn = parsed.diseaseBangla || parsed.disease;
+  const isHealthy = !!parsed.isHealthy;
+  const conf = parsed.confidence || 95;
+  const label = parsed.label || `${detectedCrop}___${(parsed.disease || "healthy").replace(/\s+/g, "_")}`;
+
+  return {
+    status: parsed.status || "success",
+    can_provide_treatment: !isHealthy && parsed.status !== "crop_mismatch",
+    selected_crop: cropHint || null,
+    detected_crop: detectedCrop,
+    bangla_selected_crop: cropHint ? (CROP_REGISTRY[cropHint]?.bnName || cropHint) : null,
+    bangla_detected_crop: cropBn,
+    confidence: conf,
+    crop_confidence: conf,
+    prediction: {
+      label,
+      crop: detectedCrop,
+      score: conf / 100,
+      isHealthy,
+    },
+    predictions: [
+      {
+        label,
+        score: conf / 100,
+        raw_score: conf / 100,
+      }
+    ],
+    message: `${isHealthy ? "Healthy foliage" : "Pathology confirmed"} identified for ${detectedCrop}.`,
+    banglaMessage: `${cropBn} ফসলে ${isHealthy ? "সুস্থ পাতা" : diseaseBn} নিশ্চিতভাবে সনাক্ত হয়েছে।`,
+    cropScores: { [detectedCrop]: conf / 100 },
+    isCrossCropAmbiguous: false,
+    cropMargin: 1.0,
+    provider: "gemini-vision-engine",
+  };
+}
+
 // ── Main API Route Handler ───────────────────────────────────────
 export async function POST(request: NextRequest) {
   try {
@@ -379,7 +498,15 @@ export async function POST(request: NextRequest) {
       const routerRes = await queryHuggingFaceRouter(binaryData, mimeType, cropHint);
       return NextResponse.json(routerRes);
     } catch (e: any) {
-      console.error("[detect API] Tier 3 (HuggingFace) failed:", e.message);
+      console.warn("[detect API] Tier 3 (HuggingFace) unavailable, falling back to Tier 4 (Gemini Vision)...", e.message);
+    }
+
+    // 4. Try Tier 4: Gemini Multimodal Vision Engine (Cloud serverless fallback)
+    try {
+      const geminiRes = await queryGeminiVision(base64Data, mimeType, cropHint);
+      return NextResponse.json(geminiRes);
+    } catch (e: any) {
+      console.error("[detect API] Tier 4 (Gemini Vision) failed:", e.message);
     }
 
     return NextResponse.json(

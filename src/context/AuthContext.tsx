@@ -32,9 +32,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const token = apiClient.getToken();
         if (token) {
           const res = await apiClient.auth.me();
-          if (res?.user) {
-            setCurrentUser(res.user);
-            localStorage.setItem(CURRENT_USER_SESSION_KEY, JSON.stringify(res.user));
+          const user = res?.user || (res as any)?.data?.user || (res as any)?.data;
+          if (user && (user.id || user.email)) {
+            setCurrentUser(user);
+            localStorage.setItem(CURRENT_USER_SESSION_KEY, JSON.stringify(user));
           } else {
             apiClient.setToken(null);
             setCurrentUser(null);
@@ -71,13 +72,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         password: credentials.password,
       });
 
-      if (!data?.user || !data?.token) {
+      const user = data?.user || (data as any)?.data?.user;
+      const token = data?.token || (data as any)?.data?.token;
+
+      if (!user || !token) {
         return { success: false, error: "লগইন ব্যর্থ হয়েছে। অনুগ্রহ করে পুনরায় চেষ্টা করুন।" };
       }
 
-      apiClient.setToken(data.token);
-      setCurrentUser(data.user);
-      localStorage.setItem(CURRENT_USER_SESSION_KEY, JSON.stringify(data.user));
+      apiClient.setToken(token);
+      setCurrentUser(user);
+      localStorage.setItem(CURRENT_USER_SESSION_KEY, JSON.stringify(user));
 
       return { success: true };
     } catch (err: any) {
@@ -96,13 +100,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         district: data.district || "ঢাকা",
       });
 
-      if (!res?.user || !res?.token) {
+      const user = res?.user || (res as any)?.data?.user;
+      const token = res?.token || (res as any)?.data?.token;
+
+      if (!user || !token) {
         return { success: false, error: "রেজিস্ট্রেশন সম্পন্ন করা সম্ভব হয়নি।" };
       }
 
-      apiClient.setToken(res.token);
-      setCurrentUser(res.user);
-      localStorage.setItem(CURRENT_USER_SESSION_KEY, JSON.stringify(res.user));
+      apiClient.setToken(token);
+      setCurrentUser(user);
+      localStorage.setItem(CURRENT_USER_SESSION_KEY, JSON.stringify(user));
 
       return { success: true };
     } catch (err: any) {
